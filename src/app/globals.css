@@ -1,26 +1,139 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* — Colors (see design.md §2) — */
+  --color-ink: #0a0a0a;
+  --color-brand: #de322d;
+  --color-brand-hot: #f7413d;
+  --color-paper: #f3f3f3;
+  --color-paper-2: #f1f2f1;
+  --color-coal: #232323;
+  --color-smoke: #5d5d5d;
+  --color-mute: #a5a5a5;
+  --color-line: #e6e6e6;
+
+  /* — Fonts (wired to next/font variables in layout.tsx) — */
+  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-stack), ui-sans-serif, system-ui, sans-serif;
+
+  /* — Type scale (design.md §3; fluid via clamp, 1440px reference) — */
+  --text-display: clamp(2.375rem, 6.95vw, 6.25rem);
+  --text-display--line-height: 1.2;
+  --text-display--letter-spacing: -0.015em;
+  --text-h2: clamp(2.25rem, 4.45vw, 4rem);
+  --text-h2--line-height: 1.3;
+  --text-h2--letter-spacing: -0.024em;
+  --text-h3: clamp(1.75rem, 2.8vw, 2.5rem);
+  --text-h3--line-height: 1.4;
+  --text-h3--letter-spacing: -0.015em;
+  --text-h4: clamp(1.5rem, 2.25vw, 2rem);
+  --text-h4--line-height: 1.4;
+  --text-h4--letter-spacing: -0.031em;
+  --text-h5: clamp(1.25rem, 1.95vw, 1.75rem);
+  --text-h5--line-height: 1.5;
+  --text-h5--letter-spacing: -0.05em;
+  --text-h6: clamp(1.25rem, 1.7vw, 1.5rem);
+  --text-h6--line-height: 1.5;
+  --text-h6--letter-spacing: -0.05em;
+  --text-stat: clamp(1.75rem, 5.6vw, 5rem);
+  --text-stat--line-height: 1.2;
+  --text-body-xxl: clamp(1rem, 1.55vw, 1.375rem);
+  --text-body-xxl--line-height: 1.2;
+  --text-body-xl: clamp(1.125rem, 1.4vw, 1.25rem);
+  --text-body-xl--line-height: 1.6;
+  --text-body-xl--letter-spacing: -0.02em;
+  --text-body-l: clamp(1rem, 1.25vw, 1.125rem);
+  --text-body-l--line-height: 1.5;
+  --text-body-l--letter-spacing: -0.01em;
+  --text-body-m: 1rem;
+  --text-body-m--line-height: 1.5;
+  --text-body-m--letter-spacing: -0.02em;
+  --text-body-s: 0.875rem;
+  --text-body-s--line-height: 1.5;
+  --text-body-xs: 0.75rem;
+  --text-body-xs--line-height: 1.5;
+
+  /* — Radius — */
+  --radius-card: 24px;
+  --radius-card-lg: 32px;
+  --radius-pill: 44px;
+
+  /* — Motion — */
+  --ease-out-soft: cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  body {
+    @apply bg-white font-body text-body-m text-ink antialiased;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading font-normal;
+  }
+
+  ::selection {
+    @apply bg-brand text-white;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+
+  a,
+  button,
+  [role="button"] {
+    @apply cursor-pointer;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@utility container-site {
+  @apply mx-auto w-full max-w-[1440px] px-10 max-md:px-5;
+}
+
+/* Section vertical rhythm (design.md §4) */
+@utility section-pad {
+  @apply py-20 max-lg:py-14 max-md:py-10;
+}
+
+@utility section-gap {
+  @apply mt-36 max-lg:mt-24 max-md:mt-14;
+}
+
+/* Infinite marquee track — content must be rendered twice inside */
+@utility marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--marquee-duration, 30s) linear infinite;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

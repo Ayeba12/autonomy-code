@@ -148,11 +148,22 @@ Duotone-heavy editorial photography (red/orange gel portraits), webp, `next/imag
 - Marquees/reveals honor `prefers-reduced-motion`.
 - One consistent max-width container everywhere; no horizontal scroll at 375/768/1024/1440.
 
-## 10. Tailwind v4 mapping
+## 10. Tailwind v4 mapping (implemented in `src/app/globals.css`)
 
-Tokens live in `src/app/globals.css` under `@theme`:
-`--color-primary`, `--color-brand`, `--color-bg-light`, `--color-bg-primary`,
-`--color-secondary-bg`, `--color-text-secondary`, `--color-mute`, `--color-line`,
-`--color-line-dark`, `--font-heading`, `--font-body`, plus `--text-*` sizes with paired
-line-heights/letter-spacing, `--radius-*`, and container utilities. Components reference tokens
-(`bg-primary`, `text-mute`) — never raw hex in JSX.
+| Template token | Tailwind token | Utility examples |
+|---|---|---|
+| primary `#0a0a0a` | `ink` | `bg-ink`, `text-ink` |
+| brand `#de322d` | `brand` (+ `brand-hot` `#f7413d`) | `text-brand`, `bg-brand` |
+| bg-light `#f3f3f3` | `paper` | `bg-paper` |
+| bg-primary `#f1f2f1` | `paper-2` | `bg-paper-2` |
+| secondary-bg `#232323` | `coal` | `bg-coal`, `border-coal` |
+| text-secondary `#5d5d5d` | `smoke` | `text-smoke` |
+| mute `#a5a5a5` | `mute` | `text-mute` |
+| border `#e6e6e6` | `line` | `border-line` |
+
+Type utilities: `text-display`, `text-h2`…`text-h6`, `text-stat`, `text-body-xxl/xl/l/m/s/xs`
+(fluid clamp() sizes with paired line-height + letter-spacing). Fonts: `font-heading`
+(Stack Sans Headline), `font-body` (Inter) via next/font variables. Radius: `rounded-card`
+(24px), `rounded-card-lg` (32px), `rounded-pill` (44px). Layout helpers: `container-site`,
+`section-pad`, `section-gap`, `marquee-track` (+ `spin-slow` keyframes).
+Components reference tokens (`bg-paper`, `text-smoke`) — never raw hex in JSX.
