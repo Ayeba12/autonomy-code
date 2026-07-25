@@ -17,15 +17,18 @@ export const metadata: Metadata = {
 /* — Data: mirrors design.md §2 / §10 exactly — */
 
 const colors = [
-  { name: "Ink", token: "ink", hex: "#0a0a0a", swatch: "bg-ink" },
-  { name: "Brand", token: "brand", hex: "#de322d", swatch: "bg-brand" },
-  { name: "Brand Hot", token: "brand-hot", hex: "#f7413d", swatch: "bg-brand-hot" },
-  { name: "Paper", token: "paper", hex: "#f3f3f3", swatch: "border border-line bg-paper" },
-  { name: "Paper 2", token: "paper-2", hex: "#f1f2f1", swatch: "border border-line bg-paper-2" },
-  { name: "Coal", token: "coal", hex: "#232323", swatch: "bg-coal" },
+  { name: "True Black", token: "ink", hex: "#000000", swatch: "bg-ink" },
+  { name: "Metallic Gold", token: "brand", hex: "#B8893A", swatch: "bg-brand" },
+  { name: "Gold Shadow", token: "brand-hot", hex: "#7A5A22", swatch: "bg-brand-hot" },
+  { name: "Ivory", token: "paper", hex: "#F3EDE0", swatch: "border border-line bg-paper" },
+  { name: "Deep Ivory", token: "paper-2", hex: "#ECE4D2", swatch: "border border-line bg-paper-2" },
+  { name: "Soft Black", token: "coal", hex: "#1A1A1A", swatch: "bg-coal" },
   { name: "Smoke", token: "smoke", hex: "#5d5d5d", swatch: "bg-smoke" },
   { name: "Mute", token: "mute", hex: "#a5a5a5", swatch: "bg-mute" },
-  { name: "Line", token: "line", hex: "#e6e6e6", swatch: "border border-line bg-line" },
+  { name: "Dove", token: "line", hex: "#DADEE1", swatch: "border border-line bg-line" },
+  { name: "Breath Blue", token: "breath", hex: "#DDEAF2", swatch: "border border-line bg-breath" },
+  { name: "Breath Tint", token: "breath-tint", hex: "#EAF2F8", swatch: "border border-line bg-breath-tint" },
+  { name: "Champagne", token: "gold-light", hex: "#F0E2B4", swatch: "border border-line bg-gold-light" },
   { name: "White", token: "white", hex: "#ffffff", swatch: "border border-line bg-white" },
 ];
 
@@ -156,6 +159,13 @@ const StyleGuidePage = () => (
                     </div>
                   </div>
                 ))}
+              </div>
+              <div className="flex flex-col gap-4 rounded-card border border-line bg-white p-8 max-md:p-5">
+                <p className="text-body-s text-smoke">
+                  <span className="font-medium text-ink">gold-thread</span> · the
+                  signature divider (champagne into gold into shadow)
+                </p>
+                <div aria-hidden className="gold-thread" />
               </div>
             </GuideSection>
 

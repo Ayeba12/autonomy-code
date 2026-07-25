@@ -1,43 +1,34 @@
-import { GallerySection } from "@/components/home/GallerySection";
+import type { Metadata } from "next";
 import { HomeHero } from "@/components/home/HomeHero";
-import { JournalSection } from "@/components/home/JournalSection";
-import { LogoMarquee } from "@/components/home/LogoMarquee";
-import { ServicesSection } from "@/components/home/ServicesSection";
-import { StatsSection } from "@/components/home/StatsSection";
-import { WorkShowcase } from "@/components/home/WorkShowcase";
+import { InvitationBand } from "@/components/home/InvitationBand";
+import { PillarsGlance } from "@/components/home/PillarsGlance";
+import { ProofStrip } from "@/components/home/ProofStrip";
+import { QuietAche } from "@/components/home/QuietAche";
 import { CtaSection } from "@/components/site/CtaSection";
-import { FaqSection } from "@/components/site/FaqSection";
 import { Navbar } from "@/components/site/Navbar";
-import { PricingPlans } from "@/components/site/PricingPlans";
-import { TestimonialSlider } from "@/components/site/TestimonialSlider";
 import { content } from "@/content/source";
 
+export const metadata: Metadata = {
+  description:
+    "A coaching and strategy practice for accomplished professionals whose expertise lives in scattered pieces. We organise your thinking so you can lean on it.",
+};
+
 const HomePage = async () => {
-  const [stats, services, projects, plans, faqs, testimonials, posts] =
-    await Promise.all([
-      content.getStats(),
-      content.getServices(),
-      content.getProjects(),
-      content.getPricingPlans(),
-      content.getFaqs(),
-      content.getTestimonials(),
-      content.getBlogPosts(),
-    ]);
+  const [pillars, quotes] = await Promise.all([
+    content.getPillars(),
+    content.getProofQuotes(),
+  ]);
+  const [proof] = quotes;
 
   return (
     <>
-      <Navbar tone="light" />
-      <main>
+      <Navbar tone="dark" />
+      <main className="bg-paper">
         <HomeHero />
-        <LogoMarquee />
-        <GallerySection />
-        <StatsSection stats={stats} />
-        <ServicesSection services={services} />
-        <WorkShowcase projects={projects} />
-        <PricingPlans plans={plans} />
-        <FaqSection faqs={faqs} />
-        <TestimonialSlider testimonials={testimonials} />
-        <JournalSection posts={posts} />
+        <QuietAche />
+        <PillarsGlance pillars={pillars} />
+        <InvitationBand />
+        {proof && <ProofStrip quote={proof} />}
         <CtaSection />
       </main>
     </>

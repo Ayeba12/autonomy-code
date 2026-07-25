@@ -1,8 +1,11 @@
-# Stodio — Next-Gen Design Agency
+# The Autonomy Code — autonomycode.com
 
-Production rebuild of the Stodio agency template (originally Webflow, by Codexzel) as a
-modern **Next.js 16** application, prepared for **WordPress headless CMS**, deployed on
-**Vercel** with **GitHub Actions** CI.
+Website for **The Autonomy Code**, the flagship of The NoGraGra Practice by DK Jonah.
+Built on the studio's Next.js 16 template base (see `content.md` for the full content
+system and `design.md` for the design system), prepared for **WordPress headless CMS**,
+deployed on **Vercel** with **GitHub Actions** CI.
+
+Repo: https://github.com/Ayeba12/autonomy-code.git (push when ready).
 
 ## Stack
 

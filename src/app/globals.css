@@ -2,15 +2,18 @@
 
 @theme {
   /* — Colors (see design.md §2) — */
-  --color-ink: #0a0a0a;
-  --color-brand: #de322d;
-  --color-brand-hot: #f7413d;
-  --color-paper: #f3f3f3;
-  --color-paper-2: #f1f2f1;
-  --color-coal: #232323;
+  --color-ink: #000000;
+  --color-brand: #b8893a;
+  --color-brand-hot: #7a5a22;
+  --color-paper: #f3ede0;
+  --color-paper-2: #ece4d2;
+  --color-coal: #1a1a1a;
   --color-smoke: #5d5d5d;
   --color-mute: #a5a5a5;
-  --color-line: #e6e6e6;
+  --color-line: #dadee1;
+  --color-breath: #ddeaf2;
+  --color-breath-tint: #eaf2f8;
+  --color-gold-light: #f0e2b4;
 
   /* — Fonts (wired to next/font variables in layout.tsx) — */
   --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
@@ -103,6 +106,14 @@
 
 @utility section-gap {
   @apply mt-36 max-lg:mt-24 max-md:mt-14;
+}
+
+
+/* Signature gold-thread divider (content.md §2) */
+@utility gold-thread {
+  height: 2px;
+  border: none;
+  background: linear-gradient(90deg, #f0e2b4, #b8893a, #7a5a22);
 }
 
 /* Infinite marquee track — content must be rendered twice inside */

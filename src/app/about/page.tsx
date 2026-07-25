@@ -1,43 +1,181 @@
 import type { Metadata } from "next";
-import { AboutCounters } from "@/components/about/AboutCounters";
-import { AboutHero } from "@/components/about/AboutHero";
-import { AboutStory } from "@/components/about/AboutStory";
-import { ExperienceHighlight } from "@/components/about/ExperienceHighlight";
-import { FoundationTabs } from "@/components/about/FoundationTabs";
-import { LogoWall } from "@/components/about/LogoWall";
-import { ProcessSection } from "@/components/about/ProcessSection";
-import { TeamSection } from "@/components/about/TeamSection";
-import { CtaSection } from "@/components/site/CtaSection";
+import { Reveal } from "@/components/motion/Reveal";
 import { Navbar } from "@/components/site/Navbar";
+import { ArrowLink } from "@/components/ui/ArrowLink";
+import { Button } from "@/components/ui/Button";
 import { content } from "@/content/source";
 
 export const metadata: Metadata = {
-  title: "Studio",
+  title: "About",
   description:
-    "Since 2019, Stodio has been a global collective turning ambitious ideas into industry-leading brands through the perfect blend of strategy and soul.",
+    "The story behind The Autonomy Code. DK Jonah on hidden captivity, ownership, and building from owned ground.",
+};
+
+/* DK's final wording (content.md §4.7). Verbatim; do not edit. */
+
+const heroSub =
+  "You are stuck because you are living a life you did not fully claim. I know. I lived there too.";
+
+const intro = [
+  "You look capable. Credentialed. Successful, at least on paper. You are everyone's safety net, there for everyone while no one is quite there for you. And still, quietly, something is off that you cannot name.",
+  "You are not lazy and you are not lost. You are doing everything right and you still feel captive in a life you are no longer sure you chose.",
+  "There is a name for that. Hidden captivity. Handing the key parts of your life to other people, to the world's definitions, to fear, without ever noticing you have done it. It is not that you lack skill. It is that you are living a life you have not fully claimed. I spent most of my own life there. So when I tell you I can see it, I am not guessing.",
+];
+
+const movements: { heading: string; paragraphs: string[] }[] = [
+  {
+    heading: "I am DK Jonah.",
+    paragraphs: [
+      "I have been called a fixer, a strategist, a knowledge architect. But underneath all of it, I have always been one thing: a detective. Since I was ten years old, I have looked for the clue everyone else walked past, and named the thing a person is feeling before they have found the words for it. People tell me the same thing, again and again: you make me feel seen. That is the whole of my work. I do not just see clues. I see people.",
+    ],
+  },
+  {
+    heading:
+      "The Autonomy Code was not built from a theory. It was built from my own captivity.",
+    paragraphs: [
+      "For years I chased the wrong thing. I chased getting better through two decades of chronic illness, hoping for a return to independence. I chased the dream of the independent woman who needs no one and fixes everyone. I chased peace, and financial freedom, and every answer the books and the gurus promised. I had become an expert at helping other people see and solve their problems, and I still could not do it for my own life.",
+      "It took my health to force me to stop. To sit quietly with myself and finally hear myself out. And what I found was not that I needed more independence. I needed ownership. I had outsourced so much of my life, to other people's approval, other people's timelines, definitions I never chose. The way out was never to climb alone. It was to choose my own climb.",
+    ],
+  },
+  {
+    heading: "That is autonomy.",
+    paragraphs: [
+      "Not independence from people. Independence from captivity. Enough clarity to know what you want, enough structure to pursue it, and enough self-trust to lead from that place, without losing yourself to pressure, confusion, or fear.",
+      "The work changed its name as I changed, from Decisions That Work, to NoGraGra, to The Autonomy Code. Each name was simply me seeing a little more clearly.",
+      "Life forced me into my own life. I do not force anyone else. That is why this work is gentle on purpose. No rush. No force. No gra gra. Because I know what it is to be shoved into your own life by pain, and I would rather walk you there with calm.",
+    ],
+  },
+  {
+    heading: "So here is what I actually do.",
+    paragraphs: [
+      "I help capable people who feel quietly captive find exactly where they lost ownership of their life, and build the structure to reclaim it. Not more information. You already have enough information. Ownership.",
+    ],
+  },
+];
+
+const whoFor = {
+  heading: "Who this is for",
+  body: "The woman who looks perfect on the outside while the inside is a turmoil she cannot name, and who is finally ready to stop hiding behind being busy.",
+};
+
+const whoNotFor = {
+  heading: "Who this is not for",
+  body: "Anyone looking for motivation, a quick fix, or one more framework to collect. This is quiet, honest, structural work, and it begins with the truth.",
 };
 
 /**
- * /about ("Studio" in the nav) — Hero → Our Story → Numbers → Experience
- * highlight → Our Method → Client logos → Our Foundation → Team → CTA
- * (about.md; footer comes from the root layout).
+ * /about — story-led, type-led, image-light (content.md §4.7).
+ * The narrative is DK's verbatim copy; the page's own black close is the
+ * CTA, so no shared CtaSection here.
  */
 const AboutPage = async () => {
-  const team = await content.getTeam();
+  const stats = await content.getStats();
 
   return (
     <>
       <Navbar tone="dark" />
-      <main>
-        <AboutHero />
-        <AboutStory />
-        <AboutCounters />
-        <ExperienceHighlight />
-        <ProcessSection />
-        <LogoWall />
-        <FoundationTabs />
-        <TeamSection team={team} />
-        <CtaSection />
+      <main className="bg-paper">
+        {/* Hero */}
+        <section className="pt-48 pb-14 max-lg:pt-40 max-md:pt-32 max-md:pb-10">
+          <div className="container-site">
+            <Reveal className="max-w-[900px]">
+              <div className="gold-thread w-16" />
+              <h1 className="mt-8 text-display">
+                You are not stuck because you lack skill.
+              </h1>
+              <p className="mt-6 max-w-[620px] text-body-xl text-smoke">
+                {heroSub}
+              </p>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* The narrative */}
+        <section className="pb-20 max-md:pb-12">
+          <div className="container-site">
+            <div className="max-w-[760px]">
+              {intro.map((paragraph, i) => (
+                <Reveal key={i} delay={i * 0.05}>
+                  <p className="mt-6 text-body-xl first:mt-0">{paragraph}</p>
+                </Reveal>
+              ))}
+
+              {movements.map((movement) => (
+                <div key={movement.heading} className="mt-20 max-md:mt-14">
+                  <Reveal>
+                    <div className="gold-thread w-12" />
+                    <h3 className="mt-7 max-w-[640px] text-h4">
+                      {movement.heading}
+                    </h3>
+                  </Reveal>
+                  {movement.paragraphs.map((paragraph, i) => (
+                    <Reveal key={i} delay={0.05 + i * 0.05}>
+                      <p className="mt-6 text-body-xl">{paragraph}</p>
+                    </Reveal>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Quiet numbers — static, no odometer theatrics */}
+        <section className="bg-paper-2 py-16 max-md:py-10">
+          <div className="container-site">
+            <div className="grid grid-cols-4 gap-10 max-lg:grid-cols-2 max-md:gap-8">
+              {stats.map((stat, i) => (
+                <Reveal key={stat.title} delay={i * 0.08}>
+                  <div className="border-t border-line pt-5">
+                    <p className="font-heading text-stat">{stat.value}</p>
+                    <p className="mt-2 text-body-l font-medium">{stat.title}</p>
+                    <p className="mt-1 text-body-s text-smoke">
+                      {stat.description}
+                    </p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Who this is for / not for */}
+        <section className="py-20 max-md:py-12">
+          <div className="container-site">
+            <div className="grid grid-cols-2 gap-6 max-md:grid-cols-1">
+              {[whoFor, whoNotFor].map((block, i) => (
+                <Reveal key={block.heading} delay={i * 0.08}>
+                  <div className="h-full rounded-card bg-white p-10 max-md:p-7">
+                    <h3 className="text-h5">{block.heading}</h3>
+                    <div className="gold-thread mt-5 w-10" />
+                    <p className="mt-5 text-body-l">{block.body}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Close — the page's one black band, and its CTA */}
+        <section className="bg-ink py-24 max-md:py-16">
+          <div className="container-site">
+            <Reveal className="mx-auto flex max-w-[760px] flex-col items-center gap-8 text-center">
+              <h2 className="text-h2 text-white">
+                Every case begins the same way.
+                <span className="block">With a diagnosis.</span>
+              </h2>
+              <Button href="/ownership-scan" variant="brand">
+                Take the Ownership Scan
+              </Button>
+              <ArrowLink href="#" className="text-white">
+                Read my full story
+              </ArrowLink>
+              <div className="gold-thread mt-8 w-24" />
+              <p className="text-body-xs tracking-[0.3em] text-mute">
+                DK JONAH · NOGRAGRA · THE AUTONOMY CODE
+              </p>
+            </Reveal>
+          </div>
+        </section>
       </main>
     </>
   );

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { footerColumns, socialLinks } from "./nav-links";
 import { NewsletterForm } from "./NewsletterForm";
@@ -12,7 +11,7 @@ export const Footer = () => (
       />
       <div className="relative flex justify-between gap-16 max-lg:flex-col">
         <div className="max-w-md">
-          <h2 className="text-h3">Stay updated with Rise news</h2>
+          <h2 className="text-h3">One calm letter, when it is worth your time.</h2>
           <div className="mt-8">
             <NewsletterForm />
           </div>
@@ -43,68 +42,56 @@ export const Footer = () => (
         </div>
 
         <div className="grid max-w-[650px] flex-1 grid-cols-3 gap-8 max-md:grid-cols-2">
-          {footerColumns.map((column, i) => (
-            <ul key={i} className="flex flex-col gap-3">
-              {column.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-body-l text-mute transition-colors duration-300 hover:text-white"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          {footerColumns.map((column) => (
+            <div key={column.title} className="flex flex-col gap-4">
+              <p className="font-heading text-body-l text-white">{column.title}</p>
+              <ul className="flex flex-col gap-3">
+                {column.links.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-body-l text-mute transition-colors duration-300 hover:text-white"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
       </div>
 
-      <Link href="/" aria-label="Stodio — home" className="mt-20 block max-md:mt-12">
-        <Image
-          src="/images/footer-logo.svg"
-          alt="Stodio Agency"
-          width={1312}
-          height={220}
-          className="h-auto w-full"
-        />
+      <Link
+        href="/"
+        aria-label="The Autonomy Code — home"
+        className="mt-20 block max-md:mt-12"
+      >
+        <span className="block font-heading text-display leading-[1.1] text-white">
+          THE AUTONOMY CODE
+        </span>
+        <span className="mt-3 block text-body-s text-mute">
+          A NoGraGra Practice · DK Jonah
+        </span>
       </Link>
 
-      <div className="mt-8 border-t border-coal pt-6">
+      <div aria-hidden className="gold-thread mt-8" />
+      <div className="pt-6">
         <div className="flex items-center justify-between gap-4 max-md:flex-col max-md:items-start">
-          <p className="text-body-l text-mute">
-            Copyright © Stodio | Designed By{" "}
-            <a
-              href="https://www.codexzel.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white transition-colors hover:text-brand-hot"
-            >
-              Codexzel
-            </a>{" "}
-            - Powered By{" "}
-            <a
-              href="https://www.webflow.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white transition-colors hover:text-brand-hot"
-            >
-              Webflow.
-            </a>
-          </p>
+          <p className="text-body-l text-mute">Copyright © The Autonomy Code</p>
           <div className="flex items-center gap-4">
             <Link
-              href="/utility-pages/privacy-policy"
+              href="/privacy-policy"
               className="text-body-l text-mute transition-colors hover:text-white"
             >
-              Privacy Policy
+              Privacy
             </Link>
             <span aria-hidden className="h-4 w-px bg-coal" />
             <Link
-              href="/utility-pages/terms-conditions"
+              href="/terms"
               className="text-body-l text-mute transition-colors hover:text-white"
             >
-              Terms & Conditions
+              Terms
             </Link>
           </div>
         </div>

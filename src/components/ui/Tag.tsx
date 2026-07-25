@@ -5,7 +5,7 @@ interface TagProps {
   className?: string;
 }
 
-/** Section eyebrow: red spark icon + Stack Sans label (design.md §6). */
+/** Section eyebrow: gold spark icon + Stack Sans label (design.md §6). */
 export const Tag = ({ children, tone = "dark", className = "" }: TagProps) => (
   <div
     className={`flex items-center gap-1 font-heading text-body-l ${

@@ -1,13 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
 const inputClasses =
-  "w-full rounded-xl bg-white px-4 py-3 text-body-m text-ink placeholder:text-mute";
+  "w-full rounded-xl border border-line bg-white px-4 py-3 text-body-m text-ink placeholder:text-mute";
 
 const RequiredMark = () => (
   <span className="text-brand" aria-hidden>
@@ -16,9 +15,9 @@ const RequiredMark = () => (
 );
 
 /**
- * Contact form (contact.md §1): First/Last Name + Email required,
- * optional message. Client-side fake submit until the CMS/API is wired
- * (same pattern as NewsletterForm).
+ * Simplified contact form (content.md §4.12): first name, last name,
+ * email, optional message. Client-side fake submit until the endpoint is
+ * wired (same pattern as NewsletterForm).
  */
 export const ContactForm = () => {
   const [state, setState] = useState<FormState>("idle");
@@ -33,57 +32,54 @@ export const ContactForm = () => {
   if (state === "success") {
     return (
       <p
-        className="mt-8 rounded-2xl bg-white px-6 py-5 text-body-m"
+        className="rounded-2xl border border-line bg-white px-6 py-5 text-body-m"
         role="status"
       >
-        Thank you! Your submission has been received!
+        Thank you! Your message has been received.
       </p>
     );
   }
 
-  const submitLabel = (
-    <span className="flex items-center gap-2">
-      <span>{state === "submitting" ? "Please wait..." : "Submit Message"}</span>
-      <Image
-        src="/images/button-icon-white.svg"
-        alt=""
-        width={16}
-        height={16}
-        className="size-4"
-      />
-    </span>
-  );
-
   return (
-    <form className="mt-8 flex flex-col gap-4" onSubmit={handleSubmit} aria-label="Contact">
-      <Reveal delay={0.1} y={30}>
+    <form
+      className="flex flex-col gap-4"
+      onSubmit={handleSubmit}
+      aria-label="Contact"
+    >
+      <Reveal y={30}>
         <div className="grid grid-cols-2 gap-4 max-md:grid-cols-1">
           <div className="flex flex-col gap-2">
-            <label htmlFor="First-Name" className="text-body-m font-medium">
-              First Name <RequiredMark />
+            <label
+              htmlFor="contact-first-name"
+              className="text-body-m font-medium"
+            >
+              First name <RequiredMark />
             </label>
             <input
-              id="First-Name"
-              name="First-Name"
+              id="contact-first-name"
+              name="first-name"
               type="text"
               required
               maxLength={256}
-              placeholder="Enter your name"
+              placeholder="Your first name"
               autoComplete="given-name"
               className={inputClasses}
             />
           </div>
           <div className="flex flex-col gap-2">
-            <label htmlFor="Last-Name" className="text-body-m font-medium">
-              Last Name <RequiredMark />
+            <label
+              htmlFor="contact-last-name"
+              className="text-body-m font-medium"
+            >
+              Last name <RequiredMark />
             </label>
             <input
-              id="Last-Name"
-              name="Last-Name"
+              id="contact-last-name"
+              name="last-name"
               type="text"
               required
               maxLength={256}
-              placeholder="Enter your name"
+              placeholder="Your last name"
               autoComplete="family-name"
               className={inputClasses}
             />
@@ -91,63 +87,54 @@ export const ContactForm = () => {
         </div>
       </Reveal>
 
-      <Reveal delay={0.18} y={30}>
+      <Reveal delay={0.08} y={30}>
         <div className="flex flex-col gap-2">
-          <label htmlFor="Email" className="text-body-m font-medium">
+          <label htmlFor="contact-email" className="text-body-m font-medium">
             Email <RequiredMark />
           </label>
           <input
-            id="Email"
-            name="Email"
+            id="contact-email"
+            name="email"
             type="email"
             required
             maxLength={256}
-            placeholder="Enter Your Email"
+            placeholder="Your email"
             autoComplete="email"
             className={inputClasses}
           />
         </div>
       </Reveal>
 
-      <Reveal delay={0.26} y={30}>
+      <Reveal delay={0.16} y={30}>
         <div className="flex flex-col gap-2">
-          <label htmlFor="field" className="text-body-m font-medium">
-            Write Message
+          <label htmlFor="contact-message" className="text-body-m font-medium">
+            Message <span className="text-body-s text-smoke">(optional)</span>
           </label>
           <textarea
-            id="field"
-            name="field"
+            id="contact-message"
+            name="message"
             maxLength={5000}
             rows={5}
-            placeholder="How can we help you? Feel free to get in touch!"
+            placeholder="What would you like to ask?"
             className={`${inputClasses} resize-none`}
           />
         </div>
       </Reveal>
 
-      <Reveal delay={0.34} y={30}>
+      <Reveal delay={0.24} y={30}>
         <button
           type="submit"
           disabled={state === "submitting"}
-          className="group relative inline-flex min-h-11 items-center justify-center overflow-hidden rounded-pill bg-ink px-5 py-3 text-body-m font-medium text-white transition-all duration-350 hover:rounded-2xl disabled:opacity-60"
+          className="inline-flex min-h-11 items-center justify-center rounded-pill bg-brand px-6 py-3 text-body-m font-medium text-white transition-all duration-350 hover:rounded-2xl hover:bg-brand-hot disabled:opacity-60"
         >
-          <span className="relative block overflow-hidden">
-            <span className="block transition-transform duration-350 ease-out group-hover:-translate-y-full">
-              {submitLabel}
-            </span>
-            <span
-              aria-hidden
-              className="absolute inset-0 block translate-y-full transition-transform duration-350 ease-out group-hover:translate-y-0"
-            >
-              {submitLabel}
-            </span>
-          </span>
+          {state === "submitting" ? "Please wait..." : "Send message"}
         </button>
       </Reveal>
 
       {state === "error" && (
-        <p className="text-body-s text-brand" role="alert">
-          Oops! Something went wrong while submitting the form.
+        <p className="text-body-s text-brand-hot" role="alert">
+          Something went wrong while sending your message. Please try again, or
+          write to dk@dkjonah.com.
         </p>
       )}
     </form>

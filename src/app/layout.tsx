@@ -22,11 +22,11 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   ),
   title: {
-    default: "Stodio — Next-Gen Design Agency",
-    template: "%s — Stodio",
+    default: "The Autonomy Code · A NoGraGra Practice",
+    template: "%s · The Autonomy Code",
   },
   description:
-    "Next-gen design agency for growing brands. Branding, mobile & web app design for startups and giants.",
+    "A coaching and strategy practice for accomplished professionals whose expertise lives in scattered pieces. Autonomy is peace, given structure.",
 };
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (

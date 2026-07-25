@@ -1,33 +1,30 @@
 import type { FaqItem } from "../types";
 
-/**
- * Seed data from `_analysis/home.md` §9 "FAQ" (template demo content —
- * four answers share the same lorem ipsum placeholder).
- */
-
-const LOREM_ANSWER =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
-
+/** Calm questions for the Ownership Scan page (content.md §4.4, §6). */
 export const faqs: FaqItem[] = [
   {
-    question: "What services does your agency provide?",
-    answer: LOREM_ANSWER,
-  },
-  {
-    question: "How do you approach a new project?",
-    answer: LOREM_ANSWER,
-  },
-  {
-    question: "What is the typical timeline for a project?",
+    question: "What does the £97 include?",
     answer:
-      'You can easily book an appointment by clicking the "Book Appointment" button on our website or by calling our front desk directly.',
+      "Three things, one payment. The Ownership Scan, a 25-question pre-assessment. The 90-minute Autonomy Map-Out Session, a live 1:1 call focused on the one priority pillar the scan surfaces. And the Personal Autonomy Map, a written, personalised map you keep, with a 15-minute walkthrough call so you know what to do first.",
   },
   {
-    question: "How do you handle revisions?",
-    answer: LOREM_ANSWER,
+    question: "How do the 25 questions work?",
+    answer:
+      "You complete the scan conversationally before the call, answering from your current reality, not from who you wish you were. It surfaces your pattern and the one pillar carrying the strain, so the session starts in the right place.",
   },
   {
-    question: "How much do your services cost?",
-    answer: LOREM_ANSWER,
+    question: "When does the Map arrive?",
+    answer:
+      "The Personal Autonomy Map is delivered 48 to 72 hours after your session. It comes with a 15-minute walkthrough call so you can understand it clearly and know your first move.",
+  },
+  {
+    question: "Is this a personality test?",
+    answer:
+      "No. It is a diagnostic, not a scorecard for your worth. It does not sort you into a type. It finds where ownership has been outsourced and shows you the first piece to reclaim. A map, not a verdict.",
+  },
+  {
+    question: "What happens after the Scan?",
+    answer:
+      "The map leads the recommendation, never pressure. If a longer route such as SABI CORE is your honest next step, you will know why, in writing, before you commit. If not, you leave with one clear reclaim move, and the map is yours to keep.",
   },
 ];

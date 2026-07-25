@@ -1,36 +1,31 @@
 import type {
-  BlogPost,
+  Article,
+  ConversationItem,
   FaqItem,
-  JobOpening,
-  OfficeLocation,
-  PricingPlan,
-  Project,
-  ServiceItem,
+  LadderTier,
+  Pillar,
+  ProofQuote,
+  SpeakingInfo,
   StatItem,
-  TeamMember,
-  Testimonial,
+  WiderWorkLink,
 } from "./types";
 
 /**
- * Every content read in the app goes through this interface.
- * Today it is backed by local seed data (`./local`); when the WordPress
- * headless CMS is ready, add a `wp/` implementation (WPGraphQL) and swap
- * the export below — no page code changes.
+ * Every content read goes through this interface. Local seed data today
+ * (`./local`); a WordPress/WPGraphQL implementation can replace the export
+ * below without touching page code.
  */
 export interface ContentSource {
-  getProjects(): Promise<Project[]>;
-  getProject(slug: string): Promise<Project | null>;
-  getBlogPosts(): Promise<BlogPost[]>;
-  getBlogPost(slug: string): Promise<BlogPost | null>;
-  getJobOpenings(): Promise<JobOpening[]>;
-  getJobOpening(slug: string): Promise<JobOpening | null>;
-  getOfficeLocations(): Promise<OfficeLocation[]>;
-  getTestimonials(): Promise<Testimonial[]>;
-  getPricingPlans(): Promise<PricingPlan[]>;
-  getFaqs(): Promise<FaqItem[]>;
-  getServices(): Promise<ServiceItem[]>;
+  getPillars(): Promise<Pillar[]>;
+  getLadder(): Promise<LadderTier[]>;
+  getArticles(): Promise<Article[]>;
+  getArticle(slug: string): Promise<Article | null>;
+  getConversations(): Promise<ConversationItem[]>;
+  getProofQuotes(): Promise<ProofQuote[]>;
+  getSpeaking(): Promise<SpeakingInfo>;
   getStats(): Promise<StatItem[]>;
-  getTeam(): Promise<TeamMember[]>;
+  getFaqs(): Promise<FaqItem[]>;
+  getWiderWork(): Promise<WiderWorkLink[]>;
 }
 
 export { localContent as content } from "./local";

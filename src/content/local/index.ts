@@ -1,58 +1,48 @@
 import type { ContentSource } from "../source";
 
-import { blogPosts } from "./blog-posts";
+import { articles } from "./articles";
+import { conversations } from "./conversations";
 import { faqs } from "./faqs";
-import { jobOpenings } from "./jobs";
-import { officeLocations } from "./offices";
-import { pricingPlans } from "./pricing";
-import { projects } from "./projects";
-import { services } from "./services";
+import { ladder } from "./ladder";
+import { pillars } from "./pillars";
+import { proofQuotes } from "./proof-quotes";
+import { speaking } from "./speaking";
 import { stats } from "./stats";
-import { team } from "./team";
-import { testimonials } from "./testimonials";
+import { widerWork } from "./wider-work";
 
 /**
  * Local (static seed) implementation of the ContentSource interface.
  * Swap for a WPGraphQL-backed implementation when the headless CMS lands.
  */
 export const localContent: ContentSource = {
-  async getProjects() {
-    return projects;
+  async getPillars() {
+    return pillars;
   },
-  async getProject(slug) {
-    return projects.find((project) => project.slug === slug) ?? null;
+  async getLadder() {
+    return [...ladder].sort((a, b) => a.order - b.order);
   },
-  async getBlogPosts() {
-    return blogPosts;
+  async getArticles() {
+    return articles;
   },
-  async getBlogPost(slug) {
-    return blogPosts.find((post) => post.slug === slug) ?? null;
+  async getArticle(slug) {
+    return articles.find((article) => article.slug === slug) ?? null;
   },
-  async getJobOpenings() {
-    return jobOpenings;
+  async getConversations() {
+    return conversations;
   },
-  async getJobOpening(slug) {
-    return jobOpenings.find((jobOpening) => jobOpening.slug === slug) ?? null;
+  async getProofQuotes() {
+    return proofQuotes;
   },
-  async getOfficeLocations() {
-    return officeLocations;
-  },
-  async getTestimonials() {
-    return testimonials;
-  },
-  async getPricingPlans() {
-    return pricingPlans;
-  },
-  async getFaqs() {
-    return faqs;
-  },
-  async getServices() {
-    return services;
+  async getSpeaking() {
+    return speaking;
   },
   async getStats() {
     return stats;
   },
-  async getTeam() {
-    return team;
+  async getFaqs() {
+    return faqs;
+  },
+  async getWiderWork() {
+    return widerWork;
   },
 };

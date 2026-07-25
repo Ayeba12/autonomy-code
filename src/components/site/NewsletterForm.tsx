@@ -18,7 +18,7 @@ export const NewsletterForm = () => {
   if (state === "success") {
     return (
       <p className="rounded-2xl border border-coal px-6 py-4 text-body-m text-white">
-        Thank you! Your submission has been received!
+        Welcome. You are on the list.
       </p>
     );
   }
@@ -41,14 +41,14 @@ export const NewsletterForm = () => {
         <button
           type="submit"
           disabled={state === "submitting"}
-          className="flex h-10 shrink-0 items-center gap-2 rounded-full bg-brand-hot px-5 font-heading text-body-s text-white transition-colors duration-300 hover:bg-brand disabled:opacity-60"
+          className="flex h-10 shrink-0 items-center gap-2 rounded-full bg-brand px-5 font-heading text-body-s text-white transition-colors duration-300 hover:bg-brand-hot disabled:opacity-60"
         >
-          {state === "submitting" ? "Please wait..." : "SUBSCRIBE"}
+          {state === "submitting" ? "Please wait..." : "Subscribe"}
         </button>
       </div>
       {state === "error" && (
-        <p className="mt-3 text-body-s text-brand-hot" role="alert">
-          Oops! Something went wrong while submitting the form.
+        <p className="mt-3 text-body-s text-gold-light" role="alert">
+          Something went wrong. Please try again.
         </p>
       )}
     </form>

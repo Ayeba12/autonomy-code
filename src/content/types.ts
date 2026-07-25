@@ -1,9 +1,8 @@
 /**
- * Domain content models for the Stodio site.
+ * Domain content models for The Autonomy Code site (see content.md).
  *
- * These mirror the WordPress headless structure we will adopt later
- * (posts, custom post types, ACF-style fields) while staying CMS-agnostic:
- * pages consume these types only — never a CMS SDK directly.
+ * CMS-agnostic: pages consume these types only, never a CMS SDK.
+ * The WordPress swap path from the template base is unchanged.
  */
 
 export interface ImageRef {
@@ -13,7 +12,7 @@ export interface ImageRef {
   height?: number;
 }
 
-/** Portable rich text: what WP's block editor / WPGraphQL will map onto. */
+/** Portable rich text, maps onto WP blocks later. */
 export type RichBlock =
   | { type: "h2" | "h3" | "h4"; text: string }
   | { type: "p"; text: string }
@@ -22,66 +21,68 @@ export type RichBlock =
   | { type: "image"; image: ImageRef }
   | { type: "divider" };
 
-export interface Project {
+/** One of the five pillars of the Autonomy Code. */
+export interface Pillar {
   slug: string;
   name: string;
-  /** Service label shown on cards, e.g. "Visual Storytelling". */
-  service: string;
-  year: string;
-  timeline: string;
-  services: string[];
-  thumbnail: ImageRef;
-  mainImage: ImageRef;
-  detailImages: ImageRef[];
-  /** Tagged content sections (Challenges / Solutions / Results). */
-  sections: { tag: string; heading: string; body: string[] }[];
-  otherProjects: string[];
+  index: string;
+  /** The movement, e.g. "From Borrowed Identity to Owned Ground." */
+  movement: string;
+  description: string;
 }
 
-export interface BlogPost {
+/** A rung of the Ladder (Scan, SABI CORE, Legacy). */
+export interface LadderTier {
+  slug: string;
+  name: string;
+  /** Card copy on Work Together — named, not priced. */
+  summary: string;
+  cta: { label: string; href: string };
+  /** Price shown ONLY on the tier's own landing page. */
+  price: string;
+  order: number;
+}
+
+/** Writing article. Category is a pillar name. */
+export interface Article {
   slug: string;
   title: string;
-  category: string;
-  /** ISO date, formatted at render time. */
+  subtitle: string;
+  pillar: string;
   date: string;
   readTime: string;
   excerpt: string;
-  author: { name: string; avatar: ImageRef };
-  heroImage: ImageRef;
+  /** Full drafts have body; outlined articles ship as `draft: true`. */
+  draft: boolean;
   body: RichBlock[];
 }
 
-export interface JobOpening {
-  slug: string;
+/** In Conversation item (interview, talk, podcast episode). */
+export interface ConversationItem {
+  section: "Interviews" | "Talks & Panels" | "Podcast";
   title: string;
-  country: string;
-  city: string;
-  employmentType: string;
-  body: RichBlock[];
+  host: string;
+  year: string;
+  href: string;
 }
 
-export interface OfficeLocation {
-  name: string;
-  address: string[];
-  image: ImageRef;
-}
-
-export interface Testimonial {
+/** Quiet client-proof quote. */
+export interface ProofQuote {
   quote: string;
-  author: string;
-  role: string;
-  avatar: ImageRef;
-  logo: ImageRef;
+  attribution: string;
 }
 
-export interface PricingPlan {
-  name: string;
-  monthlyPrice: string;
-  annualPrice: string;
-  blurb: string;
-  features: string[];
-  cta: { label: string; href: string; variant: "dark" | "brand" };
-  highlighted: boolean;
+export interface SpeakingInfo {
+  themes: string[];
+  audiences: string[];
+  formats: { name: string; note: string }[];
+}
+
+/** Quiet numbers (About / Method). */
+export interface StatItem {
+  value: string;
+  title: string;
+  description: string;
 }
 
 export interface FaqItem {
@@ -89,21 +90,9 @@ export interface FaqItem {
   answer: string;
 }
 
-export interface ServiceItem {
+/** Link-out card on The Wider Work. */
+export interface WiderWorkLink {
   name: string;
-  index: string;
-  image: ImageRef;
   description: string;
-}
-
-export interface StatItem {
-  value: string;
-  title: string;
-  description: string;
-}
-
-export interface TeamMember {
-  name: string;
-  role: string;
-  photo: ImageRef;
+  href: string;
 }

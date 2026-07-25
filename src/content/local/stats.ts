@@ -1,30 +1,28 @@
 import type { StatItem } from "../types";
 
-/**
- * Seed data from `_analysis/home.md` §5 "Counters / Numbers".
- * The "just okay." quotes are curly in the captured source.
- */
+/** Quiet numbers for About and Method (content.md §6). Static, no theatrics. */
 export const stats: StatItem[] = [
   {
-    value: "1%",
-    title: "Expert-Vetted",
+    value: "15+",
+    title: "Years building",
     description:
-      "Recognized in the top 1% of freelancers for consistent quality, trust, and expertise.",
+      "Ownership-based systems, refined across real life, real constraints, and real responsibility.",
+  },
+  {
+    value: "300+",
+    title: "People trained",
+    description:
+      "Coaches, consultants, creatives, and knowledge workers, in rooms and cohorts.",
+  },
+  {
+    value: "150+",
+    title: "People mentored",
+    description:
+      "People who already had the expertise, but could not yet see the shape of it.",
   },
   {
     value: "30+",
-    title: "Clients served",
-    description: "From startups to giants - each treated like our only one.",
-  },
-  {
-    value: "100%",
-    title: "Success Score",
-    description: "All 5-star reviews. No compromises. No “just okay.”",
-  },
-  {
-    value: "8+",
-    title: "Years of expertise",
-    description:
-      "Deep experience in UX, branding, and growth-driven design for real-world products.",
+    title: "People coached",
+    description: "Close, structured work, one person at a time.",
   },
 ];

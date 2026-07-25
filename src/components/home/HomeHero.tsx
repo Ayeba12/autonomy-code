@@ -1,78 +1,35 @@
-"use client";
-
-import Image from "next/image";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
 import { Reveal } from "@/components/motion/Reveal";
+import { ArrowLink } from "@/components/ui/ArrowLink";
 import { Button } from "@/components/ui/Button";
-import { Tag } from "@/components/ui/Tag";
 
-/** Dark photographic hero with zoom-out parallax background. */
-export const HomeHero = () => {
-  const ref = useRef<HTMLElement>(null);
-  const reduced = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const scale = useTransform(scrollYProgress, [0, 1], [1.4, 1]);
-
-  return (
-    <section
-      ref={ref}
-      className="relative m-2 overflow-hidden rounded-card pt-40 pb-16 max-lg:pt-32 max-md:pt-28"
-    >
-      <motion.div
-        className="absolute inset-0 -z-10"
-        style={reduced ? undefined : { scale }}
-      >
-        <Image
-          src="/images/hero-bg-image-p-2000.webp"
-          alt="Hero BG Image"
-          fill
-          preload
-          sizes="100vw"
-          className="object-cover"
-        />
-      </motion.div>
-      <div className="absolute inset-0 -z-10 bg-ink/20" aria-hidden />
-
-      <div className="container-site text-white">
-        <Reveal>
-          <Tag tone="light">Next-Gen Design Agency</Tag>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <h1 className="mt-4 max-w-[850px] text-display">
-            Next-Gen
-            <br />
-            Design Agency for Growing Brands.
-          </h1>
-        </Reveal>
-        <div className="flex items-end justify-between gap-10 pt-12 max-lg:flex-col max-lg:items-start">
-          <Reveal delay={0.2} className="flex gap-6 text-body-l">
-            {["Define", "Design", "Development"].map((word) => (
-              <span key={word} className="flex items-center gap-1.5">
-                <span className="text-brand-hot">+</span> {word}
-              </span>
-            ))}
-          </Reveal>
-          <Reveal delay={0.3} className="max-w-[400px]">
-            <h2 className="font-body text-h3">
-              Branding
-              <br />
-              Mobile & Web App Design for Startups and Giants
-            </h2>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Button href="/projects" variant="brand">
-                View Projects
-              </Button>
-              <Button href="/contact" variant="light">
-                Reach Out
-              </Button>
-            </div>
-          </Reveal>
-        </div>
-      </div>
-    </section>
-  );
-};
+/** Type-led ivory hero: eyebrow over the gold thread, one statement, one door (content.md 4.1). */
+export const HomeHero = () => (
+  <section className="pt-44 pb-20 max-lg:pt-36 max-md:pt-28 max-md:pb-12">
+    <div className="container-site">
+      <Reveal>
+        <p className="font-heading text-body-l text-ink">
+          The Autonomy Code &middot; A NoGraGra Practice
+        </p>
+        <div className="gold-thread mt-5 w-full max-w-xs" aria-hidden />
+      </Reveal>
+      <Reveal delay={0.1}>
+        <h1 className="mt-8 max-w-[900px] text-display">
+          Autonomy is peace, given structure.
+        </h1>
+      </Reveal>
+      <Reveal delay={0.2} className="mt-8 max-w-[620px]">
+        <p className="text-body-xl text-smoke">
+          A coaching and strategy practice for accomplished professionals whose
+          expertise lives in scattered pieces. We organise your thinking so you
+          can lean on it.
+        </p>
+      </Reveal>
+      <Reveal delay={0.3} className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-5">
+        <Button href="/ownership-scan" variant="brand">
+          Take the Ownership Scan
+        </Button>
+        <ArrowLink href="/method">See the method</ArrowLink>
+      </Reveal>
+    </div>
+  </section>
+);
