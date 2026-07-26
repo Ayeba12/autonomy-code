@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
 import { CtaSection } from "@/components/site/CtaSection";
 import { Navbar } from "@/components/site/Navbar";
@@ -81,14 +82,31 @@ const InConversationPage = async () => {
       <Navbar tone="dark" />
       <main>
         {/* Hero — ivory, type-led */}
-        <section className="bg-paper pt-40 pb-16 max-lg:pt-32 max-md:pt-28 max-md:pb-10">
+        <section className="bg-paper pt-40 pb-12 max-lg:pt-32 max-md:pt-28 max-md:pb-8">
           <div className="container-site">
             <Reveal className="flex max-w-[760px] flex-col items-start gap-5">
               <Tag>In Conversation</Tag>
-              <div className="gold-thread w-16" aria-hidden />
               <h1 className="text-display">
                 Where the work has been spoken aloud.
               </h1>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* Calm image band under the hero */}
+        <section className="bg-paper pb-16 max-md:pb-10">
+          <div className="container-site">
+            <Reveal>
+              <div className="relative aspect-[21/9] overflow-hidden rounded-card-lg max-md:aspect-[3/2]">
+                <Image
+                  src="/images/looping-image2.webp"
+                  alt=""
+                  fill
+                  preload
+                  sizes="(min-width: 1440px) 1360px, 100vw"
+                  className="object-cover"
+                />
+              </div>
             </Reveal>
           </div>
         </section>

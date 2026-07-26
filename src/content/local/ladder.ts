@@ -13,6 +13,10 @@ export const ladder: LadderTier[] = [
     cta: { label: "Start with the Scan", href: "/ownership-scan" },
     price: "£97",
     order: 1,
+    image: {
+      src: "/images/dynamic-motion-scene-1-2.webp",
+      alt: "Figure in motion against a dark backdrop, edges softly blurred",
+    },
   },
   {
     slug: "sabi-core",
@@ -22,6 +26,10 @@ export const ladder: LadderTier[] = [
     cta: { label: "Explore SABI CORE", href: "/sabi-core" },
     price: "£5,000 for the year",
     order: 2,
+    image: {
+      src: "/images/dynamic-portrait-motion-1.webp",
+      alt: "Portrait of a figure mid-turn, caught in low editorial light",
+    },
   },
   {
     slug: "legacy",
@@ -31,5 +39,9 @@ export const ladder: LadderTier[] = [
     cta: { label: "About Legacy", href: "/legacy" },
     price: "£10,000 for the year",
     order: 3,
+    image: {
+      src: "/images/projects-thumbnail-image-03.webp",
+      alt: "Solitary figure in a wide, quiet space with muted tones",
+    },
   },
 ];

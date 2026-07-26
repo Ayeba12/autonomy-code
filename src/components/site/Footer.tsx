@@ -12,7 +12,7 @@ export const Footer = () => (
       <div className="relative flex justify-between gap-16 max-lg:flex-col">
         <div className="max-w-md">
           <h2 className="text-h3">One calm letter, when it is worth your time.</h2>
-          <div className="mt-8">
+          <div className="mt-8 border-t border-coal">
             <NewsletterForm />
           </div>
           <ul className="mt-10 flex flex-col gap-1">
@@ -74,8 +74,6 @@ export const Footer = () => (
           A NoGraGra Practice · DK Jonah
         </span>
       </Link>
-
-      <div aria-hidden className="gold-thread mt-8" />
       <div className="pt-6">
         <div className="flex items-center justify-between gap-4 max-md:flex-col max-md:items-start">
           <p className="text-body-l text-mute">Copyright © The Autonomy Code</p>

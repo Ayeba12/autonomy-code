@@ -162,10 +162,8 @@ const StyleGuidePage = () => (
               </div>
               <div className="flex flex-col gap-4 rounded-card border border-line bg-white p-8 max-md:p-5">
                 <p className="text-body-s text-smoke">
-                  <span className="font-medium text-ink">gold-thread</span> · the
                   signature divider (champagne into gold into shadow)
                 </p>
-                <div aria-hidden className="gold-thread" />
               </div>
             </GuideSection>
 

@@ -20,18 +20,18 @@ export const metadata: Metadata = {
     "A £97 diagnostic for coaches and consultants. Twenty-five questions, a 90-minute Map-Out Session, and a written Personal Autonomy Map.",
 };
 
-/** Signature gold-thread divider between major sections (content.md §2). */
-const GoldDivider = () => (
+/** Plain dove hairline between major sections. */
+const Hairline = () => (
   <div className="container-site" aria-hidden>
-    <div className="gold-thread" />
+    <div className="border-t border-line" />
   </div>
 );
 
 /**
  * The Ownership Scan — the £97 paid front door (content.md §4.4, verbatim).
- * Image-light and type-led on purpose: ivory ground, gold thread, one Breath
- * Blue accent (ShiftQuote), and this page's own black close (ScanClose) —
- * the shared CtaSection is intentionally NOT rendered here.
+ * Image-light and type-led on purpose: ivory ground, dove hairlines, one
+ * Breath Blue accent (ShiftQuote), and this page's own black close
+ * (ScanClose) — the shared CtaSection is intentionally NOT rendered here.
  */
 const OwnershipScanPage = async () => {
   const faqs = await content.getFaqs();
@@ -42,18 +42,18 @@ const OwnershipScanPage = async () => {
       <main className="bg-paper">
         <ScanHero />
         <VideoSlot />
-        <GoldDivider />
+        <Hairline />
         <Recognition />
-        <GoldDivider />
+        <Hairline />
         <PressureCards />
         <GroundSection />
         <ShiftQuote />
         <WorkBehind />
-        <GoldDivider />
+        <Hairline />
         <AboutDk />
-        <GoldDivider />
+        <Hairline />
         <OfferSection />
-        <GoldDivider />
+        <Hairline />
         <FitSection />
         {faqs.length > 0 && <ScanFaq faqs={faqs} />}
         <ScanClose />

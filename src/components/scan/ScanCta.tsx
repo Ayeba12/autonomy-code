@@ -14,7 +14,7 @@ export const BOOK_HREF = "#book";
 /**
  * The gold CTA. Every instance on this page reads exactly
  * "Book Your £97 Ownership Scan" (content.md §4.4). Gold gradient per the
- * gold-thread spec: champagne top-light into core gold (content.md §2).
+ * Gold gradient per brand spec: champagne top-light into core gold.
  */
 export const ScanCta = ({ className = "" }: { className?: string }) => (
   <Button

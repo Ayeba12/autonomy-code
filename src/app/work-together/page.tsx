@@ -13,13 +13,17 @@ export const metadata: Metadata = {
 };
 
 /**
- * /work-together — the Ladder in one calm view (content.md §4.3).
- * Three rungs in order of depth, named, not priced (house style §1:
- * prices live only on each tier's own landing page).
+ * /work-together — the Ladder in one calm view (content.md §4.3), laid out
+ * on the Stodio projects-listing pattern: hero, then three large image
+ * cards in a 2 + 1 grid (two rungs side by side, the deepest full-width).
+ * Named, not priced (house style §1: prices live only on each tier's own
+ * landing page).
  */
 const WorkTogetherPage = async () => {
   const ladder = await content.getLadder();
   const tiers = [...ladder].sort((a, b) => a.order - b.order);
+  const pair = tiers.slice(0, 2);
+  const single = tiers.slice(2);
 
   return (
     <>
@@ -32,13 +36,19 @@ const WorkTogetherPage = async () => {
         />
 
         <section className="bg-paper pb-24 max-lg:pb-16 max-md:pb-10">
-          <div className="container-site">
-            {tiers.map((tier, i) => (
-              <Reveal key={tier.slug} delay={i * 0.1}>
-                <LadderCard tier={tier} index={i} />
+          <div className="container-site flex flex-col gap-16 max-md:gap-10">
+            <div className="grid grid-cols-2 gap-x-5 gap-y-16 max-md:grid-cols-1 max-md:gap-y-10">
+              {pair.map((tier, i) => (
+                <Reveal key={tier.slug} delay={i * 0.1}>
+                  <LadderCard tier={tier} preload={i === 0} />
+                </Reveal>
+              ))}
+            </div>
+            {single.map((tier) => (
+              <Reveal key={tier.slug}>
+                <LadderCard tier={tier} wide />
               </Reveal>
             ))}
-            <div className="gold-thread" />
           </div>
         </section>
 

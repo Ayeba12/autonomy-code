@@ -54,7 +54,7 @@ export const AboutDk = () => (
             </Reveal>
             <Reveal delay={0.1}>
               <blockquote className="mt-8 max-md:mt-6">
-                <div className="gold-thread mb-6 w-12" aria-hidden />
+                <div className="mb-6 w-12 border-t border-line" aria-hidden />
                 <p className="font-heading text-h4">
                   Nothing new was added to him. What was already his was
                   returned.

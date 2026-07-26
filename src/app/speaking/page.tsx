@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
 import { Navbar } from "@/components/site/Navbar";
 import { SpeakingEnquiryForm } from "@/components/speaking/SpeakingEnquiryForm";
@@ -50,25 +51,41 @@ const SpeakingPage = async () => {
           </div>
         </section>
 
-        {/* Themes */}
+        {/* Themes — list beside one calm image */}
         <section className="pb-20 max-md:pb-12">
           <div className="container-site">
-            <Reveal>
-              <div className="gold-thread w-16" />
-              <h2 className="mt-7 text-h3">Themes</h2>
-            </Reveal>
-            <ul className="mt-10 max-w-[720px]">
-              {speaking.themes.map((theme, i) => (
-                <li key={theme}>
-                  <Reveal delay={i * 0.06}>
-                    <div className="flex items-start gap-3 border-b border-line py-5">
-                      <Spark />
-                      <span className="text-body-xl">{theme}</span>
-                    </div>
-                  </Reveal>
-                </li>
-              ))}
-            </ul>
+            <div className="grid grid-cols-2 items-stretch gap-16 max-lg:grid-cols-1 max-lg:gap-10">
+              <div>
+                <Reveal>
+                  <div className="h-px w-16 bg-line" aria-hidden />
+                  <h2 className="mt-7 text-h3">Themes</h2>
+                </Reveal>
+                <ul className="mt-10">
+                  {speaking.themes.map((theme, i) => (
+                    <li key={theme}>
+                      <Reveal delay={i * 0.06}>
+                        <div className="flex items-start gap-3 border-b border-line py-5">
+                          <Spark />
+                          <span className="text-body-xl">{theme}</span>
+                        </div>
+                      </Reveal>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <Reveal
+                delay={0.1}
+                className="relative min-h-[420px] overflow-hidden rounded-card max-lg:aspect-[3/2] max-lg:min-h-0"
+              >
+                <Image
+                  src="/images/looping-image3.webp"
+                  alt=""
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover"
+                />
+              </Reveal>
+            </div>
           </div>
         </section>
 
@@ -76,7 +93,7 @@ const SpeakingPage = async () => {
         <section className="pb-20 max-md:pb-12">
           <div className="container-site">
             <Reveal>
-              <div className="gold-thread w-16" />
+              <div className="h-px w-16 bg-line" aria-hidden />
               <h2 className="mt-7 text-h3">Who she speaks to</h2>
             </Reveal>
             <div className="mt-10 grid max-w-[900px] grid-cols-2 gap-x-10 gap-y-6 max-md:grid-cols-1">
@@ -95,7 +112,7 @@ const SpeakingPage = async () => {
         <section className="pb-20 max-md:pb-12">
           <div className="container-site">
             <Reveal>
-              <div className="gold-thread w-16" />
+              <div className="h-px w-16 bg-line" aria-hidden />
               <h2 className="mt-7 text-h3">Formats</h2>
             </Reveal>
             <div className="mt-10 grid grid-cols-3 gap-6 max-lg:grid-cols-1">
@@ -103,7 +120,7 @@ const SpeakingPage = async () => {
                 <Reveal key={format.name} delay={i * 0.08}>
                   <div className="h-full rounded-card bg-white p-8 max-md:p-6">
                     <h3 className="text-h6">{format.name}</h3>
-                    <div className="gold-thread mt-4 w-8" />
+                    <div className="mt-4 h-px w-8 bg-line" aria-hidden />
                     <p className="mt-4 text-body-m text-smoke">{format.note}</p>
                   </div>
                 </Reveal>
@@ -122,7 +139,7 @@ const SpeakingPage = async () => {
         <section className="pb-20 max-md:pb-12">
           <div className="container-site">
             <Reveal>
-              <div className="gold-thread w-16" />
+              <div className="h-px w-16 bg-line" aria-hidden />
               <h2 className="mt-7 text-h3">In the room</h2>
             </Reveal>
             <div className="mt-10 grid grid-cols-2 gap-6 max-md:grid-cols-1">
@@ -165,7 +182,7 @@ const SpeakingPage = async () => {
           <div className="container-site">
             <div className="max-w-[640px]">
               <Reveal>
-                <div className="gold-thread w-16" />
+                <div className="h-px w-16 bg-line" aria-hidden />
                 <h2 className="mt-7 text-h3">Enquire</h2>
                 <p className="mt-4 text-body-l text-smoke">
                   A few lines about the room are enough. Every reply comes in

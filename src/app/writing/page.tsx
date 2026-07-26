@@ -3,8 +3,8 @@ import { Reveal } from "@/components/motion/Reveal";
 import { CtaSection } from "@/components/site/CtaSection";
 import { Navbar } from "@/components/site/Navbar";
 import { NewsletterForm } from "@/components/site/NewsletterForm";
-import { Tag } from "@/components/ui/Tag";
 import { ArticleCard } from "@/components/writing/ArticleCard";
+import { WritingHero } from "@/components/writing/WritingHero";
 import { content } from "@/content/source";
 
 export const metadata: Metadata = {
@@ -21,25 +21,13 @@ const WritingPage = async () => {
 
   return (
     <>
-      <Navbar tone="dark" />
+      <Navbar tone="light" />
       <main>
-        {/* Hero — ivory, type-led */}
-        <section className="bg-paper pt-40 pb-16 max-lg:pt-32 max-md:pt-28 max-md:pb-10">
-          <div className="container-site">
-            <Reveal className="flex max-w-[760px] flex-col items-start gap-5">
-              <Tag>Writing</Tag>
-              <div className="gold-thread w-16" aria-hidden />
-              <h1 className="text-display">Thinking you can lean on.</h1>
-              <p className="text-body-xl text-smoke">
-                Essays on autonomy, ownership, and the quiet structure under a
-                working life.
-              </p>
-            </Reveal>
-          </div>
-        </section>
+        {/* Hero — dark calm image band */}
+        <WritingHero />
 
         {/* Newsletter band */}
-        <section className="bg-paper pb-16 max-md:pb-10">
+        <section className="bg-white py-16 max-md:py-10">
           <div className="container-site">
             <Reveal>
               <div className="grid items-center gap-10 rounded-card-lg bg-ink p-12 max-lg:grid-cols-1 max-md:p-7 lg:grid-cols-2">
@@ -54,8 +42,8 @@ const WritingPage = async () => {
           </div>
         </section>
 
-        {/* Published essays — white cards on ivory, no thumbnails */}
-        <section className="bg-paper pb-20 max-lg:pb-14 max-md:pb-10">
+        {/* Published essays — image cards on ivory */}
+        <section className="bg-paper section-pad">
           <div className="container-site">
             <div className="grid grid-cols-3 gap-5 max-lg:grid-cols-2 max-md:grid-cols-1">
               {published.map((article, i) => (

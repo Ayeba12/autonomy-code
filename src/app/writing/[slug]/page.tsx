@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Reveal } from "@/components/motion/Reveal";
 import { CtaSection } from "@/components/site/CtaSection";
@@ -31,9 +32,9 @@ export const generateMetadata = async ({
 };
 
 /**
- * /writing/[slug] — essay layout (content.md §4.8).
- * The route line ships as the body's final quote block; a gold thread
- * closes the prose column.
+ * /writing/[slug] — essay layout (content.md §4.8, Stodio blog-detail
+ * pattern): centered pillar tag + title + meta over ivory, full-width
+ * hero image, then a single prose column.
  */
 const ArticlePage = async ({ params }: ArticlePageProps) => {
   const { slug } = await params;
@@ -49,21 +50,64 @@ const ArticlePage = async ({ params }: ArticlePageProps) => {
     <>
       <Navbar tone="dark" />
       <main>
-        {/* Header — ivory, type-led */}
-        <section className="bg-paper pt-40 pb-16 max-lg:pt-32 max-md:pt-28 max-md:pb-10">
-          <div className="container-site">
-            <Reveal className="mx-auto flex max-w-[760px] flex-col items-start gap-5">
+        {/* Header — ivory, centered */}
+        <section className="bg-paper pt-40 pb-14 max-lg:pt-32 max-md:pt-28 max-md:pb-10">
+          <div className="container-site flex flex-col items-center text-center">
+            <Reveal>
               <Tag>{article.pillar}</Tag>
-              <h1 className="text-h2">{article.title}</h1>
-              <p className="text-body-xl text-smoke">{article.subtitle}</p>
-              <div className="flex items-center gap-3 text-body-s text-smoke">
-                <span>{formatArticleDate(article.date)}</span>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <h1 className="mx-auto mt-6 max-w-[900px] text-h2">
+                {article.title}
+              </h1>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <p className="mx-auto mt-4 max-w-[680px] text-body-xl text-smoke">
+                {article.subtitle}
+              </p>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-body-s text-smoke">
+                <span className="flex items-center gap-2">
+                  <svg
+                    className="size-4"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.25"
+                    aria-hidden
+                  >
+                    <rect x="2" y="3" width="12" height="11" rx="2" />
+                    <path d="M2 6.5h12M5.5 1.5v3M10.5 1.5v3" />
+                  </svg>
+                  {formatArticleDate(article.date)}
+                </span>
                 <span aria-hidden className="size-1 rounded-full bg-brand" />
                 <span>{article.readTime}</span>
               </div>
             </Reveal>
           </div>
         </section>
+
+        {/* Hero image — full width under the title */}
+        {article.heroImage && (
+          <section className="bg-paper pb-16 max-md:pb-10">
+            <div className="container-site">
+              <Reveal>
+                <div className="relative aspect-[21/9] overflow-hidden rounded-card max-md:aspect-video">
+                  <Image
+                    src={article.heroImage.src}
+                    alt={article.heroImage.alt}
+                    fill
+                    preload
+                    sizes="(min-width: 1440px) 1360px, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+              </Reveal>
+            </div>
+          </section>
+        )}
 
         {/* Body — single prose column */}
         <section className="bg-white section-pad">
@@ -72,7 +116,7 @@ const ArticlePage = async ({ params }: ArticlePageProps) => {
               <article>
                 <RichText blocks={article.body} />
               </article>
-              <div className="gold-thread mt-14 max-md:mt-10" aria-hidden />
+              <hr className="mt-14 border-line max-md:mt-10" />
             </Reveal>
           </div>
         </section>

@@ -109,13 +109,6 @@
 }
 
 
-/* Signature gold-thread divider (content.md §2) */
-@utility gold-thread {
-  height: 2px;
-  border: none;
-  background: linear-gradient(90deg, #f0e2b4, #b8893a, #7a5a22);
-}
-
 /* Infinite marquee track — content must be rendered twice inside */
 @utility marquee-track {
   display: flex;

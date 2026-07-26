@@ -14,7 +14,7 @@ export const ShiftQuote = () => (
             installed, everything compounds.
           </blockquote>
         </Reveal>
-        <div className="gold-thread w-16" aria-hidden />
+        <div className="w-16 border-t border-line" aria-hidden />
         <Reveal delay={0.15} className="flex flex-col gap-2.5">
           <p className="text-body-xl text-ink">
             When you build from owned ground, you stop second-guessing and start

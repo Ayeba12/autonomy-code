@@ -52,7 +52,7 @@ export const SabiOsSection = () => (
           <Reveal key={room.name} delay={i * 0.1} className="h-full">
             <article className="flex h-full flex-col gap-4 rounded-card bg-white p-8 max-md:p-6">
               <h3 className="font-heading text-h5">{room.name}</h3>
-              <div className="gold-thread w-10" />
+              <div className="w-10 border-t border-line" />
               <p className="text-body-m text-smoke">{room.line}</p>
             </article>
           </Reveal>

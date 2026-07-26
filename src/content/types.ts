@@ -29,6 +29,8 @@ export interface Pillar {
   /** The movement, e.g. "From Borrowed Identity to Owned Ground." */
   movement: string;
   description: string;
+  /** Editorial image used in image-rich pillar layouts. */
+  image?: ImageRef;
 }
 
 /** A rung of the Ladder (Scan, SABI CORE, Legacy). */
@@ -41,6 +43,8 @@ export interface LadderTier {
   /** Price shown ONLY on the tier's own landing page. */
   price: string;
   order: number;
+  /** Large editorial image for the tier card / landing hero. */
+  image?: ImageRef;
 }
 
 /** Writing article. Category is a pillar name. */
@@ -55,6 +59,8 @@ export interface Article {
   /** Full drafts have body; outlined articles ship as `draft: true`. */
   draft: boolean;
   body: RichBlock[];
+  /** Thumbnail / header image for listing cards and the article page. */
+  heroImage?: ImageRef;
 }
 
 /** In Conversation item (interview, talk, podcast episode). */
@@ -70,6 +76,8 @@ export interface ConversationItem {
 export interface ProofQuote {
   quote: string;
   attribution: string;
+  /** Small portrait shown beside the attribution. */
+  avatar?: ImageRef;
 }
 
 export interface SpeakingInfo {

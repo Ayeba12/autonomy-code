@@ -6,7 +6,6 @@ import { Tag } from "@/components/ui/Tag";
 export const CtaSection = () => (
   <section className="p-4 pb-0 max-md:p-2 max-md:pb-0">
     <div className="overflow-hidden rounded-card bg-ink text-white">
-      <div aria-hidden className="gold-thread" />
       <div className="container-site py-24 max-md:py-14">
         <Reveal className="mx-auto flex max-w-[888px] flex-col items-center gap-5 text-center">
           <Tag tone="light">When you are ready</Tag>

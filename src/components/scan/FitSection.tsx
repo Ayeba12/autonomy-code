@@ -27,7 +27,7 @@ export const FitSection = () => (
           <ul className="mt-8 flex flex-col gap-5 max-md:mt-5">
             {forYou.map((line) => (
               <li key={line} className="flex gap-4">
-                <span className="gold-thread mt-3 w-5 shrink-0" aria-hidden />
+                <span className="mt-3 h-0.5 w-5 shrink-0 bg-line" aria-hidden />
                 <span className="text-body-l text-smoke">{line}</span>
               </li>
             ))}

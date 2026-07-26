@@ -14,6 +14,10 @@ export const articles: Article[] = [
     readTime: "5 min read",
     excerpt: "Busy has a good reputation.",
     draft: false,
+    heroImage: {
+      src: "/images/blogs-thumbnail-image-01.png",
+      alt: "Desk scene in muted light, an open notebook resting on the surface",
+    },
     body: [
       {
         type: "p",
@@ -62,6 +66,10 @@ export const articles: Article[] = [
     readTime: "5 min read",
     excerpt: "Scattered is the feeling most of my clients arrive with.",
     draft: false,
+    heroImage: {
+      src: "/images/blogs-thumbnail-image-02.png",
+      alt: "Still interior with scattered papers gathered into a single stack",
+    },
     body: [
       {
         type: "p",
@@ -106,6 +114,10 @@ export const articles: Article[] = [
     readTime: "6 min read",
     excerpt: "The Autonomy Code works across five pillars.",
     draft: false,
+    heroImage: {
+      src: "/images/blogs-thumbnail-image.png",
+      alt: "Five columns of an old building in even, quiet light",
+    },
     body: [
       {
         type: "p",
@@ -154,6 +166,10 @@ export const articles: Article[] = [
     readTime: "5 min read",
     excerpt: "Turning what you know into something others can learn from.",
     draft: true,
+    heroImage: {
+      src: "/images/blog-main-image-01.png",
+      alt: "Close view of handwritten notes on a plain wooden table",
+    },
     body: [
       {
         type: "p",
@@ -170,6 +186,10 @@ export const articles: Article[] = [
     readTime: "5 min read",
     excerpt: "A calm method for the choices that matter.",
     draft: true,
+    heroImage: {
+      src: "/images/blog-mian-image-02.png",
+      alt: "Empty chair beside a window, morning light on the floor",
+    },
     body: [
       {
         type: "p",
@@ -186,6 +206,10 @@ export const articles: Article[] = [
     readTime: "5 min read",
     excerpt: "How steadiness becomes autonomy.",
     draft: true,
+    heroImage: {
+      src: "/images/blog-main-image-03.png",
+      alt: "Calm interior with simple furniture and soft, even shadows",
+    },
     body: [
       {
         type: "p",
@@ -202,6 +226,10 @@ export const articles: Article[] = [
     readTime: "5 min read",
     excerpt: "And how to take the terms back.",
     draft: true,
+    heroImage: {
+      src: "/images/blog-main-image2.png",
+      alt: "Person standing at a window, looking out over a still street",
+    },
     body: [
       {
         type: "p",
@@ -218,6 +246,10 @@ export const articles: Article[] = [
     readTime: "5 min read",
     excerpt: "Building at a pace you can actually keep.",
     draft: true,
+    heroImage: {
+      src: "/images/blog-main-image3.png",
+      alt: "Figure walking a quiet path at an unhurried pace",
+    },
     body: [
       {
         type: "p",
@@ -234,6 +266,10 @@ export const articles: Article[] = [
     readTime: "5 min read",
     excerpt: "The one place to start, and why.",
     draft: true,
+    heroImage: {
+      src: "/images/post-body-image-01.webp",
+      alt: "Single doorway opening onto a plain, light-filled room",
+    },
     body: [
       {
         type: "p",
@@ -250,6 +286,10 @@ export const articles: Article[] = [
     readTime: "5 min read",
     excerpt: "Why seeing the shape of your work steadies you.",
     draft: true,
+    heroImage: {
+      src: "/images/blog-thumbnail-image-03.png",
+      alt: "Reflection of a figure in a mirror, rendered in muted tones",
+    },
     body: [
       {
         type: "p",
@@ -266,6 +306,10 @@ export const articles: Article[] = [
     readTime: "5 min read",
     excerpt: "Restraint as a strategy.",
     draft: true,
+    heroImage: {
+      src: "/images/blog-thumbnail-image-05.png",
+      alt: "Sparse desk holding one notebook and a single pen",
+    },
     body: [
       {
         type: "p",
@@ -282,6 +326,10 @@ export const articles: Article[] = [
     readTime: "5 min read",
     excerpt: "Turning what you know into a system others cannot copy.",
     draft: true,
+    heroImage: {
+      src: "/images/blog-thumbnail-image-06.png",
+      alt: "Architectural drawings laid out across a work table",
+    },
     body: [
       {
         type: "p",

@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
+import { GalleryLoop } from "@/components/home/GalleryLoop";
 import { HomeHero } from "@/components/home/HomeHero";
+import { HomeMarquee } from "@/components/home/HomeMarquee";
+import { HomeStats } from "@/components/home/HomeStats";
 import { InvitationBand } from "@/components/home/InvitationBand";
-import { PillarsGlance } from "@/components/home/PillarsGlance";
+import { JournalSection } from "@/components/home/JournalSection";
+import { LadderShowcase } from "@/components/home/LadderShowcase";
+import { PillarsSection } from "@/components/home/PillarsSection";
 import { ProofStrip } from "@/components/home/ProofStrip";
 import { QuietAche } from "@/components/home/QuietAche";
 import { CtaSection } from "@/components/site/CtaSection";
@@ -14,21 +19,30 @@ export const metadata: Metadata = {
 };
 
 const HomePage = async () => {
-  const [pillars, quotes] = await Promise.all([
+  const [pillars, ladder, articles, quotes, stats] = await Promise.all([
     content.getPillars(),
+    content.getLadder(),
+    content.getArticles(),
     content.getProofQuotes(),
+    content.getStats(),
   ]);
+  const published = articles.filter((article) => !article.draft);
   const [proof] = quotes;
 
   return (
     <>
-      <Navbar tone="dark" />
+      <Navbar tone="light" />
       <main className="bg-paper">
         <HomeHero />
+        <HomeMarquee />
         <QuietAche />
-        <PillarsGlance pillars={pillars} />
-        <InvitationBand />
+        <GalleryLoop />
+        <HomeStats stats={stats} />
+        <PillarsSection pillars={pillars} />
+        <LadderShowcase tiers={ladder} />
         {proof && <ProofStrip quote={proof} />}
+        <JournalSection articles={published} />
+        <InvitationBand />
         <CtaSection />
       </main>
     </>

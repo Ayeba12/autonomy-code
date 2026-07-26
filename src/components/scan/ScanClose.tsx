@@ -11,7 +11,6 @@ export const ScanClose = () => (
     <div className="container-site">
       <div className="rounded-card-lg bg-ink px-10 py-24 max-lg:py-16 max-md:rounded-card max-md:px-6 max-md:py-12">
         <div className="mx-auto flex max-w-[820px] flex-col items-center gap-9 text-center max-md:gap-6">
-          <div className="gold-thread w-16" aria-hidden />
           <Reveal>
             <h2 className="text-h3 text-white">
               If your practice works on the outside but does not feel fully

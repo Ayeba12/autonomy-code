@@ -39,7 +39,7 @@ const LegacyPage = () => (
               </p>
             </Reveal>
             <Reveal delay={0.1}>
-              <div className="gold-thread mt-12 w-16 max-md:mt-8" />
+              <div className="mt-12 w-16 border-t border-line max-md:mt-8" />
               <p className="mt-12 font-heading text-h5 max-md:mt-8">
                 Legacy · £10,000 for the year · by invitation only.
               </p>

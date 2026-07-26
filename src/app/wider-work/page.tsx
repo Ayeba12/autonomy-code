@@ -75,7 +75,7 @@ const WiderWorkPage = async () => {
           <div className="container-site">
             <Reveal className="flex max-w-[760px] flex-col items-start gap-5">
               <Tag>The Wider Work</Tag>
-              <div className="gold-thread w-16" aria-hidden />
+              <div className="h-px w-16 bg-line" aria-hidden />
               <h1 className="text-display">The other rooms of the house.</h1>
               <p className="text-body-xl text-smoke">
                 The Autonomy Code is the storefront of a wider practice. These

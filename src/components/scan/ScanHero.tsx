@@ -1,7 +1,7 @@
 import { Reveal } from "@/components/motion/Reveal";
 import { ScanCta } from "./ScanCta";
 
-/** Scan hero: type-led on ivory ground, gold thread under the eyebrow (content.md §4.4). */
+/** Scan hero: type-led on ivory ground, dove hairline under the eyebrow (content.md §4.4). */
 export const ScanHero = () => (
   <section className="pt-44 pb-16 max-lg:pt-36 max-md:pt-28 max-md:pb-10">
     <div className="container-site flex flex-col items-center text-center">
@@ -10,7 +10,7 @@ export const ScanHero = () => (
           For coaches and consultants who know their private wisdom is stronger
           than their public clarity.
         </p>
-        <div className="gold-thread mt-6 w-16" aria-hidden />
+        <div className="mt-6 w-16 border-t border-line" aria-hidden />
       </Reveal>
       <Reveal delay={0.1}>
         <h1 className="mt-9 max-w-[1100px] text-h2 max-md:mt-6">

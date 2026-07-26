@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { CloseBand } from "@/components/ladder/CloseBand";
 import { LadderHero } from "@/components/ladder/LadderHero";
 import { SabiOsSection } from "@/components/ladder/SabiOsSection";
@@ -49,7 +50,7 @@ const SabiCorePage = () => (
         <div className="container-site grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-6">
           <Reveal>
             <h2 className="text-h6">What it is</h2>
-            <div className="gold-thread mt-4 w-16" />
+            <div className="mt-4 w-16 border-t border-line" />
           </Reveal>
           <Reveal delay={0.1}>
             <p className="max-w-[720px] text-body-xxl text-ink">
@@ -58,6 +59,24 @@ const SabiCorePage = () => (
               with diagnostic deepening across all five over the year. Small
               cohorts, held gently and held to account. No gra gra.
             </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* One wide calm image — a breath between the words and the rooms. */}
+      <section className="bg-white pb-24 max-lg:pb-16 max-md:pb-12">
+        <div className="container-site">
+          <Reveal>
+            <div className="overflow-hidden rounded-card-lg max-md:rounded-card">
+              <Image
+                src="/images/foundation-tba-image-02.webp"
+                alt="Softly blurred portrait of a figure holding still in muted light"
+                width={1440}
+                height={720}
+                sizes="100vw"
+                className="aspect-2/1 w-full object-cover object-[50%_30%] max-md:aspect-4/3"
+              />
+            </div>
           </Reveal>
         </div>
       </section>
@@ -102,7 +121,7 @@ const SabiCorePage = () => (
         <div className="container-site">
           <Reveal className="mx-auto flex max-w-[720px] flex-col items-center gap-6 text-center">
             <h2 className="text-h6">How you enter</h2>
-            <div className="gold-thread w-16" />
+            <div className="w-16 border-t border-line" />
             <p className="text-body-xxl text-ink">
               SABI CORE follows the Ownership Scan and the Map-Out Session.
               The Map leads the recommendation. If the year is your honest

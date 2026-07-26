@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import { CountUp } from "@/components/motion/CountUp";
+import { ImageWipe } from "@/components/motion/ImageWipe";
 import { Reveal } from "@/components/motion/Reveal";
 import { Navbar } from "@/components/site/Navbar";
 import { ArrowLink } from "@/components/ui/ArrowLink";
@@ -63,50 +66,130 @@ const whoNotFor = {
   body: "Anyone looking for motivation, a quick fix, or one more framework to collect. This is quiet, honest, structural work, and it begins with the truth.",
 };
 
+const parseStat = (value: string) => {
+  const match = value.match(/^(\d+)(.*)$/);
+  return { num: Number(match?.[1] ?? 0), suffix: match?.[2] ?? "" };
+};
+
 /**
- * /about — story-led, type-led, image-light (content.md §4.7).
+ * /about — story-led, image-rich in the Stodio about style (content.md §4.7).
  * The narrative is DK's verbatim copy; the page's own black close is the
  * CTA, so no shared CtaSection here.
  */
 const AboutPage = async () => {
   const stats = await content.getStats();
+  const [dkIntro, ownCaptivity, thatIsAutonomy, whatIDo] = movements;
 
   return (
     <>
       <Navbar tone="dark" />
       <main className="bg-paper">
-        {/* Hero */}
-        <section className="pt-48 pb-14 max-lg:pt-40 max-md:pt-32 max-md:pb-10">
+        {/* Hero — centered display headline with an inline portrait wipe */}
+        <section className="pt-48 pb-16 max-lg:pt-40 max-md:pt-32 max-md:pb-10">
           <div className="container-site">
-            <Reveal className="max-w-[900px]">
-              <div className="gold-thread w-16" />
-              <h1 className="mt-8 text-display">
-                You are not stuck because you lack skill.
-              </h1>
-              <p className="mt-6 max-w-[620px] text-body-xl text-smoke">
-                {heroSub}
-              </p>
-            </Reveal>
+            <div className="flex flex-col items-center text-center">
+              <Reveal>
+                <h1 className="max-w-[1000px] text-display">
+                  You are not stuck
+                  <br />
+                  because you lack{" "}
+                  <ImageWipe
+                    src="/images/portrait-of-a-woman-1-1.webp"
+                    alt="DK Jonah"
+                    trigger="load"
+                    delay={0.5}
+                    preload
+                  />{" "}
+                  skill.
+                </h1>
+              </Reveal>
+              <Reveal delay={0.15}>
+                <p className="mx-auto mt-8 max-w-[620px] text-body-xl text-smoke">
+                  {heroSub}
+                </p>
+              </Reveal>
+            </div>
           </div>
         </section>
 
-        {/* The narrative */}
-        <section className="pb-20 max-md:pb-12">
+        {/* The opening of the narrative */}
+        <section className="pb-8 max-md:pb-4">
           <div className="container-site">
-            <div className="max-w-[760px]">
+            <div className="mx-auto max-w-[760px]">
               {intro.map((paragraph, i) => (
                 <Reveal key={i} delay={i * 0.05}>
                   <p className="mt-6 text-body-xl first:mt-0">{paragraph}</p>
                 </Reveal>
               ))}
+            </div>
+          </div>
+        </section>
 
-              {movements.map((movement) => (
-                <div key={movement.heading} className="mt-20 max-md:mt-14">
+        {/* I am DK Jonah — inline portrait wipe in the heading */}
+        <section className="pt-16 max-md:pt-10">
+          <div className="container-site">
+            <div className="mx-auto max-w-[760px]">
+              <Reveal>
+                <h2 className="text-h3">
+                  I am{" "}
+                  <ImageWipe
+                    src="/images/portrait-of-a-woman-1.webp"
+                    alt="DK Jonah"
+                  />{" "}
+                  DK Jonah.
+                </h2>
+              </Reveal>
+              {dkIntro.paragraphs.map((paragraph, i) => (
+                <Reveal key={i} delay={0.05 + i * 0.05}>
+                  <p className="mt-6 text-body-xl">{paragraph}</p>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Built from my own captivity — two-column beat with a side image */}
+        <section className="pt-20 max-md:pt-12">
+          <div className="container-site">
+            <div className="grid grid-cols-[1fr_auto] items-start gap-16 max-lg:grid-cols-1 max-lg:gap-10">
+              <div className="max-w-[620px]">
+                <Reveal>
+                  <h2 className="text-h3">{ownCaptivity.heading}</h2>
+                </Reveal>
+                {ownCaptivity.paragraphs.map((paragraph, i) => (
+                  <Reveal key={i} delay={0.05 + i * 0.05}>
+                    <p className="mt-6 text-body-xl">{paragraph}</p>
+                  </Reveal>
+                ))}
+              </div>
+              <Reveal delay={0.2} className="w-full lg:w-[380px]">
+                <div className="relative aspect-[3/4] w-full overflow-hidden rounded-card max-lg:aspect-[4/3]">
+                  <Image
+                    src="/images/dynamic-portrait-motion-1.webp"
+                    alt="Portrait of a woman in motion, hair sweeping across the frame"
+                    fill
+                    sizes="(max-width: 1023px) 100vw, 380px"
+                    className="object-cover"
+                  />
+                </div>
+              </Reveal>
+            </div>
+          </div>
+        </section>
+
+        {/* That is autonomy · So here is what I actually do */}
+        <section className="pt-20 pb-24 max-md:pt-12 max-md:pb-14">
+          <div className="container-site">
+            <div className="mx-auto max-w-[760px]">
+              {[thatIsAutonomy, whatIDo].map((movement) => (
+                <div
+                  key={movement.heading}
+                  className="mt-20 first:mt-0 max-md:mt-14"
+                >
                   <Reveal>
-                    <div className="gold-thread w-12" />
-                    <h3 className="mt-7 max-w-[640px] text-h4">
+                    <h2 className="max-w-[640px] text-h3">
                       {movement.heading}
-                    </h3>
+                    </h2>
                   </Reveal>
                   {movement.paragraphs.map((paragraph, i) => (
                     <Reveal key={i} delay={0.05 + i * 0.05}>
@@ -119,21 +202,30 @@ const AboutPage = async () => {
           </div>
         </section>
 
-        {/* Quiet numbers — static, no odometer theatrics */}
-        <section className="bg-paper-2 py-16 max-md:py-10">
+        {/* Quiet numbers — odometer counters (Stodio stats pattern) */}
+        <section className="bg-paper-2 py-20 max-md:py-12">
           <div className="container-site">
             <div className="grid grid-cols-4 gap-10 max-lg:grid-cols-2 max-md:gap-8">
-              {stats.map((stat, i) => (
-                <Reveal key={stat.title} delay={i * 0.08}>
-                  <div className="border-t border-line pt-5">
-                    <p className="font-heading text-stat">{stat.value}</p>
-                    <p className="mt-2 text-body-l font-medium">{stat.title}</p>
-                    <p className="mt-1 text-body-s text-smoke">
-                      {stat.description}
-                    </p>
-                  </div>
-                </Reveal>
-              ))}
+              {stats.map((stat, i) => {
+                const { num, suffix } = parseStat(stat.value);
+                return (
+                  <Reveal key={stat.title} delay={i * 0.08}>
+                    <div className="border-t border-line pt-5">
+                      <CountUp
+                        value={num}
+                        suffix={suffix}
+                        className="font-heading text-stat"
+                      />
+                      <p className="mt-2 text-body-l font-medium">
+                        {stat.title}
+                      </p>
+                      <p className="mt-1 text-body-s text-smoke">
+                        {stat.description}
+                      </p>
+                    </div>
+                  </Reveal>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -146,7 +238,6 @@ const AboutPage = async () => {
                 <Reveal key={block.heading} delay={i * 0.08}>
                   <div className="h-full rounded-card bg-white p-10 max-md:p-7">
                     <h3 className="text-h5">{block.heading}</h3>
-                    <div className="gold-thread mt-5 w-10" />
                     <p className="mt-5 text-body-l">{block.body}</p>
                   </div>
                 </Reveal>
@@ -156,24 +247,25 @@ const AboutPage = async () => {
         </section>
 
         {/* Close — the page's one black band, and its CTA */}
-        <section className="bg-ink py-24 max-md:py-16">
-          <div className="container-site">
-            <Reveal className="mx-auto flex max-w-[760px] flex-col items-center gap-8 text-center">
-              <h2 className="text-h2 text-white">
-                Every case begins the same way.
-                <span className="block">With a diagnosis.</span>
-              </h2>
-              <Button href="/ownership-scan" variant="brand">
-                Take the Ownership Scan
-              </Button>
-              <ArrowLink href="#" className="text-white">
-                Read my full story
-              </ArrowLink>
-              <div className="gold-thread mt-8 w-24" />
-              <p className="text-body-xs tracking-[0.3em] text-mute">
-                DK JONAH · NOGRAGRA · THE AUTONOMY CODE
-              </p>
-            </Reveal>
+        <section className="p-4 pb-0 max-md:p-2 max-md:pb-0">
+          <div className="overflow-hidden rounded-card bg-ink text-white">
+            <div className="container-site py-24 max-md:py-14">
+              <Reveal className="mx-auto flex max-w-[760px] flex-col items-center gap-8 text-center">
+                <h2 className="text-h2 text-white">
+                  Every case begins the same way.
+                  <span className="block">With a diagnosis.</span>
+                </h2>
+                <Button href="/ownership-scan" variant="brand">
+                  Take the Ownership Scan
+                </Button>
+                <ArrowLink href="#" className="text-white">
+                  Read my full story
+                </ArrowLink>
+                <p className="mt-6 text-body-xs tracking-[0.3em] text-mute">
+                  DK JONAH · NOGRAGRA · THE AUTONOMY CODE
+                </p>
+              </Reveal>
+            </div>
           </div>
         </section>
       </main>

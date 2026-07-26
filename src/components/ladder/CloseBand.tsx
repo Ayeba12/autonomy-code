@@ -11,7 +11,7 @@ interface CloseBandProps {
 
 /**
  * Soft close: the page's single black band (content.md §2, ink used
- * sparingly), opened by the gold thread. No urgency devices.
+ * sparingly). No urgency devices.
  */
 export const CloseBand = ({
   kicker,
@@ -20,7 +20,6 @@ export const CloseBand = ({
   buttonHref,
 }: CloseBandProps) => (
   <section className="bg-ink">
-    <div className="gold-thread" />
     <div className="container-site py-24 max-md:py-16">
       <Reveal className="mx-auto flex max-w-[820px] flex-col items-center gap-6 text-center">
         {kicker && <p className="text-body-l text-mute">{kicker}</p>}

@@ -6,7 +6,6 @@ export const AutonomyMeaning = () => (
     <div className="container-site">
       <Reveal className="mx-auto max-w-[820px] text-center">
         <p className="font-heading text-body-l text-ink">What autonomy means</p>
-        <div className="gold-thread mx-auto mt-5 w-16" aria-hidden />
         <p className="mt-10 font-heading text-h4 max-md:mt-6">
           Autonomy is not independence from people. It is independence from
           captivity. Enough clarity to know what you want, enough structure to

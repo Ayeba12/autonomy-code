@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
+import { Logo } from "./Logo";
 import { moreLinks, primaryLinks } from "./nav-links";
 
 interface NavbarProps {
@@ -18,12 +19,8 @@ export const Navbar = ({ tone = "light" }: NavbarProps) => {
     <header className="absolute inset-x-0 top-0 z-50 pt-11 max-lg:pt-6">
       <div className="container-site">
         <nav className="flex items-center justify-between gap-6" aria-label="Main">
-          <Link
-            href="/"
-            className={`font-heading text-xl font-medium tracking-wide ${linkColor}`}
-            aria-label="The Autonomy Code — home"
-          >
-            The Autonomy Code
+          <Link href="/" aria-label="The Autonomy Code — home">
+            <Logo tone={tone} />
           </Link>
 
           <ul className={`flex items-center gap-6 max-xl:hidden ${linkColor}`}>
