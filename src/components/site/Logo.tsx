@@ -14,6 +14,6 @@ export const Logo = ({ tone = "dark", className = "" }: LogoProps) => (
     width={323}
     height={148}
     preload
-    className={`h-12 w-auto max-md:h-10 ${className}`}
+    className={`h-16 w-auto max-md:h-12 ${className}`}
   />
 );
