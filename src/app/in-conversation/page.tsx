@@ -79,34 +79,25 @@ const InConversationPage = async () => {
 
   return (
     <>
-      <Navbar tone="dark" />
+      <Navbar tone="light" />
       <main>
-        {/* Hero — ivory, type-led */}
-        <section className="bg-paper pt-40 pb-12 max-lg:pt-32 max-md:pt-28 max-md:pb-8">
+        {/* Hero — dark image band on the Stodio blogs-hero pattern */}
+        <section className="relative isolate m-2 overflow-hidden rounded-card pt-44 pb-24 max-lg:pt-36 max-md:pt-28 max-md:pb-14">
+          <Image
+            src="/images/looping-image2.webp"
+            alt=""
+            fill
+            preload
+            sizes="100vw"
+            className="-z-10 object-cover"
+          />
+          <div className="absolute inset-0 -z-10 bg-ink/50" aria-hidden />
           <div className="container-site">
-            <Reveal className="flex max-w-[760px] flex-col items-start gap-5">
-              <Tag>In Conversation</Tag>
-              <h1 className="text-display">
+            <Reveal className="flex flex-col items-center gap-5 text-center text-white">
+              <Tag tone="light">In Conversation</Tag>
+              <h1 className="max-w-[760px] text-display">
                 Where the work has been spoken aloud.
               </h1>
-            </Reveal>
-          </div>
-        </section>
-
-        {/* Calm image band under the hero */}
-        <section className="bg-paper pb-16 max-md:pb-10">
-          <div className="container-site">
-            <Reveal>
-              <div className="relative aspect-[21/9] overflow-hidden rounded-card-lg max-md:aspect-[3/2]">
-                <Image
-                  src="/images/looping-image2.webp"
-                  alt=""
-                  fill
-                  preload
-                  sizes="(min-width: 1440px) 1360px, 100vw"
-                  className="object-cover"
-                />
-              </div>
             </Reveal>
           </div>
         </section>

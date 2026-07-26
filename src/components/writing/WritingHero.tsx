@@ -14,7 +14,7 @@ export const WritingHero = () => {
   const reduced = useReducedMotion();
 
   return (
-    <section className="relative m-2 overflow-hidden rounded-card pt-44 pb-36 max-lg:pt-36 max-lg:pb-24 max-md:pt-28 max-md:pb-20">
+    <section className="relative isolate m-2 overflow-hidden rounded-card pt-44 pb-36 max-lg:pt-36 max-lg:pb-24 max-md:pt-28 max-md:pb-20">
       <motion.div
         className="absolute inset-0 -z-10"
         initial={reduced ? false : { scale: 1.2 }}

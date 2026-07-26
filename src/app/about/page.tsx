@@ -108,7 +108,23 @@ const AboutPage = async () => {
                   {heroSub}
                 </p>
               </Reveal>
+              <Reveal delay={0.25}>
+                <div className="mt-9 flex flex-wrap justify-center gap-3">
+                  <Button href="/ownership-scan" variant="brand">
+                    Take the Ownership Scan
+                  </Button>
+                  <Button href="/method" variant="outline-dark">
+                    See the Method
+                  </Button>
+                </div>
+              </Reveal>
             </div>
+            <Reveal delay={0.3}>
+              <div className="mt-16 flex items-center justify-between border-t border-line pt-5 text-body-s text-smoke max-md:mt-10">
+                <span>A NoGraGra Practice</span>
+                <span>DK Jonah · Knowledge Architect</span>
+              </div>
+            </Reveal>
           </div>
         </section>
 

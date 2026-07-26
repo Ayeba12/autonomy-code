@@ -33,6 +33,7 @@ const WorkTogetherPage = async () => {
           eyebrow="Work Together"
           title="Find your step."
           sub="Three engagements, one order of depth. The whole ladder in one calm view."
+          cta={{ label: "Take the Ownership Scan", href: "/ownership-scan" }}
         />
 
         <section className="bg-paper pb-24 max-lg:pb-16 max-md:pb-10">
