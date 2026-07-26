@@ -18,7 +18,7 @@ export const QuietAche = () => (
           </h2>
         </div>
         <ArrowLink href="/about" className="shrink-0 uppercase">
-          About the Studio
+          About TAC
         </ArrowLink>
       </Reveal>
       <Reveal delay={0.15} className="mt-8 max-w-[620px]">
