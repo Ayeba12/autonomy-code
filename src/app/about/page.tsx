@@ -94,7 +94,7 @@ const AboutPage = async () => {
                   <br />
                   because you lack{" "}
                   <ImageWipe
-                    src="/images/portrait-of-a-woman-1-1.webp"
+                    src="/images/dk-jonah.png"
                     alt="DK Jonah"
                     trigger="load"
                     delay={0.5}
@@ -149,7 +149,7 @@ const AboutPage = async () => {
                 <h2 className="text-h3">
                   I am{" "}
                   <ImageWipe
-                    src="/images/portrait-of-a-woman-1.webp"
+                    src="/images/dk-jonah.png"
                     alt="DK Jonah"
                   />{" "}
                   DK Jonah.
