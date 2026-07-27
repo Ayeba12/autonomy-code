@@ -63,7 +63,7 @@ export const Button = ({
     </span>
   );
 
-  const classes = `group relative inline-flex min-h-11 items-center justify-center overflow-hidden rounded-pill px-5 py-3 text-body-m font-medium transition-all duration-350 hover:rounded-2xl ${variantClasses[variant]} ${className}`;
+  const classes = `group relative inline-flex min-h-11 items-center justify-center overflow-hidden rounded-pill px-5 py-3 text-body-m font-medium whitespace-nowrap transition-all duration-350 hover:rounded-2xl ${variantClasses[variant]} ${className}`;
 
   const rolling = (
     <span className="relative block overflow-hidden">

@@ -64,7 +64,7 @@ export const Navbar = ({ tone = "light" }: NavbarProps) => {
               <div className="invisible absolute left-1/2 z-50 -translate-x-1/2 pt-6 opacity-0 transition-all duration-300 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
                 <div className="flex gap-10 rounded-card border border-line bg-white p-8 shadow-2xl">
                   {megaColumns.map((column) => (
-                    <div key={column.title} className="w-56">
+                    <div key={column.title} className="w-64">
                       <p className="pb-3 text-body-s tracking-wide text-smoke uppercase">
                         {column.title}
                       </p>
@@ -90,7 +90,7 @@ export const Navbar = ({ tone = "light" }: NavbarProps) => {
                       </ul>
                     </div>
                   ))}
-                  <div className="flex w-60 flex-col justify-between rounded-2xl bg-paper p-5">
+                  <div className="flex w-80 flex-col justify-between rounded-2xl bg-paper p-5">
                     <div>
                       <p className="font-heading text-h6 text-ink">
                         One clear next step

@@ -9,7 +9,6 @@ export const primaryLinks: NavLink[] = [
   { label: "The Method", href: "/method" },
   { label: "Work Together", href: "/work-together" },
   { label: "About", href: "/about" },
-  { label: "Writing", href: "/writing" },
   { label: "In Conversation", href: "/in-conversation" },
   { label: "Contact", href: "/contact" },
 ];
@@ -43,6 +42,7 @@ export const moreLinks: NavLink[] = [
   { label: "The Ownership Scan", href: "/ownership-scan" },
   { label: "SABI CORE", href: "/sabi-core" },
   { label: "Legacy", href: "/legacy" },
+  { label: "Writing", href: "/writing" },
   { label: "The Wider Work", href: "/wider-work" },
   { label: "Speaking", href: "/speaking" },
 ];

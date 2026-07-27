@@ -67,9 +67,25 @@ export const Footer = () => (
         aria-label="The Autonomy Code — home"
         className="mt-20 block max-md:mt-12"
       >
-        <span className="block font-heading text-display leading-[1.1] text-white">
-          THE AUTONOMY CODE
-        </span>
+        {/* textLength stretches the wordmark edge-to-edge at every width */}
+        <svg
+          viewBox="0 0 1000 92"
+          className="w-full"
+          role="img"
+          aria-label="THE AUTONOMY CODE"
+        >
+          <text
+            x="0"
+            y="76"
+            textLength="1000"
+            lengthAdjust="spacingAndGlyphs"
+            fontSize="88"
+            fontWeight="500"
+            className="fill-white font-heading"
+          >
+            THE AUTONOMY CODE
+          </text>
+        </svg>
         <span className="mt-3 block text-body-s text-mute">
           A NoGraGra Practice · DK Jonah
         </span>
