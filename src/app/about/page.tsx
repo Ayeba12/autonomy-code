@@ -179,13 +179,13 @@ const AboutPage = async () => {
                 ))}
               </div>
               <Reveal delay={0.2} className="w-full lg:w-[380px]">
-                <div className="relative aspect-[3/4] w-full overflow-hidden rounded-card max-lg:aspect-[4/3]">
+                <div className="relative aspect-[593/1017] w-full overflow-hidden rounded-card max-lg:aspect-[4/3]">
                   <Image
-                    src="/images/dynamic-portrait-motion-1.webp"
-                    alt="Portrait of a woman in motion, hair sweeping across the frame"
+                    src="/images/dk-jonah-story.jpeg"
+                    alt="DK Jonah"
                     fill
                     sizes="(max-width: 1023px) 100vw, 380px"
-                    className="object-cover"
+                    className="object-cover object-[50%_25%]"
                   />
                 </div>
               </Reveal>
