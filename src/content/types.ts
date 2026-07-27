@@ -59,6 +59,8 @@ export interface Article {
   /** Full drafts have body; outlined articles ship as `draft: true`. */
   draft: boolean;
   body: RichBlock[];
+  /** Rendered HTML body (WordPress-backed articles). Wins over `body`. */
+  bodyHtml?: string;
   /** Thumbnail / header image for listing cards and the article page. */
   heroImage?: ImageRef;
 }

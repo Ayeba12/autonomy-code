@@ -28,4 +28,4 @@ export interface ContentSource {
   getWiderWork(): Promise<WiderWorkLink[]>;
 }
 
-export { localContent as content } from "./local";
+export { wpContent as content } from "./wp";

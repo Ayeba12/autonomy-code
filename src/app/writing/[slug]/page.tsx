@@ -114,7 +114,14 @@ const ArticlePage = async ({ params }: ArticlePageProps) => {
           <div className="container-site">
             <Reveal className="mx-auto max-w-[760px]">
               <article>
-                <RichText blocks={article.body} />
+                {article.bodyHtml ? (
+                  <div
+                    className="wp-prose"
+                    dangerouslySetInnerHTML={{ __html: article.bodyHtml }}
+                  />
+                ) : (
+                  <RichText blocks={article.body} />
+                )}
               </article>
               <hr className="mt-14 border-line max-md:mt-10" />
             </Reveal>

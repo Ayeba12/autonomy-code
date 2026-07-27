@@ -45,19 +45,30 @@ src/content/
 public/images/          All template assets, self-hosted
 ```
 
-## Content layer → WordPress headless
+## Content layer → WordPress headless (ACTIVE)
 
-Every page reads content exclusively through the `ContentSource` interface
-(`src/content/source.ts`). Swapping to WordPress requires **zero page changes**:
+Every page reads content through the `ContentSource` interface
+(`src/content/source.ts`), now backed by `src/content/wp/` — a hybrid source:
 
-1. Run WordPress locally with **LocalWP**; install **WPGraphQL** (+ ACF & WPGraphQL for ACF).
-2. Model content: posts → `BlogPost`; custom post types `project`, `job`, `testimonial`
-   + options pages for pricing/stats/services mirroring `src/content/types.ts`.
-3. Implement `src/content/wp/index.ts` — a `ContentSource` backed by WPGraphQL queries
-   (endpoint via `WORDPRESS_API_URL` env var).
-4. Change one line in `source.ts`: `export { wpContent as content } from "./wp";`
-5. Add ISR: revalidate content pages via `revalidateTag(..., "max")` from a WP webhook
-   (see `_analysis/next16-notes.md` for the Next 16 two-argument form).
+- **Writing articles** come from WordPress via **WPGraphQL**
+  (`WORDPRESS_API_URL`, see `.env.example`). Published posts only; draft
+  outlines and every other content type stay in `src/content/local/`.
+- **Graceful fallback**: if WordPress is unreachable (LocalWP stopped, CI
+  build), articles silently fall back to the local seed — builds never break.
+- Article queries revalidate every 5 minutes (`next: { revalidate: 300 }`).
+
+### The LocalWP site (`C:\Users\Ayeba\Local Sites\autonomy-code`)
+
+- `wp-content/plugins/wp-graphql` — WPGraphQL (endpoint at `/graphql`).
+- `wp-content/mu-plugins/autonomy-headless.php` — activates WPGraphQL,
+  seeds the 12 Writing articles once (idempotent, from `tac-seed.json`),
+  registers `tacSubtitle` / `tacReadTime` / `tacHeroImage` GraphQL fields,
+  and sets `/%postname%/` permalinks. Runs automatically on first load —
+  just start the site in the LocalWP app.
+
+For production, point `WORDPRESS_API_URL` at a hosted WordPress and add a
+publish webhook that calls a revalidate route (`revalidateTag(..., "max")`,
+see `_analysis/next16-notes.md`).
 
 ## Deployment (Vercel)
 
