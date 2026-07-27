@@ -84,7 +84,7 @@ const InConversationPage = async () => {
         {/* Hero — dark image band on the Stodio blogs-hero pattern */}
         <section className="relative isolate m-2 overflow-hidden rounded-card pt-44 pb-24 max-lg:pt-36 max-md:pt-28 max-md:pb-14">
           <Image
-            src="/images/looping-image2.webp"
+            src="/images/in-conversation-hero.jpg"
             alt=""
             fill
             preload
