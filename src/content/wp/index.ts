@@ -5,10 +5,11 @@ import type { Article } from "../types";
 /**
  * WordPress-backed content source (LocalWP + WPGraphQL).
  *
- * Published articles come from WordPress; draft outlines and every other
- * content type stay with the local seed data. If WordPress is unreachable
- * (Local not running, build machine offline), articles fall back to the
- * local seed so builds and pages never break.
+ * Published articles come from WordPress — title, body, excerpt, category
+ * (pillar pill), featured image, and read time all sync from wp-admin.
+ * Draft outlines and every other content type stay with the local seed.
+ * If WordPress is unreachable (Local not running, build machine offline),
+ * articles fall back to the local seed so builds and pages never break.
  */
 
 const WP_URL = process.env.WORDPRESS_API_URL;
@@ -20,6 +21,13 @@ interface WpPost {
   excerpt: string;
   content: string;
   categories: { nodes: { name: string }[] };
+  featuredImage: {
+    node: {
+      sourceUrl: string;
+      altText: string;
+      mediaDetails: { width: number; height: number } | null;
+    };
+  } | null;
   tacSubtitle: string | null;
   tacReadTime: string | null;
   tacHeroImage: string | null;
@@ -35,6 +43,13 @@ const ARTICLES_QUERY = /* GraphQL */ `
         excerpt(format: RAW)
         content(format: RENDERED)
         categories { nodes { name } }
+        featuredImage {
+          node {
+            sourceUrl
+            altText
+            mediaDetails { width height }
+          }
+        }
         tacSubtitle
         tacReadTime
         tacHeroImage
@@ -43,20 +58,47 @@ const ARTICLES_QUERY = /* GraphQL */ `
   }
 `;
 
+/** Words-per-minute estimate when no explicit read time is set in WP. */
+const computeReadTime = (html: string): string => {
+  const words = html
+    .replace(/<[^>]+>/g, " ")
+    .split(/\s+/)
+    .filter(Boolean).length;
+  return `${Math.max(1, Math.round(words / 200))} min read`;
+};
+
+/** First real category; WP's "Uncategorized" never reaches the UI. */
+const pillarOf = (post: WpPost): string =>
+  post.categories.nodes.map((c) => c.name).find((n) => n !== "Uncategorized") ??
+  "Writing";
+
+const heroImageOf = (post: WpPost): Article["heroImage"] => {
+  const featured = post.featuredImage?.node;
+  if (featured?.sourceUrl) {
+    return {
+      src: featured.sourceUrl,
+      alt: featured.altText || post.title,
+      width: featured.mediaDetails?.width,
+      height: featured.mediaDetails?.height,
+    };
+  }
+  return post.tacHeroImage
+    ? { src: post.tacHeroImage, alt: post.title }
+    : undefined;
+};
+
 const toArticle = (post: WpPost): Article => ({
   slug: post.slug,
   title: post.title,
   subtitle: post.tacSubtitle ?? "",
-  pillar: post.categories.nodes[0]?.name ?? "Writing",
+  pillar: pillarOf(post),
   date: post.date.slice(0, 10),
-  readTime: post.tacReadTime ?? "4 min read",
+  readTime: post.tacReadTime || computeReadTime(post.content),
   excerpt: post.excerpt.trim(),
   draft: false,
   body: [],
   bodyHtml: post.content,
-  heroImage: post.tacHeroImage
-    ? { src: post.tacHeroImage, alt: post.title }
-    : undefined,
+  heroImage: heroImageOf(post),
 });
 
 const fetchWpArticles = async (): Promise<Article[] | null> => {
