@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Stack_Sans_Headline } from "next/font/google";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
+import { CookieConsent } from "@/components/site/CookieConsent";
 import { Footer } from "@/components/site/Footer";
 import "./globals.css";
 
@@ -35,6 +36,7 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
       <SmoothScroll>
         {children}
         <Footer />
+        <CookieConsent />
       </SmoothScroll>
     </body>
   </html>

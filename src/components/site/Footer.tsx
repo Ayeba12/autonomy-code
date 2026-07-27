@@ -107,6 +107,13 @@ export const Footer = () => (
             >
               Terms
             </Link>
+            <span aria-hidden className="h-4 w-px bg-coal" />
+            <Link
+              href="/cookies"
+              className="text-body-l text-mute transition-colors hover:text-white"
+            >
+              Cookies
+            </Link>
           </div>
         </div>
       </div>
