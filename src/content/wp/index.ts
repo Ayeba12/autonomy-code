@@ -40,7 +40,7 @@ const ARTICLES_QUERY = /* GraphQL */ `
         slug
         title
         date
-        excerpt(format: RAW)
+        excerpt
         content(format: RENDERED)
         categories { nodes { name } }
         featuredImage {
@@ -57,6 +57,17 @@ const ARTICLES_QUERY = /* GraphQL */ `
     }
   }
 `;
+
+/** Strip tags and decode the entities WP commonly emits in excerpts. */
+const toPlainText = (html: string): string =>
+  html
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code)))
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&hellip;/g, "…")
+    .replace(/\s+/g, " ")
+    .trim();
 
 /** Words-per-minute estimate when no explicit read time is set in WP. */
 const computeReadTime = (html: string): string => {
@@ -93,11 +104,11 @@ const toArticle = (post: WpPost): Article => ({
   subtitle: post.tacSubtitle ?? "",
   pillar: pillarOf(post),
   date: post.date.slice(0, 10),
-  readTime: post.tacReadTime || computeReadTime(post.content),
-  excerpt: post.excerpt.trim(),
+  readTime: post.tacReadTime || computeReadTime(post.content ?? ""),
+  excerpt: toPlainText(post.excerpt ?? ""),
   draft: false,
   body: [],
-  bodyHtml: post.content,
+  bodyHtml: post.content ?? "",
   heroImage: heroImageOf(post),
 });
 

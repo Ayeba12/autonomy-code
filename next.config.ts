@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
           {
             protocol: wpHost.protocol === "https:" ? "https" : "http",
             hostname: wpHost.hostname,
+            ...(wpHost.port ? { port: wpHost.port } : {}),
           },
         ]
       : [],
