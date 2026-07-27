@@ -27,6 +27,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: "http", hostname: "localhost" },
       { protocol: "http", hostname: "127.0.0.1" },
+      { protocol: "https", hostname: "cms.theautonomycode.com" },
       ...remoteWpPattern,
     ],
     // Next 16 blocks optimizing images from private IPs (SSRF guard).
