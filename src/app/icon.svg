@@ -1,0 +1,16 @@
+<svg width="100%" height="100%" viewBox="0 0 3000 3000" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <rect x="0" y="0" width="3000" height="3000" rx="540" style="fill:rgb(0,0,0);"/>
+    <g transform="matrix(1,0,0,1,-9150,0)">
+        <rect id="Artboard4" x="9150" y="0" width="3000" height="3000" style="fill:none;"/>
+        <g id="Artboard41" serif:id="Artboard4">
+            <g>
+                <g transform="matrix(1,0,0,1,5997.24852,26.486299)">
+                    <path d="M5258.918,654.908L5258.918,1502.033L5686.481,1502.033L5686.481,1639.177L4690.178,1639.177L4690.178,2349.092L4553.035,2349.092L4553.035,1639.177L3556.733,1639.177L3556.733,1502.033L3984.296,1502.033L3984.296,656.813C3984.296,656.307 3984.497,655.823 3984.854,655.466C3985.211,655.108 3985.696,654.908 3986.201,654.908C4003.016,654.908 4125.472,654.908 4125.472,654.908L4125.472,1502.033L4266.649,1502.033L4266.649,654.908L4411.859,654.908L4411.859,1502.033L4553.035,1502.033L4553.035,1082.471L4690.178,1082.471L4690.178,1502.033L4831.355,1502.033L4831.355,654.908L4976.565,654.908L4976.565,1502.033L5117.741,1502.033L5117.741,654.908L5258.918,654.908Z" style="fill:white;stroke:white;stroke-width:2.92px;"/>
+                </g>
+                <g transform="matrix(0.943077,0,0,1.268786,8940.090912,742.33178)">
+                    <rect x="1707.487" y="573.303" width="145.21" height="713.949" style="fill:rgb(219,194,133);stroke:rgb(219,194,133);stroke-width:2.61px;"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
