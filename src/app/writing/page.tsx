@@ -3,7 +3,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { CtaSection } from "@/components/site/CtaSection";
 import { Navbar } from "@/components/site/Navbar";
 import { NewsletterForm } from "@/components/site/NewsletterForm";
-import { ArticleCard } from "@/components/writing/ArticleCard";
+import { ArticleGrid } from "@/components/writing/ArticleGrid";
 import { WritingHero } from "@/components/writing/WritingHero";
 import { content } from "@/content/source";
 
@@ -45,13 +45,7 @@ const WritingPage = async () => {
         {/* Published essays — image cards on ivory */}
         <section className="bg-paper section-pad">
           <div className="container-site">
-            <div className="grid grid-cols-3 gap-5 max-lg:grid-cols-2 max-md:grid-cols-1">
-              {published.map((article, i) => (
-                <Reveal key={article.slug} delay={(i % 3) * 0.1} className="h-full">
-                  <ArticleCard article={article} />
-                </Reveal>
-              ))}
-            </div>
+            <ArticleGrid articles={published} />
           </div>
         </section>
 
@@ -62,7 +56,7 @@ const WritingPage = async () => {
               <Reveal className="flex max-w-[760px] flex-col gap-4">
                 <h2 className="text-h4">More on the way</h2>
                 <p className="text-body-l text-smoke">
-                  Nine more essays, in progress. Published when they are ready,
+                  More essays, in progress. Published when they are ready,
                   not before.
                 </p>
               </Reveal>

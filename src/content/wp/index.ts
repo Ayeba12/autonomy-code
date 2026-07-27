@@ -119,7 +119,11 @@ const fetchWpArticles = async (): Promise<Article[] | null> => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ query: ARTICLES_QUERY }),
-      next: { revalidate: 300 },
+      // Dev: always fresh so wp-admin edits show on reload.
+      // Prod: cached, revalidated every 5 minutes.
+      ...(process.env.NODE_ENV === "development"
+        ? { cache: "no-store" as const }
+        : { next: { revalidate: 300 } }),
     });
     if (!response.ok) throw new Error(`WPGraphQL responded ${response.status}`);
     const json = (await response.json()) as {
@@ -143,7 +147,12 @@ const getArticles = async (): Promise<Article[]> => {
     localContent.getArticles(),
   ]);
   if (!wpArticles) return localArticles;
-  const drafts = localArticles.filter((article) => article.draft);
+  // A draft outline disappears from "More on the way" once its slug
+  // is published in WordPress.
+  const publishedSlugs = new Set(wpArticles.map((article) => article.slug));
+  const drafts = localArticles.filter(
+    (article) => article.draft && !publishedSlugs.has(article.slug),
+  );
   return [...wpArticles, ...drafts].sort((a, b) => b.date.localeCompare(a.date));
 };
 
