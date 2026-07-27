@@ -4,9 +4,9 @@ import type { Article } from "@/content/types";
 import { formatArticleDate } from "./format-date";
 
 /**
- * Article card for Writing (content.md §4.8, Stodio BlogCard pattern):
- * pillar pill + hero-image thumbnail on top, then a quiet meta row
- * (date · read time), title, and excerpt.
+ * Article card (Stodio BlogCard pattern): pillar pill top-left,
+ * thumbnail top-right, generous whitespace, then a full-width meta row
+ * (calendar + date left, clock + read time right), title, excerpt.
  */
 export const ArticleCard = ({ article }: { article: Article }) => (
   <Link
@@ -29,27 +29,41 @@ export const ArticleCard = ({ article }: { article: Article }) => (
         </div>
       )}
     </div>
-    <div className="mt-auto pt-16 max-md:pt-10">
-      <div className="flex items-center gap-2 text-body-s text-smoke">
-        <svg
-          className="size-4"
-          viewBox="0 0 16 16"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.25"
-          aria-hidden
-        >
-          <rect x="2" y="3" width="12" height="11" rx="2" />
-          <path d="M2 6.5h12M5.5 1.5v3M10.5 1.5v3" />
-        </svg>
-        <span>{formatArticleDate(article.date)}</span>
-        <span aria-hidden className="size-1 rounded-full bg-brand" />
-        <span>{article.readTime}</span>
+    <div className="mt-auto pt-24 max-md:pt-12">
+      <div className="flex items-center justify-between gap-4 text-body-s text-smoke">
+        <span className="flex items-center gap-2">
+          <svg
+            className="size-4"
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.25"
+            aria-hidden
+          >
+            <rect x="2" y="3" width="12" height="11" rx="2" />
+            <path d="M2 6.5h12M5.5 1.5v3M10.5 1.5v3" />
+          </svg>
+          {formatArticleDate(article.date)}
+        </span>
+        <span className="flex items-center gap-2">
+          <svg
+            className="size-4"
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.25"
+            aria-hidden
+          >
+            <circle cx="8" cy="8" r="6.25" />
+            <path d="M8 4.75V8l2.25 1.5" />
+          </svg>
+          {article.readTime}
+        </span>
       </div>
-      <h3 className="mt-3 text-h5 text-ink transition-colors duration-300 group-hover:text-brand">
+      <h3 className="mt-3 text-h4 text-ink transition-colors duration-300 group-hover:text-brand">
         {article.title}
       </h3>
-      <p className="mt-2 text-body-m text-smoke">{article.excerpt}</p>
+      <p className="mt-3 text-body-m text-smoke">{article.excerpt}</p>
     </div>
   </Link>
 );
