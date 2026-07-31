@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { FitTabs } from "@/components/about/FitTabs";
 import { CountUp } from "@/components/motion/CountUp";
 import { ImageWipe } from "@/components/motion/ImageWipe";
 import { Reveal } from "@/components/motion/Reveal";
 import { Navbar } from "@/components/site/Navbar";
 import { ArrowLink } from "@/components/ui/ArrowLink";
 import { Button } from "@/components/ui/Button";
+import { Tag } from "@/components/ui/Tag";
 import { content } from "@/content/source";
 
 export const metadata: Metadata = {
@@ -56,15 +58,53 @@ const movements: { heading: string; paragraphs: string[] }[] = [
   },
 ];
 
-const whoFor = {
-  heading: "Who this is for",
-  body: "The woman who looks perfect on the outside while the inside is a turmoil she cannot name, and who is finally ready to stop hiding behind being busy.",
-};
+/* The path steps are drawn from content.md (the full path); house style. */
+const pathSteps: { label: string; subLabel: string; icon: string; description: string }[] = [
+  {
+    label: "Step 1",
+    subLabel: "The Scan",
+    icon: "/images/process-card-icon-01.svg",
+    description:
+      "Twenty-five questions across the five pillars surface your pattern and the pillar under most strain.",
+  },
+  {
+    label: "Step 2",
+    subLabel: "The Map-Out Session",
+    icon: "/images/process-card-icon-2.svg",
+    description:
+      "Ninety minutes on that one pillar, mapping where ownership was handed away and what reclaiming it asks.",
+  },
+  {
+    label: "Step 3",
+    subLabel: "Your Autonomy Map",
+    icon: "/images/process-card-icon-03.svg",
+    description:
+      "Within seventy-two hours you receive the written Personal Autonomy Map. It is yours to keep.",
+  },
+  {
+    label: "Step 4",
+    subLabel: "The Walkthrough",
+    icon: "/images/process-card-icon-04.svg",
+    description:
+      "A short call to read the map together and name the next route. The map leads, never pressure.",
+  },
+];
 
-const whoNotFor = {
-  heading: "Who this is not for",
-  body: "Anyone looking for motivation, a quick fix, or one more framework to collect. This is quiet, honest, structural work, and it begins with the truth.",
-};
+/** Hover-reveal backgrounds for the numbers cards (Stodio counter pattern). */
+const statBackgrounds = [
+  "/images/five-pillars.webp",
+  "/images/gallery-02.webp",
+  "/images/gallery-03.webp",
+  "/images/gallery-04.webp",
+];
+
+/** Tilted four-up showcase under the highlight statement. */
+const showcase = [
+  { src: "/images/looping-image1.webp", tilt: "-rotate-3", offset: "mt-8" },
+  { src: "/images/looping-image2.webp", tilt: "rotate-2", offset: "" },
+  { src: "/images/looping-image3.webp", tilt: "-rotate-2", offset: "mt-12" },
+  { src: "/images/looping-image4.webp", tilt: "rotate-3", offset: "mt-4" },
+];
 
 const parseStat = (value: string) => {
   const match = value.match(/^(\d+)(.*)$/);
@@ -89,7 +129,10 @@ const AboutPage = async () => {
           <div className="container-site">
             <div className="flex flex-col items-center text-center">
               <Reveal>
-                <h1 className="max-w-[1000px] text-display">
+                <Tag>Who I am</Tag>
+              </Reveal>
+              <Reveal delay={0.05}>
+                <h1 className="mt-5 max-w-[1000px] text-display">
                   You are not stuck
                   <br />
                   because you lack{" "}
@@ -128,13 +171,112 @@ const AboutPage = async () => {
           </div>
         </section>
 
-        {/* The opening of the narrative */}
-        <section className="pb-8 max-md:pb-4">
+        {/* The opening of the narrative — Stodio "Our Story" band */}
+        <section className="section-pad bg-white">
+          <div className="container-site flex justify-between gap-12 max-lg:flex-col">
+            <div className="flex shrink-0 flex-col justify-between gap-14">
+              <Reveal>
+                <Tag>The story</Tag>
+              </Reveal>
+              <Reveal delay={0.1} className="flex items-center gap-3">
+                <Image
+                  src="/images/dk-jonah.png"
+                  alt="DK Jonah"
+                  width={48}
+                  height={48}
+                  className="size-12 rounded-full border-2 border-white object-cover"
+                />
+                <p className="text-body-xl">
+                  <span className="text-mute">By</span> DK Jonah
+                </p>
+              </Reveal>
+            </div>
+
+            <div className="max-w-[760px]">
+              <Reveal>
+                <p className="font-heading text-h5">{intro[0]}</p>
+              </Reveal>
+              {intro.slice(1).map((paragraph, i) => (
+                <Reveal key={i} delay={0.15 + i * 0.05}>
+                  <p className="mt-8 text-body-xl text-smoke">{paragraph}</p>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Quiet numbers — Stodio counter cards; hover reveals an image */}
+        <section className="section-pad bg-paper-2">
           <div className="container-site">
-            <div className="mx-auto max-w-[760px]">
-              {intro.map((paragraph, i) => (
-                <Reveal key={i} delay={i * 0.05}>
-                  <p className="mt-6 text-body-xl first:mt-0">{paragraph}</p>
+            <Reveal>
+              <Tag>Quiet numbers</Tag>
+            </Reveal>
+            <div className="mt-10 grid grid-cols-4 gap-6 max-lg:grid-cols-2 max-md:grid-cols-1">
+              {stats.map((stat, i) => {
+                const { num, suffix } = parseStat(stat.value);
+                return (
+                  <Reveal key={stat.title} delay={i * 0.1} className="h-full">
+                    <article className="group relative h-full overflow-hidden rounded-2xl p-6">
+                      <Image
+                        src={statBackgrounds[i % statBackgrounds.length]}
+                        alt=""
+                        fill
+                        sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 25vw"
+                        className="object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                      />
+                      <div
+                        className="absolute inset-0 bg-ink/55 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                        aria-hidden
+                      />
+                      <div className="relative">
+                        <CountUp
+                          value={num}
+                          suffix={suffix}
+                          className="font-heading text-stat transition-colors duration-500 group-hover:text-white"
+                        />
+                        <hr className="mt-4 border-line transition-colors duration-500 group-hover:border-white/30" />
+                        <p className="mt-4 text-body-l font-medium transition-colors duration-500 group-hover:text-white">
+                          {stat.title}
+                        </p>
+                        <p className="mt-1 text-body-s text-smoke transition-colors duration-500 group-hover:text-white/80">
+                          {stat.description}
+                        </p>
+                      </div>
+                    </article>
+                  </Reveal>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* What drives the work — centered statement + tilted showcase */}
+        <section className="pt-24 max-md:pt-14">
+          <div className="container-site">
+            <Reveal className="text-center">
+              <h2 className="mx-auto max-w-[880px] text-h2">
+                From hidden captivity to{" "}
+                <ImageWipe
+                  src="/images/surreal-silhouette-art-1.webp"
+                  alt="A figure stepping out of shadow"
+                />{" "}
+                owned ground. Walked first, then taught.
+              </h2>
+            </Reveal>
+            <div className="mx-auto mt-16 grid max-w-[980px] grid-cols-4 gap-5 max-md:mt-10 max-md:grid-cols-2">
+              {showcase.map((item, i) => (
+                <Reveal key={item.src} delay={i * 0.12} y={30 + (i % 2) * 30}>
+                  <div
+                    className={`relative aspect-[3/4] overflow-hidden rounded-2xl ${item.tilt} ${item.offset}`}
+                  >
+                    <Image
+                      src={item.src}
+                      alt=""
+                      fill
+                      sizes="(max-width: 767px) 50vw, 245px"
+                      className="object-cover"
+                    />
+                  </div>
                 </Reveal>
               ))}
             </div>
@@ -218,49 +360,57 @@ const AboutPage = async () => {
           </div>
         </section>
 
-        {/* Quiet numbers — odometer counters (Stodio stats pattern) */}
-        <section className="bg-paper-2 py-20 max-md:py-12">
-          <div className="container-site">
-            <div className="grid grid-cols-4 gap-10 max-lg:grid-cols-2 max-md:gap-8">
-              {stats.map((stat, i) => {
-                const { num, suffix } = parseStat(stat.value);
-                return (
-                  <Reveal key={stat.title} delay={i * 0.08}>
-                    <div className="border-t border-line pt-5">
-                      <CountUp
-                        value={num}
-                        suffix={suffix}
-                        className="font-heading text-stat"
-                      />
-                      <p className="mt-2 text-body-l font-medium">
-                        {stat.title}
+        {/* The path — Stodio method-card band, on ivory (black stays for the close) */}
+        <section className="pt-8 pb-4 max-md:pt-4">
+          <div className="mx-4 rounded-card bg-paper-2 py-20 max-md:mx-2 max-md:py-12">
+            <div className="container-site">
+              <div className="flex items-end justify-between gap-10 max-lg:flex-col max-lg:items-start">
+                <Reveal>
+                  <Tag>The path</Tag>
+                  <h2 className="mt-6 max-w-[560px] text-h2">
+                    A structured way in.
+                  </h2>
+                </Reveal>
+                <Reveal delay={0.15} className="max-w-sm">
+                  <p className="text-body-l text-smoke">
+                    No discovery calls and no pitch. A diagnosis first, then a
+                    map, then a route.
+                  </p>
+                </Reveal>
+              </div>
+
+              <div className="mt-14 grid grid-cols-4 gap-4 max-lg:grid-cols-2 max-md:mt-8 max-md:grid-cols-1">
+                {pathSteps.map((step, i) => (
+                  <Reveal key={step.label} delay={i * 0.1} className="h-full">
+                    <article className="flex h-full flex-col rounded-2xl bg-white p-5">
+                      <p className="flex items-baseline justify-between gap-2 text-body-l font-medium">
+                        {step.label}
+                        <span className="text-body-s font-normal text-smoke">
+                          {step.subLabel}
+                        </span>
                       </p>
-                      <p className="mt-1 text-body-s text-smoke">
-                        {stat.description}
+                      <div className="flex flex-1 items-center justify-center py-12">
+                        <Image
+                          src={step.icon}
+                          alt=""
+                          width={64}
+                          height={64}
+                          className="size-16"
+                        />
+                      </div>
+                      <p className="text-body-s text-smoke">
+                        {step.description}
                       </p>
-                    </div>
+                    </article>
                   </Reveal>
-                );
-              })}
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Who this is for / not for */}
-        <section className="py-20 max-md:py-12">
-          <div className="container-site">
-            <div className="grid grid-cols-2 gap-6 max-md:grid-cols-1">
-              {[whoFor, whoNotFor].map((block, i) => (
-                <Reveal key={block.heading} delay={i * 0.08}>
-                  <div className="h-full rounded-card bg-white p-10 max-md:p-7">
-                    <h3 className="text-h5">{block.heading}</h3>
-                    <p className="mt-5 text-body-l">{block.body}</p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* Who this is for / not for — foundation-tabs pattern */}
+        <FitTabs />
 
         {/* Close — the page's one black band, and its CTA */}
         <section className="p-4 pb-0 max-md:p-2 max-md:pb-0">
