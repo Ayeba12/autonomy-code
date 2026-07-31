@@ -14,7 +14,7 @@ export const ladder: LadderTier[] = [
     price: "£97",
     order: 1,
     image: {
-      src: "/images/dynamic-motion-scene-1-2.webp",
+      src: "/images/five-pillars.webp",
       alt: "Figure in motion against a dark backdrop, edges softly blurred",
     },
   },

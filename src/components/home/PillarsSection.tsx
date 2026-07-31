@@ -17,7 +17,7 @@ export const PillarsSection = ({ pillars }: { pillars: Pillar[] }) => (
           <div className="mt-6 flex items-center gap-5">
             <h2 className="text-h2">The Five</h2>
             <Image
-              src="/images/pexels-refargotohp-83494488-13205709-1.webp"
+              src="/images/five-pillars.webp"
               alt=""
               width={120}
               height={72}

@@ -32,15 +32,15 @@ export const HomeHero = () => {
         style={reduced ? undefined : { scale }}
       >
         <Image
-          src="/images/hero-bg-image-p-2000.webp"
-          alt="Low-lit editorial scene, a still figure in a wide dark space"
+          src="/images/five-pillars.webp"
+          alt="Five stone pillars at golden hour, sea and sky behind them"
           fill
           preload
           sizes="100vw"
           className="object-cover"
         />
       </motion.div>
-      <div className="absolute inset-0 -z-10 bg-ink/40" aria-hidden />
+      <div className="absolute inset-0 -z-10 bg-ink/50" aria-hidden />
 
       <div className="container-site flex flex-1 flex-col justify-between text-white">
         <div>
