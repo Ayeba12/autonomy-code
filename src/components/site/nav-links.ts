@@ -22,17 +22,17 @@ export const megaColumns: { title: string; links: MegaLink[] }[] = [
   {
     title: "The Ladder",
     links: [
-      { label: "The Ownership Scan", href: "/ownership-scan", thumb: "/images/dynamic-motion-scene-1-2.webp" },
-      { label: "SABI CORE", href: "/sabi-core", thumb: "/images/dynamic-portrait-motion-1.webp" },
-      { label: "Legacy", href: "/legacy", thumb: "/images/projects-thumbnail-image-03.webp" },
+      { label: "The Ownership Scan", href: "/ownership-scan", thumb: "/images/about-highlight.webp" },
+      { label: "SABI CORE", href: "/sabi-core", thumb: "/images/about-fit-01.webp" },
+      { label: "Legacy", href: "/legacy", thumb: "/images/about-showcase-04.webp" },
     ],
   },
   {
     title: "Elsewhere",
     links: [
-      { label: "The Wider Work", href: "/wider-work", thumb: "/images/looping-image4.webp" },
-      { label: "Speaking", href: "/speaking", thumb: "/images/looping-image3.webp" },
-      { label: "Writing", href: "/writing", thumb: "/images/foundation-tab-image-03.webp" },
+      { label: "The Wider Work", href: "/wider-work", thumb: "/images/about-fit-02.webp" },
+      { label: "Speaking", href: "/speaking", thumb: "/images/about-showcase-03.webp" },
+      { label: "Writing", href: "/writing", thumb: "/images/about-showcase-02.webp" },
     ],
   },
 ];
