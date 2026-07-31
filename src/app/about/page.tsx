@@ -156,15 +156,7 @@ const AboutPage = async () => {
                 <h1 className="mt-6 max-w-[1000px] text-display">
                   You are not stuck
                   <br />
-                  because you lack{" "}
-                  <ImageWipe
-                    src="/images/dk-jonah.png"
-                    alt="DK Jonah"
-                    trigger="load"
-                    delay={0.5}
-                    preload
-                  />{" "}
-                  skill.
+                  because you lack skill.
                 </h1>
               </Reveal>
               <Reveal delay={0.15}>
@@ -278,7 +270,7 @@ const AboutPage = async () => {
               {showcase.map((item, i) => (
                 <Reveal key={item.src} delay={i * 0.12} y={30 + (i % 2) * 30}>
                   <div
-                    className={`relative aspect-[3/4] overflow-hidden rounded-[20px] ${item.tilt} ${item.offset}`}
+                    className={`relative aspect-[3/4] overflow-hidden rounded-2xl ${item.tilt} ${item.offset}`}
                   >
                     <Image
                       src={item.src}
@@ -299,14 +291,7 @@ const AboutPage = async () => {
           <div className="container-site">
             <div className="mx-auto max-w-[760px]">
               <Reveal>
-                <h2 className="text-h3">
-                  I am{" "}
-                  <ImageWipe
-                    src="/images/dk-jonah.png"
-                    alt="DK Jonah"
-                  />{" "}
-                  DK Jonah.
-                </h2>
+                <h2 className="text-h3">I am DK Jonah.</h2>
               </Reveal>
               {dkIntro.paragraphs.map((paragraph, i) => (
                 <Reveal key={i} delay={0.05 + i * 0.05}>
