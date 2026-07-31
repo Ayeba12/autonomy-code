@@ -15,7 +15,7 @@ export const ladder: LadderTier[] = [
     order: 1,
     image: {
       src: "/images/five-pillars.webp",
-      alt: "Figure in motion against a dark backdrop, edges softly blurred",
+      alt: "Five stone pillars at golden hour, sea and sky behind them",
     },
   },
   {
@@ -27,8 +27,8 @@ export const ladder: LadderTier[] = [
     price: "£5,000 for the year",
     order: 2,
     image: {
-      src: "/images/dynamic-portrait-motion-1.webp",
-      alt: "Portrait of a figure mid-turn, caught in low editorial light",
+      src: "/images/tier-sabi-core.webp",
+      alt: "Warm structured interior in golden light",
     },
   },
   {
@@ -40,8 +40,8 @@ export const ladder: LadderTier[] = [
     price: "£10,000 for the year",
     order: 3,
     image: {
-      src: "/images/projects-thumbnail-image-03.webp",
-      alt: "Solitary figure in a wide, quiet space with muted tones",
+      src: "/images/tier-legacy.webp",
+      alt: "A single quiet form in warm, still light",
     },
   },
 ];
