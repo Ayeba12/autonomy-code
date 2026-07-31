@@ -3,7 +3,6 @@ import { GalleryLoop } from "@/components/home/GalleryLoop";
 import { HomeHero } from "@/components/home/HomeHero";
 import { HomeMarquee } from "@/components/home/HomeMarquee";
 import { HomeStats } from "@/components/home/HomeStats";
-import { InvitationBand } from "@/components/home/InvitationBand";
 import { JournalSection } from "@/components/home/JournalSection";
 import { LadderShowcase } from "@/components/home/LadderShowcase";
 import { PillarsSection } from "@/components/home/PillarsSection";
@@ -42,7 +41,6 @@ const HomePage = async () => {
         <LadderShowcase tiers={ladder} />
         {proof && <ProofStrip quote={proof} />}
         <JournalSection articles={published} />
-        <InvitationBand />
         <CtaSection />
       </main>
     </>
