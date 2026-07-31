@@ -4,7 +4,7 @@ import { Tag } from "@/components/ui/Tag";
 
 /** The single black close band, once per page (content.md §4.1 soft close). */
 export const CtaSection = () => (
-  <section className="p-4 pb-0 max-md:p-2 max-md:pb-0">
+  <section className="section-gap p-4 pb-0 max-md:p-2 max-md:pb-0">
     <div className="overflow-hidden rounded-card bg-ink text-white">
       <div className="container-site py-24 max-md:py-14">
         <Reveal className="mx-auto flex max-w-[888px] flex-col items-center gap-5 text-center">

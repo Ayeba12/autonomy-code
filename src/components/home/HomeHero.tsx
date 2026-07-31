@@ -73,8 +73,8 @@ export const HomeHero = () => {
               whose expertise lives in scattered pieces.
             </h2>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Button href="/ownership-scan" variant="brand">
-                Take the Ownership Scan
+              <Button href="/work-together" variant="brand">
+                Work Together
               </Button>
               <Button href="/method" variant="light">
                 See the Method
