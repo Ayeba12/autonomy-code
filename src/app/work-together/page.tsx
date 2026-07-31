@@ -132,7 +132,7 @@ const WorkTogetherPage = async () => {
               </h1>
             </Reveal>
             <Reveal delay={0.2}>
-              <div className="mt-10 flex items-end justify-between gap-10 max-md:mt-8 max-md:flex-col max-md:items-start">
+              <div className="mt-10 flex flex-col items-start gap-8 max-md:mt-8 max-md:gap-6">
                 <p className="max-w-[560px] text-body-xl text-smoke">
                   Three engagements and one working tool, in order of depth.
                   The whole ladder in one calm view, and every engagement
