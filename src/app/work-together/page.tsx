@@ -126,27 +126,21 @@ const WorkTogetherPage = async () => {
             <Reveal>
               <Tag>Work together</Tag>
             </Reveal>
-            <Reveal delay={0.1}>
-              <h1 className="mt-4 max-w-[900px] text-display">
-                Find your step.
-              </h1>
-            </Reveal>
-            <Reveal delay={0.2}>
-              <div className="mt-10 flex flex-col items-start gap-8 max-md:mt-8 max-md:gap-6">
-                <p className="max-w-[560px] text-body-xl text-smoke">
+            <div className="mt-4 flex items-end justify-between gap-16 max-lg:flex-col max-lg:items-start max-lg:gap-10">
+              <Reveal delay={0.1}>
+                <h1 className="max-w-[720px] text-display">Find your step.</h1>
+              </Reveal>
+              <Reveal delay={0.2} className="max-w-[420px] shrink-0 max-lg:max-w-[560px]">
+                <p className="text-body-xl text-smoke">
                   Three engagements and one working tool, in order of depth.
                   The whole ladder in one calm view, and every engagement
                   begins with the Scan.
                 </p>
-                <Button
-                  href="/ownership-scan"
-                  variant="brand"
-                  className="shrink-0"
-                >
-                  Take the Ownership Scan
+                <Button href="/contact" variant="brand" className="mt-8">
+                  Reach out
                 </Button>
-              </div>
-            </Reveal>
+              </Reveal>
+            </div>
           </div>
         </section>
 
