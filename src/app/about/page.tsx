@@ -100,10 +100,30 @@ const statBackgrounds = [
 
 /** Tilted four-up showcase under the highlight statement. */
 const showcase = [
-  { src: "/images/looping-image1.webp", tilt: "-rotate-3", offset: "mt-8" },
-  { src: "/images/looping-image2.webp", tilt: "rotate-2", offset: "" },
-  { src: "/images/looping-image3.webp", tilt: "-rotate-2", offset: "mt-12" },
-  { src: "/images/looping-image4.webp", tilt: "rotate-3", offset: "mt-4" },
+  {
+    src: "/images/about-showcase-01.webp",
+    alt: "A man seated alone by tall windows, looking out over a misty lake at first light",
+    tilt: "-rotate-3",
+    offset: "mt-8",
+  },
+  {
+    src: "/images/about-showcase-02.webp",
+    alt: "A closed notebook, a glass of water, and a pebble on an oak table in morning sun",
+    tilt: "rotate-2",
+    offset: "",
+  },
+  {
+    src: "/images/about-showcase-03.webp",
+    alt: "Ripples widening on a still lake at sunrise",
+    tilt: "-rotate-2",
+    offset: "mt-12",
+  },
+  {
+    src: "/images/about-showcase-04.webp",
+    alt: "Two wooden chairs and a small table on a porch at golden hour",
+    tilt: "rotate-3",
+    offset: "mt-4",
+  },
 ];
 
 const parseStat = (value: string) => {
@@ -248,8 +268,8 @@ const AboutPage = async () => {
               <h2 className="mx-auto max-w-[880px] text-h2">
                 From hidden captivity to{" "}
                 <ImageWipe
-                  src="/images/surreal-silhouette-art-1.webp"
-                  alt="A figure stepping out of shadow"
+                  src="/images/about-highlight.webp"
+                  alt="Five stone pillars standing by the sea at golden hour"
                 />{" "}
                 owned ground. Walked first, then taught.
               </h2>
@@ -262,7 +282,7 @@ const AboutPage = async () => {
                   >
                     <Image
                       src={item.src}
-                      alt=""
+                      alt={item.alt}
                       fill
                       sizes="(max-width: 767px) 50vw, 245px"
                       className="object-cover"

@@ -17,16 +17,16 @@ const tabs: FitTab[] = [
     title: "Who this is for",
     text: "The woman who looks perfect on the outside while the inside is a turmoil she cannot name, and who is finally ready to stop hiding behind being busy.",
     image: {
-      src: "/images/portrait-of-a-woman-1.webp",
-      alt: "Portrait of a woman looking calmly at the camera",
+      src: "/images/about-fit-01.webp",
+      alt: "A woman seated in a quiet sunlit room, looking out of a tall window",
     },
   },
   {
     title: "Who this is not for",
     text: "Anyone looking for motivation, a quick fix, or one more framework to collect. This is quiet, honest, structural work, and it begins with the truth.",
     image: {
-      src: "/images/surreal-silhouette-art-1.webp",
-      alt: "Silhouette of a figure in shadow",
+      src: "/images/about-fit-02.webp",
+      alt: "A man seated by tall windows, looking out over a misty lake at first light",
     },
   },
 ];
