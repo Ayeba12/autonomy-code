@@ -174,7 +174,7 @@ const AboutPage = async () => {
               </Reveal>
             </div>
             <Reveal delay={0.25}>
-              <div className="mt-16 flex items-center justify-between gap-6 font-heading text-body-s tracking-[0.2em] text-mute uppercase max-md:mt-10">
+              <div className="mt-16 flex items-center justify-between gap-6 font-heading text-body-s tracking-[0.2em] text-mute uppercase max-md:mt-10 max-md:flex-col max-md:items-center max-md:gap-2 max-md:text-center">
                 <span>A NoGraGra Practice</span>
                 <span>DK Jonah · Knowledge Architect</span>
               </div>
@@ -278,7 +278,7 @@ const AboutPage = async () => {
               {showcase.map((item, i) => (
                 <Reveal key={item.src} delay={i * 0.12} y={30 + (i % 2) * 30}>
                   <div
-                    className={`relative aspect-[3/4] overflow-hidden rounded-2xl ${item.tilt} ${item.offset}`}
+                    className={`relative aspect-[3/4] overflow-hidden rounded-[20px] ${item.tilt} ${item.offset}`}
                   >
                     <Image
                       src={item.src}
