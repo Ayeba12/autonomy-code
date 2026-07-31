@@ -37,9 +37,6 @@ export const MethodHero = () => (
         </Reveal>
         <Reveal delay={0.15}>
           <div className="mt-9 flex flex-wrap justify-center gap-3">
-            <Button href="/ownership-scan" variant="brand">
-              Take the Ownership Scan
-            </Button>
             <Button href="/work-together" variant="outline-light">
               Work Together
             </Button>
