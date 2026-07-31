@@ -14,7 +14,7 @@ export const QuietAche = () => (
           <Tag>The quiet ache</Tag>
           <h2 className="mt-6 max-w-[900px] text-h2">
             From the outside, your work looks credible.{" "}
-            <span className="text-mute">Privately, it feels scattered.</span>
+            <span className="text-brand-soft">Privately, it feels scattered.</span>
           </h2>
         </div>
         <ArrowLink href="/about" className="shrink-0 uppercase">

@@ -12,7 +12,7 @@ export const JournalSection = ({ articles }: { articles: Article[] }) => (
         <div>
           <Tag>Writing</Tag>
           <h2 className="mt-6 text-h2">
-            Thinking you can <span className="text-mute">lean on.</span>
+            Thinking you can <span className="text-brand-soft">lean on.</span>
           </h2>
         </div>
         <ArrowLink href="/writing">All Writing</ArrowLink>

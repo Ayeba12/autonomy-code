@@ -20,6 +20,7 @@ const colors = [
   { name: "True Black", token: "ink", hex: "#000000", swatch: "bg-ink" },
   { name: "Metallic Gold", token: "brand", hex: "#B8893A", swatch: "bg-brand" },
   { name: "Gold Shadow", token: "brand-hot", hex: "#7A5A22", swatch: "bg-brand-hot" },
+  { name: "Gold Soft", token: "brand-soft", hex: "#C9A05C", swatch: "bg-brand-soft" },
   { name: "Ivory", token: "paper", hex: "#F3EDE0", swatch: "border border-line bg-paper" },
   { name: "Deep Ivory", token: "paper-2", hex: "#ECE4D2", swatch: "border border-line bg-paper-2" },
   { name: "Soft Black", token: "coal", hex: "#1A1A1A", swatch: "bg-coal" },
