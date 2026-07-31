@@ -78,8 +78,8 @@ const SpeakingPage = async () => {
                 className="relative min-h-[420px] overflow-hidden rounded-card max-lg:aspect-[3/2] max-lg:min-h-0"
               >
                 <Image
-                  src="/images/looping-image3.webp"
-                  alt=""
+                  src="/images/speaking-themes.webp"
+                  alt="A stone path climbing a grassy ridge into the mist"
                   fill
                   sizes="(min-width: 1024px) 50vw, 100vw"
                   className="object-cover"
@@ -154,23 +154,17 @@ const SpeakingPage = async () => {
                 </figure>
               </Reveal>
               <Reveal delay={0.08}>
-                <div className="grid aspect-video place-items-center rounded-card border border-dashed border-line bg-white/60">
-                  <div className="flex flex-col items-center gap-3 text-center">
-                    <svg
-                      className="size-10 text-smoke"
-                      viewBox="0 0 40 40"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      aria-hidden
-                    >
-                      <circle cx="20" cy="20" r="18" />
-                      <path d="M17 14l9 6-9 6V14z" fill="currentColor" stroke="none" />
-                    </svg>
-                    <p className="text-body-s text-smoke">
-                      A short clip from the stage will live here.
-                    </p>
-                  </div>
+                {/* Privacy-enhanced embed: youtube-nocookie keeps the
+                    cookie-page promise (no ad tracking). */}
+                <div className="aspect-video overflow-hidden rounded-card bg-ink">
+                  <iframe
+                    className="size-full"
+                    src="https://www.youtube-nocookie.com/embed/IOcuzdzBfx8"
+                    title="DK Jonah on stage"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
                 </div>
               </Reveal>
             </div>
