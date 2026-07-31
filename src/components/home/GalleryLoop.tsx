@@ -2,10 +2,11 @@ import Image from "next/image";
 import { Marquee } from "@/components/motion/Marquee";
 
 const galleryImages = [
-  { src: "/images/looping-image4.webp", alt: "" },
-  { src: "/images/looping-image2.webp", alt: "" },
-  { src: "/images/looping-image3.webp", alt: "" },
-  { src: "/images/looping-image1.webp", alt: "" },
+  { src: "/images/gallery-01.webp", alt: "" },
+  { src: "/images/gallery-02.webp", alt: "" },
+  { src: "/images/gallery-03.webp", alt: "" },
+  { src: "/images/gallery-04.webp", alt: "" },
+  { src: "/images/gallery-05.webp", alt: "" },
 ];
 
 /** Full-bleed looping image marquee (Stodio gallery pattern). */
