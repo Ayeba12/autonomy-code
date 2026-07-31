@@ -9,8 +9,8 @@ export const pillars: Pillar[] = [
     movement: "From Borrowed Identity to Owned Ground.",
     description: "Who you are when the borrowed role no longer fits.",
     image: {
-      src: "/images/service-image.webp",
-      alt: "Portrait of a man in soft directional light, looking to one side",
+      src: "/images/pillar-identity.webp",
+      alt: "A single stone pillar in warm light",
     },
   },
   {
@@ -21,8 +21,8 @@ export const pillars: Pillar[] = [
     description:
       "What you know, what you say, and what you can defend. SABI OS lives here.",
     image: {
-      src: "/images/sevice-image-02.webp",
-      alt: "Portrait of a man in muted tones, face half in shadow",
+      src: "/images/pillar-message.webp",
+      alt: "A clear form against calm light",
     },
   },
   {
@@ -33,8 +33,8 @@ export const pillars: Pillar[] = [
     description:
       "Sequence, decision, structure, and rhythm that fit your actual life.",
     image: {
-      src: "/images/service-imnage-03.webp",
-      alt: "Portrait of a seated figure in quiet, even studio light",
+      src: "/images/pillar-strategy.webp",
+      alt: "Ordered structure in golden hour light",
     },
   },
   {
@@ -45,8 +45,8 @@ export const pillars: Pillar[] = [
     description:
       "What your time, energy, attention, money, and support can truly hold.",
     image: {
-      src: "/images/sevice-image-04.webp",
-      alt: "Portrait of a man resting against a plain wall, eyes lowered",
+      src: "/images/pillar-resources.webp",
+      alt: "A wide calm landscape, resources gathered in light",
     },
   },
   {
@@ -56,8 +56,8 @@ export const pillars: Pillar[] = [
     movement: "Belonging without performance.",
     description: "Support that does not cost you your centre.",
     image: {
-      src: "/images/pexels-refargotohp-83494488-13205709-1.webp",
-      alt: "Two figures standing together in soft natural light",
+      src: "/images/pillar-relationships.webp",
+      alt: "Two forms standing together in warm light",
     },
   },
 ];
