@@ -33,7 +33,7 @@ export const ladder: LadderTier[] = [
   },
   {
     slug: "legacy",
-    name: "Legacy",
+    name: "Legacy Builder",
     summary:
       "The deepest tier. One to two people at a time, rare and private, by invitation. The Map leads the recommendation.",
     cta: { label: "About Legacy", href: "/legacy" },
