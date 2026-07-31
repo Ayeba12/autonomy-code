@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/Button";
 export const MethodHero = () => (
   <section className="relative isolate m-2 overflow-hidden rounded-card pt-44 pb-12 max-lg:pt-36 max-md:pt-28 max-md:pb-8">
     <Image
-      src="/images/method-hero.webp"
+      src="/images/method-hero-gradient.webp"
       alt=""
       fill
       preload

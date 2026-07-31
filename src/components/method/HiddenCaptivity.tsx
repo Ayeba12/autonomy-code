@@ -26,8 +26,8 @@ export const HiddenCaptivity = () => (
         <Reveal delay={0.2} className="w-full lg:justify-self-end">
           <div className="relative aspect-[4/3] w-full max-w-[560px] overflow-hidden rounded-card max-lg:max-w-none lg:ml-auto">
             <Image
-              src="/images/surreal-silhouette-art-1.webp"
-              alt="Silhouetted profile dissolving into a warm evening sky"
+              src="/images/method-captivity.webp"
+              alt="Ripples widening on a misty lake at sunrise"
               fill
               sizes="(max-width: 1023px) 100vw, 560px"
               className="object-cover"

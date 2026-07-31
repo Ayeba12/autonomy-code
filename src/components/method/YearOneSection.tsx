@@ -13,8 +13,8 @@ export const YearOneSection = ({ stats }: { stats: StatItem[] }) => (
         <Reveal delay={0.2} className="w-full max-lg:order-last">
           <div className="relative aspect-[4/3] w-full max-w-[560px] overflow-hidden rounded-card max-lg:max-w-none">
             <Image
-              src="/images/foundation-tab-image-03.webp"
-              alt="Blurred figure crossed by streaks of amber light"
+              src="/images/method-yearone.webp"
+              alt="Two porch chairs and a small table with a book and mug at golden hour"
               fill
               sizes="(max-width: 1023px) 100vw, 560px"
               className="object-cover"
