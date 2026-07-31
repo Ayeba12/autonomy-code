@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { ImageWipe } from "@/components/motion/ImageWipe";
 import { Reveal } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/Button";
 
@@ -24,15 +23,7 @@ export const MethodHero = () => (
       <div className="flex flex-col items-center text-center">
         <Reveal>
           <h1 className="max-w-[1000px] text-display">
-            From hidden captivity{" "}
-            <ImageWipe
-              src="/images/about-fit-01.webp"
-              alt="A woman seated in a quiet sunlit room, looking out of a tall window"
-              trigger="load"
-              delay={0.5}
-              preload
-            />{" "}
-            to self-governance.
+            From hidden captivity to self-governance.
           </h1>
         </Reveal>
         <Reveal delay={0.15}>
