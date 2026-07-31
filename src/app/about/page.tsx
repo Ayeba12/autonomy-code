@@ -122,17 +122,18 @@ const AboutPage = async () => {
 
   return (
     <>
-      <Navbar tone="dark" />
+      <Navbar tone="light" />
       <main className="bg-paper">
-        {/* Hero — centered display headline with an inline portrait wipe */}
-        <section className="pt-48 pb-16 max-lg:pt-40 max-md:pt-32 max-md:pb-10">
-          <div className="container-site">
+        {/* Hero — Stodio about hero: black rounded band, centered headline,
+            uppercase label row at the base, no buttons */}
+        <section className="m-2 flex min-h-[92vh] flex-col rounded-card bg-ink pt-44 pb-10 text-white max-lg:pt-36 max-md:min-h-[80vh] max-md:pt-28">
+          <div className="container-site flex flex-1 flex-col justify-between">
             <div className="flex flex-col items-center text-center">
               <Reveal>
-                <Tag>Who I am</Tag>
+                <Tag tone="light">Who I am</Tag>
               </Reveal>
               <Reveal delay={0.05}>
-                <h1 className="mt-5 max-w-[1000px] text-display">
+                <h1 className="mt-6 max-w-[1000px] text-display">
                   You are not stuck
                   <br />
                   because you lack{" "}
@@ -147,23 +148,13 @@ const AboutPage = async () => {
                 </h1>
               </Reveal>
               <Reveal delay={0.15}>
-                <p className="mx-auto mt-8 max-w-[620px] text-body-xl text-smoke">
+                <p className="mx-auto mt-8 max-w-[620px] text-body-xl text-mute">
                   {heroSub}
                 </p>
               </Reveal>
-              <Reveal delay={0.25}>
-                <div className="mt-9 flex flex-wrap justify-center gap-3">
-                  <Button href="/ownership-scan" variant="brand">
-                    Take the Ownership Scan
-                  </Button>
-                  <Button href="/method" variant="outline-dark">
-                    See the Method
-                  </Button>
-                </div>
-              </Reveal>
             </div>
-            <Reveal delay={0.3}>
-              <div className="mt-16 flex items-center justify-between border-t border-line pt-5 text-body-s text-smoke max-md:mt-10">
+            <Reveal delay={0.25}>
+              <div className="mt-16 flex items-center justify-between gap-6 font-heading text-body-s tracking-[0.2em] text-mute uppercase max-md:mt-10">
                 <span>A NoGraGra Practice</span>
                 <span>DK Jonah · Knowledge Architect</span>
               </div>
