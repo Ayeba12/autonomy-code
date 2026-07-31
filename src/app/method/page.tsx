@@ -24,7 +24,7 @@ const MethodPage = async () => {
 
   return (
     <>
-      <Navbar tone="dark" />
+      <Navbar tone="light" />
       <main className="bg-paper">
         <MethodHero />
         <AutonomyMeaning />
