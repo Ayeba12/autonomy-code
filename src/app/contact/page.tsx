@@ -4,7 +4,6 @@ import Link from "next/link";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { Reveal } from "@/components/motion/Reveal";
 import { Navbar } from "@/components/site/Navbar";
-import { NewsletterForm } from "@/components/site/NewsletterForm";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -16,9 +15,9 @@ const textLinkClasses =
   "font-medium text-ink underline decoration-brand/40 underline-offset-4 transition-colors duration-300 hover:decoration-brand";
 
 /**
- * /contact — one contact route + newsletter capture (content.md §4.12,
- * Stodio contact pattern): "Say hello." form card beside a calm
- * full-height image column.
+ * /contact — one contact route (content.md §4.12, Stodio contact
+ * pattern): "Say hello." form card beside a calm full-height image
+ * column. Newsletter capture lives in the footer only.
  */
 const ContactPage = () => (
   <>
@@ -58,8 +57,8 @@ const ContactPage = () => (
               className="relative min-h-[560px] overflow-hidden rounded-card max-md:aspect-[3/2] max-md:min-h-0"
             >
               <Image
-                src="/images/looping-image1.webp"
-                alt=""
+                src="/images/contact-phone.webp"
+                alt="A vintage black telephone handset hanging by its cord against a plain wall"
                 fill
                 preload
                 sizes="(min-width: 768px) 50vw, 100vw"
@@ -70,26 +69,6 @@ const ContactPage = () => (
         </div>
       </section>
 
-      {/* Newsletter — the page's one dark moment */}
-      <section className="pb-24 max-md:pb-14">
-        <div className="container-site">
-          <Reveal>
-            <div className="rounded-card bg-ink p-12 max-lg:p-8 max-md:p-6">
-              <div className="flex items-center justify-between gap-10 max-lg:flex-col max-lg:items-start">
-                <div className="max-w-md">
-                  <h2 className="text-h4 text-white">
-                    One calm letter, when it is worth your time.
-                  </h2>
-                  <p className="mt-3 text-body-m text-mute">No noise.</p>
-                </div>
-                <div className="w-full max-w-md">
-                  <NewsletterForm />
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
     </main>
   </>
 );
