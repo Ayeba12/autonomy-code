@@ -69,8 +69,8 @@ const SabiCorePage = () => (
           <Reveal>
             <div className="overflow-hidden rounded-card-lg max-md:rounded-card">
               <Image
-                src="/images/foundation-tba-image-02.webp"
-                alt="Softly blurred portrait of a figure holding still in muted light"
+                src="/images/sabi-core-band.webp"
+                alt="An open notebook with a gold ribbon on an oak desk beside a bright window"
                 width={1440}
                 height={720}
                 sizes="100vw"
