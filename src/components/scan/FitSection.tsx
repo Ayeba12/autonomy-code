@@ -17,32 +17,62 @@ const notForYou = [
   "You want more information without ownership.",
 ];
 
-/** For you / not for you — two quiet columns, no shame (content.md §4.4). */
+/** Gold spark bullet — this is for you. */
+const Spark = () => (
+  <svg
+    className="mt-1.5 size-4 shrink-0 text-brand"
+    viewBox="0 0 20 20"
+    fill="currentColor"
+    aria-hidden
+  >
+    <path d="M10 1l1.8 6.2L18 9l-6.2 1.8L10 17l-1.8-6.2L2 9l6.2-1.8L10 1z" />
+  </svg>
+);
+
+/** Quiet cross — this is not. */
+const Cross = () => (
+  <svg
+    className="mt-1.5 size-4 shrink-0 text-mute"
+    viewBox="0 0 20 20"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    aria-hidden
+  >
+    <path d="M5 5l10 10M15 5L5 15" />
+  </svg>
+);
+
+/** For you / not for you — two quiet cards, no shame (content.md §4.4). */
 export const FitSection = () => (
-  <section className="pb-28 max-lg:pb-20 max-md:pb-14">
+  <section className="py-28 max-lg:py-20 max-md:py-14">
     <div className="container-site">
-      <div className="mx-auto grid max-w-[1000px] grid-cols-2 gap-16 max-lg:gap-10 max-md:grid-cols-1">
-        <Reveal>
-          <h2 className="text-h5">This is for you if</h2>
-          <ul className="mt-8 flex flex-col gap-5 max-md:mt-5">
-            {forYou.map((line) => (
-              <li key={line} className="flex gap-4">
-                <span className="mt-3 h-0.5 w-5 shrink-0 bg-line" aria-hidden />
-                <span className="text-body-l text-smoke">{line}</span>
-              </li>
-            ))}
-          </ul>
+      <div className="mx-auto grid max-w-[1060px] grid-cols-2 gap-6 max-md:grid-cols-1">
+        <Reveal className="h-full">
+          <div className="h-full rounded-card bg-white p-10 max-md:p-6">
+            <h2 className="text-h5">This is for you if</h2>
+            <ul className="mt-8 flex flex-col gap-5 max-md:mt-5">
+              {forYou.map((line) => (
+                <li key={line} className="flex gap-4">
+                  <Spark />
+                  <span className="text-body-l text-smoke">{line}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </Reveal>
-        <Reveal delay={0.12}>
-          <h2 className="text-h5">This is not for you if</h2>
-          <ul className="mt-8 flex flex-col gap-5 max-md:mt-5">
-            {notForYou.map((line) => (
-              <li key={line} className="flex gap-4">
-                <span className="mt-3 h-0.5 w-5 shrink-0 bg-line" aria-hidden />
-                <span className="text-body-l text-smoke">{line}</span>
-              </li>
-            ))}
-          </ul>
+        <Reveal delay={0.12} className="h-full">
+          <div className="h-full rounded-card bg-paper-2 p-10 max-md:p-6">
+            <h2 className="text-h5">This is not for you if</h2>
+            <ul className="mt-8 flex flex-col gap-5 max-md:mt-5">
+              {notForYou.map((line) => (
+                <li key={line} className="flex gap-4">
+                  <Cross />
+                  <span className="text-body-l text-smoke">{line}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </Reveal>
       </div>
       <Reveal className="mx-auto mt-20 max-w-[680px] text-center max-lg:mt-14 max-md:mt-10">

@@ -17,42 +17,60 @@ const included = [
 ];
 
 /**
- * The offer — three things, one payment (content.md §4.4). The £97 appears
- * here, plainly, at the point of booking. `id="book"` is the interim CTA
- * anchor until the external checkout chain is wired (see ScanCta).
+ * The offer (content.md §4.4, verbatim words) — the three deliverables as
+ * a numbered rail beside a sticky booking card holding the £97 and the
+ * gold CTA. `id="book"` is the interim CTA anchor (see ScanCta).
  */
 export const OfferSection = () => (
-  <section id="book" className="scroll-mt-28 py-28 max-lg:py-20 max-md:py-14">
+  <section
+    id="book"
+    className="scroll-mt-28 bg-white py-28 max-lg:py-20 max-md:py-14"
+  >
     <div className="container-site">
-      <Reveal className="mx-auto flex max-w-[760px] flex-col items-center gap-5 text-center">
+      <Reveal className="mx-auto max-w-[760px] text-center">
         <h2 className="text-h2">Three things, one payment.</h2>
-        <p className="font-heading text-stat leading-none text-brand">£97</p>
       </Reveal>
-      <div className="mx-auto mt-14 flex max-w-[760px] flex-col gap-6 max-md:mt-8 max-md:gap-4">
-        {included.map((item, i) => (
-          <Reveal key={item.title} delay={i * 0.1}>
-            <article className="flex gap-8 rounded-card bg-white p-9 max-md:flex-col max-md:gap-3 max-md:p-6">
-              <span
-                className="font-heading text-h3 leading-none text-brand"
-                aria-hidden
-              >
-                {i + 1}
-              </span>
-              <div>
-                <h3 className="text-h5">{item.title}</h3>
-                <p className="mt-3 text-body-m text-smoke">{item.body}</p>
-              </div>
-            </article>
-          </Reveal>
-        ))}
+      <div className="mx-auto mt-14 grid max-w-[1060px] grid-cols-[1fr_360px] items-start gap-10 max-lg:grid-cols-1 max-md:mt-8">
+        {/* The numbered rail */}
+        <div className="flex flex-col">
+          {included.map((item, i) => (
+            <Reveal key={item.title} delay={i * 0.1}>
+              <article className="relative flex gap-8 pb-12 pl-2 max-md:gap-5 max-md:pb-8">
+                {/* Rail line connecting the steps */}
+                {i < included.length - 1 && (
+                  <span
+                    className="absolute top-14 left-[26px] h-[calc(100%-3.5rem)] w-px bg-line max-md:left-[22px]"
+                    aria-hidden
+                  />
+                )}
+                <span className="z-10 flex size-12 shrink-0 items-center justify-center rounded-full bg-paper font-heading text-h6 text-brand max-md:size-10">
+                  {i + 1}
+                </span>
+                <div className="pt-2">
+                  <h3 className="text-h5">{item.title}</h3>
+                  <p className="mt-3 text-body-m text-smoke">{item.body}</p>
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+
+        {/* The booking card */}
+        <Reveal delay={0.15} className="sticky top-32 max-lg:static">
+          <aside className="flex flex-col items-center gap-8 rounded-card bg-paper p-10 text-center max-md:p-7">
+            <p className="font-heading text-stat leading-none text-brand">
+              £97
+            </p>
+            <div className="w-16 border-t border-line" aria-hidden />
+            <p className="text-body-l text-ink">
+              You leave with one clear reclaim move. Not a list. Not a
+              performance plan. One next act of ownership.
+            </p>
+            <ScanCta />
+            <p className="text-body-s text-smoke">A map, not a verdict.</p>
+          </aside>
+        </Reveal>
       </div>
-      <Reveal className="mx-auto mt-14 flex max-w-[640px] flex-col items-center gap-9 text-center max-md:mt-8 max-md:gap-6">
-        <p className="text-body-xl text-ink">
-          You leave with one clear reclaim move. Not a list. Not a performance
-          plan. One next act of ownership.
-        </p>
-        <ScanCta />
-      </Reveal>
     </div>
   </section>
 );
