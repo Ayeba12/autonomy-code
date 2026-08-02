@@ -37,7 +37,7 @@ export const ladder: LadderTier[] = [
     summary:
       "The deepest tier. One to two people at a time, rare and private, by invitation. The Map leads the recommendation.",
     cta: { label: "About Legacy", href: "/legacy" },
-    price: "£10,000 for the year",
+    price: "From £10,000 for the year",
     order: 3,
     image: {
       src: "/images/tier-legacy.webp",
