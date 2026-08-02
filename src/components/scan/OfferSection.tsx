@@ -55,19 +55,37 @@ export const OfferSection = () => (
           ))}
         </div>
 
-        {/* The booking card */}
+        {/* The booking card — the one ink moment in the offer band. */}
         <Reveal delay={0.15} className="sticky top-32 max-lg:static">
-          <aside className="flex flex-col items-center gap-8 rounded-card bg-paper p-10 text-center max-md:p-7">
-            <p className="font-heading text-stat leading-none text-brand">
-              £97
-            </p>
-            <div className="w-16 border-t border-line" aria-hidden />
-            <p className="text-body-l text-ink">
-              You leave with one clear reclaim move. Not a list. Not a
-              performance plan. One next act of ownership.
-            </p>
-            <ScanCta />
-            <p className="text-body-s text-smoke">A map, not a verdict.</p>
+          <aside className="relative overflow-hidden rounded-card bg-ink p-10 text-center max-md:p-7">
+            {/* Soft gold glow behind the price */}
+            <div
+              className="absolute -top-28 left-1/2 size-64 -translate-x-1/2 rounded-full bg-brand/25 blur-3xl"
+              aria-hidden
+            />
+            <div className="relative flex flex-col items-center gap-7 max-md:gap-5">
+              <p className="flex items-center gap-2.5 font-heading text-body-s tracking-[0.2em] text-mute uppercase">
+                <svg
+                  className="size-3.5 text-brand"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden
+                >
+                  <path d="M10 1l1.8 6.2L18 9l-6.2 1.8L10 17l-1.8-6.2L2 9l6.2-1.8L10 1z" />
+                </svg>
+                The Ownership Scan
+              </p>
+              <p className="bg-linear-to-b from-gold-light via-brand-soft to-brand bg-clip-text font-heading text-stat leading-none text-transparent">
+                £97
+              </p>
+              <div className="w-16 border-t border-white/15" aria-hidden />
+              <p className="text-body-l text-white">
+                You leave with one clear reclaim move. Not a list. Not a
+                performance plan. One next act of ownership.
+              </p>
+              <ScanCta />
+              <p className="text-body-s text-mute">A map, not a verdict.</p>
+            </div>
           </aside>
         </Reveal>
       </div>
