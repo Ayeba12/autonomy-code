@@ -1,6 +1,8 @@
 import type { ContentSource } from "../source";
 import { localContent } from "../local";
-import type { Article } from "../types";
+import type { Article, VideoItem, VideoSection } from "../types";
+import { VIDEO_SECTIONS } from "../video-sections";
+import { fetchSpotifyThumbnail, parseVideoUrl } from "../video-utils";
 
 /**
  * WordPress-backed content source (LocalWP + WPGraphQL).
@@ -112,13 +114,14 @@ const toArticle = (post: WpPost): Article => ({
   heroImage: heroImageOf(post),
 });
 
-const fetchWpArticles = async (): Promise<Article[] | null> => {
+/** POST one GraphQL query; null (with a warning) on any failure. */
+const fetchGraphql = async <T>(query: string, label: string): Promise<T | null> => {
   if (!WP_URL) return null;
   try {
     const response = await fetch(WP_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ query: ARTICLES_QUERY }),
+      body: JSON.stringify({ query }),
       // Dev: always fresh so wp-admin edits show on reload.
       // Prod: cached, revalidated every 5 minutes.
       ...(process.env.NODE_ENV === "development"
@@ -126,18 +129,89 @@ const fetchWpArticles = async (): Promise<Article[] | null> => {
         : { next: { revalidate: 300 } }),
     });
     if (!response.ok) throw new Error(`WPGraphQL responded ${response.status}`);
-    const json = (await response.json()) as {
-      data?: { posts?: { nodes?: WpPost[] } };
-    };
-    const nodes = json.data?.posts?.nodes;
-    if (!nodes) throw new Error("WPGraphQL returned no posts field");
-    return nodes.map(toArticle);
+    return ((await response.json()) as { data?: T }).data ?? null;
   } catch (error) {
     console.warn(
-      `[content/wp] falling back to local articles: ${error instanceof Error ? error.message : error}`,
+      `[content/wp] falling back to local ${label}: ${error instanceof Error ? error.message : error}`,
     );
     return null;
   }
+};
+
+const fetchWpArticles = async (): Promise<Article[] | null> => {
+  const data = await fetchGraphql<{ posts?: { nodes?: WpPost[] } }>(
+    ARTICLES_QUERY,
+    "articles",
+  );
+  const nodes = data?.posts?.nodes;
+  return nodes ? nodes.map(toArticle) : null;
+};
+
+/* ------------------------------------------------------------------ */
+/* In Conversation videos (tac_video CPT, mu-plugin GraphQL fields)    */
+/* ------------------------------------------------------------------ */
+
+interface WpVideo {
+  title: string;
+  date: string;
+  videoUrl: string | null;
+  videoSection: string | null;
+  videoHost: string | null;
+  videoThumb: string | null;
+}
+
+const VIDEOS_QUERY = /* GraphQL */ `
+  query TacVideos {
+    conversationVideos(first: 100) {
+      nodes {
+        title
+        date
+        videoUrl
+        videoSection
+        videoHost
+        videoThumb
+      }
+    }
+  }
+`;
+
+const KNOWN_SECTIONS = new Set<string>(
+  VIDEO_SECTIONS.map((section) => section.slug),
+);
+
+/** Unknown sections are skipped quietly; a bad row never breaks the page. */
+const toVideo = async (node: WpVideo): Promise<VideoItem | null> => {
+  if (!node.videoSection || !KNOWN_SECTIONS.has(node.videoSection)) return null;
+  const parsed = node.videoUrl ? parseVideoUrl(node.videoUrl) : null;
+  const thumbnail =
+    node.videoThumb ??
+    parsed?.thumbnail ??
+    (parsed?.platform === "spotify" && node.videoUrl
+      ? await fetchSpotifyThumbnail(node.videoUrl)
+      : null);
+  return {
+    title: node.title,
+    section: node.videoSection as VideoSection,
+    host: node.videoHost ?? "",
+    date: node.date.slice(0, 10),
+    url: node.videoUrl,
+    platform: parsed?.platform ?? null,
+    embedSrc: parsed?.embedSrc ?? null,
+    thumbnail,
+  };
+};
+
+/** WP videos when reachable, seed placeholders otherwise. Newest first. */
+const getVideos = async (): Promise<VideoItem[]> => {
+  const data = await fetchGraphql<{
+    conversationVideos?: { nodes?: WpVideo[] };
+  }>(VIDEOS_QUERY, "videos");
+  const nodes = data?.conversationVideos?.nodes;
+  if (!nodes) return localContent.getVideos();
+  const videos = (await Promise.all(nodes.map(toVideo))).filter(
+    (video): video is VideoItem => video !== null,
+  );
+  return videos.sort((a, b) => b.date.localeCompare(a.date));
 };
 
 /** WP published articles + local draft outlines, newest first. */
@@ -159,6 +233,7 @@ const getArticles = async (): Promise<Article[]> => {
 export const wpContent: ContentSource = {
   ...localContent,
   getArticles,
+  getVideos,
   getArticle: async (slug) => {
     const articles = await getArticles();
     return articles.find((article) => article.slug === slug) ?? null;

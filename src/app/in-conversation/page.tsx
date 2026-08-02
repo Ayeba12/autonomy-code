@@ -5,76 +5,26 @@ import { CtaSection } from "@/components/site/CtaSection";
 import { Navbar } from "@/components/site/Navbar";
 import { ArrowLink } from "@/components/ui/ArrowLink";
 import { Tag } from "@/components/ui/Tag";
+import { VideoGrid } from "@/components/video/VideoGrid";
 import { content } from "@/content/source";
-import type { ConversationItem } from "@/content/types";
+import { VIDEO_SECTIONS } from "@/content/video-sections";
 
 export const metadata: Metadata = {
   title: "In Conversation",
   description:
-    "Interviews, talks, and podcast appearances. Where the work has been spoken aloud.",
+    "Interviews, podcasts, talks, and more. Where the work has been spoken aloud, watchable in place.",
 };
 
-const SECTION_ORDER: ConversationItem["section"][] = [
-  "Interviews",
-  "Talks & Panels",
-  "Podcast",
-];
-
-/** Hairline row: linked when a URL exists, quiet span when it is still to come. */
-const ConversationRow = ({ item }: { item: ConversationItem }) => {
-  const meta = (
-    <span className="text-body-m text-smoke">
-      {item.host} · {item.year}
-    </span>
-  );
-
-  if (item.href === "#") {
-    return (
-      <div className="flex items-center justify-between gap-6 py-5 max-md:flex-col max-md:items-start max-md:gap-1.5">
-        <div className="flex flex-col gap-1">
-          <span className="font-heading text-h6 text-ink">{item.title}</span>
-          {meta}
-        </div>
-        <span className="shrink-0 text-body-s text-smoke italic">
-          Link coming
-        </span>
-      </div>
-    );
-  }
-
-  return (
-    <a
-      href={item.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group flex items-center justify-between gap-6 py-5 max-md:flex-col max-md:items-start max-md:gap-1.5"
-    >
-      <div className="flex flex-col gap-1">
-        <span className="font-heading text-h6 text-ink transition-colors duration-300 group-hover:text-brand">
-          {item.title}
-        </span>
-        {meta}
-      </div>
-      <svg
-        className="size-5 shrink-0 text-ink transition-all duration-300 group-hover:translate-x-1 group-hover:text-brand max-md:hidden"
-        viewBox="0 0 20 20"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        aria-hidden
-      >
-        <path d="M4 10h12M11 4.5 16.5 10 11 15.5" />
-      </svg>
-    </a>
-  );
-};
-
-/** /in-conversation — proof and presence, quietly (content.md §4.9). */
+/**
+ * /in-conversation — the video hub (content.md §4.9). Four sections of
+ * click-to-play cards, four latest each; every section links to its own
+ * archive. Empty sections stay off the page.
+ */
 const InConversationPage = async () => {
-  const conversations = await content.getConversations();
-  const sections = SECTION_ORDER.map((name) => ({
-    name,
-    items: conversations.filter((item) => item.section === name),
+  const videos = await content.getVideos();
+  const sections = VIDEO_SECTIONS.map((def) => ({
+    ...def,
+    items: videos.filter((video) => video.section === def.slug),
   })).filter((section) => section.items.length > 0);
 
   return (
@@ -102,23 +52,21 @@ const InConversationPage = async () => {
           </div>
         </section>
 
-        {/* Three sections of hairline rows */}
+        {/* Video sections — latest four each, archives one step away */}
         <section className="bg-white section-pad">
-          <div className="container-site flex max-w-[1088px] flex-col gap-16 max-md:gap-10">
+          <div className="container-site flex flex-col gap-20 max-md:gap-12">
             {sections.map((section) => (
-              <Reveal key={section.name}>
-                <h2 className="text-h4">{section.name}</h2>
-                <div className="mt-6">
-                  {section.items.map((item) => (
-                    <div
-                      key={item.title}
-                      className="border-b border-line first:border-t"
-                    >
-                      <ConversationRow item={item} />
-                    </div>
-                  ))}
+              <div key={section.slug}>
+                <Reveal className="flex items-end justify-between gap-6 max-md:flex-col max-md:items-start max-md:gap-3">
+                  <h2 className="text-h4">{section.name}</h2>
+                  <ArrowLink href={`/in-conversation/${section.slug}`}>
+                    View all
+                  </ArrowLink>
+                </Reveal>
+                <div className="mt-8 max-md:mt-6">
+                  <VideoGrid videos={section.items.slice(0, 4)} />
                 </div>
-              </Reveal>
+              </div>
             ))}
 
             {/* The quiet line for hosts */}

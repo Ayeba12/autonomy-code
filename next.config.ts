@@ -28,6 +28,10 @@ const nextConfig: NextConfig = {
       { protocol: "http", hostname: "localhost" },
       { protocol: "http", hostname: "127.0.0.1" },
       { protocol: "https", hostname: "cms.theautonomycode.com" },
+      // In Conversation thumbnails: YouTube CDN + Spotify cover art.
+      { protocol: "https", hostname: "i.ytimg.com" },
+      { protocol: "https", hostname: "**.scdn.co" },
+      { protocol: "https", hostname: "**.spotifycdn.com" },
       ...remoteWpPattern,
     ],
     // Next 16 blocks optimizing images from private IPs (SSRF guard).

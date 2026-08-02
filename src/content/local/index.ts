@@ -1,13 +1,13 @@
 import type { ContentSource } from "../source";
 
 import { articles } from "./articles";
-import { conversations } from "./conversations";
 import { faqs } from "./faqs";
 import { ladder } from "./ladder";
 import { pillars } from "./pillars";
 import { proofQuotes } from "./proof-quotes";
 import { speaking } from "./speaking";
 import { stats } from "./stats";
+import { videos } from "./videos";
 import { widerWork } from "./wider-work";
 
 /**
@@ -27,8 +27,8 @@ export const localContent: ContentSource = {
   async getArticle(slug) {
     return articles.find((article) => article.slug === slug) ?? null;
   },
-  async getConversations() {
-    return conversations;
+  async getVideos() {
+    return [...videos].sort((a, b) => b.date.localeCompare(a.date));
   },
   async getProofQuotes() {
     return proofQuotes;

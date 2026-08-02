@@ -66,12 +66,28 @@ export interface Article {
 }
 
 /** In Conversation item (interview, talk, podcast episode). */
-export interface ConversationItem {
-  section: "Interviews" | "Talks & Panels" | "Podcast";
+/** Archive slugs are the single source of truth for section identity. */
+export type VideoSection =
+  | "interviews"
+  | "podcasts"
+  | "talks-and-panels"
+  | "others";
+
+/** One In Conversation video (YouTube or Spotify), CMS-managed. */
+export interface VideoItem {
   title: string;
+  section: VideoSection;
+  /** Host or show name, shown under the title. */
   host: string;
-  year: string;
-  href: string;
+  /** ISO date; drives "latest" ordering and the displayed year. */
+  date: string;
+  /** Original pasted link; null while a placeholder stands in. */
+  url: string | null;
+  platform: "youtube" | "spotify" | null;
+  /** Derived iframe src; null when the url is missing or unparseable. */
+  embedSrc: string | null;
+  /** Thumbnail URL (YouTube CDN, Spotify art, or WP upload). */
+  thumbnail: string | null;
 }
 
 /** Quiet client-proof quote. */

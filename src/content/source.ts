@@ -1,12 +1,12 @@
 import type {
   Article,
-  ConversationItem,
   FaqItem,
   LadderTier,
   Pillar,
   ProofQuote,
   SpeakingInfo,
   StatItem,
+  VideoItem,
   WiderWorkLink,
 } from "./types";
 
@@ -20,7 +20,7 @@ export interface ContentSource {
   getLadder(): Promise<LadderTier[]>;
   getArticles(): Promise<Article[]>;
   getArticle(slug: string): Promise<Article | null>;
-  getConversations(): Promise<ConversationItem[]>;
+  getVideos(): Promise<VideoItem[]>;
   getProofQuotes(): Promise<ProofQuote[]>;
   getSpeaking(): Promise<SpeakingInfo>;
   getStats(): Promise<StatItem[]>;
