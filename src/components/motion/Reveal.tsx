@@ -12,6 +12,13 @@ interface RevealProps {
   className?: string;
   /** Animate once when 20% enters the viewport (template IX2 behaviour). */
   once?: boolean;
+  /**
+   * Viewport fraction that must be visible before animating. Keep the
+   * 0.2 default for normal blocks; pass "some" for very tall content
+   * (a full article body), where 20% can never fit on screen and the
+   * reveal would otherwise never fire, leaving the block invisible.
+   */
+  amount?: number | "some" | "all";
 }
 
 /** Blur-up scroll reveal matching the template's IX2 pattern. */
@@ -21,6 +28,7 @@ export const Reveal = ({
   y = 50,
   className,
   once = true,
+  amount = 0.2,
 }: RevealProps) => {
   const reduced = useReducedMotion();
 
@@ -31,7 +39,7 @@ export const Reveal = ({
       className={className}
       initial={{ opacity: 0, y, filter: "blur(5px)" }}
       whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      viewport={{ once, amount: 0.2 }}
+      viewport={{ once, amount }}
       transition={{ duration: 0.8, delay, ease: [0.25, 0.1, 0.25, 1] }}
     >
       {children}

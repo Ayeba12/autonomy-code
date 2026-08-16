@@ -112,7 +112,7 @@ const ArticlePage = async ({ params }: ArticlePageProps) => {
         {/* Body — single prose column */}
         <section className="bg-white section-pad">
           <div className="container-site">
-            <Reveal className="mx-auto max-w-[760px]">
+            <Reveal className="mx-auto max-w-[760px]" amount="some">
               <article>
                 {article.bodyHtml ? (
                   <div
