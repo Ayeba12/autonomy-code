@@ -1,68 +1,52 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { HomeMarquee } from "@/components/home/HomeMarquee";
 import { Reveal } from "@/components/motion/Reveal";
 import { CtaSection } from "@/components/site/CtaSection";
 import { Navbar } from "@/components/site/Navbar";
 import { Button } from "@/components/ui/Button";
+import { DiagonalArrow, DiagonalLink } from "@/components/ui/DiagonalLink";
 import { Tag } from "@/components/ui/Tag";
 import { content } from "@/content/source";
+import { menuGroups, serviceBySlug } from "@/content/services";
 import type { ImageRef } from "@/content/types";
 
 export const metadata: Metadata = {
   title: "Work Together",
   description:
-    "The whole ladder in one calm view: the Ownership Scan, SABI CORE, Legacy Builder, and the Autonomy Grid. Every engagement begins with the Scan.",
+    "The whole menu in one calm view: the ladder, single sessions, knowledge work, and ongoing implementation. Every engagement begins with the Scan.",
 };
 
-/** One entry in the two-column featured grid (Stodio project-card shape). */
-interface FeaturedItem {
+/** One card in the ladder row. */
+interface LadderCardItem {
   slug: string;
   name: string;
-  /** Uppercase label on the meta row (Stodio "service" slot). */
-  category: string;
+  step: string;
   description: string;
   href: string;
   image?: ImageRef;
 }
 
-/**
- * The Autonomy Grid — a working tool rather than a ladder tier. It gets
- * its own page later; the card already routes there.
- */
-const autonomyGrid: FeaturedItem = {
-  slug: "autonomy-grid",
-  name: "The Autonomy Grid",
-  category: "The tool",
-  description:
-    "The five pillars laid out as one working grid, built to sit beside your Scan and your Personal Autonomy Map.",
-  href: "/autonomy-grid",
-  image: {
-    src: "/images/about-showcase-02.webp",
-    alt: "A closed notebook, a glass of water, and a pebble on an oak table in morning sun",
-  },
-};
-
-/** "The door. Twenty-five questions…" → category "The door" + the rest. */
+/** "The door. Twenty-five questions…" → step label + the rest. */
 const splitSummary = (summary: string) => {
   const idx = summary.indexOf(".");
-  if (idx === -1) return { category: summary, description: "" };
+  if (idx === -1) return { step: summary, description: "" };
   return {
-    category: summary.slice(0, idx),
+    step: summary.slice(0, idx),
     description: summary.slice(idx + 1).trim(),
   };
 };
 
-/** Stodio ProjectCard: rounded image with hover zoom, name / category row. */
-const FeaturedCard = ({
+const LadderCard = ({
   item,
+  index,
   preload = false,
 }: {
-  item: FeaturedItem;
+  item: LadderCardItem;
+  index: number;
   preload?: boolean;
 }) => (
-  <Link href={item.href} className="group block">
+  <Link href={item.href} className="group block h-full">
     <div className="overflow-hidden rounded-card">
       {item.image ? (
         <Image
@@ -70,7 +54,7 @@ const FeaturedCard = ({
           alt={item.image.alt}
           width={item.image.width ?? 960}
           height={item.image.height ?? 720}
-          sizes="(max-width: 767px) 100vw, 50vw"
+          sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
           preload={preload}
           className="aspect-[4/3] w-full object-cover transition-transform duration-600 ease-out group-hover:scale-105"
         />
@@ -78,29 +62,53 @@ const FeaturedCard = ({
         <div aria-hidden className="aspect-[4/3] w-full bg-paper-2" />
       )}
     </div>
-    <div className="flex items-baseline justify-between gap-4 pt-5 max-md:flex-col max-md:gap-1 max-md:pt-4">
-      <h2 className="text-h4 transition-colors duration-300 group-hover:text-brand">
-        {item.name}
-      </h2>
-      <p className="shrink-0 text-body-s tracking-wide text-smoke uppercase">
-        {item.category}
+    <div className="flex items-baseline justify-between gap-4 pt-5 max-md:pt-4">
+      <p className="font-heading text-body-s tracking-[0.16em] text-mute uppercase">
+        {String(index + 1).padStart(2, "0")} · {item.step}
       </p>
+      <DiagonalArrow className="text-ink transition-colors duration-300 group-hover:text-brand" />
     </div>
-    <p className="mt-3 max-w-[560px] text-body-m text-smoke">
-      {item.description}
-    </p>
+    <h3 className="mt-2 text-h4 transition-colors duration-300 group-hover:text-brand">
+      {item.name}
+    </h3>
+    <p className="mt-3 text-body-m text-smoke">{item.description}</p>
+  </Link>
+);
+
+/** A hairline row on the menu: name, one line, diagonal arrow. */
+const MenuRowLink = ({
+  name,
+  summary,
+  href,
+}: {
+  name: string;
+  summary: string;
+  href: string;
+}) => (
+  <Link
+    href={href}
+    className="group flex items-baseline gap-8 border-b border-line py-6 transition-colors duration-300 first:border-t hover:border-brand/40 max-md:flex-col max-md:items-start max-md:gap-2 max-md:py-5"
+  >
+    <h3 className="w-[300px] shrink-0 font-heading text-h6 text-ink transition-colors duration-300 group-hover:text-brand max-lg:w-[240px] max-md:w-auto">
+      {name}
+    </h3>
+    <p className="flex-1 text-body-m text-smoke">{summary}</p>
+    <DiagonalArrow className="self-center text-mute transition-colors duration-300 group-hover:text-brand max-md:hidden" />
   </Link>
 );
 
 /**
- * /work-together — the Ladder and the Autonomy Grid in one calm view
- * (content.md §4.3), on the Stodio projects-listing pattern: inset light
- * hero band, trust ticker, then a two-column featured grid. Named, not
- * priced (house style §1: prices live only on each tier's own page).
+ * /work-together — the whole menu in one view (Services Menu v4).
+ * The ladder runs as cards, everything else as hairline rows. Named,
+ * never priced: prices live on each service's own page (content.md §26
+ * rule 5). The internal menu's retired list, money rules and build
+ * status are deliberately not represented here.
  */
 const WorkTogetherPage = async () => {
   const ladder = await content.getLadder();
-  const items: FeaturedItem[] = [...ladder]
+
+  const pillarIntensive = serviceBySlug("pillar-intensive");
+  const ladderCards: LadderCardItem[] = [...ladder]
     .sort((a, b) => a.order - b.order)
     .map((tier) => ({
       slug: tier.slug,
@@ -109,18 +117,27 @@ const WorkTogetherPage = async () => {
       href: tier.cta.href,
       image: tier.image,
     }));
-  items.push(autonomyGrid);
 
-  const rows: FeaturedItem[][] = [];
-  for (let i = 0; i < items.length; i += 2) {
-    rows.push(items.slice(i, i + 2));
+  // The Pillar Intensive sits directly after the Scan.
+  if (pillarIntensive) {
+    ladderCards.splice(1, 0, {
+      slug: pillarIntensive.slug,
+      name: pillarIntensive.name,
+      step: pillarIntensive.category,
+      description: pillarIntensive.summary,
+      href: `/services/${pillarIntensive.slug}`,
+      image: {
+        src: "/images/about-showcase-02.webp",
+        alt: "A closed notebook, a glass of water, and a pebble on an oak table in morning sun",
+      },
+    });
   }
 
   return (
     <>
       <Navbar tone="dark" />
       <main>
-        {/* Hero — Stodio projects hero: inset deep-ivory rounded band */}
+        {/* Hero */}
         <section className="m-2 rounded-card bg-paper-2 pt-44 pb-14 max-lg:pt-36 max-md:pt-28 max-md:pb-10">
           <div className="container-site">
             <Reveal>
@@ -130,42 +147,95 @@ const WorkTogetherPage = async () => {
               <Reveal delay={0.1}>
                 <h1 className="max-w-[720px] text-display">Find your step.</h1>
               </Reveal>
-              <Reveal delay={0.2} className="max-w-[420px] shrink-0 max-lg:max-w-[560px]">
+              <Reveal
+                delay={0.2}
+                className="max-w-[420px] shrink-0 max-lg:max-w-[560px]"
+              >
                 <p className="text-body-xl text-smoke">
-                  Three engagements and one working tool, in order of depth.
-                  The whole ladder in one calm view, and every engagement
-                  begins with the Scan.
+                  The whole menu in one calm view. Nothing is offered that is
+                  not on this page, and every engagement begins at the Scan.
                 </p>
-                <Button href="/contact" variant="brand" className="mt-8">
-                  Reach out
+                <Button href="/ownership-scan" variant="brand" className="mt-8">
+                  Start with the Scan
                 </Button>
               </Reveal>
             </div>
           </div>
         </section>
 
-        {/* Trust ticker (Stodio logo-strip slot) */}
-        <HomeMarquee />
+        {/* The ladder — the one path, as cards */}
+        <section className="bg-paper pt-24 pb-20 max-lg:pt-16 max-md:pt-12 max-md:pb-14">
+          <div className="container-site">
+            <Reveal className="flex items-end justify-between gap-8 max-md:flex-col max-md:items-start max-md:gap-3">
+              <div>
+                <p className="font-heading text-body-s tracking-[0.2em] text-mute uppercase">
+                  The ladder
+                </p>
+                <h2 className="mt-4 text-h2">The one path.</h2>
+              </div>
+              <p className="max-w-[380px] pb-2 text-body-m text-smoke">
+                The spine of the practice, in order of depth. It does not
+                change based on who is in front of me.
+              </p>
+            </Reveal>
 
-        {/* Featured grid — two columns: the Ladder plus the Autonomy Grid */}
-        <section className="bg-paper py-24 max-lg:py-16 max-md:py-10">
-          <div className="container-site flex flex-col gap-14 max-md:gap-10">
-            {rows.map((row, rowIndex) => (
-              <div
-                key={row[0].slug}
-                className="grid grid-cols-2 gap-x-5 gap-y-14 max-md:grid-cols-1 max-md:gap-y-10"
-              >
-                {row.map((item, i) => (
-                  <Reveal key={item.slug} delay={i * 0.1}>
-                    <FeaturedCard item={item} preload={rowIndex === 0 && i === 0} />
-                  </Reveal>
-                ))}
+            <div className="mt-14 grid grid-cols-4 gap-x-5 gap-y-12 max-lg:grid-cols-2 max-md:mt-9 max-md:grid-cols-1 max-md:gap-y-9">
+              {ladderCards.map((item, i) => (
+                <Reveal key={item.slug} delay={(i % 4) * 0.08} className="h-full">
+                  <LadderCard item={item} index={i} preload={i === 0} />
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Everything else — grouped hairline rows */}
+        <section className="bg-white section-pad">
+          <div className="container-site flex flex-col gap-20 max-md:gap-14">
+            {menuGroups.map((group) => (
+              <div key={group.key}>
+                <Reveal className="flex items-end justify-between gap-8 max-md:flex-col max-md:items-start max-md:gap-2">
+                  <div>
+                    <p className="font-heading text-body-s tracking-[0.2em] text-mute uppercase">
+                      {group.label}
+                    </p>
+                    <h2 className="mt-3 text-h3">{group.note}</h2>
+                  </div>
+                </Reveal>
+                <div className="mt-8 max-md:mt-6">
+                  {group.rows.map((row) => (
+                    <MenuRowLink key={row.href} {...row} />
+                  ))}
+                </div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Footer note (verbatim §4.3) — the page's single breath accent. */}
+        {/* The open room */}
+        <section className="bg-paper-2 py-20 max-md:py-14">
+          <div className="container-site">
+            <Reveal className="mx-auto flex max-w-[720px] flex-col items-center gap-5 text-center">
+              <p className="font-heading text-body-s tracking-[0.2em] text-mute uppercase">
+                Open
+              </p>
+              <h2 className="text-h3">The room that costs nothing.</h2>
+              <p className="text-body-xl text-smoke">
+                Public teaching and the Creative Recovery group are open to
+                anyone, and they stay open. The writing, the Sunday letter and
+                the live rooms sit outside the menu on purpose.
+              </p>
+              <div className="mt-2 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+                <DiagonalLink href="/writing">Read the writing</DiagonalLink>
+                <DiagonalLink href="/in-conversation">
+                  Watch a conversation
+                </DiagonalLink>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* Money note (verbatim §4.3) — the page's single breath accent. */}
         <section className="bg-breath-tint py-20 max-md:py-12">
           <div className="container-site">
             <Reveal>
