@@ -26,9 +26,24 @@ const Spark = () => (
   </svg>
 );
 
+/** Qualification marks for the fit lists: circled check, circled cross. */
+const CheckMark = () => (
+  <svg className="mt-0.5 size-5 shrink-0 text-pass" viewBox="0 0 20 20" fill="none" aria-hidden>
+    <circle cx="10" cy="10" r="8.25" stroke="currentColor" strokeWidth="1.5" />
+    <path d="m6.25 10.25 2.5 2.5 5-5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+const CrossMark = () => (
+  <svg className="mt-0.5 size-5 shrink-0 text-fail" viewBox="0 0 20 20" fill="none" aria-hidden>
+    <circle cx="10" cy="10" r="8.25" stroke="currentColor" strokeWidth="1.5" />
+    <path d="m7.25 7.25 5.5 5.5m0-5.5-5.5 5.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+  </svg>
+);
+
 /** Small uppercase label used for eyebrows across the page. */
 const Eyebrow = ({ children }: { children: string }) => (
-  <p className="font-heading text-body-s tracking-[0.2em] text-mute uppercase">
+  <p className="font-heading text-body-s tracking-[0.2em] text-slate uppercase">
     {children}
   </p>
 );
@@ -63,7 +78,7 @@ const Sketch = ({
       />
     </div>
     {caption && (
-      <figcaption className="mt-3 text-center text-body-s text-mute">
+      <figcaption className="mt-3 text-center text-body-s text-slate">
         {caption}
       </figcaption>
     )}
@@ -77,7 +92,7 @@ const SeatButton = ({
   label?: string;
   className?: string;
 }) => (
-  <Button href={SEAT_HREF} variant="brand" className={className}>
+  <Button href={SEAT_HREF} variant="gold" className={className}>
     {label}
   </Button>
 );
@@ -144,7 +159,7 @@ const AnnualResetPage = () => (
                 <ul className="grid grid-cols-3 gap-6 border-t border-paper/15 pt-6 max-md:grid-cols-1 max-md:gap-3">
                   {reset.moves.map((move) => (
                     <li key={move.number} className="flex items-baseline gap-3">
-                      <span className="font-heading text-body-s text-brand">
+                      <span className="font-heading text-body-s text-brand-soft">
                         {move.number}
                       </span>
                       <span className="text-body-m text-paper/85">{move.date}</span>
@@ -170,13 +185,13 @@ const AnnualResetPage = () => (
               <Eyebrow>Where you are</Eyebrow>
             </Reveal>
             <Reveal delay={0.08}>
-              <p className="mt-6 text-body-xl text-smoke">{reset.whereYouAre.lead}</p>
+              <p className="mt-6 text-body-xl text-slate">{reset.whereYouAre.lead}</p>
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mt-6 font-heading text-h4 text-ink">{reset.whereYouAre.turn}</p>
             </Reveal>
             <Reveal delay={0.16}>
-              <p className="mt-8 text-body-xl text-smoke">{reset.whereYouAre.after}</p>
+              <p className="mt-8 text-body-xl text-slate">{reset.whereYouAre.after}</p>
               <p className="mt-4 font-heading text-h5 text-ink">{reset.whereYouAre.afterTurn}</p>
             </Reveal>
           </div>
@@ -185,12 +200,12 @@ const AnnualResetPage = () => (
               src="/images/reset/reset-distance.webp"
               alt="Graphite diagram of a sturdy house on the left, a small figure on the right, and the gap between them measured in gold"
             />
-            <div className="mt-4 flex items-center justify-between gap-4 font-heading text-body-s tracking-[0.16em] text-mute uppercase max-md:text-[11px]">
+            <div className="mt-4 flex items-center justify-between gap-4 font-heading text-body-s tracking-[0.16em] text-slate uppercase max-md:text-[11px]">
               {reset.whereYouAre.diagram.map((label) => (
                 <span key={label}>{label}</span>
               ))}
             </div>
-            <p className="mt-3 text-center text-body-s text-smoke">
+            <p className="mt-3 text-center text-body-s text-slate">
               {reset.whereYouAre.diagramNote}
             </p>
           </Reveal>
@@ -207,7 +222,7 @@ const AnnualResetPage = () => (
         <div className="container-site">
           <Reveal className="mx-auto max-w-[760px] text-center">
             <Eyebrow>What is actually happening</Eyebrow>
-            <p className="mt-6 text-body-xl text-smoke">{reset.standards.lead}</p>
+            <p className="mt-6 text-body-xl text-slate">{reset.standards.lead}</p>
             <p className="mt-6 font-heading text-h4 text-ink">{reset.standards.turn}</p>
           </Reveal>
 
@@ -223,11 +238,11 @@ const AnnualResetPage = () => (
               {reset.standards.sources.map((source, i) => (
                 <Reveal key={source.title} delay={i * 0.1}>
                   <article className="rounded-card bg-paper p-8 max-md:p-6">
-                    <span className="font-heading text-h3 leading-none text-brand" aria-hidden>
+                    <span className="font-heading text-h3 leading-none text-brand-hot" aria-hidden>
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <h3 className="mt-4 text-h5">{source.title}</h3>
-                    <p className="mt-3 text-body-m text-smoke">{source.body}</p>
+                    <p className="mt-3 text-body-m text-slate">{source.body}</p>
                   </article>
                 </Reveal>
               ))}
@@ -236,7 +251,7 @@ const AnnualResetPage = () => (
 
           <Reveal className="mx-auto mt-16 max-w-[720px] text-center max-md:mt-10">
             <p className="text-body-xl text-ink">{reset.standards.after}</p>
-            <p className="mt-6 text-body-l text-smoke">{reset.standards.close}</p>
+            <p className="mt-6 text-body-l text-slate">{reset.standards.close}</p>
           </Reveal>
         </div>
       </section>
@@ -251,7 +266,7 @@ const AnnualResetPage = () => (
             <Reveal>
               <article className="h-full rounded-card border border-line bg-white/60 p-9 max-md:p-6">
                 <h3 className="text-h4">{reset.difference.value.title}</h3>
-                <p className="mt-4 text-body-l text-smoke">{reset.difference.value.body}</p>
+                <p className="mt-4 text-body-l text-slate">{reset.difference.value.body}</p>
               </article>
             </Reveal>
             <Reveal delay={0.1}>
@@ -270,7 +285,7 @@ const AnnualResetPage = () => (
               />
             </Reveal>
             <Reveal delay={0.1} className="max-w-[520px]">
-              <p className="text-body-xl text-smoke">{reset.difference.after}</p>
+              <p className="text-body-xl text-slate">{reset.difference.after}</p>
               <p className="mt-6 font-heading text-h3 text-ink">{reset.difference.close}</p>
             </Reveal>
           </div>
@@ -287,12 +302,12 @@ const AnnualResetPage = () => (
             {reset.moves.map((move, i) => (
               <Reveal key={move.number} delay={i * 0.1} className="h-full">
                 <article className="flex h-full flex-col rounded-card bg-white p-8 max-md:p-6">
-                  <span className="font-heading text-stat leading-none text-brand" aria-hidden>
+                  <span className="font-heading text-stat leading-none text-brand-hot" aria-hidden>
                     {move.number}
                   </span>
                   <h3 className="mt-6 text-h5">{move.title}</h3>
-                  <p className="mt-3 text-body-m text-smoke">{move.body}</p>
-                  <p className="mt-auto pt-6 font-heading text-body-s tracking-[0.16em] text-mute uppercase">
+                  <p className="mt-3 text-body-m text-slate">{move.body}</p>
+                  <p className="mt-auto pt-6 font-heading text-body-s tracking-[0.16em] text-slate uppercase">
                     {move.date}
                   </p>
                 </article>
@@ -323,14 +338,14 @@ const AnnualResetPage = () => (
                   <Sketch src={session.image.src} alt={session.image.alt} />
                 </Reveal>
                 <Reveal delay={0.1} className="max-w-[540px]">
-                  <p className="font-heading text-body-s tracking-[0.2em] text-brand uppercase">
+                  <p className="font-heading text-body-s tracking-[0.2em] text-slate uppercase">
                     {session.label}
                   </p>
                   <h3 className="mt-3 text-h2">{session.name}</h3>
-                  <p className="mt-2 text-body-s text-smoke italic">{session.when}</p>
-                  <p className="mt-6 text-body-l text-smoke">{session.body}</p>
+                  <p className="mt-2 text-body-s text-slate italic">{session.when}</p>
+                  <p className="mt-6 text-body-l text-slate">{session.body}</p>
                   {session.extra && (
-                    <p className="mt-4 text-body-l text-smoke">{session.extra}</p>
+                    <p className="mt-4 text-body-l text-slate">{session.extra}</p>
                   )}
                   <p className="mt-6 border-l-2 border-brand pl-5 font-heading text-h6 text-ink">
                     {session.leave}
@@ -354,8 +369,8 @@ const AnnualResetPage = () => (
               <ul className="mt-6 flex flex-col gap-4">
                 {reset.forList.map((line) => (
                   <li key={line} className="flex gap-3">
-                    <Spark />
-                    <span className="text-body-l text-smoke">{line}</span>
+                    <CheckMark />
+                    <span className="text-body-l text-slate">{line}</span>
                   </li>
                 ))}
               </ul>
@@ -365,8 +380,8 @@ const AnnualResetPage = () => (
               <ul className="mt-6 flex flex-col gap-4">
                 {reset.notForList.map((line) => (
                   <li key={line} className="flex gap-3">
-                    <span className="mt-3 h-px w-4 shrink-0 bg-line" aria-hidden />
-                    <span className="text-body-l text-smoke">{line}</span>
+                    <CrossMark />
+                    <span className="text-body-l text-slate">{line}</span>
                   </li>
                 ))}
               </ul>
@@ -421,7 +436,7 @@ const AnnualResetPage = () => (
             </Reveal>
             {reset.host.lines.map((line, i) => (
               <Reveal key={line} delay={0.08 + i * 0.06}>
-                <p className="mt-6 text-body-l text-smoke">{line}</p>
+                <p className="mt-6 text-body-l text-slate">{line}</p>
               </Reveal>
             ))}
             <Reveal delay={0.3}>
@@ -446,7 +461,7 @@ const AnnualResetPage = () => (
                   <blockquote className="font-heading text-h6 text-ink">
                     &ldquo;{item.quote}&rdquo;
                   </blockquote>
-                  <figcaption className="text-body-s tracking-wide text-smoke uppercase">
+                  <figcaption className="text-body-s tracking-wide text-slate uppercase">
                     {item.who}
                   </figcaption>
                 </figure>
@@ -468,7 +483,7 @@ const AnnualResetPage = () => (
               <Reveal key={tier.label} delay={i * 0.08} className="h-full">
                 <article
                   className={`flex h-full flex-col items-center rounded-card p-8 text-center max-md:p-6 ${
-                    i === 0 ? "bg-ink text-paper" : "bg-white"
+                    "bg-ink text-paper"
                   }`}
                 >
                   <p className="font-heading text-body-s tracking-[0.18em] uppercase">
@@ -477,7 +492,7 @@ const AnnualResetPage = () => (
                   <p className="mt-6 font-heading text-stat leading-none text-brand">
                     {tier.price}
                   </p>
-                  <p className={`mt-4 text-body-s ${i === 0 ? "text-paper/70" : "text-smoke"}`}>
+                  <p className={`mt-4 text-body-s ${"text-paper/75"}`}>
                     {tier.note}
                   </p>
                 </article>
@@ -488,8 +503,8 @@ const AnnualResetPage = () => (
             <p className="text-body-l text-ink">{reset.pricing.body}</p>
             <p className="font-heading text-h6">{reset.bookingCloses}</p>
             <SeatButton label="Take your seat" />
-            <p className="text-body-s text-smoke italic">{reset.pricing.payment}</p>
-            <p className="text-body-s text-smoke">
+            <p className="text-body-s text-slate italic">{reset.pricing.payment}</p>
+            <p className="text-body-s text-slate">
               Questions before you book?{" "}
               {SEAT_CONTACT_EMAIL ? (
                 <a

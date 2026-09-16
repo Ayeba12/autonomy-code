@@ -2,7 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { type ReactNode } from "react";
 
-type ButtonVariant = "light" | "dark" | "brand" | "outline-dark" | "outline-light";
+type ButtonVariant =
+  | "light"
+  | "dark"
+  | "brand"
+  | "gold"
+  | "outline-dark"
+  | "outline-light";
 
 interface ButtonProps {
   children: ReactNode;
@@ -20,6 +26,8 @@ const variantClasses: Record<ButtonVariant, string> = {
   light: "bg-white text-ink",
   dark: "bg-coal text-white",
   brand: "bg-brand text-white",
+  /** AAA-contrast gold: ink on the soft gold reads 8.7:1. */
+  gold: "bg-brand-soft text-ink",
   "outline-dark": "border border-coal text-ink bg-transparent",
   "outline-light": "border border-line text-white bg-transparent",
 };
@@ -28,6 +36,7 @@ const arrowIcon: Record<ButtonVariant, string> = {
   light: "/images/button-iconm-01.svg",
   dark: "/images/button-icon-white.svg",
   brand: "/images/button-icon-white.svg",
+  gold: "/images/button-iconm-01.svg",
   "outline-dark": "/images/button-iconm-01.svg",
   "outline-light": "/images/button-icon-white.svg",
 };

@@ -43,7 +43,7 @@ export const Accordion = ({ items }: { items: FaqItem[] }) => {
               }`}
             >
               <div className="overflow-hidden">
-                <p className="pt-4 text-body-m text-smoke">{item.answer}</p>
+                <p className="pt-4 text-body-m text-slate">{item.answer}</p>
               </div>
             </div>
           </div>

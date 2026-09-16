@@ -11,6 +11,11 @@
   --color-coal: #1a1a1a;
   --color-smoke: #5d5d5d;
   --color-mute: #a5a5a5;
+  /* AAA body grey: 7.6:1 on paper-2, higher on paper and white. */
+  --color-slate: #454545;
+  /* Qualification marks only (fit lists), at the client's request. */
+  --color-pass: #1b6b45;
+  --color-fail: #b3261e;
   --color-line: #dadee1;
   --color-breath: #ddeaf2;
   --color-breath-tint: #eaf2f8;

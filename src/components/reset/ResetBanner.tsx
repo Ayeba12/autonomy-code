@@ -16,7 +16,7 @@ export const ResetBanner = () => (
         <span className="font-heading text-body-s tracking-[0.18em] text-brand uppercase">
           {reset.name}
         </span>
-        <span className="text-smoke">{reset.dates}, {reset.time}, {reset.format.toLowerCase()}.</span>
+        <span className="text-slate">{reset.dates}, {reset.time}, {reset.format.toLowerCase()}.</span>
       </p>
       <span className="inline-flex items-center gap-2 text-body-m font-medium transition-colors duration-300 group-hover:text-brand">
         Take your seat
