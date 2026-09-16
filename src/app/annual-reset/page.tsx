@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import type { ReactNode } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { Navbar } from "@/components/site/Navbar";
 import { Accordion } from "@/components/ui/Accordion";
@@ -39,6 +40,92 @@ const CrossMark = () => (
     <circle cx="10" cy="10" r="8.25" stroke="currentColor" strokeWidth="1.5" />
     <path d="m7.25 7.25 5.5 5.5m0-5.5-5.5 5.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
   </svg>
+);
+
+/** Line icons for the numbered cards, in the same stroke family as the marks above. */
+const iconProps = {
+  className: "size-5",
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.5,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+  "aria-hidden": true,
+};
+
+/** Inherited and handed down: a key passed on. */
+const KeyIcon = () => (
+  <svg {...iconProps}>
+    <circle cx="8" cy="12" r="4" />
+    <path d="M12 12h9M18 12v3M15 12v2" />
+  </svg>
+);
+
+/** Absorbed and taken in: the room you wanted to belong to. */
+const PeopleIcon = () => (
+  <svg {...iconProps}>
+    <circle cx="9" cy="8" r="3" />
+    <circle cx="16.5" cy="9.5" r="2.25" />
+    <path d="M3.5 19a5.5 5.5 0 0 1 11 0M15.5 18.5a4 4 0 0 1 5-3.5" />
+  </svg>
+);
+
+/** Agreed to, once: a signature from a season that ended. */
+const PenIcon = () => (
+  <svg {...iconProps}>
+    <path d="m14.5 5.5 4 4L8 20H4v-4L14.5 5.5ZM12.5 7.5l4 4M4 22h16" />
+  </svg>
+);
+
+/** Audit to Source: look closely, then trace it back. */
+const SearchIcon = () => (
+  <svg {...iconProps}>
+    <circle cx="10.5" cy="10.5" r="6.5" />
+    <path d="m20.5 20.5-5.2-5.2" />
+  </svg>
+);
+
+/** Align to Standard: the line you choose to hold. */
+const RulerIcon = () => (
+  <svg {...iconProps}>
+    <rect x="3" y="8.5" width="18" height="7" rx="1.5" />
+    <path d="M7 8.5v3M11 8.5v2M15 8.5v3M19 8.5v2" />
+  </svg>
+);
+
+/** Anchor to Structure: what holds when the year gets hard. */
+const AnchorIcon = () => (
+  <svg {...iconProps}>
+    <circle cx="12" cy="5" r="2.25" />
+    <path d="M12 7.25V21M5 13a7 7 0 0 0 14 0M3.5 13H7M17 13h3.5" />
+  </svg>
+);
+
+const sourceIcons = [<KeyIcon key="key" />, <PeopleIcon key="people" />, <PenIcon key="pen" />];
+const moveIcons = [<SearchIcon key="search" />, <RulerIcon key="ruler" />, <AnchorIcon key="anchor" />];
+
+/** Number on the left, icon in a hairline ring on the right, one row. */
+const CardIndex = ({
+  number,
+  icon,
+  size = "text-h3",
+}: {
+  number: string;
+  icon: ReactNode;
+  size?: string;
+}) => (
+  <div className="flex items-center justify-between gap-6">
+    <span className={`font-heading ${size} leading-none text-brand-hot`} aria-hidden>
+      {number}
+    </span>
+    <span
+      className="flex size-11 shrink-0 items-center justify-center rounded-full border border-line text-brand-hot"
+      aria-hidden
+    >
+      {icon}
+    </span>
+  </div>
 );
 
 /** Small uppercase label used for eyebrows across the page. */
@@ -238,10 +325,8 @@ const AnnualResetPage = () => (
               {reset.standards.sources.map((source, i) => (
                 <Reveal key={source.title} delay={i * 0.1}>
                   <article className="rounded-card bg-paper p-8 max-md:p-6">
-                    <span className="font-heading text-h3 leading-none text-brand-hot" aria-hidden>
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <h3 className="mt-4 text-h5">{source.title}</h3>
+                    <CardIndex number={String(i + 1).padStart(2, "0")} icon={sourceIcons[i]} />
+                    <h3 className="mt-5 text-h5">{source.title}</h3>
                     <p className="mt-3 text-body-m text-slate">{source.body}</p>
                   </article>
                 </Reveal>
@@ -302,9 +387,7 @@ const AnnualResetPage = () => (
             {reset.moves.map((move, i) => (
               <Reveal key={move.number} delay={i * 0.1} className="h-full">
                 <article className="flex h-full flex-col rounded-card bg-white p-8 max-md:p-6">
-                  <span className="font-heading text-stat leading-none text-brand-hot" aria-hidden>
-                    {move.number}
-                  </span>
+                  <CardIndex number={move.number} icon={moveIcons[i]} size="text-stat" />
                   <h3 className="mt-6 text-h5">{move.title}</h3>
                   <p className="mt-3 text-body-m text-slate">{move.body}</p>
                   <p className="mt-auto pt-6 font-heading text-body-s tracking-[0.16em] text-slate uppercase">
