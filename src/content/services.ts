@@ -516,6 +516,19 @@ const rowFor = (slug: string): MenuRow => {
  */
 export const menuGroups: MenuGroup[] = [
   {
+    key: "workshop",
+    label: "The workshop",
+    note: "Once a year, three sessions, and January back.",
+    rows: [
+      {
+        name: "The Annual Reset 4.0",
+        summary:
+          "27 November, 4 and 5 December, 7 pm UK, online. Close the year honestly and enter the next one on standards you chose.",
+        href: "/annual-reset",
+      },
+    ],
+  },
+  {
     key: "sessions",
     label: "Sessions",
     note: "Single engagements. One question, answered properly.",

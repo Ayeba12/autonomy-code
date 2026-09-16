@@ -8,6 +8,7 @@ export interface NavLink {
 export const primaryLinks: NavLink[] = [
   { label: "The Method", href: "/method" },
   { label: "Work Together", href: "/work-together" },
+  { label: "Annual Reset", href: "/annual-reset" },
   { label: "About", href: "/about" },
   { label: "In Conversation", href: "/in-conversation" },
   { label: "Contact", href: "/contact" },
@@ -39,6 +40,7 @@ export const megaColumns: { title: string; links: MegaLink[] }[] = [
 
 /** Flat list for the mobile menu. */
 export const moreLinks: NavLink[] = [
+  { label: "The Annual Reset 4.0", href: "/annual-reset" },
   { label: "The Ownership Scan", href: "/ownership-scan" },
   { label: "SABI CORE", href: "/sabi-core" },
   { label: "Legacy", href: "/legacy" },
@@ -54,6 +56,7 @@ export const footerColumns: { title: string; links: NavLink[] }[] = [
       { label: "Home", href: "/" },
       { label: "The Method", href: "/method" },
       { label: "Work Together", href: "/work-together" },
+      { label: "The Annual Reset 4.0", href: "/annual-reset" },
       { label: "About", href: "/about" },
       { label: "Writing", href: "/writing" },
       { label: "In Conversation", href: "/in-conversation" },

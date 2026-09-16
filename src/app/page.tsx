@@ -8,6 +8,7 @@ import { LadderShowcase } from "@/components/home/LadderShowcase";
 import { PillarsSection } from "@/components/home/PillarsSection";
 import { ProofStrip } from "@/components/home/ProofStrip";
 import { QuietAche } from "@/components/home/QuietAche";
+import { ResetBanner } from "@/components/reset/ResetBanner";
 import { CtaSection } from "@/components/site/CtaSection";
 import { Navbar } from "@/components/site/Navbar";
 import { content } from "@/content/source";
@@ -33,6 +34,8 @@ const HomePage = async () => {
       <Navbar tone="light" />
       <main className="bg-paper">
         <HomeHero />
+        {/* Annual Reset strip while booking is open; remove after 13 November. */}
+        <ResetBanner />
         <HomeMarquee />
         <QuietAche />
         <GalleryLoop />
