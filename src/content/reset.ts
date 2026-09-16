@@ -141,15 +141,18 @@ export const reset = {
   quotes: [
     {
       quote: "She knows how to stretch you and draw the best out of you through her unique, hands-on delivery. Her service heart alongside her desire for uncompromised excellence means I go away with tangible action and application plans.",
-      who: "Omosola, transition coach and consultant",
+      name: "Omosola",
+      role: "Transition coach and consultant",
     },
     {
       quote: "DK's coaching is client-centred and framed to meet you where you are. With her coaching, I can literally quantify my productivity level.",
-      who: "Amina Omar-Ikaige, medical doctor",
+      name: "Amina Omar-Ikaige",
+      role: "Medical doctor",
     },
     {
       quote: "I learnt a lot from her just through the first consultation. I really appreciate her patience and professionalism. She didn't push me into anything, which made her easy to trust.",
-      who: "Ope",
+      name: "Ope",
+      role: "Client",
     },
   ],
   pricing: {

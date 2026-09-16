@@ -531,25 +531,54 @@ const AnnualResetPage = () => (
         </div>
       </section>
 
-      {/* What people say */}
+      {/* What people say — quote, then the person: monogram, name, role */}
       <section className="bg-white section-pad">
         <div className="container-site">
-          <Reveal>
-            <Eyebrow>What people say</Eyebrow>
+          <Reveal className="flex items-end justify-between gap-8 max-md:flex-col max-md:items-start max-md:gap-3">
+            <div>
+              <Eyebrow>What people say</Eyebrow>
+              <h2 className="mt-4 text-h3">Three voices, in their own words.</h2>
+            </div>
+            <p className="max-w-[360px] pb-1 text-body-m text-slate">
+              From people who have worked with DK, quoted as they said it.
+            </p>
           </Reveal>
-          <div className="mt-10 grid grid-cols-3 gap-5 max-lg:grid-cols-1 max-md:mt-6">
-            {reset.quotes.map((item, i) => (
-              <Reveal key={item.who} delay={i * 0.1} className="h-full">
-                <figure className="flex h-full flex-col justify-between gap-8 rounded-card bg-paper p-8 max-md:p-6">
-                  <blockquote className="font-heading text-h6 text-ink">
-                    &ldquo;{item.quote}&rdquo;
-                  </blockquote>
-                  <figcaption className="text-body-s tracking-wide text-slate uppercase">
-                    {item.who}
-                  </figcaption>
-                </figure>
-              </Reveal>
-            ))}
+          <div className="mt-12 grid grid-cols-3 gap-5 max-lg:grid-cols-1 max-md:mt-8">
+            {reset.quotes.map((item, i) => {
+              const initials = item.name
+                .split(/[\s-]+/)
+                .slice(0, 2)
+                .map((part) => part[0])
+                .join("")
+                .toUpperCase();
+              return (
+                <Reveal key={item.name} delay={i * 0.1} className="h-full">
+                  <figure className="flex h-full flex-col rounded-card bg-paper p-8 max-md:p-6">
+                    <span
+                      className="font-heading text-[64px] leading-[0.6] text-brand-hot"
+                      aria-hidden
+                    >
+                      &ldquo;
+                    </span>
+                    <blockquote className="mt-6 flex-1">
+                      <p className="text-body-xl text-ink">{item.quote}</p>
+                    </blockquote>
+                    <figcaption className="mt-8 flex items-center gap-4 border-t border-line pt-6">
+                      <span
+                        className="flex size-11 shrink-0 items-center justify-center rounded-full bg-ink font-heading text-body-s tracking-wide text-paper"
+                        aria-hidden
+                      >
+                        {initials}
+                      </span>
+                      <span className="flex flex-col gap-0.5">
+                        <span className="font-heading text-body-l text-ink">{item.name}</span>
+                        <span className="text-body-s text-slate">{item.role}</span>
+                      </span>
+                    </figcaption>
+                  </figure>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -572,7 +601,7 @@ const AnnualResetPage = () => (
                   <p className="font-heading text-body-s tracking-[0.18em] uppercase">
                     {tier.label}
                   </p>
-                  <p className="mt-6 font-heading text-stat leading-none text-brand">
+                  <p className="mt-6 font-heading text-[clamp(1.75rem,3.1vw,2.75rem)] leading-none tracking-tight whitespace-nowrap text-brand">
                     {tier.price}
                   </p>
                   <p className={`mt-4 text-body-s ${"text-paper/75"}`}>
