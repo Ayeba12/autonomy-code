@@ -10,13 +10,152 @@ import type { FaqItem } from "./types";
  */
 
 /**
- * Where every "Take your seat" button goes. Anchors to the pricing block
- * until the Stripe Payment Link exists; then this becomes that URL.
+ * Where every "Take your seat" button goes: the checkout step, where the
+ * seat is chosen and the terms and refund policy are read before Stripe.
  */
-export const SEAT_HREF = "#seat";
+export const SEAT_HREF = "/annual-reset/checkout";
 
 /** Contact address for the pricing block. Null until the client confirms one. */
 export const SEAT_CONTACT_EMAIL: string | null = null;
+
+/**
+ * Booking phases, from the client's dates: early bird runs to the end of
+ * 31 October, standard pricing from 1 November, and booking closes at the
+ * end of 13 November. Instants are UTC; the workshop runs on UK time.
+ */
+export const EARLY_BIRD_ENDS = "2026-11-01T00:00:00Z";
+export const BOOKING_CLOSES = "2026-11-14T00:00:00Z";
+
+export type BookingPhase = "early" | "standard" | "closed";
+
+export const bookingPhase = (now: Date): BookingPhase => {
+  if (now >= new Date(BOOKING_CLOSES)) return "closed";
+  if (now >= new Date(EARLY_BIRD_ENDS)) return "standard";
+  return "early";
+};
+
+export interface SeatPrice {
+  price: string;
+  /** The Stripe Payment Link for this seat. Null until the client supplies it. */
+  stripeUrl: string | null;
+}
+
+export interface SeatOption {
+  id: string;
+  label: string;
+  note: string;
+  /** Early-bird price, where the seat has one. */
+  early: SeatPrice | null;
+  standard: SeatPrice;
+}
+
+/**
+ * The seats a visitor can choose at checkout. One Payment Link per price:
+ * the client pastes them in here as Stripe issues them.
+ */
+export const seatOptions: SeatOption[] = [
+  {
+    id: "international",
+    label: "UK and international",
+    note: "Paid in pounds sterling",
+    early: { price: "£99", stripeUrl: null },
+    standard: { price: "£199", stripeUrl: null },
+  },
+  {
+    id: "nigeria",
+    label: "Nigeria",
+    note: "Priced regionally, paid in naira",
+    early: null,
+    standard: { price: "₦40,000", stripeUrl: null },
+  },
+];
+
+/** The price that applies to a seat in the current phase. */
+export const seatPriceFor = (seat: SeatOption, phase: BookingPhase): SeatPrice =>
+  phase === "early" && seat.early ? seat.early : seat.standard;
+
+/**
+ * The checkout step. Terms and refund policy are DRAFT wording in the
+ * house voice, written for DK's review before booking opens; they follow
+ * the money rules on /terms (price shown first, paid at booking, plainly).
+ */
+export const resetCheckout = {
+  title: "Take your seat.",
+  lead: "Choose your seat, read how the Reset works and how refunds are handled, then continue to secure payment.",
+  steps: {
+    seat: { number: "01", title: "Your seat" },
+    terms: { number: "02", title: "How it works" },
+    refunds: { number: "03", title: "Refunds" },
+  },
+  earlyBirdNote: "Early bird until 31 October, then £199.",
+  terms: [
+    {
+      heading: "What you are booking",
+      body: "A seat at The Annual Reset 4.0: three live online sessions on 27 November, 4 December and 5 December 2026 at 7 pm UK time, the Reset Workbook, your LifeSync Stencil, the GROWTH Goals framework and the recordings. It is run by DK Jonah through The NO GraGra Practice.",
+    },
+    {
+      heading: "Joining the sessions",
+      body: "The joining link and the workbook are sent to the email address you give at payment, before the first session. Sessions are held at 7 pm UK time, so please check the hour in your own time zone.",
+    },
+    {
+      heading: "The recordings",
+      body: "Every session is recorded and shared with everyone who booked, so a missed session does not cost you the Reset. Recordings are for your personal use and are not to be shared or published.",
+    },
+    {
+      heading: "The materials",
+      body: "The workbook, the Stencil and the framework are yours to use for your own life and work. Please do not copy, sell or distribute them. The thinking behind them remains DK Jonah's.",
+    },
+    {
+      heading: "The room",
+      body: "The sessions are live and honest. What other people share in the room stays in the room.",
+    },
+    {
+      heading: "What this is not",
+      body: "The Reset is a workshop about standards, structure and decisions. It is not therapy or counselling, and it is not medical, legal or financial advice.",
+    },
+    {
+      heading: "If a session has to move",
+      body: "If DK has to move a session, you will hear by email with the new date. If the new date does not work for you, you can ask for a full refund of your seat.",
+    },
+    {
+      heading: "Payment",
+      body: "The price is the one shown at booking, in pounds sterling or Nigerian naira. Payment is taken by Stripe on Stripe's own pages. Your card details never reach us.",
+    },
+  ],
+  refunds: [
+    {
+      heading: "Changing your mind",
+      body: "You can cancel within 14 days of booking for a full refund, as long as the first session has not yet taken place. Write to us and the refund goes back to the card you paid with. Stripe usually returns it within ten working days.",
+    },
+    {
+      heading: "After the 14 days",
+      body: "Once the 14 days have passed, or the first session has been held, the seat is not refundable: it has been held for you and the materials have been sent. You can pass your seat to someone else up to 26 November by sending us their name and email address.",
+    },
+    {
+      heading: "If we cancel",
+      body: "If the Reset itself is cancelled, you receive a full refund or a seat at the next Reset, whichever you prefer.",
+    },
+  ],
+  agreement: "I have read how the Reset works and the refund policy, and I agree to them.",
+  agreementError: "Please tick the box to confirm you have read the terms and the refund policy.",
+  continueLabel: "Continue to secure payment",
+  stripeNote: "You will be taken to Stripe to pay. Your card details never reach us.",
+  awaitingLink: "The payment link for this seat is being set up. Write to us and we will hold your seat for you.",
+  closed: {
+    title: "Booking for this year's Reset has closed.",
+    body: "The seats are taken and the room is set. If you would like to hear when the next Reset opens, write to us and we will let you know first.",
+  },
+  thanks: {
+    title: "Your seat is taken.",
+    body: "Thank you. A receipt from Stripe is on its way to you, and the joining link and the Reset Workbook will follow by email before the first session.",
+    next: [
+      "Friday 27 November, 7 pm UK: Audit",
+      "Friday 4 December, 7 pm UK: Align",
+      "Saturday 5 December, 7 pm UK: Anchor",
+    ],
+    note: "If the receipt has not arrived within an hour, check your spam folder, then write to us.",
+  },
+};
 
 export const reset = {
   name: "The Annual Reset 4.0",
