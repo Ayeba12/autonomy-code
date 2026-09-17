@@ -19,8 +19,8 @@ export const SEAT_HREF = "/annual-reset/checkout";
 export const SEAT_CONTACT_EMAIL: string | null = null;
 
 /**
- * Booking phases, from the client's dates: early bird runs to the end of
- * 31 October, standard pricing from 1 November, and booking closes at the
+ * Booking phases, from the client's dates: early bird runs until
+ * 1 November, standard pricing from 1 November, and booking closes at the
  * end of 13 November. Instants are UTC; the workshop runs on UK time.
  */
 export const EARLY_BIRD_ENDS = "2026-11-01T00:00:00Z";
@@ -87,7 +87,7 @@ export const resetCheckout = {
     terms: { number: "02", title: "How it works" },
     refunds: { number: "03", title: "Refunds" },
   },
-  earlyBirdNote: "Early bird until 31 October, then £199.",
+  earlyBirdNote: "Early bird until 1 November, then £199.",
   terms: [
     {
       heading: "What you are booking",
