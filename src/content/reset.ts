@@ -58,8 +58,8 @@ export const seatOptions: SeatOption[] = [
     id: "international",
     label: "UK and international",
     note: "Paid in pounds sterling",
-    early: { price: "£99", stripeUrl: null },
-    standard: { price: "£199", stripeUrl: null },
+    early: { price: "£99", stripeUrl: "https://buy.stripe.com/7sYdR94DqbiT6H516XdQQ0w" },
+    standard: { price: "£199", stripeUrl: "https://buy.stripe.com/00w7sLb1O5Yz6H54j9dQQ0v" },
   },
   {
     id: "nigeria",
