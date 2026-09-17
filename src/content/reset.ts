@@ -97,7 +97,7 @@ export const resetCheckout = {
   terms: [
     {
       heading: "What you are booking",
-      body: "A seat at The Annual Reset 4.0: three live online sessions on 27 November, 4 December and 5 December 2026 at 7 pm UK time, the Reset Workbook, your LifeSync Stencil, the GROWTH Goals framework and the recordings. It is run by DK Jonah through The NO GraGra Practice.",
+      body: "A seat at The Annual Reset 4.0: three live online sessions on 27 November, 4 December and 5 December 2026 at 7 pm UK time, the Reset Workbook, your LifeSync Stencil, the PACE Planner, the GROWTH Goals framework and the recordings, all delivered digitally. It is run by DK Jonah through The NO GraGra Practice.",
     },
     {
       heading: "Joining the sessions",
@@ -154,7 +154,7 @@ export const resetCheckout = {
   },
   thanks: {
     title: "Your seat is taken.",
-    body: "Thank you. A receipt is on its way to you, and the joining link and the Reset Workbook will follow by email before the first session.",
+    body: "Thank you. A receipt is on its way to you, and the joining link, the Reset Workbook, the Stencil and the PACE Planner will follow by email before the first session.",
     next: [
       "Friday 27 November, 7 pm UK: Audit",
       "Friday 4 December, 7 pm UK: Align",
@@ -306,12 +306,15 @@ export const reset = {
     "You are not willing to look honestly at the year behind you",
   ],
   included: [
-    "Three live sessions across two weeks, held online at 7 pm UK time",
+    "Three live sessions, Audit, Align and Anchor, held online at 7 pm UK",
     "The Reset Workbook, structured to the three sessions",
-    "LifeSync Stencil",
+    "LifeSync Stencil, the tool we work through together",
+    "The PACE Planner, First Edition, your daily and weekly structure for the year ahead, including the SCOPE pages for breaking a project or a goal down into something you can actually do",
     "The GROWTH Goals framework, in full",
     "The recordings, so a missed session does not cost you the Reset",
   ],
+  includedNote:
+    "Everything is digital. The Workbook, the Stencil and the Planner arrive as PDFs you can print at home or use in your planner app on a tablet.",
   host: {
     name: "DK Jonah",
     lines: [
@@ -359,7 +362,7 @@ export const reset = {
         ],
       },
     ],
-    body: "Everything is included at every level: all three sessions, the workbook, the Stencil and the recordings.",
+    body: "Everything is included at every level: all three sessions, the Workbook, the Stencil, the PACE Planner and the recordings.",
     payment: "Secure payment through Stripe, or Selar for seats in naira.",
   },
   close: {

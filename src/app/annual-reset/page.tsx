@@ -544,12 +544,13 @@ const AnnualResetPage = () => (
                 </li>
               ))}
             </ul>
+            <p className="mt-6 text-body-m text-slate">{reset.includedNote}</p>
           </Reveal>
           <Reveal delay={0.1}>
             <Sketch
               src="/images/reset/reset-included.webp"
               alt="Graphite still life of an open workbook, a pencil, and a drawing stencil shaded in gold"
-              caption="The Workbook and your LifeSync Stencil."
+              caption="The Workbook, the Stencil and the PACE Planner, all as PDFs."
             />
           </Reveal>
         </div>

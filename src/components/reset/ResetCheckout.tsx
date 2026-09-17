@@ -247,6 +247,7 @@ export const ResetCheckout = ({ phase }: { phase: BookingPhase }) => {
                 </li>
               ))}
             </ul>
+            <p className="mt-3 text-body-xs text-mute">{reset.includedNote}</p>
           </div>
 
           <div className="mt-6 flex items-end justify-between gap-4 border-t border-paper/15 pt-6">
