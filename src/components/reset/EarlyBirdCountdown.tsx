@@ -104,11 +104,12 @@ export const EarlyBirdCountdown = ({
           1 November, then <span className={`font-heading ${strong}`}>{standard}</span>.
         </p>
       </div>
-      <ol className="flex items-start gap-6 max-md:gap-4">
+      {/* Four units in a row; on phones they share the full width evenly. */}
+      <ol className="flex items-start gap-6 max-md:grid max-md:w-full max-md:grid-cols-4 max-md:gap-0">
         {units.map(([unit, value], i) => (
           <li
             key={unit}
-            className={`flex flex-col items-center ${i > 0 ? `border-l ${rule} pl-6 max-md:pl-4` : ""}`}
+            className={`flex flex-col items-center ${i > 0 ? `border-l ${rule} pl-6 max-md:pl-0` : ""}`}
           >
             <span className={`font-heading text-h3 leading-none tabular-nums ${strong}`}>{value}</span>
             <span className={`mt-2 font-heading text-body-xs tracking-[0.18em] uppercase ${label}`}>

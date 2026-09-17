@@ -49,6 +49,21 @@ const CrossMark = ({ onDark = false }: { onDark?: boolean }) => (
   </svg>
 );
 
+/** A standard: a line held, with its measure marked. Flanks the theme tag. */
+const StandardMark = () => (
+  <svg
+    className="size-3.5 shrink-0"
+    viewBox="0 0 16 16"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    aria-hidden
+  >
+    <path d="M1.5 12h13M4 12V9M8 12V7M12 12V9M8 2.5v2" />
+  </svg>
+);
+
 /** Line icons for the numbered cards, in the same stroke family as the marks above. */
 const iconProps = {
   className: "size-5",
@@ -186,8 +201,12 @@ const AnnualResetPage = () => (
             <p className="font-heading text-body-s tracking-[0.22em] text-mute uppercase">
               {reset.dates}
             </p>
-            <p className="rounded-pill border border-brand-soft/50 px-3.5 py-1.5 font-heading text-body-xs tracking-[0.2em] text-brand-soft uppercase">
-              {reset.theme.label}: {reset.theme.word}
+            <p className="inline-flex items-center gap-2 rounded-pill border border-brand-soft/50 px-3.5 py-1.5 font-heading text-body-xs tracking-[0.2em] text-brand-soft uppercase">
+              <StandardMark />
+              <span>
+                {reset.theme.label}: {reset.theme.word}
+              </span>
+              <StandardMark />
             </p>
           </Reveal>
 
