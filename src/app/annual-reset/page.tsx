@@ -201,7 +201,7 @@ const AnnualResetPage = () => (
             <p className="font-heading text-body-s tracking-[0.22em] text-mute uppercase">
               {reset.dates}
             </p>
-            <p className="inline-flex items-center gap-2 rounded-pill border border-brand-soft/50 px-3.5 py-1.5 font-heading text-body-xs tracking-[0.2em] text-brand-soft uppercase">
+            <p className="inline-flex items-center gap-2 rounded-pill border border-brand-soft/50 px-3.5 py-1.5 font-heading text-body-xs tracking-[0.2em] whitespace-nowrap text-brand-soft uppercase max-md:tracking-[0.12em]">
               <StandardMark />
               <span>
                 {reset.theme.label}: {reset.theme.word}
