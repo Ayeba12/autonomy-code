@@ -294,7 +294,7 @@ export const reset = {
   included: [
     "Three live sessions across two weeks, held online at 7 pm UK time",
     "The Reset Workbook, structured to the three sessions",
-    "Your LifeSync Stencil",
+    "LifeSync Stencil",
     "The GROWTH Goals framework, in full",
     "The recordings, so a missed session does not cost you the Reset",
   ],
