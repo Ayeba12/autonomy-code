@@ -36,7 +36,7 @@ export const bookingPhase = (now: Date): BookingPhase => {
 
 export interface SeatPrice {
   price: string;
-  /** The Stripe Payment Link for this seat. Null until the client supplies it. */
+  /** The payment page for this seat. Null until the client supplies it. */
   stripeUrl: string | null;
 }
 
@@ -44,6 +44,8 @@ export interface SeatOption {
   id: string;
   label: string;
   note: string;
+  /** Who takes the payment: Stripe for pounds, Selar for naira. */
+  provider: "Stripe" | "Selar";
   /** Early-bird price, where the seat has one. */
   early: SeatPrice | null;
   standard: SeatPrice;
@@ -57,16 +59,18 @@ export const seatOptions: SeatOption[] = [
   {
     id: "international",
     label: "UK and international",
-    note: "Paid in pounds sterling",
+    note: "Paid in pounds sterling, through Stripe",
+    provider: "Stripe",
     early: { price: "£99", stripeUrl: "https://buy.stripe.com/7sYdR94DqbiT6H516XdQQ0w" },
     standard: { price: "£199", stripeUrl: "https://buy.stripe.com/00w7sLb1O5Yz6H54j9dQQ0v" },
   },
   {
     id: "nigeria",
     label: "Nigeria",
-    note: "Priced regionally, paid in naira",
+    note: "Priced regionally, paid in naira through Selar",
+    provider: "Selar",
     early: null,
-    standard: { price: "₦40,000", stripeUrl: null },
+    standard: { price: "₦40,000", stripeUrl: "https://selar.com/8256775544" },
   },
 ];
 
@@ -119,13 +123,13 @@ export const resetCheckout = {
     },
     {
       heading: "Payment",
-      body: "The price is the one shown at booking, in pounds sterling or Nigerian naira. Payment is taken by Stripe on Stripe's own pages. Your card details never reach us.",
+      body: "The price is the one shown at booking, in pounds sterling or Nigerian naira. Payment is taken by Stripe for pounds and by Selar for naira, on their own pages. Your card details never reach us.",
     },
   ],
   refunds: [
     {
       heading: "Changing your mind",
-      body: "You can cancel within 14 days of booking for a full refund, as long as the first session has not yet taken place. Write to us and the refund goes back to the card you paid with. Stripe usually returns it within ten working days.",
+      body: "You can cancel within 14 days of booking for a full refund, as long as the first session has not yet taken place. Write to us and the refund goes back to the card you paid with, usually within ten working days.",
     },
     {
       heading: "After the 14 days",
@@ -139,7 +143,8 @@ export const resetCheckout = {
   agreement: "I have read how the Reset works and the refund policy, and I agree to them.",
   agreementError: "Please tick the box to confirm you have read the terms and the refund policy.",
   continueLabel: "Continue to secure payment",
-  stripeNote: "You will be taken to Stripe to pay. Your card details never reach us.",
+  /** {provider} is replaced with the selected seat's payment provider. */
+  stripeNote: "Secure payment through {provider}. You will be taken to {provider} to pay. Your card details never reach us.",
   awaitingLink: "The payment link for this seat is being set up. Write to us and we will hold your seat for you.",
   closed: {
     title: "Booking for this year's Reset has closed.",
@@ -147,7 +152,7 @@ export const resetCheckout = {
   },
   thanks: {
     title: "Your seat is taken.",
-    body: "Thank you. A receipt from Stripe is on its way to you, and the joining link and the Reset Workbook will follow by email before the first session.",
+    body: "Thank you. A receipt is on its way to you, and the joining link and the Reset Workbook will follow by email before the first session.",
     next: [
       "Friday 27 November, 7 pm UK: Audit",
       "Friday 4 December, 7 pm UK: Align",
@@ -339,7 +344,7 @@ export const reset = {
       { label: "Nigeria", note: "Priced regionally", price: "₦40,000" },
     ],
     body: "Everything is included at every level: all three sessions, the workbook, the Stencil and the recordings.",
-    payment: "Secure payment through Stripe.",
+    payment: "Secure payment through Stripe, or Selar for seats in naira.",
   },
   close: {
     title: "Whose standards have you been living by?",

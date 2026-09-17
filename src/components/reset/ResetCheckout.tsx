@@ -321,9 +321,7 @@ export const ResetCheckout = ({ phase }: { phase: BookingPhase }) => {
             )}
             <p className="mt-4 flex items-start gap-2 text-body-s text-mute">
               <LockIcon />
-              <span>
-                {reset.pricing.payment} {resetCheckout.stripeNote}
-              </span>
+              <span>{resetCheckout.stripeNote.replaceAll("{provider}", seat.provider)}</span>
             </p>
           </div>
 
