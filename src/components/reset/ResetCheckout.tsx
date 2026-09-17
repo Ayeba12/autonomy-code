@@ -179,7 +179,9 @@ export const ResetCheckout = ({ phase }: { phase: BookingPhase }) => {
                           {optionPrice.price}
                         </span>
                         {phase === "early" && option.early && (
-                          <span className="text-body-s text-slate">{resetCheckout.earlyBirdNote}</span>
+                          <span className="text-body-s text-slate">
+                            {resetCheckout.earlyBirdNote.replace("{standard}", option.standard.price)}
+                          </span>
                         )}
                       </span>
                     </span>

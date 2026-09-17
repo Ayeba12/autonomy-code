@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { EARLY_BIRD_ENDS, bookingPhase, reset } from "@/content/reset";
+import { EARLY_BIRD_ENDS, bookingPhase, reset, seatOptions } from "@/content/reset";
 
 const DEADLINE = new Date(EARLY_BIRD_ENDS).getTime();
 
@@ -50,8 +50,14 @@ export const EarlyBirdCountdown = ({
   const gold = light ? "text-brand-soft" : "text-brand-hot";
   const rule = light ? "border-paper/15" : "border-line";
 
-  const early = reset.pricing.tiers[0].price;
-  const standard = reset.pricing.tiers[1].price;
+  /* Pounds first, naira after: "£99 or ₦100,000". */
+  const amounts = (key: "early" | "standard") =>
+    seatOptions
+      .map((seat) => seat[key]?.price)
+      .filter((price): price is string => Boolean(price))
+      .join(" or ");
+  const early = amounts("early");
+  const standard = amounts("standard");
   const phase = now === null ? "early" : bookingPhase(new Date(now));
 
   if (phase === "closed") {
@@ -95,7 +101,7 @@ export const EarlyBirdCountdown = ({
       className={`flex flex-wrap items-center justify-between gap-x-10 gap-y-5 rounded-card border ${rule} px-7 py-5 max-md:px-5 ${className}`}
       role="timer"
     >
-      <div className="max-w-[260px]">
+      <div className="max-w-[320px]">
         <p className={`font-heading text-body-s tracking-[0.2em] uppercase ${label}`}>
           Early bird ends in
         </p>

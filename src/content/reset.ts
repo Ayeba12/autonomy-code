@@ -69,8 +69,9 @@ export const seatOptions: SeatOption[] = [
     label: "Nigeria",
     note: "Priced regionally, paid in naira through Selar",
     provider: "Selar",
-    early: null,
-    standard: { price: "₦40,000", stripeUrl: "https://selar.com/8256775544" },
+    /* One Selar page for both prices: the client changes the price on Selar on 1 November. */
+    early: { price: "₦100,000", stripeUrl: "https://selar.com/8256775544" },
+    standard: { price: "₦150,000", stripeUrl: "https://selar.com/8256775544" },
   },
 ];
 
@@ -91,7 +92,8 @@ export const resetCheckout = {
     terms: { number: "02", title: "How it works" },
     refunds: { number: "03", title: "Refunds" },
   },
-  earlyBirdNote: "Early bird until 1 November, then £199.",
+  /** {standard} is replaced with that seat's standard price. */
+  earlyBirdNote: "Early bird until 1 November, then {standard}.",
   terms: [
     {
       heading: "What you are booking",
@@ -338,10 +340,24 @@ export const reset = {
     },
   ],
   pricing: {
+    /* Two phases, each with a pounds price and a naira price for Nigeria. */
     tiers: [
-      { label: "Early bird", note: "Until 1 November", price: "£99" },
-      { label: "Standard", note: "From 1 November", price: "£199" },
-      { label: "Nigeria", note: "Priced regionally", price: "₦40,000" },
+      {
+        label: "Early bird",
+        note: "Until 1 November",
+        prices: [
+          { amount: "£99", region: "UK and international" },
+          { amount: "₦100,000", region: "Nigeria" },
+        ],
+      },
+      {
+        label: "Standard",
+        note: "From 1 November",
+        prices: [
+          { amount: "£199", region: "UK and international" },
+          { amount: "₦150,000", region: "Nigeria" },
+        ],
+      },
     ],
     body: "Everything is included at every level: all three sessions, the workbook, the Stencil and the recordings.",
     payment: "Secure payment through Stripe, or Selar for seats in naira.",

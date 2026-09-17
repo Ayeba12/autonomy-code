@@ -651,23 +651,29 @@ const AnnualResetPage = () => (
           <Reveal delay={0.05} className="mx-auto mt-10 max-w-[980px] max-md:mt-8">
             <EarlyBirdCountdown className="bg-white/60" />
           </Reveal>
-          <div className="mx-auto mt-6 grid max-w-[980px] grid-cols-3 gap-5 max-md:grid-cols-1">
+          {/* Two phases side by side; each card carries the pounds price and
+              the naira price, one above the other, with a hairline between. */}
+          <div className="mx-auto mt-6 grid max-w-[980px] grid-cols-2 gap-5 max-md:grid-cols-1">
             {reset.pricing.tiers.map((tier, i) => (
               <Reveal key={tier.label} delay={i * 0.08} className="h-full">
-                <article
-                  className={`flex h-full flex-col items-center rounded-card p-8 text-center max-md:p-6 ${
-                    "bg-ink text-paper"
-                  }`}
-                >
-                  <p className="font-heading text-body-s tracking-[0.18em] uppercase">
-                    {tier.label}
-                  </p>
-                  <p className="mt-6 font-heading text-[clamp(1.75rem,3.1vw,2.75rem)] leading-none tracking-tight whitespace-nowrap text-brand">
-                    {tier.price}
-                  </p>
-                  <p className={`mt-4 text-body-s ${"text-paper/75"}`}>
-                    {tier.note}
-                  </p>
+                <article className="flex h-full flex-col rounded-card bg-ink p-8 text-paper max-md:p-6">
+                  <div className="flex items-baseline justify-between gap-4">
+                    <p className="font-heading text-body-s tracking-[0.18em] uppercase">{tier.label}</p>
+                    <p className="text-body-s text-paper/75">{tier.note}</p>
+                  </div>
+                  <ul className="mt-6 flex flex-col">
+                    {tier.prices.map((price) => (
+                      <li
+                        key={price.region}
+                        className="flex items-baseline justify-between gap-6 border-t border-paper/15 py-5 last:pb-0"
+                      >
+                        <span className="text-body-m text-paper/85">{price.region}</span>
+                        <span className="font-heading text-[clamp(1.75rem,3.1vw,2.75rem)] leading-none tracking-tight whitespace-nowrap text-brand">
+                          {price.amount}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
                 </article>
               </Reveal>
             ))}
