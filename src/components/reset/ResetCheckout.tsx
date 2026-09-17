@@ -224,12 +224,12 @@ export const ResetCheckout = ({ phase }: { phase: BookingPhase }) => {
             </div>
             {/* The Reset's figure from the cover art, cropped to the drawing. */}
             <Image
-              src="/images/reset/reset-seat-figure.webp"
+              src="/images/reset/reset-seat-figure-2.webp"
               alt=""
-              width={640}
-              height={800}
-              sizes="140px"
-              className="aspect-[4/5] w-[140px] shrink-0 rounded-2xl object-cover ring-1 ring-brand-soft/40 max-md:w-[104px]"
+              width={600}
+              height={900}
+              sizes="(max-width: 767px) 128px, 180px"
+              className="aspect-[2/3] w-[180px] shrink-0 rounded-2xl object-cover ring-1 ring-brand-soft/40 max-md:w-[128px]"
             />
           </div>
 
