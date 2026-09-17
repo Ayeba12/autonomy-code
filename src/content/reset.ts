@@ -163,6 +163,13 @@ export const reset = {
   time: "7 pm UK",
   format: "Online",
   poweredBy: "Powered by The Autonomy Code",
+  /** The year's theme, named once in the hero and once in its own band. */
+  theme: {
+    label: "This year's theme",
+    word: "Standards",
+    line: "This year is about setting standards: not goals, not values, but the lines you choose to hold, and the year you build on them.",
+    moves: "Audit · Align · Anchor",
+  },
   earlyBirdLabel: "Take your seat, £99 until 1 November",
   bookingCloses: "Booking closes 13 November.",
   hero: {

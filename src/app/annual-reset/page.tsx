@@ -12,7 +12,7 @@ import { SEAT_CONTACT_EMAIL, SEAT_HREF, reset, resetFaqs } from "@/content/reset
 export const metadata: Metadata = {
   title: "The Annual Reset 4.0",
   description:
-    "Three live sessions to close this year honestly, find out whose standards you have been living by, and enter the next one holding only the ones you choose. 27 November, 4 and 5 December, 7 pm UK, online.",
+    "This year's theme is Standards. Three live sessions to close this year honestly, find out whose standards you have been living by, and enter the next one holding only the ones you choose. 27 November, 4 and 5 December, 7 pm UK, online.",
 };
 
 /** Gold spark bullet, matching the Tag icon. */
@@ -185,6 +185,9 @@ const AnnualResetPage = () => (
             <p className="font-heading text-body-s tracking-[0.22em] text-mute uppercase">
               {reset.dates}
             </p>
+            <p className="rounded-pill border border-brand-soft/50 px-3.5 py-1.5 font-heading text-body-xs tracking-[0.2em] text-brand-soft uppercase">
+              {reset.theme.label}: {reset.theme.word}
+            </p>
           </Reveal>
 
           <Reveal delay={0.1}>
@@ -242,6 +245,24 @@ const AnnualResetPage = () => (
               </Reveal>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* The theme, named: one word in gold, one line on what it means */}
+      <section className="border-b border-line/70 py-16 max-lg:py-12 max-md:py-10">
+        <div className="container-site grid grid-cols-[1fr_1.2fr] items-end gap-12 max-lg:grid-cols-1 max-lg:gap-6">
+          <Reveal>
+            <Eyebrow>{reset.theme.label}</Eyebrow>
+            <p className="mt-4 font-heading text-display leading-none font-bold tracking-[-0.02em] text-brand-hot">
+              {reset.theme.word}.
+            </p>
+          </Reveal>
+          <Reveal delay={0.1} className="max-w-[560px] pb-2">
+            <p className="text-body-xl text-ink">{reset.theme.line}</p>
+            <p className="mt-5 font-heading text-body-s tracking-[0.2em] text-slate uppercase">
+              {reset.theme.moves}
+            </p>
+          </Reveal>
         </div>
       </section>
 
