@@ -7,6 +7,7 @@ import { Accordion } from "@/components/ui/Accordion";
 import { Button } from "@/components/ui/Button";
 import { DiagonalLink } from "@/components/ui/DiagonalLink";
 import { Tag } from "@/components/ui/Tag";
+import { EarlyBirdCountdown } from "@/components/reset/EarlyBirdCountdown";
 import { SEAT_CONTACT_EMAIL, SEAT_HREF, reset, resetFaqs } from "@/content/reset";
 
 export const metadata: Metadata = {
@@ -239,9 +240,12 @@ const AnnualResetPage = () => (
                 </ul>
               </Reveal>
 
-              <Reveal delay={0.35} className="flex flex-wrap items-center gap-x-6 gap-y-4">
-                <SeatButton />
-                <p className="text-body-s text-mute">{reset.hero.note}</p>
+              <Reveal delay={0.35}>
+                <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
+                  <SeatButton />
+                  <p className="text-body-s text-mute">{reset.hero.note}</p>
+                </div>
+                <EarlyBirdCountdown tone="light" compact className="mt-4" />
               </Reveal>
             </div>
           </div>
@@ -625,7 +629,10 @@ const AnnualResetPage = () => (
             <Eyebrow>Taking your seat</Eyebrow>
             <h2 className="mt-5 text-h2">Three sessions. One seat.</h2>
           </Reveal>
-          <div className="mx-auto mt-12 grid max-w-[980px] grid-cols-3 gap-5 max-md:mt-8 max-md:grid-cols-1">
+          <Reveal delay={0.05} className="mx-auto mt-10 max-w-[980px] max-md:mt-8">
+            <EarlyBirdCountdown className="bg-white/60" />
+          </Reveal>
+          <div className="mx-auto mt-6 grid max-w-[980px] grid-cols-3 gap-5 max-md:grid-cols-1">
             {reset.pricing.tiers.map((tier, i) => (
               <Reveal key={tier.label} delay={i * 0.08} className="h-full">
                 <article

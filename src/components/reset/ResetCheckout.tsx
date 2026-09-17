@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { type FormEvent, type ReactNode, useId, useRef, useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
+import { EarlyBirdCountdown } from "@/components/reset/EarlyBirdCountdown";
 import { DiagonalLink } from "@/components/ui/DiagonalLink";
 import {
   type BookingPhase,
@@ -144,6 +145,7 @@ export const ResetCheckout = ({ phase }: { phase: BookingPhase }) => {
       {/* The three steps */}
       <div className="flex flex-col gap-14 max-md:gap-10">
         <Step number={resetCheckout.steps.seat.number} title={resetCheckout.steps.seat.title}>
+          <EarlyBirdCountdown className="bg-white" />
           <fieldset>
             <legend className="sr-only">Choose your seat</legend>
             <div className="grid grid-cols-2 gap-4 max-md:grid-cols-1">
