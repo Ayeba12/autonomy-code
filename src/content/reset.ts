@@ -171,7 +171,10 @@ export const reset = {
     note: "Online, 7 pm UK time, three live sessions across two weeks.",
   },
   whereYouAre: {
-    lead: "You have built something real. The work is good. People come to you for advice, and they are right to. From the outside, there is nothing anyone would tell you to fix, and that is part of the problem, because there is nothing obviously wrong to point at.",
+    lead: "You have built something real. The work is good. People come to you for advice, and they are right to.",
+    /** Same paragraph, set in bold at DK's request (revised instructions, 16 Sept). */
+    leadEmphasis:
+      "From the outside, there is nothing anyone would tell you to fix, and that is part of the problem, because there is nothing obviously wrong to point at.",
     turn: "But you know something is off.",
     diagram: ["What you built", "The distance", "How it feels"],
     diagramNote: "No amount of achievement seems to close it.",
@@ -199,8 +202,7 @@ export const reset = {
     ],
     after:
       "Some are still right. Some are the exact reason you are tired. You cannot tell which is which until you look.",
-    close:
-      "This is why resolutions fail. You are setting new goals on top of old standards. The standards win. They always win because they were there first and aren't under review.",
+    close: "This is why resolutions fail. You are setting new goals on top of old standards.",
   },
   difference: {
     value: {
@@ -215,12 +217,40 @@ export const reset = {
       "Most year-end work asks what you want. That question is easy to answer and changes nothing. Wanting has never been your problem.",
     close: "You do not need more information. You need ownership.",
   },
+  /**
+   * Public-facing session names are the bare Audit / Align / Anchor; the
+   * "to Source / to Standard / to Structure" language is taught inside the
+   * sessions (revised instructions, 16 Sept).
+   */
   moves: [
-    { number: "01", title: "Audit to Source", body: "Where your patterns came from, and who set them.", date: "Friday 27 November" },
-    { number: "02", title: "Align to Standard", body: "The lines you choose to hold, and the goals built on them.", date: "Friday 4 December" },
-    { number: "03", title: "Anchor to Structure", body: "What keeps those standards standing when the year gets hard.", date: "Saturday 5 December" },
+    {
+      number: "01",
+      title: "Audit",
+      body: "Where your patterns came from, and who set them.",
+      date: "Friday 27 November",
+      image: { src: "/images/reset/reset-move-audit.webp", alt: "Graphite sketch of a woman with a magnifying glass tracing footprints across a ledger back to the first, in gold" },
+    },
+    {
+      number: "02",
+      title: "Align",
+      body: "The lines you choose to hold, and the goals built on them.",
+      date: "Friday 4 December",
+      image: { src: "/images/reset/reset-move-align.webp", alt: "Graphite sketch of two hands drawing one straight line along a ruler, the new line in gold" },
+    },
+    {
+      number: "03",
+      title: "Anchor",
+      body: "What keeps those standards standing when the year gets hard.",
+      date: "Saturday 5 December",
+      image: { src: "/images/reset/reset-move-anchor.webp", alt: "Graphite sketch of a woman driving a stake into the ground to hold a tent in the wind, the stake and rope in gold" },
+    },
   ],
-  movesLine: "Identify the Source. Define the Standard. Build the Structure.",
+  /** Three outcome sentences, one per line; the noun carries the weight. */
+  outcomes: [
+    { lead: "Identify the", noun: "Source" },
+    { lead: "Define the", noun: "Standard" },
+    { lead: "Build the", noun: "Structure" },
+  ],
   sessions: [
     {
       label: "Session one",
@@ -273,7 +303,8 @@ export const reset = {
     lines: [
       "A Knowledge Architect. She builds the systems that let capable people own their work and their lives rather than perform them.",
       "She created The Autonomy Code, a five-pillar framework for ownership and self-governance, and founded The NO GraGra Practice. NO GraGra is Yoruba in origin and means no frantic energy, no unnecessary struggle. Slow first, then precise. It is the deliberate opposite of hustle.",
-      "She is the author of Decisions That Work, and she has spent over fifteen years building frameworks for people whose minds do not run on standard productivity advice, because hers does not either.",
+      "She is the author of NO GraGra and DIY Branding, and the creator of the Decisions That Work framework.",
+      "She has spent over fifteen years building frameworks for people whose minds do not run on standard productivity advice, because hers does not either.",
     ],
     pull: "People do not fail their goals. They succeed at standards they never chose.",
   },

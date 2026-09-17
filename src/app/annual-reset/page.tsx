@@ -35,8 +35,14 @@ const CheckMark = () => (
   </svg>
 );
 
-const CrossMark = () => (
-  <svg className="mt-0.5 size-5 shrink-0 text-fail" viewBox="0 0 20 20" fill="none" aria-hidden>
+/** On the black panel the red lifts to a lighter tint so the mark stays legible. */
+const CrossMark = ({ onDark = false }: { onDark?: boolean }) => (
+  <svg
+    className={`mt-0.5 size-5 shrink-0 ${onDark ? "text-fail-soft" : "text-fail"}`}
+    viewBox="0 0 20 20"
+    fill="none"
+    aria-hidden
+  >
     <circle cx="10" cy="10" r="8.25" stroke="currentColor" strokeWidth="1.5" />
     <path d="m7.25 7.25 5.5 5.5m0-5.5-5.5 5.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
   </svg>
@@ -78,32 +84,7 @@ const PenIcon = () => (
   </svg>
 );
 
-/** Audit to Source: look closely, then trace it back. */
-const SearchIcon = () => (
-  <svg {...iconProps}>
-    <circle cx="10.5" cy="10.5" r="6.5" />
-    <path d="m20.5 20.5-5.2-5.2" />
-  </svg>
-);
-
-/** Align to Standard: the line you choose to hold. */
-const RulerIcon = () => (
-  <svg {...iconProps}>
-    <rect x="3" y="8.5" width="18" height="7" rx="1.5" />
-    <path d="M7 8.5v3M11 8.5v2M15 8.5v3M19 8.5v2" />
-  </svg>
-);
-
-/** Anchor to Structure: what holds when the year gets hard. */
-const AnchorIcon = () => (
-  <svg {...iconProps}>
-    <circle cx="12" cy="5" r="2.25" />
-    <path d="M12 7.25V21M5 13a7 7 0 0 0 14 0M3.5 13H7M17 13h3.5" />
-  </svg>
-);
-
 const sourceIcons = [<KeyIcon key="key" />, <PeopleIcon key="people" />, <PenIcon key="pen" />];
-const moveIcons = [<SearchIcon key="search" />, <RulerIcon key="ruler" />, <AnchorIcon key="anchor" />];
 
 /** Number on the left, icon in a hairline ring on the right, one row. */
 const CardIndex = ({
@@ -228,10 +209,10 @@ const AnnualResetPage = () => (
           <div className="mt-10 grid flex-1 grid-cols-[0.72fr_1.28fr] items-end gap-16 max-lg:grid-cols-1 max-lg:gap-10 max-md:mt-8">
             <Reveal delay={0.2} className="max-lg:order-2">
               <Sketch
-                src="/images/reset/reset-hero.webp"
-                alt="Graphite sketch of a woman at a table at the end of the day, drawing one line in gold on the page in front of her"
+                src="/images/reset/reset-hero-poster.webp"
+                alt="The Annual Reset 4.0 poster: a graphite sketch of a woman writing in her notebook with a gold pen, her head resting on one hand, beside a mug reading Higher standards, brighter days"
                 preload
-                aspect="aspect-[5/4]"
+                aspect="aspect-square"
               />
             </Reveal>
 
@@ -272,7 +253,10 @@ const AnnualResetPage = () => (
               <Eyebrow>Where you are</Eyebrow>
             </Reveal>
             <Reveal delay={0.08}>
-              <p className="mt-6 text-body-xl text-slate">{reset.whereYouAre.lead}</p>
+              <p className="mt-6 text-body-xl text-slate">
+                {reset.whereYouAre.lead}{" "}
+                <strong className="font-semibold text-ink">{reset.whereYouAre.leadEmphasis}</strong>
+              </p>
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mt-6 font-heading text-h4 text-ink">{reset.whereYouAre.turn}</p>
@@ -383,22 +367,44 @@ const AnnualResetPage = () => (
           <Reveal className="mx-auto max-w-[760px] text-center">
             <Eyebrow>Three sessions, three moves, three things you keep</Eyebrow>
           </Reveal>
+          {/* The session name leads; the number is a quiet eyebrow; each card
+              carries a full drawing rather than an icon. */}
           <div className="mt-12 grid grid-cols-3 gap-5 max-lg:grid-cols-1 max-md:mt-8">
             {reset.moves.map((move, i) => (
               <Reveal key={move.number} delay={i * 0.1} className="h-full">
-                <article className="flex h-full flex-col rounded-card bg-white p-8 max-md:p-6">
-                  <CardIndex number={move.number} icon={moveIcons[i]} size="text-stat" />
-                  <h3 className="mt-6 text-h5">{move.title}</h3>
-                  <p className="mt-3 text-body-m text-slate">{move.body}</p>
-                  <p className="mt-auto pt-6 font-heading text-body-s tracking-[0.16em] text-slate uppercase">
-                    {move.date}
-                  </p>
+                <article className="flex h-full flex-col overflow-hidden rounded-card bg-white">
+                  <Image
+                    src={move.image.src}
+                    alt={move.image.alt}
+                    width={1200}
+                    height={1500}
+                    sizes="(max-width: 1023px) 100vw, 33vw"
+                    className="aspect-[4/5] w-full object-cover max-lg:aspect-[3/2]"
+                  />
+                  <div className="flex flex-1 flex-col p-8 max-md:p-6">
+                    <p className="font-heading text-body-s tracking-[0.2em] text-slate uppercase">
+                      Session {move.number}
+                    </p>
+                    <h3 className="mt-3 font-heading text-display leading-none font-bold tracking-[-0.02em] text-ink">
+                      {move.title}
+                    </h3>
+                    <p className="mt-5 text-body-l text-slate">{move.body}</p>
+                    <p className="mt-auto pt-6 font-heading text-body-s tracking-[0.16em] text-slate uppercase">
+                      {move.date}
+                    </p>
+                  </div>
                 </article>
               </Reveal>
             ))}
           </div>
-          <Reveal className="mx-auto mt-14 max-w-[820px] text-center max-md:mt-10">
-            <p className="font-heading text-h3 text-ink">{reset.movesLine}</p>
+          {/* Three outcome sentences, one per line, the noun in bold. Each
+              line is kept whole so the noun never wraps on its own. */}
+          <Reveal className="mx-auto mt-14 flex max-w-[820px] flex-col items-center gap-2 text-center max-md:mt-10">
+            {reset.outcomes.map((line) => (
+              <p key={line.noun} className="font-heading text-h3 whitespace-nowrap text-ink max-md:text-h4">
+                {line.lead} <strong className="font-bold">{line.noun}</strong>.
+              </p>
+            ))}
           </Reveal>
         </div>
       </section>
@@ -424,7 +430,9 @@ const AnnualResetPage = () => (
                   <p className="font-heading text-body-s tracking-[0.2em] text-slate uppercase">
                     {session.label}
                   </p>
-                  <h3 className="mt-3 text-h2">{session.name}</h3>
+                  <h3 className="mt-3 font-heading text-display leading-none font-bold tracking-[-0.02em]">
+                    {session.name}
+                  </h3>
                   <p className="mt-2 text-body-s text-slate italic">{session.when}</p>
                   <p className="mt-6 text-body-l text-slate">{session.body}</p>
                   {session.extra && (
@@ -446,28 +454,34 @@ const AnnualResetPage = () => (
           <Reveal>
             <Eyebrow>Who this is for</Eyebrow>
           </Reveal>
-          <div className="mt-10 grid grid-cols-2 gap-14 max-md:mt-6 max-md:grid-cols-1 max-md:gap-10">
-            <Reveal>
-              <h3 className="text-h5">This is for you if</h3>
-              <ul className="mt-6 flex flex-col gap-4">
-                {reset.forList.map((line) => (
-                  <li key={line} className="flex gap-3">
-                    <CheckMark />
-                    <span className="text-body-l text-slate">{line}</span>
-                  </li>
-                ))}
-              </ul>
+          {/* Two panels on two grounds: ivory for the people it is for, black
+              for the people it is not, a gold rule on each. */}
+          <div className="mt-10 grid grid-cols-2 gap-6 max-md:mt-6 max-md:grid-cols-1 max-md:gap-6">
+            <Reveal className="h-full">
+              <div className="h-full rounded-card border-t-2 border-brand bg-white p-9 max-md:p-6">
+                <h3 className="text-h4 text-ink">This is for you if</h3>
+                <ul className="mt-7 flex flex-col gap-4">
+                  {reset.forList.map((line) => (
+                    <li key={line} className="flex gap-3">
+                      <CheckMark />
+                      <span className="text-body-l text-slate">{line}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </Reveal>
-            <Reveal delay={0.1}>
-              <h3 className="text-h5">This is not for you if</h3>
-              <ul className="mt-6 flex flex-col gap-4">
-                {reset.notForList.map((line) => (
-                  <li key={line} className="flex gap-3">
-                    <CrossMark />
-                    <span className="text-body-l text-slate">{line}</span>
-                  </li>
-                ))}
-              </ul>
+            <Reveal delay={0.1} className="h-full">
+              <div className="h-full rounded-card border-t-2 border-brand-soft bg-ink p-9 text-paper max-md:p-6">
+                <h3 className="text-h4 text-paper">This is not for you if</h3>
+                <ul className="mt-7 flex flex-col gap-4">
+                  {reset.notForList.map((line) => (
+                    <li key={line} className="flex gap-3">
+                      <CrossMark onDark />
+                      <span className="text-body-l text-paper/85">{line}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </Reveal>
           </div>
         </div>

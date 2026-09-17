@@ -107,7 +107,7 @@ export const Footer = () => (
           </text>
         </svg>
         <span className="mt-3 block text-body-s text-mute">
-          A NoGraGra Practice · DK Jonah
+          The No GraGra Practice · DK Jonah
         </span>
       </Link>
       <div className="pt-6">

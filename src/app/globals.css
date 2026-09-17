@@ -16,6 +16,7 @@
   /* Qualification marks only (fit lists), at the client's request. */
   --color-pass: #1b6b45;
   --color-fail: #b3261e;
+  --color-fail-soft: #e8766b;
   --color-line: #dadee1;
   --color-breath: #ddeaf2;
   --color-breath-tint: #eaf2f8;
