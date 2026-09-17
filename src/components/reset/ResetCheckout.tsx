@@ -209,14 +209,29 @@ export const ResetCheckout = ({ phase }: { phase: BookingPhase }) => {
       {/* Summary, agreement and the way to Stripe */}
       <Reveal delay={0.1} className="sticky top-28 max-lg:static">
         <aside className="rounded-card bg-ink p-8 text-paper max-md:p-6">
-          <p className="font-heading text-body-s tracking-[0.2em] text-mute uppercase">Your seat</p>
-          <h2 className="mt-4 font-heading text-h5 text-paper">{reset.name}</h2>
-          <ul className="mt-4 flex flex-col gap-1 text-body-m text-paper/85">
-            <li>{reset.dates}</li>
-            <li>
-              {reset.time}, {reset.format.toLowerCase()}
-            </li>
-          </ul>
+          <div className="flex items-start justify-between gap-6">
+            <div>
+              <p className="font-heading text-body-s tracking-[0.2em] text-mute uppercase">
+                Your seat
+              </p>
+              <h2 className="mt-4 font-heading text-h5 text-paper">{reset.name}</h2>
+              <ul className="mt-4 flex flex-col gap-1 text-body-m text-paper/85">
+                <li>{reset.dates}</li>
+                <li>
+                  {reset.time}, {reset.format.toLowerCase()}
+                </li>
+              </ul>
+            </div>
+            {/* The Reset's figure from the cover art, cropped to the drawing. */}
+            <Image
+              src="/images/reset/reset-seat-figure.webp"
+              alt=""
+              width={640}
+              height={800}
+              sizes="140px"
+              className="aspect-[4/5] w-[140px] shrink-0 rounded-2xl object-cover ring-1 ring-brand-soft/40 max-md:w-[104px]"
+            />
+          </div>
 
           <div className="mt-6 border-t border-paper/15 pt-6">
             <p className="text-body-s text-mute">Included</p>
