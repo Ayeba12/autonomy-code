@@ -550,7 +550,7 @@ const AnnualResetPage = () => (
             <Sketch
               src="/images/reset/reset-included-products.webp"
               alt="The Reset products together: the REset Portfolio, the Audit, Align and Anchor workbooks in black and gold, the burgundy PACE Planner, and the LifeSync Stencil sheet"
-              caption="The Portfolio, the three Workbooks, the LifeSync Stencil and the PACE Planner, all as PDFs."
+              caption="The REset Portfolio and its three workbooks, the LifeSync Stencil and the PACE Planner, all as PDFs."
             />
           </Reveal>
         </div>
