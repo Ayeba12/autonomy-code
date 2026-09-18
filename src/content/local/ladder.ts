@@ -14,8 +14,8 @@ export const ladder: LadderTier[] = [
     price: "£97",
     order: 1,
     image: {
-      src: "/images/five-pillars.webp",
-      alt: "Five stone pillars at golden hour, sea and sky behind them",
+      src: "/images/home/tier-scan.webp",
+      alt: "Graphite sketch of a woman at an open doorway, map in hand, the door frame drawn in gold",
     },
   },
   {
@@ -27,8 +27,8 @@ export const ladder: LadderTier[] = [
     price: "£5,000 for the year",
     order: 2,
     image: {
-      src: "/images/tier-sabi-core.webp",
-      alt: "Warm structured interior in golden light",
+      src: "/images/home/tier-sabi-core.webp",
+      alt: "Graphite sketch of five people around a large table working over one plan, its grid drawn in gold",
     },
   },
   {
@@ -40,8 +40,8 @@ export const ladder: LadderTier[] = [
     price: "From £10,000 for the year",
     order: 3,
     image: {
-      src: "/images/tier-legacy.webp",
-      alt: "A single quiet form in warm, still light",
+      src: "/images/home/tier-legacy.webp",
+      alt: "Graphite sketch of two women in quiet conversation at a desk by a tall window, a bound book open between them, its page edges in gold",
     },
   },
 ];

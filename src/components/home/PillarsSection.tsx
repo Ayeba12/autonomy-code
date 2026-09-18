@@ -17,10 +17,10 @@ export const PillarsSection = ({ pillars }: { pillars: Pillar[] }) => (
           <div className="mt-6 flex items-center gap-5">
             <h2 className="text-h2">The Five</h2>
             <Image
-              src="/images/five-pillars.webp"
+              src="/images/home/five-pillars-sketch.webp"
               alt=""
-              width={120}
-              height={72}
+              width={240}
+              height={144}
               className="h-16 w-28 rounded-full object-cover max-md:h-10 max-md:w-16"
             />
             <h2 className="text-h2">Pillars</h2>
