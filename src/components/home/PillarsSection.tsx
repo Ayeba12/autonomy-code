@@ -52,9 +52,10 @@ export const PillarsSection = ({ pillars }: { pillars: Pillar[] }) => (
                 <Image
                   src={pillar.image.src}
                   alt={pillar.image.alt}
-                  width={280}
-                  height={180}
-                  className="h-40 w-full rounded-xl object-cover"
+                  width={560}
+                  height={560}
+                  sizes="280px"
+                  className="aspect-square w-full rounded-xl object-cover"
                 />
                 <p className="mt-3 text-body-s text-mute">{pillar.name}</p>
                 <p className="mt-1 text-body-m text-white">{pillar.movement}</p>
