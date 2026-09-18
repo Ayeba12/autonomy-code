@@ -32,15 +32,21 @@ export const HomeHero = () => {
         style={reduced ? undefined : { scale }}
       >
         <Image
-          src="/images/five-pillars.webp"
-          alt="Five stone pillars at golden hour, sea and sky behind them"
+          src="/images/home/hero-peace-given-structure.webp"
+          alt="Graphite drawing of a woman sitting at ease on the porch of a small house she has made her own, the timber frame drawn in gold"
           fill
           preload
           sizes="100vw"
-          className="object-cover"
+          className="object-cover object-[72%_50%]"
         />
       </motion.div>
-      <div className="absolute inset-0 -z-10 bg-ink/50" aria-hidden />
+      {/* The drawing sits under an ink wash so the white type stays legible;
+          the wash deepens towards the bottom where the intro block sits. */}
+      <div className="absolute inset-0 -z-10 bg-ink/55" aria-hidden />
+      <div
+        className="absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t from-ink/70 to-transparent"
+        aria-hidden
+      />
 
       <div className="container-site flex flex-1 flex-col justify-between text-white">
         <div>
