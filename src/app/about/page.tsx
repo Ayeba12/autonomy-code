@@ -90,37 +90,42 @@ const pathSteps: { label: string; subLabel: string; icon: string; description: s
   },
 ];
 
-/** Hover-reveal backgrounds for the numbers cards (Stodio counter pattern). */
+/**
+ * Hover-reveal backgrounds for the numbers cards (Stodio counter pattern):
+ * drawings already in the house set, one per number. Years building →
+ * the porch; people trained → the cohort at the table; people mentored →
+ * two women across a table; people coached → the private desk.
+ */
 const statBackgrounds = [
-  "/images/five-pillars.webp",
-  "/images/gallery-02.webp",
-  "/images/gallery-03.webp",
-  "/images/gallery-04.webp",
+  "/images/home/hero-peace-given-structure.webp",
+  "/images/home/tier-sabi-core.webp",
+  "/images/pillars/pillar-relationships.webp",
+  "/images/home/tier-legacy.webp",
 ];
 
-/** Tilted four-up showcase under the highlight statement. */
+/** Tilted four-up showcase under the highlight statement, all graphite. */
 const showcase = [
   {
-    src: "/images/about-showcase-01.webp",
-    alt: "A man seated alone by tall windows, looking out over a misty lake at first light",
+    src: "/images/about/about-window.webp",
+    alt: "Graphite sketch of a woman seated by a tall window, looking out over a misty lake, the dawn line drawn in gold",
     tilt: "-rotate-3",
     offset: "mt-8",
   },
   {
-    src: "/images/about-showcase-02.webp",
-    alt: "A closed notebook, a glass of water, and a pebble on an oak table in morning sun",
+    src: "/images/about/about-still-life.webp",
+    alt: "Graphite sketch of a closed notebook, a glass of water and a single pebble on a table, the pebble in gold",
     tilt: "rotate-2",
     offset: "",
   },
   {
-    src: "/images/about-showcase-03.webp",
-    alt: "Ripples widening on a still lake at sunrise",
+    src: "/images/about/about-ripples.webp",
+    alt: "Graphite sketch of ripples widening across still water from one dropped stone, the innermost ring in gold",
     tilt: "-rotate-2",
     offset: "mt-12",
   },
   {
-    src: "/images/about-showcase-04.webp",
-    alt: "Two wooden chairs and a small table on a porch at golden hour",
+    src: "/images/about/about-porch.webp",
+    alt: "Graphite sketch of two wooden chairs and a small table on a porch, one cup drawn in gold",
     tilt: "rotate-3",
     offset: "mt-4",
   },
@@ -260,8 +265,8 @@ const AboutPage = async () => {
               <h2 className="mx-auto max-w-[880px] text-h2">
                 From hidden captivity to{" "}
                 <ImageWipe
-                  src="/images/about-highlight.webp"
-                  alt="Five stone pillars standing by the sea at golden hour"
+                  src="/images/home/five-pillars-sketch.webp"
+                  alt="Graphite sketch of five stone pillars in a row, the middle one in gold"
                 />{" "}
                 owned ground. Walked first, then taught.
               </h2>
