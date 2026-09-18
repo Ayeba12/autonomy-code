@@ -13,14 +13,17 @@ export const ScanClose = () => (
     <div className="container-site">
       <div className="relative isolate overflow-hidden rounded-card-lg bg-ink px-10 py-24 max-lg:py-16 max-md:rounded-card max-md:px-6 max-md:py-12">
         <Image
-          src="/images/scan-close-book.webp"
+          src="/images/scan/scan-map.webp"
           alt=""
           fill
           sizes="100vw"
-          className="-z-10 object-cover object-bottom opacity-45"
+          className="-z-10 object-cover object-bottom"
         />
+        {/* Ink wash over the drawing so the white type reads; deeper at the
+            top where the headline sits, the map showing through below. */}
+        <div className="absolute inset-0 -z-10 bg-ink/55" aria-hidden />
         <div
-          className="absolute inset-0 -z-10 bg-linear-to-b from-ink via-ink/70 to-ink/30"
+          className="absolute inset-0 -z-10 bg-linear-to-b from-ink via-ink/60 to-ink/10"
           aria-hidden
         />
         <div className="mx-auto flex max-w-[820px] flex-col items-center gap-9 text-center max-md:gap-6">

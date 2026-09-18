@@ -25,8 +25,8 @@ export const ScanHero = () => (
           <span className="block">
             You have an{" "}
             <ImageWipe
-              src="/images/scan-key.webp"
-              alt="A brass key resting on a sunlit oak table"
+              src="/images/scan/scan-key-sketch.webp"
+              alt="Graphite sketch of a single key, filled in gold"
               trigger="load"
               preload
               delay={0.5}

@@ -42,7 +42,7 @@ const OwnershipScanPage = async () => {
         <ScanHero />
         <VideoSlot
           src="https://cms.theautonomycode.com/wp-content/uploads/tac/reclaiming-your-practice.mp4"
-          poster="/images/scan-close-book.webp"
+          poster="/images/scan/scan-map.webp"
         />
         <ScanMarquee movements={pillars.map((pillar) => pillar.movement)} />
         <Recognition />

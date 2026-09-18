@@ -1,16 +1,57 @@
+import type { ReactNode } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { ScanCta } from "./ScanCta";
 
+const iconProps = {
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.5,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+  "aria-hidden": true,
+};
+
+/** Line icons, one per deliverable, in the same stroke family as the pressure cards. */
+const icons: Record<string, ReactNode> = {
+  scan: (
+    // Twenty-five questions: a list with one line ticked.
+    <svg {...iconProps}>
+      <path d="M8 6.5h12M8 12h12M8 17.5h12" />
+      <path d="m3.5 6.5 1 1 2-2" />
+      <circle cx="4.5" cy="12" r="0.9" fill="currentColor" stroke="none" />
+      <circle cx="4.5" cy="17.5" r="0.9" fill="currentColor" stroke="none" />
+    </svg>
+  ),
+  session: (
+    // Ninety minutes, one to one: a clock face with the hand held.
+    <svg {...iconProps}>
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M12 7.5V12l3 2" />
+    </svg>
+  ),
+  map: (
+    // The written map: a folded sheet with one route on it.
+    <svg {...iconProps}>
+      <path d="M3.5 6.5 9 4.5l6 2 5.5-2v13L15 19.5l-6-2-5.5 2v-13Z" />
+      <path d="M9 4.5v13M15 6.5v13" />
+    </svg>
+  ),
+};
+
 const included = [
   {
+    icon: "scan",
     title: "The Ownership Scan.",
     body: "A 25-question pre-assessment completed conversationally before the call. You answer from your current reality, not from who you wish you were.",
   },
   {
+    icon: "session",
     title: "The 90-minute Autonomy Map-Out Session.",
     body: "A live 1:1 session focused on the one priority pillar the scan surfaces. Identity. Resources. Strategy. We do not try to fix everything. We find the first place ownership needs to be reclaimed.",
   },
   {
+    icon: "map",
     title: "The Personal Autonomy Map.",
     body: "A written, personalised map delivered 48 to 72 hours after the session. You also receive a 15-minute walkthrough call so you can understand the map clearly and know what to do first.",
   },
@@ -43,11 +84,14 @@ export const OfferSection = () => (
                     aria-hidden
                   />
                 )}
-                <span className="z-10 flex size-12 shrink-0 items-center justify-center rounded-full bg-paper font-heading text-h6 text-brand max-md:size-10">
-                  {i + 1}
+                <span className="z-10 flex size-12 shrink-0 items-center justify-center rounded-full bg-paper text-brand max-md:size-10 [&_svg]:size-6 max-md:[&_svg]:size-5">
+                  {icons[item.icon]}
                 </span>
                 <div className="pt-2">
-                  <h3 className="text-h5">{item.title}</h3>
+                  <p className="font-heading text-body-s tracking-[0.2em] text-brand-hot uppercase">
+                    0{i + 1}
+                  </p>
+                  <h3 className="mt-2 text-h5">{item.title}</h3>
                   <p className="mt-3 text-body-m text-smoke">{item.body}</p>
                 </div>
               </article>

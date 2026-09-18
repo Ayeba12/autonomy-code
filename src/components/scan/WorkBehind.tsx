@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
 import type { Pillar } from "@/content/types";
 
@@ -19,15 +20,25 @@ export const WorkBehind = ({ pillars }: { pillars: Pillar[] }) => (
         <div className="mt-12 max-md:mt-8">
           {pillars.map((pillar, i) => (
             <Reveal key={pillar.slug} delay={i * 0.06}>
-              <div className="flex items-baseline gap-10 border-t border-white/15 py-5 max-md:flex-col max-md:gap-1.5">
-                <span className="w-8 shrink-0 font-heading text-body-s text-brand-soft">
+              <div className="flex items-center gap-10 border-t border-white/15 py-5 max-lg:gap-6 max-md:flex-wrap max-md:gap-x-4 max-md:gap-y-2">
+                {pillar.image && (
+                  <Image
+                    src={pillar.image.src}
+                    alt=""
+                    width={160}
+                    height={160}
+                    sizes="80px"
+                    className="size-20 shrink-0 rounded-2xl object-cover max-md:size-14"
+                  />
+                )}
+                <span className="w-8 shrink-0 font-heading text-body-s text-brand-soft max-md:w-auto">
                   {pillar.index}
                 </span>
-                <h3 className="w-56 shrink-0 font-heading text-h5 text-white max-md:w-auto">
+                <h3 className="w-52 shrink-0 font-heading text-h5 text-white max-md:w-auto">
                   {pillar.name}
                   <span className="text-brand">.</span>
                 </h3>
-                <p className="text-body-l text-mute">{pillar.movement}</p>
+                <p className="text-body-l text-mute max-md:basis-full">{pillar.movement}</p>
               </div>
             </Reveal>
           ))}

@@ -12,10 +12,10 @@ export const Recognition = () => (
         <Reveal className="sticky top-32 max-lg:static">
           <div className="overflow-hidden rounded-card">
             <Image
-              src="/images/scan-path.webp"
-              alt="A stone path climbing into the mist"
-              width={1122}
-              height={1402}
+              src="/images/scan/scan-borrowed-jacket.webp"
+              alt="Graphite sketch of a composed professional woman in a tailored jacket a size too big for her, pulling one loose thread, drawn in gold, from the cuff"
+              width={1000}
+              height={1250}
               sizes="(min-width: 1024px) 40vw, 100vw"
               className="aspect-4/5 w-full object-cover max-lg:aspect-3/2"
             />
