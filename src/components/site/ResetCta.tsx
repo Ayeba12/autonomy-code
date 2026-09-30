@@ -2,15 +2,16 @@ import { Button } from "@/components/ui/Button";
 
 /**
  * The main button, sitewide, while the Annual Reset is on sale: a white
- * pill with DK's photo on the left and a diagonal arrow (the Stodio
- * "Book a call" pattern), reading simply "Annual Reset". Header, body
- * closes and footer all use it, with the date line beneath where there
- * is room.
+ * pill with the Reset cover figure on the left and a diagonal arrow (the
+ * Stodio "Book a call" pattern), reading "The Annual Reset 4.0". Header,
+ * body closes and footer all use it, with the date line beneath where
+ * there is room.
  */
-export const RESET_CTA_LABEL = "Annual Reset";
+export const RESET_CTA_LABEL = "The Annual Reset 4.0";
 export const RESET_CTA_HREF = "/annual-reset";
 export const RESET_CTA_LINE = "27 November, 4 and 5 December 2026 · 7 pm UK · Online";
-export const RESET_CTA_AVATAR = "/images/dk-jonah.png";
+/** The woman from the Reset cover art, cropped to her face. */
+export const RESET_CTA_AVATAR = "/images/reset/reset-avatar.webp";
 
 interface ResetCtaProps {
   variant?: "brand" | "gold" | "light";
