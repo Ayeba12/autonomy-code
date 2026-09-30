@@ -1,45 +1,92 @@
+"use client";
+
 import Image from "next/image";
+import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { useRef } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/Button";
+import { Tag } from "@/components/ui/Tag";
 
 /**
- * Centered hero for The Method on the in-conversation image-band
- * pattern: rounded dark photo band with an ink scrim, display headline
- * with an inline image wipe, two buttons, and a quiet meta row along
- * the bottom. Copy: content.md §4.2.
+ * The Method hero on the home-hero shape: a graphite drawing of a woman
+ * walking out of a lattice-walled room onto open ground, the path in
+ * gold, under an ink wash; headline up top, the three words and the
+ * standfirst along the bottom. Copy: content.md §4.2.
  */
-export const MethodHero = () => (
-  <section className="relative isolate m-2 overflow-hidden rounded-card pt-44 pb-12 max-lg:pt-36 max-md:pt-28 max-md:pb-8">
-    <Image
-      src="/images/method-hero-gradient.webp"
-      alt=""
-      fill
-      preload
-      sizes="100vw"
-      className="-z-10 object-cover"
-    />
-    <div className="absolute inset-0 -z-10 bg-ink/50" aria-hidden />
-    <div className="container-site text-white">
-      <div className="flex flex-col items-center text-center">
-        <Reveal>
-          <h1 className="max-w-[1000px] text-display">
-            From hidden captivity to self-governance.
-          </h1>
-        </Reveal>
-        <Reveal delay={0.15}>
-          <div className="mt-9 flex flex-wrap justify-center gap-3">
-            <Button href="/work-together" variant="outline-light">
-              Work Together
-            </Button>
-          </div>
-        </Reveal>
-      </div>
-      <Reveal delay={0.25}>
-        <div className="mt-16 flex items-center justify-between border-t border-white/25 pt-5 text-body-s text-mute max-md:mt-10">
-          <span>The Method</span>
-          <span>Five pillars · One system</span>
+export const MethodHero = () => {
+  const ref = useRef<HTMLElement>(null);
+  const reduced = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  const scale = useTransform(scrollYProgress, [0, 1], [1.3, 1]);
+
+  return (
+    <section
+      ref={ref}
+      className="relative isolate m-2 flex min-h-[88vh] flex-col overflow-hidden rounded-card pt-40 pb-10 max-lg:pt-32 max-md:min-h-[80vh] max-md:pt-28"
+    >
+      <motion.div
+        className="absolute inset-0 -z-10"
+        style={reduced ? undefined : { scale }}
+      >
+        <Image
+          src="/images/method/method-hero.webp"
+          alt="Graphite drawing of a woman walking out of a room drawn as a lattice of thin bars, onto open ground, the path ahead in gold"
+          fill
+          preload
+          sizes="100vw"
+          className="object-cover object-[38%_50%]"
+        />
+      </motion.div>
+      <div className="absolute inset-0 -z-10 bg-ink/55" aria-hidden />
+      <div
+        className="absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t from-ink/70 to-transparent"
+        aria-hidden
+      />
+
+      <div className="container-site flex flex-1 flex-col justify-between text-white">
+        <div>
+          <Reveal>
+            <Tag tone="light">The Method</Tag>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <h1 className="mt-5 max-w-[900px] text-display">
+              From hidden captivity
+              <br />
+              to self-governance.
+            </h1>
+          </Reveal>
         </div>
-      </Reveal>
-    </div>
-  </section>
-);
+
+        <div className="flex items-end justify-between gap-10 pt-16 max-lg:flex-col max-lg:items-start">
+          <Reveal
+            delay={0.2}
+            className="flex gap-14 text-body-l max-lg:gap-8 max-md:flex-col max-md:gap-2"
+          >
+            {["Clarity", "Structure", "Self-trust"].map((word) => (
+              <span key={word} className="flex items-center gap-1.5">
+                <span className="text-brand">+</span> {word}
+              </span>
+            ))}
+          </Reveal>
+          <Reveal delay={0.3} className="max-w-[460px]">
+            <h2 className="font-body text-h5">
+              Five pillars, one operating flow, and a year built around how
+              you actually work.
+            </h2>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Button href="/work-together" variant="brand">
+                Work Together
+              </Button>
+              <Button href="/autonomy-compass" variant="light">
+                Start with the Compass
+              </Button>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+};
