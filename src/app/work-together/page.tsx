@@ -209,30 +209,28 @@ const WorkTogetherPage = async () => {
         {/* Everything else — each group beside its drawing */}
         <section className="bg-white section-pad">
           <div className="container-site flex flex-col gap-24 max-md:gap-14">
-            {menuGroups.map((group, g) => {
+            {menuGroups.map((group) => {
               const art = groupArt[group.key];
               return (
                 <div
                   key={group.key}
-                  className={`grid grid-cols-[300px_1fr] items-start gap-14 max-lg:grid-cols-1 max-lg:gap-8 ${
-                    g % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
-                  }`}
+                  className="grid grid-cols-[320px_1fr] items-start gap-16 max-lg:grid-cols-1 max-lg:gap-8"
                 >
-                  <Reveal className="lg:sticky lg:top-32">
-                    <Eyebrow>{group.label}</Eyebrow>
-                    <h2 className="mt-3 text-h3">{group.note}</h2>
+                  <Reveal>
                     {art && (
-                      <div className="mt-8 overflow-hidden rounded-card max-lg:hidden">
+                      <div className="mb-6 overflow-hidden rounded-card max-lg:hidden">
                         <Image
                           src={art.src}
                           alt={art.alt}
                           width={1000}
                           height={1250}
-                          sizes="300px"
+                          sizes="320px"
                           className="aspect-[4/3] w-full object-cover"
                         />
                       </div>
                     )}
+                    <Eyebrow>{group.label}</Eyebrow>
+                    <h2 className="mt-3 text-h4">{group.note}</h2>
                   </Reveal>
                   <Reveal delay={0.1}>
                     {group.rows.map((row) => (
