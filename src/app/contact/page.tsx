@@ -57,12 +57,12 @@ const ContactPage = () => (
               className="relative min-h-[560px] overflow-hidden rounded-card max-md:aspect-[3/2] max-md:min-h-0"
             >
               <Image
-                src="/images/contact-phone.webp"
-                alt="A vintage black telephone handset hanging by its cord against a plain wall"
+                src="/images/pillars/pillar-message.webp"
+                alt="Graphite sketch of a woman writing one clear line in gold across a large sheet, crumpled drafts pushed aside"
                 fill
                 preload
                 sizes="(min-width: 768px) 50vw, 100vw"
-                className="object-cover"
+                className="object-cover object-[50%_40%]"
               />
             </Reveal>
           </div>

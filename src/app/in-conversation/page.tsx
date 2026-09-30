@@ -33,15 +33,17 @@ const InConversationPage = async () => {
       <main>
         {/* Hero — dark image band on the Stodio blogs-hero pattern */}
         <section className="relative isolate m-2 overflow-hidden rounded-card pt-44 pb-24 max-lg:pt-36 max-md:pt-28 max-md:pb-14">
+          {/* The drawing of two women in conversation, under an ink wash so
+              the white headline reads. */}
           <Image
-            src="/images/in-conversation-hero.jpg"
+            src="/images/pillars/pillar-relationships.webp"
             alt=""
             fill
             preload
             sizes="100vw"
-            className="-z-10 object-cover"
+            className="-z-10 object-cover object-[50%_38%]"
           />
-          <div className="absolute inset-0 -z-10 bg-ink/50" aria-hidden />
+          <div className="absolute inset-0 -z-10 bg-ink/60" aria-hidden />
           <div className="container-site">
             <Reveal className="flex flex-col items-center gap-5 text-center text-white">
               <Tag tone="light">In Conversation</Tag>
