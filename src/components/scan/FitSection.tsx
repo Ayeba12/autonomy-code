@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
 
 const forYou = [
@@ -50,29 +51,49 @@ export const FitSection = () => (
     <div className="container-site">
       <div className="mx-auto grid max-w-[1060px] grid-cols-2 gap-6 max-md:grid-cols-1">
         <Reveal className="h-full">
-          <div className="h-full rounded-card bg-white p-10 max-md:p-6">
-            <h2 className="text-h5">This is for you if</h2>
-            <ul className="mt-8 flex flex-col gap-5 max-md:mt-5">
-              {forYou.map((line) => (
-                <li key={line} className="flex gap-4">
-                  <Spark />
-                  <span className="text-body-l text-smoke">{line}</span>
-                </li>
-              ))}
-            </ul>
+          <div className="h-full overflow-hidden rounded-card bg-white">
+            <Image
+              src="/images/about/about-fit-for.webp"
+              alt="Graphite sketch of a composed woman seated in a quiet room, looking out of a tall window, the light on the sill drawn in gold"
+              width={1000}
+              height={1250}
+              sizes="(max-width: 767px) 100vw, 50vw"
+              className="aspect-[2/1] w-full object-cover object-[50%_30%]"
+            />
+            <div className="p-10 max-md:p-6">
+              <h2 className="text-h5">This is for you if</h2>
+              <ul className="mt-8 flex flex-col gap-5 max-md:mt-5">
+                {forYou.map((line) => (
+                  <li key={line} className="flex gap-4">
+                    <Spark />
+                    <span className="text-body-l text-smoke">{line}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </Reveal>
         <Reveal delay={0.12} className="h-full">
-          <div className="h-full rounded-card bg-paper-2 p-10 max-md:p-6">
-            <h2 className="text-h5">This is not for you if</h2>
-            <ul className="mt-8 flex flex-col gap-5 max-md:mt-5">
-              {notForYou.map((line) => (
-                <li key={line} className="flex gap-4">
-                  <Cross />
-                  <span className="text-body-l text-smoke">{line}</span>
-                </li>
-              ))}
-            </ul>
+          <div className="h-full overflow-hidden rounded-card bg-paper-2">
+            <Image
+              src="/images/about/about-fit-not-for.webp"
+              alt="Graphite sketch of a desk with a teetering stack of self-help books and frameworks, and one thin open notebook with a single line drawn in gold"
+              width={1000}
+              height={1250}
+              sizes="(max-width: 767px) 100vw, 50vw"
+              className="aspect-[2/1] w-full object-cover object-[50%_45%]"
+            />
+            <div className="p-10 max-md:p-6">
+              <h2 className="text-h5">This is not for you if</h2>
+              <ul className="mt-8 flex flex-col gap-5 max-md:mt-5">
+                {notForYou.map((line) => (
+                  <li key={line} className="flex gap-4">
+                    <Cross />
+                    <span className="text-body-l text-smoke">{line}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </Reveal>
       </div>

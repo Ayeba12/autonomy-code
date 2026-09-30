@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import { Reveal } from "@/components/motion/Reveal";
 import { AboutDk } from "@/components/scan/AboutDk";
 import { FitSection } from "@/components/scan/FitSection";
 import { GroundSection } from "@/components/scan/GroundSection";
@@ -39,6 +41,29 @@ const AutonomyCompassPage = async () => {
       <Navbar tone="dark" />
       <main className="bg-paper">
         <ScanHero />
+        {/* Where the briefing film will sit once reshot: for now, the
+            drawing of a woman at the end of the day, drawing one line. */}
+        <section className="pb-20 max-lg:pb-14 max-md:pb-10">
+          <div className="container-site">
+            <Reveal>
+              <figure className="mx-auto max-w-[960px]">
+                <div className="overflow-hidden rounded-card-lg max-md:rounded-card">
+                  <Image
+                    src="/images/reset/reset-hero.webp"
+                    alt="Graphite sketch of a woman at a table at the end of the day, drawing one line in gold on the page in front of her"
+                    width={1600}
+                    height={1293}
+                    sizes="(max-width: 1023px) 100vw, 960px"
+                    className="aspect-video w-full object-cover object-[50%_40%]"
+                  />
+                </div>
+                <figcaption className="mt-3 text-center text-body-s text-slate">
+                  Where it happened, and what to claim back first.
+                </figcaption>
+              </figure>
+            </Reveal>
+          </div>
+        </section>
         <ScanMarquee
           movements={pillars.map(
             (pillar) => compassMovements[pillar.slug] ?? pillar.movement,

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { ReactNode } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { ScanCta } from "./ScanCta";
@@ -39,6 +40,22 @@ const icons: Record<string, ReactNode> = {
   ),
 };
 
+/** A drawing beside each deliverable, from the house set. */
+const art: Record<string, { src: string; alt: string }> = {
+  scan: {
+    src: "/images/reset/reset-move-audit.webp",
+    alt: "Graphite sketch of a woman with a magnifying glass tracing footprints across a ledger back to the first, in gold",
+  },
+  session: {
+    src: "/images/pillars/pillar-relationships.webp",
+    alt: "Graphite sketch of two women leaning in across a small table, a single gold thread running between their hands",
+  },
+  map: {
+    src: "/images/scan/scan-map.webp",
+    alt: "Graphite sketch of a woman leaning over a map, one finger on the route she has chosen, drawn in gold",
+  },
+};
+
 const included = [
   {
     icon: "scan",
@@ -73,18 +90,28 @@ export const OfferSection = () => (
         <div className="flex flex-col">
           {included.map((item, i) => (
             <Reveal key={item.title} delay={i * 0.1}>
-              <article className="relative flex gap-8 pb-12 pl-2 max-md:gap-5 max-md:pb-8">
+              <article className="relative flex gap-8 pb-12 max-md:gap-5 max-md:pb-8">
                 {/* Rail line connecting the steps */}
                 {i < included.length - 1 && (
                   <span
-                    className="absolute top-14 left-[26px] h-[calc(100%-3.5rem)] w-px bg-line max-md:left-[22px]"
+                    className="absolute top-28 left-14 h-[calc(100%-7rem)] w-px bg-line max-md:top-24 max-md:left-12"
                     aria-hidden
                   />
                 )}
-                <span className="z-10 flex size-12 shrink-0 items-center justify-center rounded-full bg-paper text-brand max-md:size-10 [&_svg]:size-6 max-md:[&_svg]:size-5">
-                  {icons[item.icon]}
-                </span>
-                <div className="pt-2">
+                <div className="relative z-10 shrink-0 overflow-hidden rounded-2xl bg-paper">
+                  <Image
+                    src={art[item.icon].src}
+                    alt={art[item.icon].alt}
+                    width={1000}
+                    height={1250}
+                    sizes="112px"
+                    className="size-28 object-cover max-md:size-24"
+                  />
+                  <span className="absolute right-2 bottom-2 flex size-8 items-center justify-center rounded-full bg-white/90 text-brand [&_svg]:size-4">
+                    {icons[item.icon]}
+                  </span>
+                </div>
+                <div className="pt-1">
                   <p className="font-heading text-body-s tracking-[0.2em] text-brand-hot uppercase">
                     0{i + 1}
                   </p>
