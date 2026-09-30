@@ -24,7 +24,7 @@ export const megaColumns: { title: string; links: MegaLink[] }[] = [
     title: "The Ladder",
     links: [
       { label: "The Autonomy Compass", href: "/autonomy-compass", thumb: "/images/home/tier-scan.webp" },
-      { label: "SABI CORE", href: "/sabi-core", thumb: "/images/home/tier-sabi-core.webp" },
+      { label: "SABI CORE", href: "/sabi-core", thumb: "/images/pillars/pillar-relationships.webp" },
       { label: "Legacy Builder", href: "/legacy", thumb: "/images/home/tier-legacy.webp" },
     ],
   },

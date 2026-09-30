@@ -27,8 +27,8 @@ export const ladder: LadderTier[] = [
     price: "£5,000 for the year",
     order: 2,
     image: {
-      src: "/images/home/tier-sabi-core.webp",
-      alt: "Graphite sketch of five people around a large table working over one plan, its grid drawn in gold",
+      src: "/images/pillars/pillar-relationships.webp",
+      alt: "Graphite sketch of two women leaning in across a small table, a single gold thread running between their hands",
     },
   },
   {
