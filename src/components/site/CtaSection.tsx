@@ -1,6 +1,6 @@
 import { Reveal } from "@/components/motion/Reveal";
-import { Button } from "@/components/ui/Button";
 import { Tag } from "@/components/ui/Tag";
+import { ResetCta } from "./ResetCta";
 
 /** The single black close band, once per page (content.md §4.1 soft close). */
 export const CtaSection = () => (
@@ -11,9 +11,7 @@ export const CtaSection = () => (
           <Tag tone="light">When you are ready</Tag>
           <h2 className="text-display">The door is one step.</h2>
           <p className="text-body-xl text-mute">No rush. No force. No gra gra.</p>
-          <Button href="/ownership-scan" variant="brand" className="mt-3">
-            Take the Ownership Scan
-          </Button>
+          <ResetCta className="mt-3" lineClassName="text-mute" />
         </Reveal>
       </div>
     </div>

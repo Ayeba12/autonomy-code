@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   ),
   title: {
-    default: "The Autonomy Code · A NoGraGra Practice",
+    default: "The Autonomy Code · The No GraGra Practice",
     template: "%s · The Autonomy Code",
   },
   description:

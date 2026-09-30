@@ -35,15 +35,14 @@ export const ScanClose = () => (
           </Reveal>
           <Reveal delay={0.1}>
             <p className="text-body-xl text-mute">
-              Find where ownership has been outsourced. Reclaim the first piece.
-              Build from owned ground.
+              You don&rsquo;t need a better plan. You need a life you have
+              actually claimed.
             </p>
           </Reveal>
           <Reveal delay={0.2} className="flex flex-col items-center gap-4">
             <ScanCta />
             <p className="text-body-s text-mute">
-              Walk away knowing exactly where it went, and what to reclaim
-              first.
+              Walk away knowing exactly where it went, and what to claim first.
             </p>
           </Reveal>
         </div>

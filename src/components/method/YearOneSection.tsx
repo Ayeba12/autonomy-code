@@ -33,11 +33,12 @@ export const YearOneSection = ({ stats }: { stats: StatItem[] }) => (
             className="mt-6 flex max-w-[520px] flex-col gap-4"
           >
             <p className="text-body-xl text-smoke">
-              Delivered in quarterly cohorts. One pillar per quarter, with
-              diagnostic deepening across all five over the year.
+              A year, one to one. You work on what you are actually building,
+              one pillar at a time where that is what it takes, with diagnostic
+              deepening across all five over the year.
             </p>
             <p className="text-body-xl text-smoke">
-              Small cohorts, held gently and held to account.
+              Held closely, and held to account.
             </p>
           </Reveal>
         </div>

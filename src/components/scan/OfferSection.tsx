@@ -42,31 +42,28 @@ const icons: Record<string, ReactNode> = {
 const included = [
   {
     icon: "scan",
-    title: "The Ownership Scan.",
-    body: "A 25-question pre-assessment completed conversationally before the call. You answer from your current reality, not from who you wish you were.",
+    title: "The Autonomy Compass.",
+    body: "Twenty-five statements you take before the call. For each one, you choose how true it is of you right now, not how you would like it to be. It takes about ten minutes. Your result shows the shape of your five pillars, your profile, the pillar to claim first, and one move you can make straight away.",
   },
   {
     icon: "session",
-    title: "The 90-minute Autonomy Map-Out Session.",
-    body: "A live 1:1 session focused on the one priority pillar the scan surfaces. Identity. Resources. Strategy. We do not try to fix everything. We find the first place ownership needs to be reclaimed.",
+    title: "The Claim Intensive.",
+    body: "Ninety minutes, live, one-to-one, on the single pillar that lets the others hold. We do not try to fix everything. We work the area your result brings into focus.",
   },
   {
     icon: "map",
-    title: "The Personal Autonomy Map.",
-    body: "A written, personalised map delivered 48 to 72 hours after the session. You also receive a 15-minute walkthrough call so you can understand the map clearly and know what to do first.",
+    title: "The Autonomy Blueprint.",
+    body: "Written after the session: what is going on, what we cleared, and what to build next. It comes with a 15-minute walkthrough call so you know exactly what to do first, plus the recording and playbook, so you can keep working from it.",
   },
 ];
 
 /**
- * The offer (content.md §4.4, verbatim words) — the three deliverables as
- * a numbered rail beside a sticky booking card holding the £97 and the
- * gold CTA. `id="book"` is the interim CTA anchor (see ScanCta).
+ * What you get (copy v3 §7, verbatim words): the three deliverables as a
+ * numbered rail beside a sticky price card holding the £97 and the gold
+ * CTA, which goes straight to Stripe.
  */
 export const OfferSection = () => (
-  <section
-    id="book"
-    className="scroll-mt-28 bg-white py-28 max-lg:py-20 max-md:py-14"
-  >
+  <section className="bg-white py-28 max-lg:py-20 max-md:py-14">
     <div className="container-site">
       <Reveal className="mx-auto max-w-[760px] text-center">
         <h2 className="text-h2">Three things, one payment.</h2>
@@ -117,18 +114,19 @@ export const OfferSection = () => (
                 >
                   <path d="M10 1l1.8 6.2L18 9l-6.2 1.8L10 17l-1.8-6.2L2 9l6.2-1.8L10 1z" />
                 </svg>
-                The Ownership Scan
+                The Autonomy Compass
               </p>
               <p className="bg-linear-to-b from-gold-light via-brand-soft to-brand bg-clip-text font-heading text-stat leading-none text-transparent">
                 £97
               </p>
+              <p className="text-body-s text-mute">Everything above, one payment.</p>
               <div className="w-16 border-t border-white/15" aria-hidden />
               <p className="text-body-l text-white">
-                You leave with one clear reclaim move. Not a list. Not a
-                performance plan. One next act of ownership.
+                You leave with one clear move. Not a list. Not a performance
+                plan. One next act of ownership.
               </p>
               <ScanCta />
-              <p className="text-body-s text-mute">A map, not a verdict.</p>
+              <p className="text-body-s text-mute">A reading, not a verdict.</p>
             </div>
           </aside>
         </Reveal>

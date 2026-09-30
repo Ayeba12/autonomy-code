@@ -10,26 +10,25 @@ import { ScanFaq } from "@/components/scan/ScanFaq";
 import { ScanHero } from "@/components/scan/ScanHero";
 import { ScanMarquee } from "@/components/scan/ScanMarquee";
 import { ShiftQuote } from "@/components/scan/ShiftQuote";
-import { VideoSlot } from "@/components/scan/VideoSlot";
-import { WorkBehind } from "@/components/scan/WorkBehind";
+import { WorkBehind, compassMovements } from "@/components/scan/WorkBehind";
 import { Navbar } from "@/components/site/Navbar";
 import { content } from "@/content/source";
 
 export const metadata: Metadata = {
-  title: "The Ownership Scan",
+  title: "The Autonomy Compass",
   description:
-    "A £97 diagnostic for coaches and consultants. Twenty-five questions, a 90-minute Map-Out Session, and a written Personal Autonomy Map.",
+    "A £97 door for coaches and consultants who have built something real and privately sense it was built for the wrong reasons. Twenty-five statements, a 90-minute Claim Intensive, and a written Autonomy Blueprint.",
 };
 
 /**
- * The Ownership Scan — the £97 paid front door (content.md §4.4, verbatim
- * words; the pillar section shows all five per client direction). The
- * bands alternate ivory, white, breath blue, and ink for rhythm: inline
- * image wipe in the hero, movement ticker, icon cards, ink pillar band,
- * counted numbers, sticky booking card, and this page's own black close
- * (ScanClose) — the shared CtaSection is NOT rendered here.
+ * /autonomy-compass — the £97 paid front door, formerly the Ownership
+ * Scan (which redirects here). Copy v3, 29 Sept 2026, verbatim: ten
+ * sections, every button to the Stripe Payment Link. The briefing film
+ * is being reshot and returns once edited, so no video slot for now.
+ * The page carries its own black close; the shared CtaSection is not
+ * rendered here.
  */
-const OwnershipScanPage = async () => {
+const AutonomyCompassPage = async () => {
   const [faqs, pillars] = await Promise.all([
     content.getFaqs(),
     content.getPillars(),
@@ -40,11 +39,11 @@ const OwnershipScanPage = async () => {
       <Navbar tone="dark" />
       <main className="bg-paper">
         <ScanHero />
-        <VideoSlot
-          src="https://cms.theautonomycode.com/wp-content/uploads/tac/reclaiming-your-practice.mp4"
-          poster="/images/scan/scan-map.webp"
+        <ScanMarquee
+          movements={pillars.map(
+            (pillar) => compassMovements[pillar.slug] ?? pillar.movement,
+          )}
         />
-        <ScanMarquee movements={pillars.map((pillar) => pillar.movement)} />
         <Recognition />
         <PressureCards />
         <GroundSection />
@@ -60,4 +59,4 @@ const OwnershipScanPage = async () => {
   );
 };
 
-export default OwnershipScanPage;
+export default AutonomyCompassPage;

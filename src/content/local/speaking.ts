@@ -6,7 +6,7 @@ export const speaking: SpeakingInfo = {
     "Autonomy and hidden captivity",
     "Self-trust and decisions",
     "Knowledge architecture, turning expertise into owned systems",
-    "The NoGraGra philosophy, building without force",
+    "The NO GraGra philosophy, building without force",
   ],
   audiences: [
     "Professional communities",

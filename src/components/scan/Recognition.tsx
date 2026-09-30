@@ -2,8 +2,8 @@ import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
 
 /**
- * Recognition beat (content.md §4.4, verbatim words): the misty path
- * beside the prose — a calm two-column split on the Stodio about pattern.
+ * Recognition beat (Compass copy v3 §2, verbatim words): the borrowed
+ * jacket beside the prose, a calm two-column split on the Stodio about pattern.
  */
 export const Recognition = () => (
   <section className="bg-white py-28 max-lg:py-20 max-md:py-14">
@@ -54,8 +54,10 @@ export const Recognition = () => (
             </p>
           </Reveal>
           <Reveal delay={0.08}>
-            <p className="font-heading text-h5 text-ink">
-              That is not a discipline problem. It is an ownership problem.
+            <p className="text-body-xl text-smoke">
+              You have tried to think your way out. You have tried to plan your
+              way out. Goal setting. Productivity systems. Courses. None of it
+              touched the part that actually hurts.
             </p>
           </Reveal>
         </div>

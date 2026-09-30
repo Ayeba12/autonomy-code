@@ -5,8 +5,7 @@ import { CountUp } from "@/components/motion/CountUp";
 import { ImageWipe } from "@/components/motion/ImageWipe";
 import { Reveal } from "@/components/motion/Reveal";
 import { Navbar } from "@/components/site/Navbar";
-import { ArrowLink } from "@/components/ui/ArrowLink";
-import { Button } from "@/components/ui/Button";
+import { ResetCta } from "@/components/site/ResetCta";
 import { Tag } from "@/components/ui/Tag";
 import { content } from "@/content/source";
 
@@ -46,7 +45,7 @@ const movements: { heading: string; paragraphs: string[] }[] = [
     heading: "That is autonomy.",
     paragraphs: [
       "Not independence from people. Independence from captivity. Enough clarity to know what you want, enough structure to pursue it, and enough self-trust to lead from that place, without losing yourself to pressure, confusion, or fear.",
-      "The work changed its name as I changed, from Decisions That Work, to NoGraGra, to The Autonomy Code. Each name was simply me seeing a little more clearly.",
+      "The work changed its name as I changed, from Decisions That Work, to NO GraGra, to The Autonomy Code. Each name was simply me seeing a little more clearly.",
       "Life forced me into my own life. I do not force anyone else. That is why this work is gentle on purpose. No rush. No force. No gra gra. Because I know what it is to be shoved into your own life by pain, and I would rather walk you there with calm.",
     ],
   },
@@ -172,7 +171,7 @@ const AboutPage = async () => {
             </div>
             <Reveal delay={0.25}>
               <div className="mt-16 flex items-center justify-between gap-6 font-heading text-body-s tracking-[0.2em] text-mute uppercase max-md:mt-10 max-md:flex-col max-md:items-center max-md:gap-2 max-md:text-center">
-                <span>A NoGraGra Practice</span>
+                <span>The No GraGra Practice</span>
                 <span>DK Jonah · Knowledge Architect</span>
               </div>
             </Reveal>
@@ -264,10 +263,7 @@ const AboutPage = async () => {
             <Reveal className="text-center">
               <h2 className="mx-auto max-w-[880px] text-h2">
                 From hidden captivity to{" "}
-                <ImageWipe
-                  src="/images/home/five-pillars-sketch.webp"
-                  alt="Graphite sketch of five stone pillars in a row, the middle one in gold"
-                />{" "}
+                <ImageWipe src="/images/home/five-pillars-sketch.webp" alt="" />{" "}
                 owned ground. Walked first, then taught.
               </h2>
             </Reveal>
@@ -422,14 +418,9 @@ const AboutPage = async () => {
                   Every case begins the same way.
                   <span className="block">With a diagnosis.</span>
                 </h2>
-                <Button href="/ownership-scan" variant="brand">
-                  Take the Ownership Scan
-                </Button>
-                <ArrowLink href="#" className="text-white">
-                  Read my full story
-                </ArrowLink>
+                <ResetCta lineClassName="text-mute" />
                 <p className="mt-6 text-body-xs tracking-[0.3em] text-mute">
-                  DK JONAH · NOGRAGRA · THE AUTONOMY CODE
+                  DK JONAH · NO GRAGRA · THE AUTONOMY CODE
                 </p>
               </Reveal>
             </div>

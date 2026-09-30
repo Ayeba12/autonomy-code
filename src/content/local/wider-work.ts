@@ -6,7 +6,7 @@ import type { WiderWorkLink } from "../types";
  */
 export const widerWork: WiderWorkLink[] = [
   {
-    name: "NoGraGra",
+    name: "NO GraGra",
     description: "The house and the philosophy. No rush, no force, gentle on purpose.",
     href: "#",
   },

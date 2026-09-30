@@ -339,7 +339,8 @@ export const reset = {
     {
       quote: "I learnt a lot from her just through the first consultation. I really appreciate her patience and professionalism. She didn't push me into anything, which made her easy to trust.",
       name: "Ope",
-      role: "Client",
+      /* No role: Ope's name stands on its own (DK, 30 Sept). */
+      role: "",
     },
   ],
   pricing: {

@@ -27,7 +27,7 @@ const PrivacyPolicyPage = () => (
         <div className="mx-auto flex max-w-[841px] flex-col gap-10">
           <LegalBlock heading="1. Who we are">
             <p>
-              The Autonomy Code is operated by The NoGraGra Practice (the
+              The Autonomy Code is operated by The No GraGra Practice (the
               &quot;controller&quot; of your personal data under UK data
               protection law, including the UK GDPR and the Data Protection Act
               2018). Questions about this policy, or about your data, can be

@@ -185,7 +185,7 @@ const SeatButton = ({
  * /annual-reset — the yearly workshop, powered by The Autonomy Code.
  * Landing page copy is client-final (content/reset.ts). Black holds the
  * hero and the close; the page carries its own seat CTA throughout, so the
- * shared Scan CtaSection is deliberately not rendered (as on /ownership-scan).
+ * shared CtaSection is deliberately not rendered (as on /autonomy-compass).
  */
 const AnnualResetPage = () => (
   <>
@@ -603,41 +603,29 @@ const AnnualResetPage = () => (
             </p>
           </Reveal>
           <div className="mt-12 grid grid-cols-3 gap-5 max-lg:grid-cols-1 max-md:mt-8">
-            {reset.quotes.map((item, i) => {
-              const initials = item.name
-                .split(/[\s-]+/)
-                .slice(0, 2)
-                .map((part) => part[0])
-                .join("")
-                .toUpperCase();
-              return (
-                <Reveal key={item.name} delay={i * 0.1} className="h-full">
-                  <figure className="flex h-full flex-col rounded-card bg-paper p-8 max-md:p-6">
-                    <span
-                      className="font-heading text-[64px] leading-[0.6] text-brand-hot"
-                      aria-hidden
-                    >
-                      &ldquo;
-                    </span>
-                    <blockquote className="mt-6 flex-1">
-                      <p className="text-body-xl text-ink">{item.quote}</p>
-                    </blockquote>
-                    <figcaption className="mt-8 flex items-center gap-4 border-t border-line pt-6">
-                      <span
-                        className="flex size-11 shrink-0 items-center justify-center rounded-full bg-ink font-heading text-body-s tracking-wide text-paper"
-                        aria-hidden
-                      >
-                        {initials}
-                      </span>
-                      <span className="flex flex-col gap-0.5">
-                        <span className="font-heading text-body-l text-ink">{item.name}</span>
-                        <span className="text-body-s text-slate">{item.role}</span>
-                      </span>
-                    </figcaption>
-                  </figure>
-                </Reveal>
-              );
-            })}
+            {reset.quotes.map((item, i) => (
+              <Reveal key={item.name} delay={i * 0.1} className="h-full">
+                <figure className="flex h-full flex-col rounded-card bg-paper p-8 max-md:p-6">
+                  <span
+                    className="font-heading text-[64px] leading-[0.6] text-brand-hot"
+                    aria-hidden
+                  >
+                    &ldquo;
+                  </span>
+                  <blockquote className="mt-6 flex-1">
+                    <p className="text-body-xl text-ink">{item.quote}</p>
+                  </blockquote>
+                  {/* Name and role are separate block lines, so they never
+                      run together in text, in a screen reader, or on the page. */}
+                  <figcaption className="mt-8 border-t border-line pt-6">
+                    <p className="font-heading text-body-l text-ink">{item.name}</p>
+                    {item.role && (
+                      <p className="mt-1 text-body-s text-slate italic">{item.role}</p>
+                    )}
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>

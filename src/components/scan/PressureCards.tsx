@@ -42,18 +42,18 @@ const pressures = [
   },
   {
     title: "Unsupported Execution",
-    body: "You keep trying to execute through plans that were not built from your actual life, capacity, patterns, or constraints. So the plan works in theory, but not in your hands. When energy is high, you move. When capacity drops, everything stalls. You are not undisciplined. You are trying to sustain ownership inside a structure that was never designed around how you actually operate.",
+    body: "You keep trying to execute through plans that were not built from your actual life, capacity, patterns, or constraints. So the plan works in theory, but not in your hands. When energy is high, you move. When capacity drops, everything stalls. You are not undisciplined. You are trying to sustain a life that does not fit inside a structure that was never designed around how you actually operate.",
   },
 ];
 
-/** The three pressures — white cards with line icons and gold numerals (content.md §4.4). */
+/** The three places it goes — white cards with line icons and gold numerals (copy v3 §3). */
 export const PressureCards = () => (
   <section className="py-28 max-lg:py-20 max-md:py-14">
     <div className="container-site">
       <Reveal className="mx-auto max-w-[780px] text-center">
         <h2 className="text-h4">
-          The briefing will help you see three places ownership may have been
-          outsourced.
+          The briefing will help you see three places your life stopped being
+          fully yours.
         </h2>
       </Reveal>
       <div className="mt-14 grid grid-cols-3 gap-6 max-lg:grid-cols-1 max-md:mt-8">

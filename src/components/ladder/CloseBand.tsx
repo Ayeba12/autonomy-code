@@ -7,6 +7,8 @@ interface CloseBandProps {
   title: string;
   buttonLabel: string;
   buttonHref: string;
+  /** Small line beneath the button (dates, for the Reset). */
+  line?: string;
 }
 
 /**
@@ -18,6 +20,7 @@ export const CloseBand = ({
   title,
   buttonLabel,
   buttonHref,
+  line,
 }: CloseBandProps) => (
   <section className="bg-ink">
     <div className="container-site py-24 max-md:py-16">
@@ -27,6 +30,7 @@ export const CloseBand = ({
         <Button href={buttonHref} variant="brand" className="mt-2">
           {buttonLabel}
         </Button>
+        {line && <p className="text-body-s text-mute">{line}</p>}
       </Reveal>
     </div>
   </section>

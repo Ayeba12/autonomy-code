@@ -135,41 +135,8 @@ const SpeakingPage = async () => {
           </div>
         </section>
 
-        {/* Light proof — quote and clip slots, quiet placeholders */}
-        <section className="pb-20 max-md:pb-12">
-          <div className="container-site">
-            <Reveal>
-              <div className="h-px w-16 bg-line" aria-hidden />
-              <h2 className="mt-7 text-h3">In the room</h2>
-            </Reveal>
-            <div className="mt-10 grid grid-cols-2 gap-6 max-md:grid-cols-1">
-              <Reveal>
-                <figure className="flex h-full flex-col justify-between gap-6 rounded-card bg-breath-tint p-10 max-md:p-7">
-                  <blockquote className="text-h6">
-                    A word from a recent host will sit here, chosen with care.
-                  </blockquote>
-                  <figcaption className="text-body-s text-smoke">
-                    Host quote to follow
-                  </figcaption>
-                </figure>
-              </Reveal>
-              <Reveal delay={0.08}>
-                {/* Privacy-enhanced embed: youtube-nocookie keeps the
-                    cookie-page promise (no ad tracking). */}
-                <div className="aspect-video overflow-hidden rounded-card bg-ink">
-                  <iframe
-                    className="size-full"
-                    src="https://www.youtube-nocookie.com/embed/IOcuzdzBfx8"
-                    title="DK Jonah on stage"
-                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                  />
-                </div>
-              </Reveal>
-            </div>
-          </div>
-        </section>
+        {/* "In the room" (host quote + clip) returns once there is a real
+            quote and a working clip; placeholders removed 30 Sept 2026. */}
 
         {/* Enquiry */}
         <section className="pb-24 max-md:pb-14" id="enquire">

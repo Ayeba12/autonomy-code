@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
 import { CtaSection } from "@/components/site/CtaSection";
 import { Navbar } from "@/components/site/Navbar";
-import { Button } from "@/components/ui/Button";
+import { ResetCta } from "@/components/site/ResetCta";
 import { DiagonalArrow, DiagonalLink } from "@/components/ui/DiagonalLink";
 import { Tag } from "@/components/ui/Tag";
 import { content } from "@/content/source";
@@ -153,11 +153,9 @@ const WorkTogetherPage = async () => {
               >
                 <p className="text-body-xl text-smoke">
                   The whole menu in one calm view. Nothing is offered that is
-                  not on this page, and every engagement begins at the Scan.
+                  not on this page, and every engagement begins at the Compass.
                 </p>
-                <Button href="/ownership-scan" variant="brand" className="mt-8">
-                  Start with the Scan
-                </Button>
+                <ResetCta className="mt-8 items-start" />
               </Reveal>
             </div>
           </div>

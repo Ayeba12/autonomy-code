@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Logo } from "./Logo";
 import { megaColumns, moreLinks, primaryLinks } from "./nav-links";
+import { RESET_CTA_HREF, RESET_CTA_LABEL, RESET_CTA_LINE } from "./ResetCta";
 
 interface NavbarProps {
   /** "light" = white links (over dark heroes); "dark" = ink links (light pages). */
@@ -95,18 +96,15 @@ export const Navbar = ({ tone = "light" }: NavbarProps) => {
                       <p className="font-heading text-h6 text-ink">
                         One clear next step
                       </p>
-                      <p className="mt-2 text-body-s text-smoke">
-                        Twenty-five questions. Your pattern, your strained
-                        pillar, and your first move.
-                      </p>
+                      <p className="mt-2 text-body-s text-smoke">{RESET_CTA_LINE}</p>
                     </div>
                     <Button
-                      href="/ownership-scan"
+                      href={RESET_CTA_HREF}
                       variant="brand"
                       arrow={false}
                       className="mt-5 w-full"
                     >
-                      Take the Ownership Scan
+                      {RESET_CTA_LABEL}
                     </Button>
                   </div>
                 </div>
@@ -118,12 +116,12 @@ export const Navbar = ({ tone = "light" }: NavbarProps) => {
 
           <div className="flex items-center gap-4">
             <Button
-              href="/ownership-scan"
+              href={RESET_CTA_HREF}
               variant="brand"
               arrow={false}
               className="max-xl:hidden"
             >
-              Take the Ownership Scan
+              {RESET_CTA_LABEL}
             </Button>
             <button
               type="button"
@@ -207,13 +205,14 @@ export const Navbar = ({ tone = "light" }: NavbarProps) => {
           {/* Pinned action */}
           <div className="container-site border-t border-line py-5">
             <Button
-              href="/ownership-scan"
+              href={RESET_CTA_HREF}
               variant="brand"
               arrow={false}
               className="w-full"
             >
-              Take the Ownership Scan
+              {RESET_CTA_LABEL}
             </Button>
+            <p className="mt-3 text-center text-body-s text-smoke">{RESET_CTA_LINE}</p>
           </div>
         </div>
       )}

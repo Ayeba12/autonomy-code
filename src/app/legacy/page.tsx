@@ -6,7 +6,7 @@ import { ArrowLink } from "@/components/ui/ArrowLink";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
-  title: "Legacy",
+  title: "Legacy Builder",
   description:
     "The deepest room of the practice. One to two people at a time, rare and private, by invitation.",
 };
@@ -21,7 +21,7 @@ const LegacyPage = () => (
     <Navbar tone="dark" />
     <main className="bg-paper">
       <LadderHero
-        eyebrow="Legacy"
+        eyebrow="Legacy Builder"
         title="The deepest room."
         sub="One to two people at a time. Rare and private, by invitation."
       />
@@ -49,8 +49,8 @@ const LegacyPage = () => (
                 <Button href="/contact" variant="outline-dark">
                   Enquire in writing
                 </Button>
-                <ArrowLink href="/ownership-scan">
-                  Begin with the Scan
+                <ArrowLink href="/autonomy-compass">
+                  Begin with the Compass
                 </ArrowLink>
               </div>
             </Reveal>

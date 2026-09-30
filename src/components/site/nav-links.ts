@@ -23,17 +23,17 @@ export const megaColumns: { title: string; links: MegaLink[] }[] = [
   {
     title: "The Ladder",
     links: [
-      { label: "The Ownership Scan", href: "/ownership-scan", thumb: "/images/about-highlight.webp" },
-      { label: "SABI CORE", href: "/sabi-core", thumb: "/images/about-fit-01.webp" },
-      { label: "Legacy", href: "/legacy", thumb: "/images/about-showcase-04.webp" },
+      { label: "The Autonomy Compass", href: "/autonomy-compass", thumb: "/images/home/tier-scan.webp" },
+      { label: "SABI CORE", href: "/sabi-core", thumb: "/images/home/tier-sabi-core.webp" },
+      { label: "Legacy Builder", href: "/legacy", thumb: "/images/home/tier-legacy.webp" },
     ],
   },
   {
     title: "Elsewhere",
     links: [
-      { label: "The Wider Work", href: "/wider-work", thumb: "/images/about-fit-02.webp" },
-      { label: "Speaking", href: "/speaking", thumb: "/images/about-showcase-03.webp" },
-      { label: "Writing", href: "/writing", thumb: "/images/about-showcase-02.webp" },
+      { label: "The Wider Work", href: "/wider-work", thumb: "/images/about/about-window.webp" },
+      { label: "Speaking", href: "/speaking", thumb: "/images/about/about-ripples.webp" },
+      { label: "Writing", href: "/writing", thumb: "/images/about/about-still-life.webp" },
     ],
   },
 ];
@@ -41,9 +41,9 @@ export const megaColumns: { title: string; links: MegaLink[] }[] = [
 /** Flat list for the mobile menu. */
 export const moreLinks: NavLink[] = [
   { label: "The Annual Reset 4.0", href: "/annual-reset" },
-  { label: "The Ownership Scan", href: "/ownership-scan" },
+  { label: "The Autonomy Compass", href: "/autonomy-compass" },
   { label: "SABI CORE", href: "/sabi-core" },
-  { label: "Legacy", href: "/legacy" },
+  { label: "Legacy Builder", href: "/legacy" },
   { label: "Writing", href: "/writing" },
   { label: "The Wider Work", href: "/wider-work" },
   { label: "Speaking", href: "/speaking" },
@@ -65,9 +65,9 @@ export const footerColumns: { title: string; links: NavLink[] }[] = [
   {
     title: "The Ladder",
     links: [
-      { label: "The Ownership Scan", href: "/ownership-scan" },
+      { label: "The Autonomy Compass", href: "/autonomy-compass" },
       { label: "SABI CORE", href: "/sabi-core" },
-      { label: "Legacy", href: "/legacy" },
+      { label: "Legacy Builder", href: "/legacy" },
     ],
   },
   {

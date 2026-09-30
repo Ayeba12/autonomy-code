@@ -67,7 +67,7 @@ export const services: Service[] = [
     intro:
       "The Scan names the pillar. This is where you work it: one pillar, held closely, until the captivity is named precisely and loosened once.",
     price: "£250",
-    format: "90 minutes, one to one. After the Ownership Scan.",
+    format: "90 minutes, one to one. After the Autonomy Compass.",
     sections: [
       {
         heading: "What it is",
@@ -87,7 +87,7 @@ export const services: Service[] = [
       },
     ],
     forList: [
-      "You have taken the Ownership Scan and have your Personal Autonomy Map.",
+      "You have taken the Autonomy Compass and have your Personal Autonomy Map.",
       "You want depth on one pillar rather than a tour of all five.",
       "You are ready to act on one thing rather than plan five.",
     ],
@@ -96,7 +96,7 @@ export const services: Service[] = [
       "You want a general conversation about your practice.",
       "You want a plan for everything at once.",
     ],
-    cta: { label: "Take the Ownership Scan first", href: "/ownership-scan" },
+    cta: { label: "Take the Autonomy Compass first", href: "/autonomy-compass" },
     ctaNote: "Every engagement begins at the Scan. No exceptions.",
   },
 
@@ -208,7 +208,7 @@ export const services: Service[] = [
       },
       {
         heading: "How it differs",
-        body: "The Ownership Scan is the door and surfaces one pillar to work. The Pillar Intensive goes deep on that one. SyncCheck goes across all five at once. If you want depth, take the Intensive. If you want the map, take this.",
+        body: "The Autonomy Compass is the door and surfaces one pillar to work. The Pillar Intensive goes deep on that one. SyncCheck goes across all five at once. If you want depth, take the Intensive. If you want the map, take this.",
       },
     ],
     forList: [

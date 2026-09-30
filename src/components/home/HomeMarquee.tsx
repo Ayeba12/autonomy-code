@@ -2,7 +2,7 @@ import { Marquee } from "@/components/motion/Marquee";
 
 const tickerItems = [
   "In Conversation",
-  "NoGraGra",
+  "NO GraGra",
   "SABI OS",
   "Knowledge Architecture",
   "Decisions That Work",

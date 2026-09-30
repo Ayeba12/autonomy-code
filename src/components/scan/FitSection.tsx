@@ -5,11 +5,12 @@ const forYou = [
   "You are respected externally, but privately aware that your practice, identity, or execution does not feel fully yours.",
   "You know your private wisdom is stronger than your public clarity.",
   "You are tired of borrowing other people’s language, frameworks, or structures to explain work that is already deeper than what the market currently sees.",
-  "You are ready to stop performing inside borrowed ground and begin reclaiming ownership.",
+  "You are not looking for permission. You are looking for a structure that holds the decision once you have made it.",
 ];
 
 const notForYou = [
   "You want a hype formula.",
+  "You run on hustle and urgency, and you want it kept that way. This work is slow first, then precise.",
   "You want someone to shout you into action.",
   "You want a quick fix that ignores your real life.",
   "You want another personality test.",
@@ -75,9 +76,13 @@ export const FitSection = () => (
           </div>
         </Reveal>
       </div>
-      <Reveal className="mx-auto mt-20 max-w-[680px] text-center max-lg:mt-14 max-md:mt-10">
+      <Reveal className="mx-auto mt-20 flex max-w-[720px] flex-col gap-4 text-center max-lg:mt-14 max-md:mt-10">
         <p className="font-heading text-h5 text-ink">
           This is not a shame tool. It is a diagnostic.
+        </p>
+        <p className="text-body-xl text-smoke">
+          You are not broken or weak. You are unclaimed, and that is a
+          structure, not a character failing.
         </p>
       </Reveal>
     </div>

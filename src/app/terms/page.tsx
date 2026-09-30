@@ -38,8 +38,8 @@ const TermsPage = () => (
 
           <LegalBlock heading="1. The agreement">
             <p>
-              These terms govern the services offered by The NoGraGra Practice
-              through The Autonomy Code: the Ownership Scan, SABI CORE, Legacy,
+              These terms govern the services offered by The No GraGra Practice
+              through The Autonomy Code: the Autonomy Compass, SABI CORE, Legacy Builder,
               and speaking engagements. Booking or paying for a service means
               you accept these terms as they stand on that date.
             </p>

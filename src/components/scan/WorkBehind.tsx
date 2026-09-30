@@ -2,10 +2,18 @@ import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
 import type { Pillar } from "@/content/types";
 
+/** The five movements as written for the Compass page (copy v3 §5). */
+export const compassMovements: Record<string, string> = {
+  identity: "From borrowed identity to owned ground.",
+  message: "From private wisdom to public clarity.",
+  strategy: "From unsupported execution to self-governance.",
+  resources: "From scattered ownership to owned capacity.",
+  relationships: "From performed belonging to chosen support.",
+};
+
 /**
- * The work behind it — all five pillars on an ink band (user direction:
- * five, not §4.4's three; heading adjusted to match). Hairline rows hold
- * the long movement lines at every width.
+ * The five pillars on an ink band (copy v3 §5). Each row carries the
+ * pillar's drawing, its number, its name and its movement.
  */
 export const WorkBehind = ({ pillars }: { pillars: Pillar[] }) => (
   <section className="py-28 max-lg:py-20 max-md:py-14">
@@ -13,8 +21,7 @@ export const WorkBehind = ({ pillars }: { pillars: Pillar[] }) => (
       <div className="rounded-card-lg bg-ink px-14 py-16 max-lg:px-10 max-md:rounded-card max-md:px-6 max-md:py-10">
         <Reveal className="max-w-[760px]">
           <h2 className="text-h4 text-white">
-            The Autonomy Code moves you from hidden captivity to
-            self-governance through five pillars:
+            Ownership is held in five places. One of them is where yours went.
           </h2>
         </Reveal>
         <div className="mt-12 max-md:mt-8">
@@ -38,16 +45,22 @@ export const WorkBehind = ({ pillars }: { pillars: Pillar[] }) => (
                   {pillar.name}
                   <span className="text-brand">.</span>
                 </h3>
-                <p className="text-body-l text-mute max-md:basis-full">{pillar.movement}</p>
+                <p className="text-body-l text-mute max-md:basis-full">
+                  {compassMovements[pillar.slug] ?? pillar.movement}
+                </p>
               </div>
             </Reveal>
           ))}
           <div className="border-t border-white/15" aria-hidden />
         </div>
-        <Reveal className="mt-12 max-w-[680px] max-md:mt-8">
+        <Reveal className="mt-12 flex max-w-[680px] flex-col gap-4 max-md:mt-8">
           <p className="text-body-xl text-white">
+            The pillars are not equal. One will be lower than the rest. That is
+            the one to claim first.
+          </p>
+          <p className="text-body-xl text-mute">
             The goal is not to force yourself into another borrowed system. The
-            goal is to see where ownership went, and reclaim the first piece.
+            goal is to see where ownership went, and claim the first piece back.
           </p>
         </Reveal>
       </div>

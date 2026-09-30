@@ -23,6 +23,12 @@ const remoteWpPattern =
     : [];
 
 const nextConfig: NextConfig = {
+  /** The Ownership Scan became The Autonomy Compass (30 Sept 2026). */
+  async redirects() {
+    return [
+      { source: "/ownership-scan", destination: "/autonomy-compass", permanent: true },
+    ];
+  },
   images: {
     remotePatterns: [
       { protocol: "http", hostname: "localhost" },

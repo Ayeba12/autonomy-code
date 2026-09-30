@@ -42,8 +42,8 @@ const ContactPage = () => (
                     Speaking
                   </Link>
                   . For everything else, the{" "}
-                  <Link href="/ownership-scan" className={textLinkClasses}>
-                    Scan
+                  <Link href="/autonomy-compass" className={textLinkClasses}>
+                    Compass
                   </Link>{" "}
                   is the door.
                 </p>

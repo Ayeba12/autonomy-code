@@ -27,6 +27,11 @@ export const ShiftQuote = () => (
             You stop restarting and start building.
           </p>
         </Reveal>
+        <Reveal delay={0.25}>
+          <p className="font-heading text-h5 text-ink">
+            This is not motivation. This is architecture.
+          </p>
+        </Reveal>
       </div>
     </div>
   </section>

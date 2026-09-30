@@ -25,6 +25,12 @@ export const GroundSection = () => (
             </p>
           </Reveal>
           <Reveal delay={0.08}>
+            <p className="text-body-xl text-smoke">
+              Most people are not stuck because they lack information. They are
+              stuck because they lack ownership.
+            </p>
+          </Reveal>
+          <Reveal delay={0.08}>
             <p className="text-body-xl text-ink">
               The mechanism is ownership. Not ownership as a mindset. Ownership as
               an operating condition.

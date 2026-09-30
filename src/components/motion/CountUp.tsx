@@ -17,20 +17,22 @@ interface CountUpProps {
   className?: string;
 }
 
-/** Odometer-style count-up triggered when scrolled into view. */
+/**
+ * Odometer-style count-up triggered when scrolled into view. The real
+ * figure is in the markup from the start, so a page read without the
+ * animation (no JavaScript, a crawler, a screenshot) shows the true
+ * number rather than 0; the count runs up to it once in view.
+ */
 export const CountUp = ({ value, suffix = "", className }: CountUpProps) => {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.6 });
   const reduced = useReducedMotion();
-  const raw = useMotionValue(0);
+  const raw = useMotionValue(value);
   const rounded = useTransform(raw, (v) => Math.round(v).toString());
 
   useEffect(() => {
-    if (!inView) return;
-    if (reduced) {
-      raw.set(value);
-      return;
-    }
+    if (!inView || reduced) return;
+    raw.set(0);
     const controls = animate(raw, value, {
       duration: 1.6,
       ease: [0.16, 1, 0.3, 1],
@@ -48,7 +50,7 @@ export const CountUp = ({ value, suffix = "", className }: CountUpProps) => {
 
   return (
     <span className={className}>
-      <span ref={ref}>0</span>
+      <span ref={ref}>{value}</span>
       {suffix}
     </span>
   );
