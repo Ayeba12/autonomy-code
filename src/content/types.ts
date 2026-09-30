@@ -121,4 +121,6 @@ export interface WiderWorkLink {
   name: string;
   description: string;
   href: string;
+  /** A drawing for the room, from the house set. */
+  image?: ImageRef;
 }
