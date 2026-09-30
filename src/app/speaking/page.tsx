@@ -5,6 +5,7 @@ import { Navbar } from "@/components/site/Navbar";
 import { SpeakingEnquiryForm } from "@/components/speaking/SpeakingEnquiryForm";
 import { Tag } from "@/components/ui/Tag";
 import { content } from "@/content/source";
+import type { ImageRef } from "@/content/types";
 
 export const metadata: Metadata = {
   title: "Speaking",
@@ -12,21 +13,51 @@ export const metadata: Metadata = {
     "Invite DK Jonah to speak on autonomy, self-trust, and knowledge architecture. Keynotes, workshops, and panels. Rates by enquiry, in writing.",
 };
 
-/** Gold spark bullet (matches the Tag icon). */
-const Spark = () => (
-  <svg
-    className="mt-1.5 size-4 shrink-0 text-brand"
-    viewBox="0 0 20 20"
-    fill="currentColor"
-    aria-hidden
-  >
-    <path d="M10 1l1.8 6.2L18 9l-6.2 1.8L10 17l-1.8-6.2L2 9l6.2-1.8L10 1z" />
-  </svg>
+/** A drawing for each theme, in the order the content lists them. */
+const themeArt: ImageRef[] = [
+  {
+    src: "/images/method/method-hero.webp",
+    alt: "Graphite drawing of a woman walking out of a room drawn as a lattice of thin bars, onto open ground, the path ahead in gold",
+  },
+  {
+    src: "/images/pillars/pillar-strategy.webp",
+    alt: "Graphite sketch of a woman leaning over a map, one finger on the route she has chosen, drawn in gold",
+  },
+  {
+    src: "/images/pillars/pillar-resources.webp",
+    alt: "Graphite sketch of a woman at an open cabinet of well-ordered tools and ledgers, lifting out one key drawn in gold",
+  },
+  {
+    src: "/images/about/about-porch.webp",
+    alt: "Graphite sketch of two wooden chairs and a small table on a porch, one cup drawn in gold",
+  },
+];
+
+/** A drawing for each format, in the order the content lists them. */
+const formatArt: ImageRef[] = [
+  {
+    src: "/images/pillars/pillar-message.webp",
+    alt: "Graphite sketch of a woman writing one clear line in gold across a large sheet, crumpled drafts pushed aside",
+  },
+  {
+    src: "/images/reset/reset-move-align.webp",
+    alt: "Graphite sketch of two hands drawing one straight line along a ruler, the new line in gold",
+  },
+  {
+    src: "/images/pillars/pillar-relationships.webp",
+    alt: "Graphite sketch of two women leaning in across a small table, a single gold thread running between their hands",
+  },
+];
+
+/** Small uppercase label used for eyebrows across the page. */
+const Eyebrow = ({ children }: { children: string }) => (
+  <p className="font-heading text-body-s tracking-[0.2em] text-slate uppercase">{children}</p>
 );
 
 /**
- * /speaking — enquiry page for event hosts (content.md §4.11).
- * The one page where the Scan steps back: no CtaSection, no scan buttons.
+ * /speaking — enquiry page for event hosts (content.md §4.11), drawn in
+ * the house style. The one page where the Compass steps back: no
+ * CtaSection, no Compass buttons.
  */
 const SpeakingPage = async () => {
   const speaking = await content.getSpeaking();
@@ -35,71 +66,84 @@ const SpeakingPage = async () => {
     <>
       <Navbar tone="dark" />
       <main className="bg-paper">
-        {/* Hero */}
-        <section className="pt-48 pb-16 max-lg:pt-40 max-md:pt-32 max-md:pb-10">
-          <div className="container-site">
-            <Reveal className="max-w-[860px]">
+        {/* Hero — the headline beside a room at work */}
+        <section className="m-2 rounded-card bg-paper-2 pt-40 pb-14 max-lg:pt-32 max-md:pt-28 max-md:pb-10">
+          <div className="container-site grid grid-cols-[1fr_1fr] items-center gap-16 max-lg:grid-cols-1 max-lg:gap-10">
+            <Reveal className="max-w-[640px]">
               <Tag>Speaking</Tag>
-              <h1 className="mt-6 text-display">
-                A calm voice for rooms that think.
-              </h1>
-              <p className="mt-6 max-w-[600px] text-body-xl text-smoke">
+              <h1 className="mt-6 text-display">A calm voice for rooms that think.</h1>
+              <p className="mt-6 max-w-[560px] text-body-xl text-slate">
                 Talks, workshops, and panels on autonomy, self-trust, and the
                 quiet structure under a working life. Gentle on purpose.
               </p>
             </Reveal>
+            <Reveal delay={0.15}>
+              <div className="overflow-hidden rounded-card">
+                <Image
+                  src="/images/home/tier-sabi-core.webp"
+                  alt="Graphite sketch of five people around a large table working over one plan, one of them standing to explain it, the plan's grid drawn in gold"
+                  width={1600}
+                  height={1200}
+                  preload
+                  sizes="(max-width: 1023px) 100vw, 50vw"
+                  className="aspect-[4/3] w-full object-cover"
+                />
+              </div>
+            </Reveal>
           </div>
         </section>
 
-        {/* Themes — list beside one calm image */}
-        <section className="pb-20 max-md:pb-12">
+        {/* Themes — four cards, each with its drawing */}
+        <section className="pt-24 pb-20 max-lg:pt-16 max-md:pt-12 max-md:pb-14">
           <div className="container-site">
-            <div className="grid grid-cols-2 items-stretch gap-16 max-lg:grid-cols-1 max-lg:gap-10">
+            <Reveal className="flex items-end justify-between gap-8 max-md:flex-col max-md:items-start max-md:gap-3">
               <div>
-                <Reveal>
-                  <div className="h-px w-16 bg-line" aria-hidden />
-                  <h2 className="mt-7 text-h3">Themes</h2>
-                </Reveal>
-                <ul className="mt-10">
-                  {speaking.themes.map((theme, i) => (
-                    <li key={theme}>
-                      <Reveal delay={i * 0.06}>
-                        <div className="flex items-start gap-3 border-b border-line py-5">
-                          <Spark />
-                          <span className="text-body-xl">{theme}</span>
-                        </div>
-                      </Reveal>
-                    </li>
-                  ))}
-                </ul>
+                <Eyebrow>Themes</Eyebrow>
+                <h2 className="mt-4 text-h2">Four things she talks about.</h2>
               </div>
-              <Reveal
-                delay={0.1}
-                className="relative min-h-[420px] overflow-hidden rounded-card max-lg:aspect-[3/2] max-lg:min-h-0"
-              >
-                <Image
-                  src="/images/speaking-themes.webp"
-                  alt="A stone path climbing a grassy ridge into the mist"
-                  fill
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                  className="object-cover"
-                />
-              </Reveal>
+              <p className="max-w-[380px] pb-2 text-body-m text-slate">
+                Each one held calmly, and built for the room in front of her.
+              </p>
+            </Reveal>
+            <div className="mt-12 grid grid-cols-4 gap-5 max-lg:grid-cols-2 max-md:mt-8 max-md:grid-cols-1">
+              {speaking.themes.map((theme, i) => (
+                <Reveal key={theme} delay={i * 0.08} className="h-full">
+                  <article className="flex h-full flex-col overflow-hidden rounded-card bg-white">
+                    {themeArt[i] && (
+                      <Image
+                        src={themeArt[i].src}
+                        alt={themeArt[i].alt}
+                        width={1000}
+                        height={1250}
+                        sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 25vw"
+                        className="aspect-[4/3] w-full object-cover"
+                      />
+                    )}
+                    <div className="flex flex-1 flex-col p-7 max-md:p-6">
+                      <span className="font-heading text-body-s tracking-[0.2em] text-brand-hot uppercase">
+                        0{i + 1}
+                      </span>
+                      <p className="mt-3 font-heading text-h6 text-ink">{theme}</p>
+                    </div>
+                  </article>
+                </Reveal>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Audiences */}
-        <section className="pb-20 max-md:pb-12">
-          <div className="container-site">
+        {/* Audiences — quiet ruled grid on white */}
+        <section className="bg-white py-20 max-md:py-12">
+          <div className="container-site grid grid-cols-[320px_1fr] items-start gap-16 max-lg:grid-cols-1 max-lg:gap-8">
             <Reveal>
-              <div className="h-px w-16 bg-line" aria-hidden />
-              <h2 className="mt-7 text-h3">Who she speaks to</h2>
+              <Eyebrow>Who she speaks to</Eyebrow>
+              <h2 className="mt-4 text-h3">The rooms.</h2>
             </Reveal>
-            <div className="mt-10 grid max-w-[900px] grid-cols-2 gap-x-10 gap-y-6 max-md:grid-cols-1">
+            <div className="grid grid-cols-2 gap-x-10 gap-y-2 max-md:grid-cols-1">
               {speaking.audiences.map((audience, i) => (
                 <Reveal key={audience} delay={i * 0.06}>
-                  <p className="border-t border-line pt-4 text-body-l">
+                  <p className="flex items-center gap-3 border-t border-line py-5 text-body-l text-ink">
+                    <span className="size-1.5 shrink-0 rounded-full bg-brand" aria-hidden />
                     {audience}
                   </p>
                 </Reveal>
@@ -108,54 +152,75 @@ const SpeakingPage = async () => {
           </div>
         </section>
 
-        {/* Formats */}
-        <section className="pb-20 max-md:pb-12">
+        {/* Formats — three cards, each with its drawing */}
+        <section className="py-24 max-lg:py-16 max-md:py-12">
           <div className="container-site">
-            <Reveal>
-              <div className="h-px w-16 bg-line" aria-hidden />
-              <h2 className="mt-7 text-h3">Formats</h2>
+            <Reveal className="flex items-end justify-between gap-8 max-md:flex-col max-md:items-start max-md:gap-3">
+              <div>
+                <Eyebrow>Formats</Eyebrow>
+                <h2 className="mt-4 text-h2">Three ways into a room.</h2>
+              </div>
+              <div className="max-w-[380px] pb-2">
+                <p className="text-body-m text-ink">Rates by enquiry, in writing.</p>
+                <p className="mt-1 text-body-s text-slate">
+                  NHS and lived-experience work runs on a separate pathway.
+                </p>
+              </div>
             </Reveal>
-            <div className="mt-10 grid grid-cols-3 gap-6 max-lg:grid-cols-1">
+            <div className="mt-12 grid grid-cols-3 gap-5 max-lg:grid-cols-1 max-md:mt-8">
               {speaking.formats.map((format, i) => (
-                <Reveal key={format.name} delay={i * 0.08}>
-                  <div className="h-full rounded-card bg-white p-8 max-md:p-6">
-                    <h3 className="text-h6">{format.name}</h3>
-                    <div className="mt-4 h-px w-8 bg-line" aria-hidden />
-                    <p className="mt-4 text-body-m text-smoke">{format.note}</p>
-                  </div>
+                <Reveal key={format.name} delay={i * 0.08} className="h-full">
+                  <article className="flex h-full flex-col overflow-hidden rounded-card bg-white">
+                    {formatArt[i] && (
+                      <Image
+                        src={formatArt[i].src}
+                        alt={formatArt[i].alt}
+                        width={1000}
+                        height={1250}
+                        sizes="(max-width: 1023px) 100vw, 33vw"
+                        className="aspect-[4/3] w-full object-cover"
+                      />
+                    )}
+                    <div className="flex flex-1 flex-col p-8 max-md:p-6">
+                      <h3 className="text-h5">{format.name}</h3>
+                      <div className="mt-4 h-px w-8 bg-line" aria-hidden />
+                      <p className="mt-4 text-body-m text-slate">{format.note}</p>
+                    </div>
+                  </article>
                 </Reveal>
               ))}
             </div>
-            <Reveal delay={0.1}>
-              <p className="mt-8 text-body-l">Rates by enquiry, in writing.</p>
-              <p className="mt-1 text-body-s text-smoke">
-                NHS and lived-experience work runs on a separate pathway.
-              </p>
-            </Reveal>
           </div>
         </section>
 
         {/* "In the room" (host quote + clip) returns once there is a real
             quote and a working clip; placeholders removed 30 Sept 2026. */}
 
-        {/* Enquiry */}
-        <section className="pb-24 max-md:pb-14" id="enquire">
-          <div className="container-site">
+        {/* Enquiry — the form beside a quiet room */}
+        <section className="bg-white py-24 max-lg:py-16 max-md:py-12" id="enquire">
+          <div className="container-site grid grid-cols-[1fr_0.8fr] items-start gap-16 max-lg:grid-cols-1 max-lg:gap-10">
             <div className="max-w-[640px]">
               <Reveal>
-                <div className="h-px w-16 bg-line" aria-hidden />
-                <h2 className="mt-7 text-h3">Enquire</h2>
-                <p className="mt-4 text-body-l text-smoke">
-                  A few lines about the room are enough. Every reply comes in
-                  writing.
-                </p>
+                <Eyebrow>Enquire</Eyebrow>
+                <h2 className="mt-4 text-h3">A few lines about the room are enough.</h2>
+                <p className="mt-4 text-body-l text-slate">Every reply comes in writing.</p>
               </Reveal>
               <div className="mt-10">
-                <SpeakingEnquiryForm
-                  formats={speaking.formats.map((format) => format.name)}
-                />
+                <SpeakingEnquiryForm formats={speaking.formats.map((format) => format.name)} />
               </div>
             </div>
+            <Reveal delay={0.1} className="lg:sticky lg:top-32 max-lg:hidden">
+              <div className="overflow-hidden rounded-card">
+                <Image
+                  src="/images/about/about-window.webp"
+                  alt="Graphite sketch of a woman seated by a tall window, looking out over a misty lake, the dawn line drawn in gold"
+                  width={900}
+                  height={1200}
+                  sizes="35vw"
+                  className="aspect-[4/5] w-full object-cover"
+                />
+              </div>
+            </Reveal>
           </div>
         </section>
       </main>
