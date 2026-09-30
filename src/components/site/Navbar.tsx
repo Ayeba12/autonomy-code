@@ -3,10 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Button } from "@/components/ui/Button";
 import { Logo } from "./Logo";
 import { megaColumns, moreLinks, primaryLinks } from "./nav-links";
-import { RESET_CTA_HREF, RESET_CTA_LABEL, RESET_CTA_LINE } from "./ResetCta";
+import { RESET_CTA_LINE, ResetButton } from "./ResetCta";
 
 interface NavbarProps {
   /** "light" = white links (over dark heroes); "dark" = ink links (light pages). */
@@ -98,14 +97,7 @@ export const Navbar = ({ tone = "light" }: NavbarProps) => {
                       </p>
                       <p className="mt-2 text-body-s text-smoke">{RESET_CTA_LINE}</p>
                     </div>
-                    <Button
-                      href={RESET_CTA_HREF}
-                      variant="brand"
-                      arrow={false}
-                      className="mt-5 w-full"
-                    >
-                      {RESET_CTA_LABEL}
-                    </Button>
+                    <ResetButton className="mt-5 w-full" />
                   </div>
                 </div>
               </div>
@@ -115,14 +107,7 @@ export const Navbar = ({ tone = "light" }: NavbarProps) => {
           </ul>
 
           <div className="flex items-center gap-4">
-            <Button
-              href={RESET_CTA_HREF}
-              variant="brand"
-              arrow={false}
-              className="max-xl:hidden"
-            >
-              {RESET_CTA_LABEL}
-            </Button>
+            <ResetButton className="max-xl:hidden" />
             <button
               type="button"
               className={`hidden size-11 flex-col items-center justify-center gap-1.5 max-xl:flex ${linkColor}`}
@@ -204,14 +189,7 @@ export const Navbar = ({ tone = "light" }: NavbarProps) => {
 
           {/* Pinned action */}
           <div className="container-site border-t border-line py-5">
-            <Button
-              href={RESET_CTA_HREF}
-              variant="brand"
-              arrow={false}
-              className="w-full"
-            >
-              {RESET_CTA_LABEL}
-            </Button>
+            <ResetButton className="w-full" />
             <p className="mt-3 text-center text-body-s text-smoke">{RESET_CTA_LINE}</p>
           </div>
         </div>

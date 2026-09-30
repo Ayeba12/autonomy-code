@@ -5,7 +5,12 @@ import { LadderHero } from "@/components/ladder/LadderHero";
 import { SabiOsSection } from "@/components/ladder/SabiOsSection";
 import { Reveal } from "@/components/motion/Reveal";
 import { Navbar } from "@/components/site/Navbar";
-import { RESET_CTA_HREF, RESET_CTA_LABEL, RESET_CTA_LINE } from "@/components/site/ResetCta";
+import {
+  RESET_CTA_AVATAR,
+  RESET_CTA_HREF,
+  RESET_CTA_LABEL,
+  RESET_CTA_LINE,
+} from "@/components/site/ResetCta";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
@@ -159,6 +164,8 @@ const SabiCorePage = () => (
         buttonLabel={RESET_CTA_LABEL}
         buttonHref={RESET_CTA_HREF}
         line={RESET_CTA_LINE}
+        avatarSrc={RESET_CTA_AVATAR}
+        variant="light"
       />
     </main>
   </>

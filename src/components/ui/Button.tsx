@@ -60,9 +60,9 @@ export const Button = ({
         <Image
           src={avatarSrc}
           alt=""
-          width={28}
-          height={28}
-          className="size-7 rounded-full object-cover"
+          width={64}
+          height={64}
+          className="size-8 rounded-full object-cover"
         />
       )}
       <span>{children}</span>
@@ -72,7 +72,9 @@ export const Button = ({
     </span>
   );
 
-  const classes = `group relative inline-flex min-h-11 items-center justify-center overflow-hidden rounded-pill px-5 py-3 text-body-m font-medium whitespace-nowrap transition-all duration-350 hover:rounded-2xl ${variantClasses[variant]} ${className}`;
+  /* With an avatar the pill tightens on the left so the photo sits in the curve (Stodio "Book a call"). */
+  const padding = avatarSrc ? "py-1.5 pr-5 pl-1.5" : "px-5 py-3";
+  const classes = `group relative inline-flex min-h-11 items-center justify-center overflow-hidden rounded-pill ${padding} text-body-m font-medium whitespace-nowrap transition-all duration-350 hover:rounded-2xl ${variantClasses[variant]} ${className}`;
 
   const rolling = (
     <span className="relative block overflow-hidden">
