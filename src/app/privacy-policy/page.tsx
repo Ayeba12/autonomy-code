@@ -29,24 +29,24 @@ const PrivacyPolicyPage = () => (
         <div className="mx-auto flex max-w-[841px] flex-col gap-10">
           <LegalBlock heading="1. Who we are">
             <p>
-              The Autonomy Code is operated by The No GraGra Practice (the
+              The Autonomy Code is operated by The NO GraGra Practice (the
               &quot;controller&quot; of your personal data under UK data
               protection law, including the UK GDPR and the Data Protection Act
               2018). Questions about this policy, or about your data, can be
               sent at any time to{" "}
               <a
-                href="mailto:dk@dkjonah.com"
+                href="mailto:info@theautonomycode.com"
                 className="font-medium text-ink underline decoration-brand underline-offset-4 transition-colors duration-300 hover:text-brand"
               >
-                dk@dkjonah.com
+                info@theautonomycode.com
               </a>
               .
             </p>
             <p>
               This policy is written the way the practice works: plainly, and
               without pressure. It applies to this website and to the services
-              offered through it, including the Ownership Scan, SABI CORE, and
-              Legacy.
+              offered through it, including the Autonomy Compass, SABI CORE, and
+              Legacy Builder.
             </p>
           </LegalBlock>
 
@@ -58,8 +58,8 @@ const PrivacyPolicyPage = () => (
                   text: "your name and email address when you write to us, use a form, subscribe to the newsletter, or make a speaking enquiry.",
                 },
                 {
-                  lead: "Scan responses:",
-                  text: "your answers to the Ownership Scan pre-assessment, and the notes and written map produced from your session. This is the most personal information we hold, and it is treated with corresponding care.",
+                  lead: "Compass responses:",
+                  text: "your answers to the Autonomy Compass assessment, and the notes and written Blueprint produced from your session. This is the most personal information we hold, and it is treated with corresponding care.",
                 },
                 {
                   lead: "Booking and payment information:",
@@ -78,7 +78,7 @@ const PrivacyPolicyPage = () => (
               items={[
                 {
                   lead: "To deliver the work:",
-                  text: "running your Scan, preparing your session, writing your Personal Autonomy Map, and delivering the programmes you have paid for.",
+                  text: "running your Compass, preparing your session, writing your Autonomy Blueprint, and delivering the programmes you have paid for.",
                 },
                 {
                   lead: "To respond to you:",
@@ -95,7 +95,7 @@ const PrivacyPolicyPage = () => (
               ]}
             />
             <p>
-              A human being reviews every Scan result. No decision about you is
+              A human being reviews every Compass result. No decision about you is
               made by automated means alone.
             </p>
           </LegalBlock>
@@ -110,7 +110,7 @@ const PrivacyPolicyPage = () => (
               items={[
                 {
                   lead: "OpenAI:",
-                  text: "powers the conversational Scan pre-assessment.",
+                  text: "powers the conversational Compass assessment.",
                 },
                 {
                   lead: "Google:",
@@ -169,10 +169,10 @@ const PrivacyPolicyPage = () => (
             <p>
               To exercise any of these rights, email{" "}
               <a
-                href="mailto:dk@dkjonah.com"
+                href="mailto:info@theautonomycode.com"
                 className="font-medium text-ink underline decoration-brand underline-offset-4 transition-colors duration-300 hover:text-brand"
               >
-                dk@dkjonah.com
+                info@theautonomycode.com
               </a>
               . We respond within one month.
             </p>

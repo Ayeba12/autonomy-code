@@ -21,10 +21,11 @@ export const SEAT_CONTACT_EMAIL: string | null = "info@theautonomycode.com";
 /**
  * Booking phases, from the client's dates: early bird runs until
  * 1 November, standard pricing from 1 November, and booking closes at the
- * end of 13 November. Instants are UTC; the workshop runs on UK time.
+ * end of 24 November (handover, 1 Oct 2026). Instants are UTC; the
+ * workshop runs on UK time.
  */
 export const EARLY_BIRD_ENDS = "2026-11-01T00:00:00Z";
-export const BOOKING_CLOSES = "2026-11-14T00:00:00Z";
+export const BOOKING_CLOSES = "2026-11-25T00:00:00Z";
 
 export type BookingPhase = "early" | "standard" | "closed";
 
@@ -178,7 +179,7 @@ export const reset = {
     moves: "Audit · Align · Anchor",
   },
   earlyBirdLabel: "Take your seat, £99 until 1 November",
-  bookingCloses: "Booking closes 13 November.",
+  bookingCloses: "Booking closes 24 November.",
   hero: {
     title: "You are not behind. You are living by standards you never agreed to.",
     sub: "Three sessions to close this year honestly, find out whose rules you have been following, and enter the next one holding only the ones you choose.",
@@ -312,6 +313,7 @@ export const reset = {
     "The PACE Planner, First Edition, your daily and weekly structure for the year ahead, including the SCOPE pages for breaking a project or a goal down into something you can actually do",
     "The GROWTH Goals framework, in full",
     "The recordings, so a missed session does not cost you the Reset",
+    "Access to the Reset community",
   ],
   includedNote:
     "Everything is digital. The Portfolio, the Stencil and the Planner arrive as PDFs you can print at home or use in your planner app on a tablet.",

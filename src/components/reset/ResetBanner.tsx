@@ -4,7 +4,7 @@ import { reset } from "@/content/reset";
 
 /**
  * One quiet line on the home page while booking is open: the workshop
- * name, its dates, and a diagonal link. Remove after 13 November.
+ * name, its dates, and a diagonal link. Remove after 24 November.
  */
 export const ResetBanner = () => (
   <Link

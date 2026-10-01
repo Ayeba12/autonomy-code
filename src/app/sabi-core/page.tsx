@@ -17,7 +17,7 @@ import { seo } from "@/lib/seo";
 export const metadata: Metadata = seo({
   title: "SABI CORE",
   description:
-    "The flagship year of The Autonomy Code. A year, one to one with DK, built on the SABI OS operating system. A structured system, not a course.",
+    "The flagship year of The Autonomy Code. A year of strategy, one to one with DK, built on the SABI OS operating system. A structured system, not a course.",
   path: "/sabi-core",
 });
 
@@ -34,6 +34,7 @@ const notForList = [
   "You want a hype formula, or someone to shout you into action.",
   "You want a quick fix that ignores your real life.",
   "You are looking for a course to consume rather than a system to build.",
+  "You want the work carried out for you. SABI CORE is strategy; the doing stays with you.",
   "You want more information without ownership.",
   "You have not yet taken the Compass. Every engagement begins there.",
 ];
@@ -116,7 +117,8 @@ const SabiCorePage = () => (
               SABI CORE is the annual premium programme of The Autonomy Code.
               Across the year you work on what you are actually building, one
               pillar at a time where that is what it takes, with diagnostic
-              deepening across all five. Held closely, and held to account. No
+              deepening across all five. It is strategy, one to one: the work
+              itself stays in your hands. Held closely, and held to account. No
               gra gra.
             </p>
           </Reveal>

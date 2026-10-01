@@ -61,25 +61,25 @@ export const services: Service[] = [
   /* The Ladder                                                       */
   /* ---------------------------------------------------------------- */
   {
-    slug: "pillar-intensive",
+    slug: "claim-intensive",
     image: {
       src: "/images/scan/scan-ground.webp",
       alt: "Graphite sketch of a woman standing steady on a floor of mismatched planks, the one solid plank under her feet drawn in gold",
     },
-    name: "The Pillar Intensive",
+    name: "The Claim Intensive",
     group: "ladder",
     category: "Step two",
     summary:
-      "Ninety minutes on the one pillar your Scan surfaced, with a first act you can do alone.",
+      "Ninety minutes on the one pillar your Compass surfaced, with a first act you can do alone.",
     title: "Ninety minutes on the pillar that surfaced.",
     intro:
-      "The Scan names the pillar. This is where you work it: one pillar, held closely, until the captivity is named precisely and loosened once.",
+      "The Compass names the pillar. This is where you work it: one pillar, held closely, until the captivity is named precisely and loosened once.",
     price: "£250",
-    format: "90 minutes, one to one. After the Autonomy Compass.",
+    format: "90 minutes, one to one. Included in the Autonomy Compass; £250 when booked on its own.",
     sections: [
       {
         heading: "What it is",
-        body: "A single live session on the one pillar your Scan surfaced, run on the instrument built for that pillar. Not a general coaching hour. The pillar decides the shape of the session, so the work is specific from the first minute.",
+        body: "A single live session on the one pillar your Compass surfaced, run on the instrument built for that pillar. Not a general coaching hour. The pillar decides the shape of the session, so the work is specific from the first minute.",
       },
       {
         heading: "What happens in the room",
@@ -91,21 +91,21 @@ export const services: Service[] = [
       },
       {
         heading: "Before and after",
-        body: "Your Scan is read in full beforehand, so no live minutes are spent gathering what you have already told me. The written output follows the session.",
+        body: "Your Compass result is read in full beforehand, so no live minutes are spent gathering what you have already told me. The written output follows the session.",
       },
     ],
     forList: [
-      "You have taken the Autonomy Compass and have your Personal Autonomy Map.",
+      "You have taken the Autonomy Compass and have your result.",
       "You want depth on one pillar rather than a tour of all five.",
       "You are ready to act on one thing rather than plan five.",
     ],
     notForList: [
-      "You have not yet taken the Scan. The pillar is discovered there, not chosen off a shelf.",
+      "You have not yet taken the Compass. The pillar is discovered there, not chosen off a shelf.",
       "You want a general conversation about your practice.",
       "You want a plan for everything at once.",
     ],
     cta: { label: "Take the Autonomy Compass first", href: "/autonomy-compass" },
-    ctaNote: "Every engagement begins at the Scan. No exceptions.",
+    ctaNote: "The Compass includes a Claim Intensive in its one payment.",
   },
 
   /* ---------------------------------------------------------------- */
@@ -210,13 +210,13 @@ export const services: Service[] = [
     summary: "Two hours across all five pillars, with a written report.",
     title: "All five pillars, in one sitting.",
     intro:
-      "Wider than the Pillar Intensive and deeper than the Scan. Two hours across Identity, Message, Strategy, Resources and Relationships, and a written report you keep.",
+      "Wider than the Claim Intensive and deeper than the Compass. Two hours across Identity, Message, Strategy, Resources and Relationships, and a written report you keep.",
     price: "£275",
     format: "Two hours, one to one. Written report follows.",
     sections: [
       {
         heading: "What it is",
-        body: "A full pass across all five pillars in one sitting, for people who want the whole picture rather than one pillar worked closely. It goes wider than the Pillar Intensive by design, and it trades some depth for that width.",
+        body: "A full pass across all five pillars in one sitting, for people who want the whole picture rather than one pillar worked closely. It goes wider than the Claim Intensive by design, and it trades some depth for that width.",
       },
       {
         heading: "What you leave with",
@@ -228,7 +228,7 @@ export const services: Service[] = [
       },
       {
         heading: "How it differs",
-        body: "The Autonomy Compass is the door and surfaces one pillar to work. The Pillar Intensive goes deep on that one. SyncCheck goes across all five at once. If you want depth, take the Intensive. If you want the map, take this.",
+        body: "The Autonomy Compass is the door and surfaces one pillar to work. The Claim Intensive goes deep on that one. SyncCheck goes across all five at once. If you want depth, take the Intensive. If you want the map, take this.",
       },
     ],
     forList: [
@@ -237,7 +237,7 @@ export const services: Service[] = [
       "You want findings in writing rather than in memory.",
     ],
     notForList: [
-      "You want one pillar worked to depth. That is the Pillar Intensive.",
+      "You want one pillar worked to depth. That is the Claim Intensive.",
       "You want a plan built and delivered. That is an engagement.",
     ],
     cta: { label: "Enquire in writing", href: "/contact" },

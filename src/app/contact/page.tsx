@@ -9,7 +9,7 @@ import { seo } from "@/lib/seo";
 export const metadata: Metadata = seo({
   title: "Contact",
   description:
-    "Questions about the work? Write to dk@dkjonah.com or use the form. For stages, see Speaking. For everything else, the Compass is the door.",
+    "Questions about the work? Write to info@theautonomycode.com or use the form. For stages, see Speaking. For everything else, the Compass is the door.",
   path: "/contact",
 });
 
@@ -36,8 +36,8 @@ const ContactPage = () => (
               <Reveal delay={0.1}>
                 <p className="mt-4 text-body-l text-smoke">
                   For questions about the work, write to{" "}
-                  <a href="mailto:dk@dkjonah.com" className={textLinkClasses}>
-                    dk@dkjonah.com
+                  <a href="mailto:info@theautonomycode.com" className={textLinkClasses}>
+                    info@theautonomycode.com
                   </a>{" "}
                   or use the form. For stages, see{" "}
                   <Link href="/speaking" className={textLinkClasses}>

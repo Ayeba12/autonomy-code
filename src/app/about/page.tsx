@@ -65,31 +65,31 @@ const movements: { heading: string; paragraphs: string[] }[] = [
 const pathSteps: { label: string; subLabel: string; icon: string; description: string }[] = [
   {
     label: "Step 1",
-    subLabel: "The Scan",
+    subLabel: "The Autonomy Compass",
     icon: "/images/process-card-icon-01.svg",
     description:
-      "Twenty-five questions across the five pillars surface your pattern and the pillar under most strain.",
+      "Twenty-five statements across the five pillars surface your pattern and the pillar under most strain.",
   },
   {
     label: "Step 2",
-    subLabel: "The Map-Out Session",
+    subLabel: "The Claim Intensive",
     icon: "/images/process-card-icon-2.svg",
     description:
       "Ninety minutes on that one pillar, mapping where ownership was handed away and what reclaiming it asks.",
   },
   {
     label: "Step 3",
-    subLabel: "Your Autonomy Map",
+    subLabel: "Your Autonomy Blueprint",
     icon: "/images/process-card-icon-03.svg",
     description:
-      "Within seventy-two hours you receive the written Personal Autonomy Map. It is yours to keep.",
+      "Within seventy-two hours you receive the written Autonomy Blueprint. It is yours to keep.",
   },
   {
     label: "Step 4",
     subLabel: "The Walkthrough",
     icon: "/images/process-card-icon-04.svg",
     description:
-      "A short call to read the map together and name the next route. The map leads, never pressure.",
+      "A short call to read the Blueprint together and name the next route. The Blueprint leads, never pressure.",
   },
 ];
 
@@ -176,7 +176,7 @@ const AboutPage = async () => {
             </div>
             <Reveal delay={0.25}>
               <div className="mt-16 flex items-center justify-between gap-6 font-heading text-body-s tracking-[0.2em] text-mute uppercase max-md:mt-10 max-md:flex-col max-md:items-center max-md:gap-2 max-md:text-center">
-                <span>The No GraGra Practice</span>
+                <span>The NO GraGra Practice</span>
                 <span>DK Jonah · Knowledge Architect</span>
               </div>
             </Reveal>

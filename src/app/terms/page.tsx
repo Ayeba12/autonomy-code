@@ -40,7 +40,7 @@ const TermsPage = () => (
 
           <LegalBlock heading="1. The agreement">
             <p>
-              These terms govern the services offered by The No GraGra Practice
+              These terms govern the services offered by The NO GraGra Practice
               through The Autonomy Code: the Autonomy Compass, SABI CORE, Legacy Builder,
               and speaking engagements. Booking or paying for a service means
               you accept these terms as they stand on that date.
@@ -93,7 +93,7 @@ const TermsPage = () => (
           <LegalBlock heading="5. The 24-hour written hold">
             <p>
               No significant financial decision is made in the moment here. Any
-              commitment to SABI CORE or Legacy rests for at least 24 hours,
+              commitment to SABI CORE or Legacy Builder rests for at least 24 hours,
               in writing, before it is confirmed. You will never be asked to
               decide on the spot, and you are always welcome to take longer.
             </p>
@@ -102,7 +102,7 @@ const TermsPage = () => (
           <LegalBlock heading="6. Your part">
             <p>
               The work asks for honesty, not performance. You agree to answer
-              the Scan from your current reality, to attend booked sessions on
+              the Compass from your current reality, to attend booked sessions on
               time, and to treat materials you receive, including your Personal
               Autonomy Map, as being for your own use.
             </p>
@@ -118,7 +118,7 @@ const TermsPage = () => (
               >
                 Privacy Policy
               </a>
-              . Every Scan result is reviewed by a human being.
+              . Every Compass result is reviewed by a human being.
             </p>
           </LegalBlock>
 
@@ -126,10 +126,10 @@ const TermsPage = () => (
             <p>
               Anything unclear can be asked before you commit. Write to{" "}
               <a
-                href="mailto:dk@dkjonah.com"
+                href="mailto:info@theautonomycode.com"
                 className="font-medium text-ink underline decoration-brand underline-offset-4 transition-colors duration-300 hover:text-brand"
               >
-                dk@dkjonah.com
+                info@theautonomycode.com
               </a>
               , and take whatever time you need. No rush. No force. No gra gra.
             </p>

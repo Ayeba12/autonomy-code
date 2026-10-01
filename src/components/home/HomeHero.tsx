@@ -51,7 +51,7 @@ export const HomeHero = () => {
       <div className="container-site flex flex-1 flex-col justify-between text-white">
         <div>
           <Reveal>
-            <Tag tone="light">The Autonomy Code · The No GraGra Practice</Tag>
+            <Tag tone="light">The Autonomy Code · The NO GraGra Practice</Tag>
           </Reveal>
           <Reveal delay={0.1}>
             <h1 className="mt-5 max-w-[900px] text-display">

@@ -24,7 +24,7 @@ const stackSans = Stack_Sans_Headline({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "The Autonomy Code · The No GraGra Practice",
+    default: "The Autonomy Code · The NO GraGra Practice",
     template: "%s · The Autonomy Code",
   },
   description:

@@ -8,7 +8,8 @@ export interface NavLink {
 export const primaryLinks: NavLink[] = [
   { label: "The Method", href: "/method" },
   { label: "Work Together", href: "/work-together" },
-  { label: "Annual Reset", href: "/annual-reset" },
+  // The Annual Reset has the button beside the menu; the Compass takes the link.
+  { label: "The Compass", href: "/autonomy-compass" },
   { label: "About", href: "/about" },
   { label: "In Conversation", href: "/in-conversation" },
   { label: "Contact", href: "/contact" },

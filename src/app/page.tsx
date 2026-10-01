@@ -36,7 +36,7 @@ const HomePage = async () => {
       <Navbar tone="light" />
       <main className="bg-paper">
         <HomeHero />
-        {/* Annual Reset strip while booking is open; remove after 13 November. */}
+        {/* Annual Reset strip while booking is open; remove after 24 November. */}
         <ResetBanner />
         <HomeMarquee />
         <QuietAche />

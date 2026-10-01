@@ -54,7 +54,7 @@ const WritingPage = async () => {
                   />
                 </div>
                 <div className="flex flex-col gap-3 max-lg:px-4 max-lg:pt-4 max-md:px-2 max-md:pt-2">
-                  <Eyebrow className="text-brand-soft">The Sunday letter</Eyebrow>
+                  <Eyebrow className="text-brand-soft">QuietFOCUS</Eyebrow>
                   <h2 className="text-h5 text-white">
                     One calm letter, when it is worth your time. No noise.
                   </h2>

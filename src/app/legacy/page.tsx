@@ -55,7 +55,7 @@ const route: RouteStep[] = [
   },
   {
     label: "Legacy Builder",
-    line: "When the Map makes the route plain.",
+    line: "When the Blueprint makes the route plain.",
     image: {
       src: "/images/about/about-porch.webp",
       alt: "Graphite sketch of two wooden chairs and a small table on a porch, one cup drawn in gold",
@@ -155,11 +155,11 @@ const LegacyPage = () => (
           <Reveal>
             <Eyebrow>What it is</Eyebrow>
             <p className="mt-5 max-w-[720px] text-body-xxl text-ink">
-              Legacy is the highest-depth engagement of the practice: a year
+              Legacy Builder is the highest-depth engagement of the practice: a year
               beside DK across all five pillars, for a person whose work
               carries weight beyond themselves. It is not applied for so much
-              as arrived at. Most Legacy conversations begin inside SABI CORE,
-              when the Map makes the route plain.
+              as arrived at. Most Legacy Builder conversations begin inside SABI
+              CORE, when the Blueprint makes the route plain.
             </p>
           </Reveal>
           <Reveal delay={0.1}>
@@ -266,14 +266,14 @@ const LegacyPage = () => (
             <Reveal>
               <Eyebrow>Enquire</Eyebrow>
               <p className="mt-5 max-w-[560px] text-body-xxl text-ink">
-                If Legacy is your honest route, the conversation begins in
+                If Legacy Builder is your honest route, the conversation begins in
                 writing.
               </p>
             </Reveal>
             <Reveal delay={0.1}>
               <div className="mt-10 flex max-w-[560px] flex-col items-start gap-6 rounded-card bg-white px-9 py-10 max-md:px-6 max-md:py-8">
                 <p className="font-heading text-h4">
-                  Legacy · from £10,000 for the year · by invitation only.
+                  Legacy Builder · £10,000 · done with you · by invitation only.
                 </p>
                 <div className="flex flex-wrap items-center gap-x-8 gap-y-5">
                   <Button href="/contact" variant="brand">

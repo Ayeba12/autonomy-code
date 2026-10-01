@@ -23,7 +23,10 @@ export const Footer = () => (
       />
       <div className="relative flex justify-between gap-16 max-lg:flex-col">
         <div className="max-w-md">
-          <h2 className="text-h3">One calm letter that is worth your time.</h2>
+          <p className="font-heading text-body-s tracking-[0.2em] text-brand-soft uppercase">
+            QuietFOCUS
+          </p>
+          <h2 className="mt-4 text-h3">One calm letter that is worth your time.</h2>
           <div className="mt-8 border-t border-coal">
             <NewsletterForm />
           </div>
@@ -107,7 +110,7 @@ export const Footer = () => (
           </text>
         </svg>
         <span className="mt-3 block text-body-s text-mute">
-          The No GraGra Practice · DK Jonah
+          The NO GraGra Practice · DK Jonah
         </span>
       </Link>
       <div className="pt-6">

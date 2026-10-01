@@ -27,6 +27,8 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/ownership-scan", destination: "/autonomy-compass", permanent: true },
+      // "Pillar Intensive" was retired as a duplicate name (handover, 1 Oct 2026).
+      { source: "/services/pillar-intensive", destination: "/services/claim-intensive", permanent: true },
     ];
   },
   images: {

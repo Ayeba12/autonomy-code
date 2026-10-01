@@ -9,7 +9,7 @@ export const ladder: LadderTier[] = [
     slug: "autonomy-compass",
     name: "The Autonomy Compass",
     summary:
-      "The door. Twenty-five statements across the five pillars, a 90-minute Claim Intensive, and a written Autonomy Blueprint you keep. Every engagement begins here, no exceptions.",
+      "The door. Twenty-five statements across the five pillars, a 90-minute Claim Intensive, and a written Autonomy Blueprint you keep.",
     cta: { label: "Start with the Compass", href: "/autonomy-compass" },
     price: "£97",
     order: 1,
@@ -22,7 +22,7 @@ export const ladder: LadderTier[] = [
     slug: "sabi-core",
     name: "SABI CORE",
     summary:
-      "The flagship. A year inside a structured system, built on the SABI OS operating system. For the reader who is ready to build from owned ground.",
+      "The flagship. A year, one to one, inside a structured system built on the SABI OS operating system. Strategy only: you carry out the work. For the reader who is ready to build from owned ground.",
     cta: { label: "Explore SABI CORE", href: "/sabi-core" },
     price: "£5,000 for the year",
     order: 2,
@@ -35,9 +35,9 @@ export const ladder: LadderTier[] = [
     slug: "legacy",
     name: "Legacy Builder",
     summary:
-      "The deepest tier. One to two people at a time, rare and private, by invitation. The Map leads the recommendation.",
+      "The deepest tier. One to two people at a time, rare and private, by invitation. Done with you. The Blueprint leads the recommendation.",
     cta: { label: "About Legacy Builder", href: "/legacy" },
-    price: "From £10,000 for the year",
+    price: "£10,000",
     order: 3,
     image: {
       src: "/images/home/tier-legacy.webp",

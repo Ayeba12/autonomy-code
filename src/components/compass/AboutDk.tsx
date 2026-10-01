@@ -109,9 +109,9 @@ export const AboutDk = () => (
         <Reveal delay={0.1} className="h-full">
           <article className="flex h-full flex-col rounded-card-lg bg-paper p-10 max-md:rounded-card max-md:p-6">
             <p className="text-body-l text-slate">
-              Suleman, a senior military officer, came to this work already
-              capable, already trusted with a great deal, and used to being the
-              one others relied on. He said afterwards that he had never
+              Another client came to this work already capable, already
+              trusted with a great deal, and used to being the one others
+              relied on. He said afterwards that he had never
               realised how much of his own life he had quietly handed to other
               people.
             </p>

@@ -53,7 +53,7 @@ export const articles: Article[] = [
       },
       {
         type: "quote",
-        text: "The Ownership Scan finds where the shape of your work went. Twenty-five questions, your pattern, and your first move.",
+        text: "The Autonomy Compass finds where the shape of your work went. Twenty-five statements, your pattern, and your first move.",
       },
     ],
   },
@@ -101,7 +101,7 @@ export const articles: Article[] = [
       },
       {
         type: "quote",
-        text: "If you want the mirror, the Ownership Scan is twenty-five questions and returns your pattern, your strained pillar, and one first move.",
+        text: "If you want the mirror, the Autonomy Compass is twenty-five statements and returns your pattern, your strained pillar, and one first move.",
       },
     ],
   },
@@ -149,11 +149,11 @@ export const articles: Article[] = [
       },
       {
         type: "p",
-        text: "That is why every engagement here begins with a diagnostic rather than a plan. Twenty-five questions, one pattern, one strained pillar, one first move.",
+        text: "That is why every engagement here begins with a diagnostic rather than a plan. Twenty-five statements, one pattern, one strained pillar, one first move.",
       },
       {
         type: "quote",
-        text: "When you are ready to find yours, take the Ownership Scan.",
+        text: "When you are ready to find yours, take the Autonomy Compass.",
       },
     ],
   },
@@ -173,7 +173,7 @@ export const articles: Article[] = [
     body: [
       {
         type: "p",
-        text: "Naming as the first act of ownership; the undercounting of natural ability; ease as evidence of mastery; a naming exercise; route to Scan.",
+        text: "Naming as the first act of ownership; the undercounting of natural ability; ease as evidence of mastery; a naming exercise; route to Compass.",
       },
     ],
   },
@@ -193,7 +193,7 @@ export const articles: Article[] = [
     body: [
       {
         type: "p",
-        text: "The original name of the practice; decision captivity; the 24-hour written hold; how structure removes drama from choosing; route to Scan.",
+        text: "The original name of the practice; decision captivity; the 24-hour written hold; how structure removes drama from choosing; route to Compass.",
       },
     ],
   },
@@ -213,7 +213,7 @@ export const articles: Article[] = [
     body: [
       {
         type: "p",
-        text: "Peace as the goal people name, autonomy as what they mean; peace given structure; why calm without structure decays into drift; route to Scan.",
+        text: "Peace as the goal people name, autonomy as what they mean; peace given structure; why calm without structure decays into drift; route to Compass.",
       },
     ],
   },
@@ -233,7 +233,7 @@ export const articles: Article[] = [
     body: [
       {
         type: "p",
-        text: "Borrowed frameworks and inherited definitions; rent versus own; a terms audit; route to Scan.",
+        text: "Borrowed frameworks and inherited definitions; rent versus own; a terms audit; route to Compass.",
       },
     ],
   },
@@ -253,7 +253,7 @@ export const articles: Article[] = [
     body: [
       {
         type: "p",
-        text: "Capacity as a money rule and a life rule; flare and low seasons; the honest week; route to Scan.",
+        text: "Capacity as a money rule and a life rule; flare and low seasons; the honest week; route to Compass.",
       },
     ],
   },
@@ -273,7 +273,7 @@ export const articles: Article[] = [
     body: [
       {
         type: "p",
-        text: "Against fixing everything; the strained pillar; one next act of ownership; route to Scan.",
+        text: "Against fixing everything; the strained pillar; one next act of ownership; route to Compass.",
       },
     ],
   },
@@ -293,7 +293,7 @@ export const articles: Article[] = [
     body: [
       {
         type: "p",
-        text: "Second-guessing as a structure gap, not a character flaw; the mirror principle; route to Scan.",
+        text: "Second-guessing as a structure gap, not a character flaw; the mirror principle; route to Compass.",
       },
     ],
   },
@@ -313,7 +313,7 @@ export const articles: Article[] = [
     body: [
       {
         type: "p",
-        text: "What you should not build yet; restraint as part of autonomy; curation as proof of centre; route to Scan.",
+        text: "What you should not build yet; restraint as part of autonomy; curation as proof of centre; route to Compass.",
       },
     ],
   },
@@ -333,7 +333,7 @@ export const articles: Article[] = [
     body: [
       {
         type: "p",
-        text: "Expertise versus architecture; the Knowledge Architect's move; naming, structuring, and owning IP; route to SABI CORE via Scan.",
+        text: "Expertise versus architecture; the Knowledge Architect's move; naming, structuring, and owning IP; route to SABI CORE via Compass.",
       },
     ],
   },

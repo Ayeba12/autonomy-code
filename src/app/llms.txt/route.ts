@@ -27,9 +27,11 @@ export async function GET() {
   const body = [
     "# The Autonomy Code",
     "",
-    "> The Autonomy Code is a coaching and strategy practice founded by DK Jonah, also known as The No GraGra Practice. It works with coaches, consultants and accomplished professionals whose expertise lives in scattered pieces, helping them build from owned ground. Its core idea: autonomy is peace, given structure.",
+    "> The Autonomy Code is a coaching and strategy practice founded by DK Jonah, Knowledge Architect, also known as The NO GraGra Practice. It works with coaches, consultants and accomplished professionals whose expertise lives in scattered pieces, helping them build from owned ground. Its core idea: autonomy is peace, given structure.",
     "",
-    "The practice is deliberately unhurried: no rush, no force, no gra gra. Prices are stated plainly on each offer's own page. Every engagement begins with The Autonomy Compass.",
+    "The practice is deliberately unhurried: no rush, no force, no gra gra. Prices are stated plainly on each offer's own page. The Autonomy Compass is the door to the practice.",
+    "",
+    "The central distinction: independence is freedom from; autonomy is ownership of.",
     "",
     "## The five pillars",
     "",
@@ -46,7 +48,7 @@ export async function GET() {
     link(
       "The Annual Reset 4.0",
       "/annual-reset",
-      "Three live online sessions on 27 November, 4 December and 5 December 2026 at 7 pm UK time. This year's theme is Standards. Early bird £99 until 1 November 2026, then £199; seats in naira are available for Nigeria.",
+      "Three live online sessions on 27 November, 4 December and 5 December 2026 at 7 pm UK time. This year's theme is Standards. Early bird £99 until 1 November 2026, then £199; booking closes 24 November 2026; seats in naira are available for Nigeria.",
     ),
     "",
     "## Services",

@@ -56,7 +56,7 @@ export const pillars: Pillar[] = [
     slug: "relationships",
     name: "Relationships",
     index: "05",
-    movement: "Belonging without performance.",
+    movement: "From performed belonging to chosen support.",
     description: "Support that does not cost you your centre.",
     image: {
       src: "/images/pillars/pillar-relationships.webp",

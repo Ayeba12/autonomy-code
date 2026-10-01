@@ -208,7 +208,7 @@ export const SpeakingEnquiryForm = ({ formats }: SpeakingEnquiryFormProps) => {
       {state === "error" && (
         <p className="text-body-s text-brand-hot" role="alert">
           Something went wrong while sending your enquiry. Please try again, or
-          write to dk@dkjonah.com.
+          write to info@theautonomycode.com.
         </p>
       )}
     </form>

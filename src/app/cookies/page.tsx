@@ -45,7 +45,7 @@ const CookiesPage = () => (
                 },
                 {
                   lead: "Booking and payment.",
-                  text: "When you book a session or pay for the Ownership Scan, the scheduling and payment providers (for example Stripe) set their own cookies to run the checkout securely. They apply at that moment, under their own policies.",
+                  text: "When you book a session or pay for the Autonomy Compass, the scheduling and payment providers (for example Stripe) set their own cookies to run the checkout securely. They apply at that moment, under their own policies.",
                 },
               ]}
             />
@@ -82,10 +82,10 @@ const CookiesPage = () => (
             <p>
               Anything unclear, write to{" "}
               <a
-                href="mailto:dk@dkjonah.com"
+                href="mailto:info@theautonomycode.com"
                 className="text-ink underline decoration-line underline-offset-4 transition-colors hover:text-brand"
               >
-                dk@dkjonah.com
+                info@theautonomycode.com
               </a>
               . For the wider picture of how your information is handled, see
               the Privacy Policy.

@@ -51,7 +51,7 @@ export const LadderShowcase = ({ tiers }: { tiers: LadderTier[] }) => {
             <h2 className="text-display">One clear next step</h2>
             <p className="max-w-[580px] text-body-m text-smoke">
               Three ways to work together, each one deeper than the last.
-              Every path begins with the Scan.
+              Every path begins with the Compass.
             </p>
           </Reveal>
         </div>

@@ -20,7 +20,7 @@ export const siteSchema = () => ({
       "@type": "Organization",
       "@id": ORG_ID,
       name: SITE_NAME,
-      alternateName: "The No GraGra Practice",
+      alternateName: "The NO GraGra Practice",
       url: SITE_URL,
       logo: absoluteUrl("/images/email/logo.png"),
       description:
@@ -35,9 +35,9 @@ export const siteSchema = () => ({
       name: "DK Jonah",
       url: `${SITE_URL}/about`,
       image: absoluteUrl("/images/dk-jonah-portrait.webp"),
-      jobTitle: "Founder, The Autonomy Code",
+      jobTitle: "Knowledge Architect",
       description:
-        "Founder of The Autonomy Code and The No GraGra Practice, author of NO GraGra and DIY Branding, and creator of the Decisions That Work framework.",
+        "Knowledge Architect. Founder of The Autonomy Code and The NO GraGra Practice, author of NO GraGra and DIY Branding, and creator of the Decisions That Work framework.",
       worksFor: { "@id": ORG_ID },
       knowsAbout: [
         "Autonomy",

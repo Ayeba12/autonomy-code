@@ -139,7 +139,7 @@ ${
 <tr><td style="background:${color.ink};border-radius:24px;padding:30px 36px;">
 <p style="margin:0;font-family:${font};font-size:13px;line-height:18px;font-weight:700;letter-spacing:3px;color:${color.white};">THE AUTONOMY CODE</p>
 <table role="presentation" cellpadding="0" cellspacing="0" style="margin-top:14px;"><tr><td style="width:36px;height:1px;background:${color.brandSoft};font-size:0;line-height:0;">&nbsp;</td></tr></table>
-<p style="margin:14px 0 0;font-family:${font};font-size:13px;line-height:20px;color:${color.mute};">The No GraGra Practice · DK Jonah</p>
+<p style="margin:14px 0 0;font-family:${font};font-size:13px;line-height:20px;color:${color.mute};">The NO GraGra Practice · DK Jonah</p>
 <p style="margin:4px 0 0;font-family:${font};font-size:13px;line-height:20px;color:${color.mute};">No rush. No force. No gra gra.</p>
 <p style="margin:16px 0 0;font-family:${font};font-size:13px;line-height:20px;"><a href="${SITE}" style="color:${color.brandSoft};text-decoration:none;">theautonomycode.com</a></p>
 </td></tr>
@@ -163,7 +163,7 @@ const plain = (input: LayoutInput) =>
     ...(input.button ? ["", `${input.button.label}: ${input.button.href}`] : []),
     ...(input.note ? ["", input.note] : []),
     "",
-    "The Autonomy Code · The No GraGra Practice · DK Jonah",
+    "The Autonomy Code · The NO GraGra Practice · DK Jonah",
     SITE,
   ].join("\n");
 

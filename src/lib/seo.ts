@@ -51,7 +51,7 @@ export const seo = ({
 }: SeoInput): Metadata => {
   const shareTitle = title
     ? `${title} · ${SITE_NAME}`
-    : `${SITE_NAME} · The No GraGra Practice`;
+    : `${SITE_NAME} · The NO GraGra Practice`;
   const url = absoluteUrl(path || "/");
   const images = [{ url: absoluteUrl(image) }];
   return {

@@ -163,7 +163,7 @@ const WorkTogetherPage = async () => {
               <Reveal delay={0.2} className="mt-8 max-w-[520px]">
                 <p className="text-body-xl text-slate">
                   The whole menu in one calm view. Nothing is offered that is
-                  not on this page, and every engagement begins at the Compass.
+                  not on this page, and the Compass is the door.
                 </p>
                 <ResetCta className="mt-8 items-start" lineClassName="text-slate" />
               </Reveal>
@@ -265,7 +265,7 @@ const WorkTogetherPage = async () => {
               <h2 className="text-h3">The room that costs nothing.</h2>
               <p className="max-w-[560px] text-body-xl text-slate">
                 Public teaching and the Creative Recovery group are open to
-                anyone, and they stay open. The writing, the Sunday letter and
+                anyone, and they stay open. The writing, the QuietFOCUS letter and
                 the live rooms sit outside the menu on purpose.
               </p>
               <div className="mt-2 flex flex-wrap items-center gap-x-8 gap-y-4">
