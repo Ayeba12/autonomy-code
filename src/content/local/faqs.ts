@@ -18,9 +18,9 @@ export const faqs: FaqItem[] = [
       "Most of what you have tried was built to give you more information, a better plan, or more discipline. None of those work from inside a structure that was never yours. This starts somewhere else: it finds where the structure stopped fitting, and rebuilds from there. It is a diagnosis before it is a plan.",
   },
   {
-    question: "Will I learn this and then not change anything?",
+    question: "Will I learn this and then not make any changes?",
     answer:
-      "That is the fair question, and it is why the £97 is not a course. You do not leave with concepts. You leave with one named pillar, one first move, and a written Blueprint you can act on, plus a walkthrough call so you know where to start. The work is sequenced at a pace you can keep. No rush. No force.",
+      "That is a fair question, and it is why the £97 is not a course. You do not leave with concepts. You leave with one named pillar, one first move, and a written Blueprint you can act on, plus a walkthrough call so you know where to start. The work is sequenced at a pace you can keep. No rush. No force.",
   },
   {
     question: "When does the Blueprint arrive?",
@@ -35,7 +35,7 @@ export const faqs: FaqItem[] = [
   {
     question: "Do I need to have taken anything else first?",
     answer:
-      "No. This is the door. Everyone who works with me starts here, whatever else they have done.",
+      "No. This is the door. Everyone who works with me starts here, no matter what else they have done.",
   },
   {
     question: "Can I pay from Nigeria?",
