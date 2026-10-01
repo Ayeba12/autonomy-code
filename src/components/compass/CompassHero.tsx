@@ -1,13 +1,11 @@
 import Image from "next/image";
-import { ImageWipe } from "@/components/motion/ImageWipe";
 import { Reveal } from "@/components/motion/Reveal";
 import { Tag } from "@/components/ui/Tag";
 import { CompassCta, deliverables } from "./CompassCta";
 
 /**
- * Compass hero (copy v3 §1, verbatim words): the headline on soft ivory,
- * a drawn key opening inside it, beside the drawing of a woman at an
- * open door. A small card on the drawing names the three things the £97
+ * Compass hero (copy v3 §1, verbatim words): the headline on soft ivory
+ * beside the drawing of a woman at an open door. A small card on the drawing names the three things the £97
  * holds, each with its cover.
  */
 export const CompassHero = () => (
@@ -23,16 +21,8 @@ export const CompassHero = () => (
         </Reveal>
         <Reveal delay={0.1}>
           <h1 className="mt-8 max-w-[760px] text-h2 max-md:mt-6">
-            You don&rsquo;t have a discipline problem. You have a{" "}
-            <ImageWipe
-              src="/images/scan/scan-key-sketch.webp"
-              alt=""
-              trigger="load"
-              preload
-              delay={0.5}
-              className="mx-1"
-            />{" "}
-            life you never fully claimed.
+            You don&rsquo;t have a discipline problem. You have a life you
+            never fully claimed.
           </h1>
         </Reveal>
         <Reveal delay={0.2} className="mt-7 flex max-w-[600px] flex-col gap-4">
