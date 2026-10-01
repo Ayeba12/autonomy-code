@@ -11,6 +11,8 @@
  * browse pages that link to them (content.md §26 rule 5).
  */
 
+import type { ImageRef } from "./types";
+
 export type ServiceGroup = "ladder" | "session" | "engagement" | "ongoing";
 
 export interface ServiceSection {
@@ -28,6 +30,8 @@ export interface ServiceTier {
 
 export interface Service {
   slug: string;
+  /** The drawing shown in the hero and on cards that link here. */
+  image: ImageRef;
   name: string;
   group: ServiceGroup;
   /** Uppercase label on list rows and the service hero. */
@@ -58,6 +62,10 @@ export const services: Service[] = [
   /* ---------------------------------------------------------------- */
   {
     slug: "pillar-intensive",
+    image: {
+      src: "/images/scan/scan-ground.webp",
+      alt: "Graphite sketch of a woman standing steady on a floor of mismatched planks, the one solid plank under her feet drawn in gold",
+    },
     name: "The Pillar Intensive",
     group: "ladder",
     category: "Step two",
@@ -105,6 +113,10 @@ export const services: Service[] = [
   /* ---------------------------------------------------------------- */
   {
     slug: "wetin-you-sabi",
+    image: {
+      src: "/images/pillars/pillar-resources.webp",
+      alt: "Graphite sketch of a woman at an open cabinet of well-ordered tools and ledgers, lifting out one key drawn in gold",
+    },
     name: "Wetin You Sabi Session",
     group: "session",
     category: "Single session",
@@ -146,6 +158,10 @@ export const services: Service[] = [
   },
   {
     slug: "offer-clarity",
+    image: {
+      src: "/images/pillars/pillar-message.webp",
+      alt: "Graphite sketch of a woman writing one clear line in gold across a large sheet, crumpled drafts pushed aside",
+    },
     name: "Offer Clarity Session",
     group: "session",
     category: "Single session",
@@ -184,6 +200,10 @@ export const services: Service[] = [
   },
   {
     slug: "synccheck",
+    image: {
+      src: "/images/reset/reset-move-audit.webp",
+      alt: "Graphite sketch of a woman with a magnifying glass tracing footprints across a ledger back to the first, in gold",
+    },
     name: "SyncCheck Intensive",
     group: "session",
     category: "Single session",
@@ -225,6 +245,10 @@ export const services: Service[] = [
   },
   {
     slug: "willingness-and-recovery",
+    image: {
+      src: "/images/about/about-window.webp",
+      alt: "Graphite sketch of a woman seated by a tall window, looking out over a misty lake, the dawn line drawn in gold",
+    },
     name: "Willingness and Recovery",
     group: "session",
     category: "Seven-day intensive",
@@ -271,6 +295,10 @@ export const services: Service[] = [
   /* ---------------------------------------------------------------- */
   {
     slug: "knowledge-architecture",
+    image: {
+      src: "/images/reset/reset-move-align.webp",
+      alt: "Graphite sketch of two hands drawing one straight line along a ruler, the new line in gold",
+    },
     name: "Knowledge Architecture",
     group: "engagement",
     category: "The engagement",
@@ -327,6 +355,10 @@ export const services: Service[] = [
   },
   {
     slug: "communication-clarity-audit",
+    image: {
+      src: "/images/reset/reset-included.webp",
+      alt: "Graphite sketch of an open spiral sketchbook with a pencil resting across its blank pages, a drawing stencil beside it",
+    },
     name: "Communication Clarity Audit",
     group: "engagement",
     category: "The audit",
@@ -384,6 +416,10 @@ export const services: Service[] = [
   },
   {
     slug: "top-audit",
+    image: {
+      src: "/images/pillars/pillar-strategy.webp",
+      alt: "Graphite sketch of a woman leaning over a map, one finger on the route she has chosen, drawn in gold",
+    },
     name: "TOP Audit",
     group: "engagement",
     category: "The audit",
@@ -425,6 +461,10 @@ export const services: Service[] = [
   /* ---------------------------------------------------------------- */
   {
     slug: "implementation",
+    image: {
+      src: "/images/reset/reset-move-anchor.webp",
+      alt: "Graphite sketch of a woman driving a stake into the ground to hold a tent in the wind, the stake and rope in gold",
+    },
     name: "Implementation",
     group: "ongoing",
     category: "Ongoing, add-on only",
