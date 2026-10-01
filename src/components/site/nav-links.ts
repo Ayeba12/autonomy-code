@@ -82,10 +82,10 @@ export const footerColumns: { title: string; links: NavLink[] }[] = [
   },
 ];
 
-/** Placeholder hrefs until the client supplies live profiles (content.md §8). */
+/** DK's live profiles (LinkedIn and TikTok as listed on dkjonah.com). */
 export const socialLinks: NavLink[] = [
-  { label: "Substack", href: "#" },
-  { label: "LinkedIn", href: "#" },
-  { label: "TikTok", href: "#" },
-  { label: "YouTube", href: "#" },
+  { label: "Substack", href: "https://dkjonah.substack.com/" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/dkjonah" },
+  { label: "TikTok", href: "https://www.tiktok.com/@dkjonah" },
+  { label: "YouTube", href: "https://www.youtube.com/@dkjonah" },
 ];
