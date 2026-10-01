@@ -1,18 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
-/** Footer newsletter form (client-side only until the CMS/API is wired). */
+/** Newsletter sign-up (footer and Writing page). Posts to /api/newsletter, which adds the address to SendFox. */
 export const NewsletterForm = () => {
   const [state, setState] = useState<FormState>("idle");
+  // The form appears twice on the Writing page, so ids are per instance.
+  const id = useId();
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const data = new FormData(event.currentTarget);
     setState("submitting");
-    // Placeholder: swap for a real endpoint (e.g. WP newsletter plugin / Resend).
-    window.setTimeout(() => setState("success"), 600);
+    try {
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: data.get("newsletter-email"),
+          website: data.get("website"),
+        }),
+      });
+      setState(response.ok ? "success" : "error");
+    } catch {
+      setState("error");
+    }
   };
 
   if (state === "success") {
@@ -25,12 +39,17 @@ export const NewsletterForm = () => {
 
   return (
     <form onSubmit={handleSubmit} aria-label="Newsletter">
+      {/* Honeypot: hidden from people, tempting to scripts. */}
+      <div className="hidden" aria-hidden>
+        <label htmlFor={`${id}-website`}>Website</label>
+        <input id={`${id}-website`} name="website" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
       <div className="flex h-14 items-center justify-between rounded-full border border-line/40 pl-5 pr-2 transition-all duration-300 hover:rounded-2xl focus-within:border-line">
-        <label htmlFor="newsletter-email" className="sr-only">
+        <label htmlFor={`${id}-email`} className="sr-only">
           Email address
         </label>
         <input
-          id="newsletter-email"
+          id={`${id}-email`}
           type="email"
           name="newsletter-email"
           required
