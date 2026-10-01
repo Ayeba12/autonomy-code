@@ -1,7 +1,6 @@
 "use client";
 
-import { type ReactNode } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { type CSSProperties, type ReactNode, useEffect, useRef } from "react";
 
 interface RevealProps {
   children: ReactNode;
@@ -21,7 +20,15 @@ interface RevealProps {
   amount?: number | "some" | "all";
 }
 
-/** Blur-up scroll reveal matching the template's IX2 pattern. */
+/**
+ * Blur-up reveal matching the template's IX2 pattern, driven by CSS (see
+ * `.reveal` in globals.css) so nothing waits on JavaScript to be seen.
+ *
+ * The server sends the block visible, with a CSS entrance that plays on
+ * first paint. Once the page hydrates, blocks still below the fold are
+ * held back and play the same entrance as they scroll into view. If the
+ * scripts are slow or never arrive, every block is simply visible.
+ */
 export const Reveal = ({
   children,
   delay = 0,
@@ -30,19 +37,39 @@ export const Reveal = ({
   once = true,
   amount = 0.2,
 }: RevealProps) => {
-  const reduced = useReducedMotion();
+  const ref = useRef<HTMLDivElement>(null);
 
-  if (reduced) return <div className={className}>{children}</div>;
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Already on screen (or above it): the CSS entrance has it covered.
+    if (el.getBoundingClientRect().top < window.innerHeight) return;
+
+    el.classList.add("reveal-wait");
+    const threshold = amount === "some" ? 0 : amount === "all" ? 1 : amount;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.remove("reveal-wait");
+          if (once) observer.disconnect();
+        } else if (!once) {
+          el.classList.add("reveal-wait");
+        }
+      },
+      { threshold },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [amount, once]);
 
   return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y, filter: "blur(5px)" }}
-      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      viewport={{ once, amount }}
-      transition={{ duration: 0.8, delay, ease: [0.25, 0.1, 0.25, 1] }}
+    <div
+      ref={ref}
+      className={className ? `reveal ${className}` : "reveal"}
+      style={{ "--reveal-delay": `${delay}s`, "--reveal-y": `${y}px` } as CSSProperties}
     >
       {children}
-    </motion.div>
+    </div>
   );
 };

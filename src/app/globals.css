@@ -238,3 +238,32 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* — Reveal: the blur-up entrance, in CSS so text never waits on scripts.
+   Plays on first paint; `.reveal-wait` (set by Reveal.tsx once hydrated)
+   holds blocks below the fold until they scroll into view. — */
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--reveal-y, 50px));
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    animation: reveal-in 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) var(--reveal-delay, 0s) backwards;
+  }
+
+  .reveal.reveal-wait {
+    animation: none;
+    opacity: 0;
+    transform: translateY(var(--reveal-y, 50px));
+    filter: blur(5px);
+  }
+}
