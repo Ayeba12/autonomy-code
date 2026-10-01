@@ -28,6 +28,8 @@ export const metadata: Metadata = {
   },
   description:
     "A coaching and strategy practice for accomplished professionals whose expertise lives in scattered pieces. Autonomy is peace, given structure.",
+  // Bing Webmaster Tools ownership tag. Removing it un-verifies the site.
+  other: { "msvalidate.01": "4E9D545855E6579E0415CB4C284EECD2" },
 };
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
