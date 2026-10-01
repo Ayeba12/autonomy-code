@@ -12,12 +12,19 @@ import { ThreePlaces } from "@/components/compass/ThreePlaces";
 import { WhatYouGet } from "@/components/compass/WhatYouGet";
 import { Navbar } from "@/components/site/Navbar";
 import { content } from "@/content/source";
+import { seo } from "@/lib/seo";
+import { JsonLd } from "@/components/site/JsonLd";
+import { compassSchema, faqSchema } from "@/lib/schema";
 
-export const metadata: Metadata = {
+const DESCRIPTION =
+  "A £97 door for coaches and consultants who have built something real and privately sense it was built for the wrong reasons: twenty-five statements, a 90-minute Claim Intensive, and a written Autonomy Blueprint.";
+
+export const metadata: Metadata = seo({
   title: "The Autonomy Compass",
-  description:
-    "A £97 door for coaches and consultants who have built something real and privately sense it was built for the wrong reasons: twenty-five statements, a 90-minute Claim Intensive, and a written Autonomy Blueprint.",
-};
+  description: DESCRIPTION,
+  path: "/autonomy-compass",
+  image: "/images/og/autonomy-compass.jpg",
+});
 
 /**
  * /autonomy-compass — the £97 paid front door, formerly the Ownership
@@ -32,6 +39,8 @@ const AutonomyCompassPage = async () => {
 
   return (
     <>
+      <JsonLd data={compassSchema(DESCRIPTION)} />
+      {faqs.length > 0 && <JsonLd data={faqSchema(faqs)} />}
       <Navbar tone="dark" />
       <main className="bg-paper">
         <CompassHero />

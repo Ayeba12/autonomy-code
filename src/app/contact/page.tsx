@@ -4,12 +4,14 @@ import Link from "next/link";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { Reveal } from "@/components/motion/Reveal";
 import { Navbar } from "@/components/site/Navbar";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Contact",
   description:
-    "Questions about the work? Write to dk@dkjonah.com or use the form. For stages, see Speaking. For everything else, the Scan is the door.",
-};
+    "Questions about the work? Write to dk@dkjonah.com or use the form. For stages, see Speaking. For everything else, the Compass is the door.",
+  path: "/contact",
+});
 
 const textLinkClasses =
   "font-medium text-ink underline decoration-brand/40 underline-offset-4 transition-colors duration-300 hover:decoration-brand";

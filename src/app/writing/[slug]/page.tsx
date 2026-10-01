@@ -9,6 +9,9 @@ import { Tag } from "@/components/ui/Tag";
 import { ArticleCard } from "@/components/writing/ArticleCard";
 import { formatArticleDate } from "@/components/writing/format-date";
 import { content } from "@/content/source";
+import { seo } from "@/lib/seo";
+import { JsonLd } from "@/components/site/JsonLd";
+import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 
 interface ArticlePageProps {
   params: Promise<{ slug: string }>;
@@ -28,7 +31,14 @@ export const generateMetadata = async ({
   const { slug } = await params;
   const article = await content.getArticle(slug);
   if (!article || article.draft) return {};
-  return { title: article.title, description: article.subtitle };
+  return seo({
+    title: article.title,
+    description: article.subtitle || article.excerpt,
+    path: `/writing/${article.slug}`,
+    image: article.heroImage?.src,
+    type: "article",
+    publishedTime: article.date,
+  });
 };
 
 /**
@@ -48,6 +58,8 @@ const ArticlePage = async ({ params }: ArticlePageProps) => {
 
   return (
     <>
+      <JsonLd data={articleSchema(article)} />
+      <JsonLd data={breadcrumbSchema([["Writing", "/writing"], [article.title, `/writing/${article.slug}`]])} />
       <Navbar tone="dark" />
       <main>
         {/* Header — ivory, centered */}

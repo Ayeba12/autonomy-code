@@ -7,12 +7,14 @@ import { NewsletterForm } from "@/components/site/NewsletterForm";
 import { ArticleGrid } from "@/components/writing/ArticleGrid";
 import { WritingHero } from "@/components/writing/WritingHero";
 import { content } from "@/content/source";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Writing",
   description:
     "Essays on autonomy, ownership, and the quiet structure under a working life.",
-};
+  path: "/writing",
+});
 
 /** Small uppercase label used for eyebrows across the page. */
 const Eyebrow = ({ children, className = "text-slate" }: { children: string; className?: string }) => (

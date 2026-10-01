@@ -8,12 +8,14 @@ import { Tag } from "@/components/ui/Tag";
 import { VideoGrid } from "@/components/video/VideoGrid";
 import { content } from "@/content/source";
 import { VIDEO_SECTIONS } from "@/content/video-sections";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "In Conversation",
   description:
     "Interviews, podcasts, talks, and more. Where the work has been spoken aloud, watchable in place.",
-};
+  path: "/in-conversation",
+});
 
 /**
  * /in-conversation — the video hub (content.md §4.9). Four sections of

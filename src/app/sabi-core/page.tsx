@@ -12,12 +12,14 @@ import {
 } from "@/components/site/ResetCta";
 import { Button } from "@/components/ui/Button";
 import { Tag } from "@/components/ui/Tag";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "SABI CORE",
   description:
     "The flagship year of The Autonomy Code. A year, one to one with DK, built on the SABI OS operating system. A structured system, not a course.",
-};
+  path: "/sabi-core",
+});
 
 /** Adapted from the Compass lists, set for a year of one-to-one work. */
 const forList = [

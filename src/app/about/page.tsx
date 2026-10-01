@@ -8,12 +8,16 @@ import { Navbar } from "@/components/site/Navbar";
 import { ResetCta } from "@/components/site/ResetCta";
 import { Tag } from "@/components/ui/Tag";
 import { content } from "@/content/source";
+import { seo } from "@/lib/seo";
+import { JsonLd } from "@/components/site/JsonLd";
+import { profileSchema } from "@/lib/schema";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "About",
   description:
     "The story behind The Autonomy Code. DK Jonah on hidden captivity, ownership, and building from owned ground.",
-};
+  path: "/about",
+});
 
 /* DK's final wording (content.md §4.7). Verbatim; do not edit. */
 
@@ -146,6 +150,7 @@ const AboutPage = async () => {
 
   return (
     <>
+      <JsonLd data={profileSchema()} />
       <Navbar tone="light" />
       <main className="bg-paper">
         {/* Hero — Stodio about hero: black rounded band, centered headline,

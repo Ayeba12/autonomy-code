@@ -10,12 +10,14 @@ import { Tag } from "@/components/ui/Tag";
 import { content } from "@/content/source";
 import { menuGroups } from "@/content/services";
 import type { ImageRef } from "@/content/types";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Work Together",
   description:
     "The whole menu in one calm view: the ladder, single sessions, knowledge work, and ongoing implementation. Every engagement begins with the Autonomy Compass.",
-};
+  path: "/work-together",
+});
 
 /** One card in the ladder row. */
 interface LadderCardItem {

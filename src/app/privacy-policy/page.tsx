@@ -3,12 +3,14 @@ import { CtaSection } from "@/components/site/CtaSection";
 import { Navbar } from "@/components/site/Navbar";
 import { LegalBlock, LegalList } from "@/components/utility/LegalBlock";
 import { UtilityHero, UtilitySection } from "@/components/utility/UtilityHero";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Privacy Policy",
   description:
     "How The Autonomy Code collects, uses, and protects your information. UK GDPR.",
-};
+  path: "/privacy-policy",
+});
 
 /**
  * /privacy-policy — adapted from the UK GDPR template in the build doc

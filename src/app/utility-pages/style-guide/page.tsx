@@ -7,12 +7,15 @@ import { ArrowLink } from "@/components/ui/ArrowLink";
 import { Button } from "@/components/ui/Button";
 import { Tag } from "@/components/ui/Tag";
 import { UtilityHero, UtilitySection } from "@/components/utility/UtilityHero";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Style Guide",
   description:
     "Browse all the basic styles and components inside this UI Kit.",
-};
+  path: "/utility-pages/style-guide",
+  noindex: true,
+});
 
 /* — Data: mirrors design.md §2 / §10 exactly — */
 

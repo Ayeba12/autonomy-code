@@ -3,12 +3,14 @@ import { CookiePreferences } from "@/components/site/CookiePreferences";
 import { Navbar } from "@/components/site/Navbar";
 import { LegalBlock, LegalList } from "@/components/utility/LegalBlock";
 import { UtilityHero, UtilitySection } from "@/components/utility/UtilityHero";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Cookies",
   description:
     "What cookies this site uses, what it never uses, and how to change your choice.",
-};
+  path: "/cookies",
+});
 
 /** /cookies — the cookie policy, in plain calm language. */
 const CookiesPage = () => (

@@ -3,12 +3,14 @@ import { CtaSection } from "@/components/site/CtaSection";
 import { Navbar } from "@/components/site/Navbar";
 import { LegalBlock, LegalList } from "@/components/utility/LegalBlock";
 import { UtilityHero, UtilitySection } from "@/components/utility/UtilityHero";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Terms",
   description:
     "The terms of working with The Autonomy Code, including how money is handled: plainly, and before any work begins.",
-};
+  path: "/terms",
+});
 
 /**
  * /terms — calm placeholder structure from the Coaching Services Master

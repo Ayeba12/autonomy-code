@@ -5,13 +5,15 @@ import { ResetCheckout } from "@/components/reset/ResetCheckout";
 import { Navbar } from "@/components/site/Navbar";
 import { DiagonalLink } from "@/components/ui/DiagonalLink";
 import { bookingPhase, reset, resetCheckout } from "@/content/reset";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Take your seat",
   description:
     "Choose your seat at The Annual Reset 4.0, read how it works and how refunds are handled, then continue to secure payment.",
-  robots: { index: false, follow: false },
-};
+  path: "/annual-reset/checkout",
+  noindex: true,
+});
 
 /**
  * /annual-reset/checkout — the step between "Take your seat" and Stripe.

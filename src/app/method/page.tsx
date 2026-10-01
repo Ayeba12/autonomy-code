@@ -9,12 +9,14 @@ import { YearOneSection } from "@/components/method/YearOneSection";
 import { CtaSection } from "@/components/site/CtaSection";
 import { Navbar } from "@/components/site/Navbar";
 import { content } from "@/content/source";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "The Method",
   description:
     "Autonomy is not independence from people. It is independence from captivity. The five pillars and the operating flow of The Autonomy Code.",
-};
+  path: "/method",
+});
 
 const MethodPage = async () => {
   const [pillars, stats] = await Promise.all([

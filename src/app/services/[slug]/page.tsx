@@ -9,6 +9,9 @@ import { Button } from "@/components/ui/Button";
 import { DiagonalArrow, DiagonalLink } from "@/components/ui/DiagonalLink";
 import { Tag } from "@/components/ui/Tag";
 import { serviceBySlug, services } from "@/content/services";
+import { seo } from "@/lib/seo";
+import { JsonLd } from "@/components/site/JsonLd";
+import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 
 interface ServicePageProps {
   params: Promise<{ slug: string }>;
@@ -23,7 +26,11 @@ export const generateMetadata = async ({
   const { slug } = await params;
   const service = serviceBySlug(slug);
   if (!service) return {};
-  return { title: service.name, description: service.summary };
+  return seo({
+    title: service.name,
+    description: service.intro,
+    path: `/services/${service.slug}`,
+  });
 };
 
 /** Gold spark bullet, matching the Tag icon. */
@@ -77,6 +84,8 @@ const ServicePage = async ({ params }: ServicePageProps) => {
 
   return (
     <>
+      <JsonLd data={serviceSchema(service)} />
+      <JsonLd data={breadcrumbSchema([["Work Together", "/work-together"], [service.name, `/services/${service.slug}`]])} />
       <Navbar tone="dark" />
       <main className="bg-paper">
         {/* Hero — headline and price beside the service's drawing */}

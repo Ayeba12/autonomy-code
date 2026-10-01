@@ -9,12 +9,19 @@ import { DiagonalLink } from "@/components/ui/DiagonalLink";
 import { Tag } from "@/components/ui/Tag";
 import { EarlyBirdCountdown } from "@/components/reset/EarlyBirdCountdown";
 import { SEAT_CONTACT_EMAIL, SEAT_HREF, reset, resetFaqs } from "@/content/reset";
+import { seo } from "@/lib/seo";
+import { JsonLd } from "@/components/site/JsonLd";
+import { faqSchema, resetEventSchema } from "@/lib/schema";
 
-export const metadata: Metadata = {
+const DESCRIPTION =
+  "This year's theme is Standards. Three live sessions to close this year honestly, find out whose standards you have been living by, and enter the next one holding only the ones you choose. 27 November, 4 and 5 December, 7 pm UK, online.";
+
+export const metadata: Metadata = seo({
   title: "The Annual Reset 4.0",
-  description:
-    "This year's theme is Standards. Three live sessions to close this year honestly, find out whose standards you have been living by, and enter the next one holding only the ones you choose. 27 November, 4 and 5 December, 7 pm UK, online.",
-};
+  description: DESCRIPTION,
+  path: "/annual-reset",
+  image: "/images/og/annual-reset.jpg",
+});
 
 /** Gold spark bullet, matching the Tag icon. */
 const Spark = () => (
@@ -189,6 +196,8 @@ const SeatButton = ({
  */
 const AnnualResetPage = () => (
   <>
+    <JsonLd data={resetEventSchema(DESCRIPTION)} />
+    <JsonLd data={faqSchema(resetFaqs)} />
     <Navbar tone="light" />
     <main className="bg-paper">
       {/* Hero — black inset band on the home-hero shape: the headline owns

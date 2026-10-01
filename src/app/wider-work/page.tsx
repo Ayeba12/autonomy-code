@@ -6,12 +6,14 @@ import { DiagonalArrow } from "@/components/ui/DiagonalLink";
 import { Tag } from "@/components/ui/Tag";
 import { content } from "@/content/source";
 import type { WiderWorkLink } from "@/content/types";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "The Wider Work",
   description:
     "The Autonomy Code is the storefront of a wider practice. These are the other rooms of the house.",
-};
+  path: "/wider-work",
+});
 
 /** Link-out card with its drawing; rooms without an address render quietly, marked "Coming soon". */
 const WiderWorkCard = ({ link, index }: { link: WiderWorkLink; index: number }) => {

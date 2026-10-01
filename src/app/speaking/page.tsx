@@ -6,12 +6,14 @@ import { SpeakingEnquiryForm } from "@/components/speaking/SpeakingEnquiryForm";
 import { Tag } from "@/components/ui/Tag";
 import { content } from "@/content/source";
 import type { ImageRef } from "@/content/types";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Speaking",
   description:
     "Invite DK Jonah to speak on autonomy, self-trust, and knowledge architecture. Keynotes, workshops, and panels. Rates by enquiry, in writing.",
-};
+  path: "/speaking",
+});
 
 /** A drawing for each theme, in the order the content lists them. */
 const themeArt: ImageRef[] = [

@@ -9,12 +9,14 @@ import { DiagonalArrow } from "@/components/ui/DiagonalLink";
 import { Tag } from "@/components/ui/Tag";
 import { pillars } from "@/content/local/pillars";
 import type { ImageRef } from "@/content/types";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Legacy Builder",
   description:
     "The deepest room of the practice. One to two people at a time, rare and private, by invitation.",
-};
+  path: "/legacy",
+});
 
 /** The room in four plain facts, each taken from the copy below. */
 const facts = [

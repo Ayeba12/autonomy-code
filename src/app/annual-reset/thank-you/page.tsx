@@ -3,12 +3,14 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Navbar } from "@/components/site/Navbar";
 import { DiagonalLink } from "@/components/ui/DiagonalLink";
 import { reset, resetCheckout } from "@/content/reset";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   title: "Your seat is taken",
   description: "Thank you for booking The Annual Reset 4.0. The joining link and the workbook follow by email.",
-  robots: { index: false, follow: false },
-};
+  path: "/annual-reset/thank-you",
+  noindex: true,
+});
 
 /**
  * /annual-reset/thank-you — where Stripe sends people after payment.

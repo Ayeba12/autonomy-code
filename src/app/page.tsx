@@ -12,11 +12,13 @@ import { ResetBanner } from "@/components/reset/ResetBanner";
 import { CtaSection } from "@/components/site/CtaSection";
 import { Navbar } from "@/components/site/Navbar";
 import { content } from "@/content/source";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seo({
   description:
     "A coaching and strategy practice for accomplished professionals whose expertise lives in scattered pieces. We organise your thinking so you can lean on it.",
-};
+  path: "",
+});
 
 const HomePage = async () => {
   const [pillars, ladder, articles, quotes, stats] = await Promise.all([

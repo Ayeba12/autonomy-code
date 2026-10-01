@@ -8,6 +8,7 @@ import { Tag } from "@/components/ui/Tag";
 import { VideoGrid } from "@/components/video/VideoGrid";
 import { content } from "@/content/source";
 import { VIDEO_SECTIONS, videoSectionBySlug } from "@/content/video-sections";
+import { seo } from "@/lib/seo";
 
 interface SectionPageProps {
   params: Promise<{ section: string }>;
@@ -22,10 +23,11 @@ export const generateMetadata = async ({
   const { section } = await params;
   const def = videoSectionBySlug(section);
   if (!def) return {};
-  return {
+  return seo({
     title: `${def.name} · In Conversation`,
     description: def.blurb,
-  };
+    path: `/in-conversation/${def.slug}`,
+  });
 };
 
 /**

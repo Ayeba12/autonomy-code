@@ -4,6 +4,9 @@ import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { CookieConsent } from "@/components/site/CookieConsent";
 import { Footer } from "@/components/site/Footer";
 import "./globals.css";
+import { SITE_URL } from "@/lib/seo";
+import { JsonLd } from "@/components/site/JsonLd";
+import { siteSchema } from "@/lib/schema";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,9 +22,7 @@ const stackSans = Stack_Sans_Headline({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  ),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "The Autonomy Code · The No GraGra Practice",
     template: "%s · The Autonomy Code",
@@ -33,8 +34,9 @@ export const metadata: Metadata = {
 };
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
-  <html lang="en" className={`${inter.variable} ${stackSans.variable}`}>
+  <html lang="en-GB" className={`${inter.variable} ${stackSans.variable}`}>
     <body>
+      <JsonLd data={siteSchema()} />
       <SmoothScroll>
         {children}
         <Footer />
