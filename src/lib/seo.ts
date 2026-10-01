@@ -7,7 +7,7 @@ export const SITE_NAME = "The Autonomy Code";
 /** DK's public profiles, used wherever search engines ask "same as". */
 export const SAME_AS = [
   "https://www.dkjonah.com/",
-  "https://www.linkedin.com/in/dkjonah",
+  "https://www.linkedin.com/in/dk-jonah-8527112b/",
   "https://dkjonah.substack.com/",
   "https://www.youtube.com/@dkjonah",
   "https://www.tiktok.com/@dkjonah",

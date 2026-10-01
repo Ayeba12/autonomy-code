@@ -85,7 +85,7 @@ export const footerColumns: { title: string; links: NavLink[] }[] = [
 /** DK's live profiles (LinkedIn and TikTok as listed on dkjonah.com). */
 export const socialLinks: NavLink[] = [
   { label: "Substack", href: "https://dkjonah.substack.com/" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/dkjonah" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/dk-jonah-8527112b/" },
   { label: "TikTok", href: "https://www.tiktok.com/@dkjonah" },
   { label: "YouTube", href: "https://www.youtube.com/@dkjonah" },
 ];
