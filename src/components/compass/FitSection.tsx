@@ -61,7 +61,7 @@ const FitCard = ({
         width={300}
         height={300}
         sizes="96px"
-        className={`size-24 shrink-0 rounded-full object-cover max-md:size-18 ${image.position}`}
+        className={`size-24 shrink-0 rounded-[14px] object-cover max-md:size-18 ${image.position}`}
       />
       <h2 className="text-h4 max-md:text-h5">{title}</h2>
     </div>
