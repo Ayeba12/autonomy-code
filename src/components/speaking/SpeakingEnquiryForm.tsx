@@ -21,17 +21,35 @@ const RequiredMark = () => (
 
 /**
  * Speaking enquiry form (content.md §4.11): name, email, organisation,
- * event date, format, and a few lines about the room. Client-side fake
- * submit until the endpoint is wired (same pattern as NewsletterForm).
+ * event date, format, and a few lines about the room. Posts to
+ * /api/speaking, which emails the practice inbox and sends the host a
+ * confirmation.
  */
 export const SpeakingEnquiryForm = ({ formats }: SpeakingEnquiryFormProps) => {
   const [state, setState] = useState<FormState>("idle");
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const data = new FormData(event.currentTarget);
     setState("submitting");
-    // Placeholder: swap for a real endpoint (e.g. WP form plugin / Resend).
-    window.setTimeout(() => setState("success"), 600);
+    try {
+      const response = await fetch("/api/speaking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          email: data.get("email"),
+          organisation: data.get("organisation"),
+          eventDate: data.get("event-date"),
+          format: data.get("format"),
+          aboutTheRoom: data.get("about-the-room"),
+          website: data.get("website"),
+        }),
+      });
+      setState(response.ok ? "success" : "error");
+    } catch {
+      setState("error");
+    }
   };
 
   if (state === "success") {
@@ -40,7 +58,7 @@ export const SpeakingEnquiryForm = ({ formats }: SpeakingEnquiryFormProps) => {
         className="rounded-2xl border border-line bg-white px-6 py-5 text-body-m"
         role="status"
       >
-        Thank you. We will reply in writing.
+        Thank you. We will reply in writing, and a copy of your enquiry is on its way to your inbox.
       </p>
     );
   }
@@ -51,6 +69,12 @@ export const SpeakingEnquiryForm = ({ formats }: SpeakingEnquiryFormProps) => {
       onSubmit={handleSubmit}
       aria-label="Speaking enquiry"
     >
+      {/* Honeypot: hidden from people, tempting to scripts. */}
+      <div className="hidden" aria-hidden>
+        <label htmlFor="enquiry-website">Website</label>
+        <input id="enquiry-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
+
       <Reveal y={30}>
         <div className="grid grid-cols-2 gap-4 max-md:grid-cols-1">
           <div className="flex flex-col gap-2">

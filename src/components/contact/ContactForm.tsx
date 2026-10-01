@@ -16,17 +16,32 @@ const RequiredMark = () => (
 
 /**
  * Simplified contact form (content.md §4.12): first name, last name,
- * email, optional message. Client-side fake submit until the endpoint is
- * wired (same pattern as NewsletterForm).
+ * email, optional message. Posts to /api/contact, which emails the
+ * practice inbox and sends the visitor a confirmation.
  */
 export const ContactForm = () => {
   const [state, setState] = useState<FormState>("idle");
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const data = new FormData(event.currentTarget);
     setState("submitting");
-    // Placeholder: swap for a real endpoint (e.g. WP form plugin / Resend).
-    window.setTimeout(() => setState("success"), 600);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName: data.get("first-name"),
+          lastName: data.get("last-name"),
+          email: data.get("email"),
+          message: data.get("message"),
+          website: data.get("website"),
+        }),
+      });
+      setState(response.ok ? "success" : "error");
+    } catch {
+      setState("error");
+    }
   };
 
   if (state === "success") {
@@ -35,7 +50,7 @@ export const ContactForm = () => {
         className="rounded-2xl border border-line bg-white px-6 py-5 text-body-m"
         role="status"
       >
-        Thank you! Your message has been received.
+        Thank you. Your message has been received, and a copy is on its way to your inbox.
       </p>
     );
   }
@@ -46,6 +61,12 @@ export const ContactForm = () => {
       onSubmit={handleSubmit}
       aria-label="Contact"
     >
+      {/* Honeypot: hidden from people, tempting to scripts. */}
+      <div className="hidden" aria-hidden>
+        <label htmlFor="contact-website">Website</label>
+        <input id="contact-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
+
       <Reveal y={30}>
         <div className="grid grid-cols-2 gap-4 max-md:grid-cols-1">
           <div className="flex flex-col gap-2">
