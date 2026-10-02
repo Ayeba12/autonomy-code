@@ -310,6 +310,8 @@ export interface PaymentFields {
   paidAt: string;
   /** Stripe's own reference for the checkout, for looking it up. */
   reference: string;
+  /** What happened with the mailing list, in plain words. Optional. */
+  list?: string;
 }
 
 /** To the practice inbox: a payment went through on Stripe. */
@@ -329,6 +331,7 @@ export const paymentNotification = (fields: PaymentFields): EmailMessage =>
       { label: "Name", value: fields.name },
       { label: "Email", value: fields.email },
       { label: "When", value: fields.paidAt },
+      { label: "Mailing list", value: fields.list ?? "" },
       { label: "Reference", value: fields.reference },
     ]),
     button: fields.email

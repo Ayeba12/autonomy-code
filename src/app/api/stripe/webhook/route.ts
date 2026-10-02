@@ -1,10 +1,15 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
 import { emailConfigured, enquiryInbox, sendEmail } from "@/lib/email/send";
 import { paymentNotification } from "@/lib/email/templates";
+import { addToMailerLite, mailerLiteConfigured, mailerLiteGroupName } from "@/lib/mailerlite";
 
 /**
  * POST /api/stripe/webhook — Stripe calls this when a checkout completes.
- * Each paid checkout sends a notification to the practice inbox.
+ * For each paid checkout:
+ *   1. an Annual Reset buyer is added to the MailerLite group, which
+ *      starts the welcome automation there (see lib/mailerlite.ts);
+ *   2. a notification goes to the practice inbox, saying whether the
+ *      buyer reached the list.
  *
  *   STRIPE_WEBHOOK_SECRET  the endpoint's signing secret (whsec_…)
  *
@@ -18,6 +23,9 @@ const PRODUCTS: Record<string, string> = {
   "gbp:19900": "The Annual Reset 4.0",
   "gbp:9700": "The Autonomy Compass",
 };
+
+/** The prices whose buyers join the MailerLite group: the Annual Reset. */
+const RESET_PRICES = new Set(["gbp:9900", "gbp:19900"]);
 
 const TOLERANCE_SECONDS = 5 * 60;
 
@@ -67,8 +75,32 @@ export async function POST(request: Request) {
   const currency = String(session.currency ?? "gbp");
   const customer = (session.customer_details ?? {}) as { name?: string; email?: string };
 
+  // 1. The mailing list. A failure here is reported, not retried: the
+  //    notification below tells the team to add the buyer by hand.
+  let list: string | undefined;
+  if (RESET_PRICES.has(`${currency}:${amount}`)) {
+    const group = mailerLiteGroupName();
+    if (!customer.email) {
+      list = `Not added to ${group}: Stripe sent no email address. Add by hand.`;
+    } else if (!mailerLiteConfigured()) {
+      list = `Not added to ${group}: MailerLite is not connected yet. Add by hand.`;
+    } else {
+      try {
+        await addToMailerLite({ email: customer.email, name: customer.name });
+        list = `Added to ${group} in MailerLite.`;
+      } catch (error) {
+        console.error("Stripe webhook: MailerLite add failed", error);
+        list = `NOT added to ${group}: MailerLite refused. Add by hand.`;
+      }
+    }
+  }
+
+  // 2. The notification.
   const inbox = enquiryInbox();
-  if (!emailConfigured() || !inbox) return new Response("Email not configured", { status: 503 });
+  if (!emailConfigured() || !inbox) {
+    // Nothing more to do; answering 2xx stops Stripe repeating the add.
+    return Response.json({ received: true, list });
+  }
 
   try {
     await sendEmail({
@@ -85,12 +117,12 @@ export async function POST(request: Request) {
           timeZone: "Europe/London",
         }) + " (UK)",
         reference: String(session.id ?? ""),
+        list,
       }),
     });
   } catch (error) {
-    // A non-2xx answer makes Stripe try again later.
+    // The buyer is already on the list, so do not ask Stripe to retry.
     console.error("Stripe webhook: notification not sent", error);
-    return new Response("Email failed", { status: 500 });
   }
 
   return Response.json({ received: true });
