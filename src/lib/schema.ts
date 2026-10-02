@@ -52,7 +52,7 @@ export const siteSchema = () => ({
       name: SITE_NAME,
       alternateName: "The NO GraGra Practice",
       url: SITE_URL,
-      logo: absoluteUrl("/images/email/logo.png"),
+      logo: absoluteUrl("/images/logo-square.png"),
       description:
         "A coaching and strategy practice for accomplished professionals whose expertise lives in scattered pieces. Autonomy is peace, given structure.",
       slogan: "Autonomy is peace, given structure.",
