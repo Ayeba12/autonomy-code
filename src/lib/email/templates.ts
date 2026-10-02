@@ -46,6 +46,16 @@ interface LayoutInput {
   /** A longer block of the sender's own words. */
   quote?: { label: string; body: string };
   button?: { label: string; href: string };
+  /** Paragraphs straight after the button, before any steps. */
+  afterButton?: string[];
+  /** A short numbered list under the button. */
+  steps?: { label: string; items: string[] };
+  /** Paragraphs after the button and steps. */
+  outro?: string[];
+  /** One sentence ending in a text link (e.g. the community). */
+  linkLine?: { lead: string; label: string; href: string };
+  /** Closing line and sign-off lines, e.g. ["See you Friday.", "DK Jonah", …]. */
+  signature?: string[];
   /** A quiet closing line under the button. */
   note?: string;
   /** Unsubscribe link for emails sent by a mailing tool (a merge tag is fine). */
@@ -60,6 +70,13 @@ export const escapeHtml = (value: string) =>
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
+
+/**
+ * Escaped body text. Merge tags such as {$name|default('there')} belong
+ * to the mailing tool, so the quotes inside them are put back.
+ */
+const bodyText = (value: string) =>
+  escapeHtml(value).replace(/\{\$[^}]*\}/g, (tag) => tag.replace(/&#39;/g, "'"));
 
 /** Escaped, with the sender's line breaks kept. */
 const multiline = (value: string) => escapeHtml(value).replace(/\r?\n/g, "<br />");
@@ -84,6 +101,19 @@ const renderQuote = (quote: { label: string; body: string }) =>
 <p style="${eyebrowStyle}color:${color.slate};">${escapeHtml(quote.label)}</p>
 <p style="margin:10px 0 0;font-family:${font};font-size:16px;line-height:26px;color:${color.ink};">${multiline(quote.body)}</p>
 </td></tr>
+</table>`;
+
+const renderSteps = (steps: { label: string; items: string[] }) =>
+  `<p style="${eyebrowStyle}margin:34px 0 0;color:${color.slate};">${escapeHtml(steps.label)}</p>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:12px;border-top:1px solid ${color.line};">
+${steps.items
+  .map(
+    (item, i) => `<tr>
+<td valign="top" width="44" style="padding:14px 0;border-bottom:1px solid ${color.line};font-family:${font};font-size:13px;line-height:24px;font-weight:600;letter-spacing:1.4px;color:${color.brandHot};">0${i + 1}</td>
+<td valign="top" style="padding:14px 0;border-bottom:1px solid ${color.line};font-family:${font};font-size:15px;line-height:24px;color:${color.ink};">${escapeHtml(item)}</td>
+</tr>`,
+  )
+  .join("\n")}
 </table>`;
 
 const renderButton = (button: { label: string; href: string }) =>
@@ -121,12 +151,36 @@ const layout = (input: LayoutInput) => `<!doctype html>
 ${input.intro
   .map(
     (paragraph) =>
-      `<p style="margin:18px 0 0;font-family:${font};font-size:16px;line-height:26px;color:${color.slate};">${escapeHtml(paragraph)}</p>`,
+      `<p style="margin:18px 0 0;font-family:${font};font-size:16px;line-height:26px;color:${color.slate};">${bodyText(paragraph)}</p>`,
   )
   .join("\n")}
 ${input.rows?.length ? renderRows(input.rows) : ""}
 ${input.quote ? renderQuote(input.quote) : ""}
 ${input.button ? renderButton(input.button) : ""}
+${(input.afterButton ?? [])
+  .map(
+    (paragraph) =>
+      `<p style="margin:22px 0 0;font-family:${font};font-size:16px;line-height:26px;color:${color.slate};">${bodyText(paragraph)}</p>`,
+  )
+  .join("\n")}
+${input.steps ? renderSteps(input.steps) : ""}
+${(input.outro ?? [])
+  .map(
+    (paragraph) =>
+      `<p style="margin:22px 0 0;font-family:${font};font-size:16px;line-height:26px;color:${color.slate};">${bodyText(paragraph)}</p>`,
+  )
+  .join("\n")}
+${
+  input.linkLine
+    ? `<p style="margin:22px 0 0;font-family:${font};font-size:16px;line-height:26px;color:${color.slate};">${escapeHtml(input.linkLine.lead)} <a href="${escapeHtml(input.linkLine.href)}" style="color:${color.brandHot};font-weight:600;text-decoration:underline;">${escapeHtml(input.linkLine.label)}</a></p>`
+    : ""
+}
+${
+  input.signature?.length
+    ? `<p style="margin:26px 0 0;font-family:${font};font-size:16px;line-height:26px;color:${color.ink};">${escapeHtml(input.signature[0])}</p>
+<p style="margin:14px 0 0;font-family:${font};font-size:16px;line-height:24px;color:${color.ink};"><strong>${escapeHtml(input.signature[1] ?? "")}</strong><br /><span style="font-size:14px;color:${color.slate};">${escapeHtml(input.signature[2] ?? "")}</span></p>`
+    : ""
+}
 ${
   input.note
     ? `<p style="margin:22px 0 0;font-family:${font};font-size:13px;line-height:20px;color:${color.slate};">${escapeHtml(input.note)}</p>`
@@ -168,6 +222,11 @@ const plain = (input: LayoutInput) =>
       : []),
     ...(input.quote ? ["", `${input.quote.label}:`, input.quote.body] : []),
     ...(input.button ? ["", `${input.button.label}: ${input.button.href}`] : []),
+    ...(input.afterButton?.length ? ["", ...input.afterButton] : []),
+    ...(input.steps ? ["", input.steps.label.toUpperCase(), ...input.steps.items.map((item, i) => `${i + 1}. ${item}`)] : []),
+    ...(input.outro?.length ? ["", ...input.outro] : []),
+    ...(input.linkLine ? ["", `${input.linkLine.lead} ${input.linkLine.href}`] : []),
+    ...(input.signature?.length ? ["", ...input.signature] : []),
     ...(input.note ? ["", input.note] : []),
     "",
     "The Autonomy Code · The NO GraGra Practice · DK Jonah",
@@ -384,5 +443,83 @@ export const resetWelcome = ({
     },
     button: { label: "Join the waiting room", href: telegramUrl },
     note: "Sessions are at 7 pm UK time, so please check the hour in your own time zone. Questions? Write to info@theautonomycode.com.",
+    unsubscribeUrl,
+  });
+
+/** MailerLite's first-name tag, with a fallback when no name is held. */
+const GREETING = "Hi {$name|default('there')},";
+
+interface ResetFollowUp {
+  /** The Telegram community link. */
+  telegramUrl: string;
+  unsubscribeUrl?: string;
+}
+
+const community = (telegramUrl: string) => ({
+  lead: "Join the Reset community on Telegram for updates between sessions:",
+  label: "open the community",
+  href: telegramUrl,
+});
+
+/**
+ * "One week to Audit" — send on 20 November to the Standards group.
+ * Copy supplied by the team in DK's voice; kept verbatim.
+ */
+export const resetOneWeek = ({ telegramUrl, unsubscribeUrl }: ResetFollowUp): EmailMessage =>
+  build("One week to Audit", {
+    preheader: "One small task between now and Friday 27 November.",
+    image: {
+      file: "reset-one-week.jpg",
+      alt: "Graphite sketch of a woman walking, her footprints trailing behind her, the first one in gold",
+    },
+    eyebrow: "The Annual Reset 4.0 · Audit",
+    title: "One week to Audit.",
+    intro: [
+      GREETING,
+      "One week from today, we sit down together for Audit.",
+      "Between now and then, one small task. Don't prepare a story. When we walk your year, walk it as it really was, not the version you tell at parties. That's all. The hard part is honesty, not effort.",
+      "Your joining link arrives in a few days.",
+    ],
+    rows: [{ label: "Audit", value: "Friday 27 November · 7 pm UK, 8 pm Nigeria" }],
+    linkLine: community(telegramUrl),
+    signature: ["Slow first, then precise.", "DK Jonah", "The NO GraGra Practice"],
+    unsubscribeUrl,
+  });
+
+/**
+ * The joining-link email — send between 23 and 25 November to the
+ * Standards group. Copy supplied by the team in DK's voice; kept verbatim.
+ */
+export const resetJoiningLink = ({
+  joiningUrl,
+  telegramUrl,
+  unsubscribeUrl,
+}: ResetFollowUp & { joiningUrl: string }): EmailMessage =>
+  build("Your joining link - The Annual Reset 4.0", {
+    preheader: "Audit is almost here. Friday 27 November, 7 pm UK (8 pm Nigeria).",
+    image: {
+      file: "reset-joining.jpg",
+      alt: "Graphite sketch of a woman with a magnifying glass tracing footprints across a ledger back to the first, in gold",
+    },
+    eyebrow: "The Annual Reset 4.0 · Audit",
+    title: "Your joining link.",
+    intro: [GREETING, "Audit is almost here. Friday 27 November, 7 pm UK (8 pm Nigeria)."],
+    button: { label: "Join the session", href: joiningUrl },
+    steps: {
+      label: "Before we begin",
+      items: [
+        "Find somewhere quiet. This is work you do with yourself, so give it a real seat.",
+        "Have your REset Portfolio printed or open on your tablet.",
+        "Block 7-9 pm. Two hours, with me, for the year you actually had.",
+      ],
+    },
+    afterButton: [
+      "Add it to your calendar now, and set a reminder for ten minutes before. We start on time, and we start gently.",
+    ],
+    outro: [
+      "Can't make it live? The recording arrives afterwards, so a missed session never costs you the Reset. But come if you can - Audit lands differently in the room.",
+    ],
+    linkLine: community(telegramUrl),
+    signature: ["See you Friday.", "DK Jonah", "The NO GraGra Practice"],
     unsubscribeUrl,
   });

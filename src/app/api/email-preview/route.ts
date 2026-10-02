@@ -1,5 +1,7 @@
 import {
   paymentNotification,
+  resetJoiningLink,
+  resetOneWeek,
   resetWelcome,
   contactConfirmation,
   contactNotification,
@@ -31,6 +33,9 @@ const templates = {
   "speaking-new": () => speakingNotification(speaking),
   "speaking-received": () => speakingConfirmation(speaking),
   "reset-welcome": () => resetWelcome({ telegramUrl: "https://t.me/", unsubscribeUrl: "#" }),
+  "reset-one-week": () => resetOneWeek({ telegramUrl: "https://t.me/", unsubscribeUrl: "#" }),
+  "reset-joining-link": () =>
+    resetJoiningLink({ joiningUrl: "https://example.com/", telegramUrl: "https://t.me/", unsubscribeUrl: "#" }),
   "payment-new": () =>
     paymentNotification({
       product: "The Annual Reset 4.0 (early bird)",
