@@ -1,6 +1,7 @@
 import {
   paymentNotification,
   resetJoiningLink,
+  resetMasterclassInvite,
   resetOneWeek,
   resetWelcome,
   contactConfirmation,
@@ -36,6 +37,8 @@ const templates = {
   "reset-one-week": () => resetOneWeek({ telegramUrl: "https://t.me/", unsubscribeUrl: "#" }),
   "reset-joining-link": () =>
     resetJoiningLink({ joiningUrl: "https://example.com/", telegramUrl: "https://t.me/", unsubscribeUrl: "#" }),
+  "masterclass-invite-buyers": () =>
+    resetMasterclassInvite({ lumaUrl: "https://luma.com/rt1bwt3q", unsubscribeUrl: "#" }),
   "payment-new": () =>
     paymentNotification({
       product: "The Annual Reset 4.0 (early bird)",

@@ -10,7 +10,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
-import { resetJoiningLink, resetOneWeek, resetWelcome } from "../src/lib/email/templates";
+import { resetJoiningLink, resetMasterclassInvite, resetOneWeek, resetWelcome } from "../src/lib/email/templates";
 
 const TELEGRAM_LINK = process.env.TELEGRAM_LINK ?? "https://t.me/+f6_8zOiOoK1kY2U0";
 
@@ -34,3 +34,11 @@ for (const [name, message] of Object.entries(followUps)) {
   fs.writeFileSync(path.join(out, `${name}.txt`), `Subject: ${message.subject}\n\n${message.text}\n`);
   console.log(`emails/${name}.html`, message.html.length, "bytes");
 }
+
+/** The Luma registration page for the 17 October masterclass. */
+const LUMA_LINK = process.env.LUMA_LINK ?? "https://luma.com/rt1bwt3q";
+
+const invite = resetMasterclassInvite({ lumaUrl: LUMA_LINK, unsubscribeUrl: "{$unsubscribe}" });
+fs.writeFileSync(path.join(out, "masterclass-invite-buyers.html"), invite.html);
+fs.writeFileSync(path.join(out, "masterclass-invite-buyers.txt"), `Subject: ${invite.subject}\n\n${invite.text}\n`);
+console.log("emails/masterclass-invite-buyers.html", invite.html.length, "bytes");

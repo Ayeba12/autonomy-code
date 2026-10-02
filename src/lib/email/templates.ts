@@ -523,3 +523,43 @@ export const resetJoiningLink = ({
     signature: ["See you Friday.", "DK Jonah", "The NO GraGra Practice"],
     unsubscribeUrl,
   });
+
+/**
+ * The buyers' invitation to the free masterclass on 17 October — send to
+ * the Standards group (the public invite goes to everyone else). Copy
+ * supplied by the team in DK's voice; kept verbatim.
+ */
+export const resetMasterclassInvite = ({
+  lumaUrl,
+  unsubscribeUrl,
+}: {
+  lumaUrl: string;
+  unsubscribeUrl?: string;
+}): EmailMessage =>
+  build("A warm-up for your Reset - Saturday", {
+    preheader: "A free live masterclass on Saturday 17 October: The Standard You Never Chose.",
+    image: {
+      file: "reset-masterclass.jpg",
+      alt: "Graphite sketch of a woman holding ropes handed to her by other people, one of them in gold leading back to a crowd",
+    },
+    eyebrow: "Free masterclass · Saturday 17 October",
+    title: "The Standard You Never Chose.",
+    intro: [
+      GREETING,
+      "You have your seat at The Annual Reset 4.0. Here is something to do with the wait.",
+      "On Saturday 17 October, I'm running a free live masterclass: The Standard You Never Chose.",
+    ],
+    rows: [
+      { label: "When", value: "Saturday 17 October · 9 am UK / 9 am Lagos" },
+      { label: "Length", value: "75 minutes" },
+      { label: "Where", value: "Live on Luma" },
+    ],
+    button: { label: "Register here", href: lumaUrl },
+    afterButton: [
+      "We'll take one standard you live by and trace it back to where it actually came from. You'll leave with the Standard Trace, a one-page PDF you can use on any standard, any time.",
+      "Think of it as the appetiser for Audit. The work you'll do on 27 November starts here, so arriving with one standard already traced puts you ahead of the room.",
+      "No cost, nothing to buy. You've already bought.",
+    ],
+    signature: ["See you Saturday.", "DK Jonah", "The NO GraGra Practice"],
+    unsubscribeUrl,
+  });
