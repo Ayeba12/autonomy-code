@@ -12,7 +12,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { resetWelcome } from "../src/lib/email/templates";
 
-const TELEGRAM_LINK = process.env.TELEGRAM_LINK ?? "https://t.me/REPLACE-WITH-THE-WAITING-ROOM-LINK";
+const TELEGRAM_LINK = process.env.TELEGRAM_LINK ?? "https://t.me/+f6_8zOiOoK1kY2U0";
 
 const out = path.resolve(import.meta.dirname, "../emails");
 fs.mkdirSync(out, { recursive: true });
