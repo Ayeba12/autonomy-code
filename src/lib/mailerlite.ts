@@ -4,7 +4,7 @@
  *
  *   MAILERLITE_API_KEY     an API token from MailerLite > Integrations > API
  *   MAILERLITE_GROUP_ID    the group to add buyers to, or
- *   MAILERLITE_GROUP_NAME  its name (defaults to "Standards"); the id is
+ *   MAILERLITE_GROUP_NAME  its name (defaults to "Reset 2026"); the id is
  *                          looked up when only the name is given
  */
 const API = "https://connect.mailerlite.com/api";
@@ -18,7 +18,7 @@ const headers = (key: string) => ({
 export const mailerLiteConfigured = () => Boolean(process.env.MAILERLITE_API_KEY);
 
 /** The group's display name, for messages to the team. */
-export const mailerLiteGroupName = () => process.env.MAILERLITE_GROUP_NAME ?? "Standards";
+export const mailerLiteGroupName = () => process.env.MAILERLITE_GROUP_NAME ?? "Reset 2026";
 
 const groupId = async (key: string) => {
   if (process.env.MAILERLITE_GROUP_ID) return process.env.MAILERLITE_GROUP_ID;

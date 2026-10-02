@@ -408,7 +408,7 @@ export const paymentNotification = (fields: PaymentFields): EmailMessage =>
 
 /**
  * The Annual Reset welcome email, sent to each buyer by the MailerLite
- * automation on the "Standards" group. `telegramUrl` and `unsubscribeUrl`
+ * automation on the "Reset 2026" group. `telegramUrl` and `unsubscribeUrl`
  * may be MailerLite merge tags; scripts/build-emails.mjs writes the
  * ready-to-paste HTML into emails/.
  */
@@ -462,7 +462,7 @@ const community = (telegramUrl: string) => ({
 });
 
 /**
- * "One week to Audit" — send on 20 November to the Standards group.
+ * "One week to Audit" — send on 20 November to the Reset 2026 group.
  * Copy supplied by the team in DK's voice; kept verbatim.
  */
 export const resetOneWeek = ({ telegramUrl, unsubscribeUrl }: ResetFollowUp): EmailMessage =>
