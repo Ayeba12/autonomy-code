@@ -77,6 +77,13 @@
     @apply bg-white font-body text-body-m text-ink antialiased;
   }
 
+  /* Keep the first section's margin inside <main>, so the page's own
+     background shows around an inset hero on all four sides rather than
+     the white body showing through as a strip along the top. */
+  main {
+    display: flow-root;
+  }
+
   h1,
   h2,
   h3,
