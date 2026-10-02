@@ -14,7 +14,7 @@ export const metadata: Metadata = seo({
     "Invite DK Jonah to speak on autonomy, self-trust, and knowledge architecture. Keynotes, workshops, and panels. Rates by enquiry, in writing.",
   path: "/speaking",
   image: "/images/og/speaking.jpg",
-  keywords: ["DK Jonah speaker", "keynote speaker on autonomy", "self-trust talk", "knowledge architecture workshop", "women's leadership speaker", "self-leadership", "sustainable productivity", "personal autonomy", "speaker on autonomy at work", "neurodiversity speaker UK", "neurodivergent speaker UK", "Black female speaker UK", "Black History Month speaker UK", "Black History Month workplace speaker", "women's network speaker UK", "employee network speaker UK", "ERG speaker UK", "NHS speaker wellbeing", "public sector speaker UK", "away day facilitator UK", "lunch and learn speaker UK", "webinar speaker UK"],
+  keywords: ["DK Jonah speaker", "keynote speaker on autonomy", "self-trust talk", "knowledge architecture workshop", "women's leadership speaker", "self-leadership", "sustainable productivity", "personal autonomy", "speaker on autonomy at work", "neurodiversity speaker UK", "neurodivergent speaker UK", "Black female speaker UK", "Black History Month speaker UK", "Black History Month workplace speaker", "women's network speaker UK", "employee network speaker UK", "ERG speaker UK", "NHS speaker wellbeing", "public sector speaker UK", "away day facilitator UK", "lunch and learn speaker UK", "webinar speaker UK", "autism speaker UK", "autistic speaker UK", "autism speaker UK workplace", "neurodivergent keynote speaker", "Black woman speaker London", "Black History Month speaker hire", "neurodiversity at work training UK"],
 });
 
 /** A drawing for each theme, in the order the content lists them. */

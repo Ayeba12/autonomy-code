@@ -21,6 +21,10 @@ export const SAME_AS = [
  * guards her positioning. Never add: productivity coach, life coach,
  * executive coach, motivational speaker, time management tips, how to
  * be more disciplined, or the bare word "autonomy".
+ *
+ * The identity terms on the About, Work Together and Speaking pages
+ * (Black, autistic, neurodivergent, Nigerian, Christian, chronic illness)
+ * come from the same plan and were approved by DK on 2 October 2026.
  */
 export const BRAND_KEYWORDS = [
   "The Autonomy Code",
