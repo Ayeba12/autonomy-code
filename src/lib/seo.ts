@@ -18,9 +18,11 @@ export const SAME_AS = [
  * Page-specific terms are added in each page's own `seo()` call.
  *
  * DK's keyword plan (October 2026) has a DO NOT CHASE list, which also
- * guards her positioning. Never add: productivity coach, life coach,
- * executive coach, motivational speaker, time management tips, how to
- * be more disciplined, or the bare word "autonomy".
+ * guards her positioning. Do not add: life coach, executive coach,
+ * motivational speaker, time management tips, how to be more
+ * disciplined, or the bare word "autonomy". The plan lists "productivity
+ * coach" there too; those terms are kept at the site owner's request
+ * (2 October 2026).
  *
  * The identity terms on the About, Work Together and Speaking pages
  * (Black, autistic, neurodivergent, Nigerian, Christian, chronic illness)
@@ -36,6 +38,9 @@ export const BRAND_KEYWORDS = [
   "personal autonomy",
   "self-leadership",
   "sustainable productivity",
+  "productivity coach in London",
+  "productivity coach in the United Kingdom",
+  "productivity coach UK",
   "ownership and self-governance",
   "coaching for coaches and consultants",
 ];

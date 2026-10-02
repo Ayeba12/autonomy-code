@@ -30,6 +30,8 @@ const TOPICS = [
   "NO GraGra",
   "Self-leadership",
   "Sustainable productivity",
+  "Productivity coaching",
+  "Productivity coaching in London and the United Kingdom",
   "Clarity coaching",
   "Identity coaching",
   "Goal setting and action planning",

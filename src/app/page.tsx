@@ -18,7 +18,7 @@ export const metadata: Metadata = seo({
   description:
     "A coaching and strategy practice for accomplished professionals whose expertise lives in scattered pieces. We organise your thinking so you can lean on it.",
   path: "",
-  keywords: ["ownership coaching", "self-trust", "five pillars of autonomy", "coaching and strategy practice", "coaching for consultants", "sustainable productivity", "personal autonomy", "clarity coaching", "self-leadership", "online coaching United Kingdom", "taking ownership of your life", "doing well but not happy", "successful but unfulfilled", "my life looks good on paper", "living someone else's life", "DK Jonah Autonomy Code", "autonomy coaching UK", "Black female coach UK", "coach for Black professional women", "neurodivergent coach UK", "Nigerian coach UK"],
+  keywords: ["ownership coaching", "self-trust", "five pillars of autonomy", "coaching and strategy practice", "coaching for consultants", "sustainable productivity", "personal autonomy", "clarity coaching", "self-leadership", "online coaching United Kingdom", "taking ownership of your life", "doing well but not happy", "successful but unfulfilled", "my life looks good on paper", "living someone else's life", "DK Jonah Autonomy Code", "autonomy coaching UK", "Black female coach UK", "coach for Black professional women", "neurodivergent coach UK", "Nigerian coach UK", "productivity coaching", "productivity coach London", "productivity coaching UK"],
 });
 
 const HomePage = async () => {
