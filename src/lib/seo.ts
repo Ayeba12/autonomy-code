@@ -16,6 +16,11 @@ export const SAME_AS = [
 /**
  * The terms the practice should be found for, carried on every page.
  * Page-specific terms are added in each page's own `seo()` call.
+ *
+ * DK's keyword plan (October 2026) has a DO NOT CHASE list, which also
+ * guards her positioning. Never add: productivity coach, life coach,
+ * executive coach, motivational speaker, time management tips, how to
+ * be more disciplined, or the bare word "autonomy".
  */
 export const BRAND_KEYWORDS = [
   "The Autonomy Code",
@@ -27,9 +32,6 @@ export const BRAND_KEYWORDS = [
   "personal autonomy",
   "self-leadership",
   "sustainable productivity",
-  "productivity coach in London",
-  "productivity coach in the United Kingdom",
-  "productivity coach UK",
   "ownership and self-governance",
   "coaching for coaches and consultants",
 ];

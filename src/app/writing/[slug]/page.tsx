@@ -25,6 +25,20 @@ export const generateStaticParams = async () => {
     .map((article) => ({ slug: article.slug }));
 };
 
+/**
+ * The searches each essay answers, from DK's keyword plan (October 2026).
+ * New essays work without an entry; add one when the plan names a phrase.
+ */
+const ESSAY_KEYWORDS: Record<string, string[]> = {
+  "busy-is-not-the-same-as-owned": ["busy but not moving forward", "why am I always tired but busy", "capacity not productivity"],
+  "why-capable-people-feel-scattered": ["why do capable people get stuck", "successful but unfulfilled", "high achiever but feel empty", "expertise but no audience"],
+  "a-short-tour-of-the-five-pillars": ["what is personal autonomy", "taking ownership of your life", "self governance personal"],
+  "silence-my-old-friend": ["neurodivergent productivity", "why do I feel guilty for resting", "rest is not a reward", "quiet burnout"],
+  "choosing-the-format-for-your-message": ["how to explain what I do", "how to package what I know", "visibility without self promotion"],
+  "nobody-is-praising-you-part-one": ["waiting for permission", "giving yourself permission", "how to trust yourself again"],
+  "more-than-average-part-two": ["living someone else's life", "how to stop living for other people", "meeting standards I never chose"],
+};
+
 export const generateMetadata = async ({
   params,
 }: ArticlePageProps): Promise<Metadata> => {
@@ -38,7 +52,7 @@ export const generateMetadata = async ({
     image: article.heroImage?.src,
     type: "article",
     publishedTime: article.date,
-    keywords: [article.pillar, "autonomy", "ownership", "self-trust", "essay by DK Jonah"],
+    keywords: [...(ESSAY_KEYWORDS[article.slug] ?? []), article.pillar, "ownership", "self-trust", "essay by DK Jonah"],
   });
 };
 

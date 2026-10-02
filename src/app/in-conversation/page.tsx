@@ -16,7 +16,7 @@ export const metadata: Metadata = seo({
     "Interviews, podcasts, talks, and more. Where the work has been spoken aloud, watchable in place.",
   path: "/in-conversation",
   image: "/images/og/in-conversation.jpg",
-  keywords: ["DK Jonah interviews", "DK Jonah podcast", "talks on autonomy", "panels"],
+  keywords: ["DK Jonah interviews", "DK Jonah podcast", "talks on autonomy", "panels", "DK Jonah podcast guest"],
 });
 
 /**

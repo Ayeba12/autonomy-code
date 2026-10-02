@@ -14,8 +14,9 @@ const CONTEXT = "https://schema.org";
 
 /** What the practice and DK are known for, in searchers' words. */
 const TOPICS = [
-  "Autonomy",
   "Personal autonomy",
+  "Autonomy versus independence",
+  "Taking ownership of your life",
   "Ownership",
   "Self-governance",
   "Self-trust",
@@ -29,8 +30,6 @@ const TOPICS = [
   "NO GraGra",
   "Self-leadership",
   "Sustainable productivity",
-  "Productivity coaching",
-  "Productivity coaching in London and the United Kingdom",
   "Clarity coaching",
   "Identity coaching",
   "Goal setting and action planning",
@@ -125,7 +124,7 @@ export const articleSchema = (article: Article) => {
     dateModified: article.date,
     inLanguage: "en-GB",
     articleSection: article.pillar,
-    keywords: [article.pillar, "autonomy", "ownership", "self-trust"].join(", "),
+    keywords: [article.pillar, "ownership", "self-trust"].join(", "),
     about: { "@type": "Thing", name: `${article.pillar} (pillar of The Autonomy Code)` },
     ...(article.heroImage ? { image: [absoluteUrl(article.heroImage.src)] } : {}),
     author: { "@id": PERSON_ID, "@type": "Person", name: "DK Jonah" },

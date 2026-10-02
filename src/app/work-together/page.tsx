@@ -18,7 +18,7 @@ export const metadata: Metadata = seo({
     "The whole menu in one calm view: clarity, identity, messaging and business strategy for coaches and consultants, from single sessions to a year of one-to-one work.",
   path: "/work-together",
   image: "/images/og/work-together.jpg",
-  keywords: ["coaching services", "strategy sessions", "one to one coaching", "knowledge architecture", "communication audit", "services for coaches and consultants", "productivity coaching", "clarity coaching", "identity coaching", "personal brand strategy", "messaging strategy for coaches and consultants", "business strategy for coaches and consultants", "practice development", "creative recovery", "accountability and commitment", "productivity coach London", "productivity coaching UK", "online coaching United Kingdom"],
+  keywords: ["coaching services", "strategy sessions", "one to one coaching", "knowledge architecture", "communication audit", "services for coaches and consultants", "clarity coaching", "identity coaching", "personal brand strategy", "messaging strategy for coaches and consultants", "business strategy for coaches and consultants", "practice development", "creative recovery", "accountability and commitment", "online coaching United Kingdom", "career clarity session UK", "building a practice not a business", "how to package what I know", "how to explain what I do", "practice building for experts"],
 });
 
 /** One card in the ladder row. */

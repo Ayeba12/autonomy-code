@@ -21,7 +21,7 @@ export const metadata: Metadata = seo({
   description: DESCRIPTION,
   path: "/annual-reset",
   image: "/images/og/annual-reset.jpg",
-  keywords: ["annual reset", "goal-setting workshop", "online goal setting workshop 2026", "year-end review workshop", "personal standards", "new year planning workshop", "Audit Align Anchor", "annual reset workshop", "goal setting and action planning", "life planning workshops", "quarterly planning workshop", "sustainable productivity"],
+  keywords: ["annual reset", "goal-setting workshop", "online goal setting workshop 2026", "year-end review workshop", "personal standards", "new year planning workshop", "Audit Align Anchor", "annual reset workshop", "goal setting and action planning", "life planning workshops", "quarterly planning workshop", "sustainable productivity", "year end review and planning", "2027 planning workshop UK", "annual planning workshop", "year planning workshop online", "goal setting workshop UK", "yearly reset", "new year reset", "alternative to New Year resolutions", "why good plans fail in February", "I keep restarting my goals", "a plan that fits my life", "whose standards am I living by", "what are my personal standards"],
 });
 
 /** Gold spark bullet, matching the Tag icon. */

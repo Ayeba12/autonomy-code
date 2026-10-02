@@ -24,7 +24,7 @@ export const metadata: Metadata = seo({
   description: DESCRIPTION,
   path: "/autonomy-compass",
   image: "/images/og/autonomy-compass.jpg",
-  keywords: ["Autonomy Compass", "ownership assessment", "assessment for coaches and consultants", "Claim Intensive", "Autonomy Blueprint", "borrowed identity", "coaching diagnostic", "identity coaching", "clarity coaching", "personal autonomy", "self-leadership"],
+  keywords: ["Autonomy Compass", "ownership assessment", "assessment for coaches and consultants", "Claim Intensive", "Autonomy Blueprint", "borrowed identity", "coaching diagnostic", "identity coaching", "clarity coaching", "personal autonomy", "self-leadership", "personal autonomy assessment", "something feels off but I don't know what", "career clarity diagnostic UK", "career clarity quiz", "what is holding me back quiz", "ownership scan", "why do I feel stuck when everything is fine", "I know what I want but cannot do it", "productivity systems don't work for me"],
 });
 
 /**
