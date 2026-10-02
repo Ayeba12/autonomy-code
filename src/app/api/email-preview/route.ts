@@ -1,4 +1,5 @@
 import {
+  paymentNotification,
   contactConfirmation,
   contactNotification,
   speakingConfirmation,
@@ -28,6 +29,15 @@ const templates = {
   "contact-received": () => contactConfirmation(contact),
   "speaking-new": () => speakingNotification(speaking),
   "speaking-received": () => speakingConfirmation(speaking),
+  "payment-new": () =>
+    paymentNotification({
+      product: "The Annual Reset 4.0 (early bird)",
+      amount: "£99.00",
+      name: "Ebi Okoro",
+      email: "ebi@example.com",
+      paidAt: "2 October 2026 at 14:05 (UK)",
+      reference: "cs_live_a1B2c3D4",
+    }),
 };
 
 /**

@@ -298,3 +298,41 @@ export const speakingConfirmation = (fields: SpeakingFields): EmailMessage =>
     button: { label: "See the speaking page", href: `${SITE}/speaking` },
     note: "If you did not send this enquiry, you can ignore this email.",
   });
+
+export interface PaymentFields {
+  /** What was bought, as best the amount identifies it. */
+  product: string;
+  /** Formatted, e.g. "£99.00". */
+  amount: string;
+  name: string;
+  email: string;
+  /** When Stripe recorded it, already formatted for the reader. */
+  paidAt: string;
+  /** Stripe's own reference for the checkout, for looking it up. */
+  reference: string;
+}
+
+/** To the practice inbox: a payment went through on Stripe. */
+export const paymentNotification = (fields: PaymentFields): EmailMessage =>
+  build(`Payment received: ${fields.product} · ${fields.amount}`, {
+    preheader: `${fields.name || fields.email} paid ${fields.amount} for ${fields.product}.`,
+    image: {
+      file: "payment-new.jpg",
+      alt: "Graphite sketch of a woman at an open cabinet of well-ordered tools, lifting out one key drawn in gold",
+    },
+    eyebrow: "Payment received · Stripe",
+    title: `${fields.amount} for ${fields.product}.`,
+    intro: ["A payment went through on Stripe. The details are below."],
+    rows: filled([
+      { label: "Paid for", value: fields.product },
+      { label: "Amount", value: fields.amount },
+      { label: "Name", value: fields.name },
+      { label: "Email", value: fields.email },
+      { label: "When", value: fields.paidAt },
+      { label: "Reference", value: fields.reference },
+    ]),
+    button: fields.email
+      ? { label: `Write to ${(fields.name || "the buyer").split(" ")[0]}`, href: `mailto:${fields.email}` }
+      : undefined,
+    note: "Stripe holds the full record of this payment in its dashboard.",
+  });
