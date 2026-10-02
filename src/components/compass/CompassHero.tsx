@@ -70,7 +70,7 @@ export const CompassHero = () => (
                   className="size-11 shrink-0 rounded-lg object-cover"
                 />
                 <span className="flex flex-col">
-                  <span className="font-heading text-[11px] tracking-[0.16em] text-slate uppercase">
+                  <span className="font-heading text-body-xs tracking-[0.16em] text-slate uppercase">
                     {item.step}
                   </span>
                   <span className="font-heading text-body-m text-ink">{item.title}</span>

@@ -72,9 +72,10 @@ export const Button = ({
     </span>
   );
 
+  /* Below 360px a long label may wrap rather than push the page sideways. */
   /* With an avatar the pill tightens on the left so the photo sits in the curve (Stodio "Book a call"). */
   const padding = avatarSrc ? "py-1.5 pr-5 pl-1.5" : "px-5 py-3";
-  const classes = `group relative inline-flex min-h-11 items-center justify-center overflow-hidden rounded-pill ${padding} text-body-m font-medium whitespace-nowrap transition-all duration-350 hover:rounded-2xl ${variantClasses[variant]} ${className}`;
+  const classes = `group relative inline-flex min-h-11 items-center justify-center overflow-hidden rounded-pill ${padding} text-body-m font-medium whitespace-nowrap transition-all duration-350 hover:rounded-2xl max-[359px]:text-center max-[359px]:text-body-s max-[359px]:whitespace-normal ${variantClasses[variant]} ${className}`;
 
   const rolling = (
     <span className="relative block overflow-hidden">

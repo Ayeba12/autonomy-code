@@ -41,9 +41,9 @@ export const PillarCards = ({ pillars }: { pillars: Pillar[] }) => (
                   className="size-22 shrink-0 rounded-2xl object-cover max-md:size-14"
                 />
               )}
-              <div className="flex flex-1 items-baseline justify-between gap-6">
+              <div className="flex min-w-0 flex-1 items-baseline justify-between gap-6 max-[359px]:gap-3">
                 <div>
-                  <h3 className="font-heading text-h2 transition-colors duration-300 group-hover:text-brand max-md:text-h3">
+                  <h3 className="font-heading text-h2 transition-colors duration-300 group-hover:text-brand max-md:text-h3 max-[359px]:text-h4">
                     {pillar.name}
                   </h3>
                   <p className="mt-2 text-body-l text-mute">{pillar.movement}</p>

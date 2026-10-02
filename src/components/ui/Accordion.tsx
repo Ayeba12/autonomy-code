@@ -15,13 +15,13 @@ export const Accordion = ({ items }: { items: FaqItem[] }) => {
         return (
           <div
             key={item.question}
-            className={`bg-paper px-7 py-6 transition-all duration-300 max-md:px-5 max-md:py-4 ${
+            className={`bg-paper px-7 py-4 transition-all duration-300 max-md:px-5 max-md:py-2.5 ${
               isOpen ? "rounded-2xl" : "rounded-pill max-md:rounded-2xl"
             } hover:rounded-2xl`}
           >
             <button
               type="button"
-              className="flex w-full items-center justify-between gap-4 text-left"
+              className="flex min-h-11 w-full items-center justify-between gap-4 text-left"
               aria-expanded={isOpen}
               aria-controls={`${baseId}-panel-${i}`}
               onClick={() => setOpen(isOpen ? null : i)}

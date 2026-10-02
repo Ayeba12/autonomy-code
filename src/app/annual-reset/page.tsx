@@ -210,7 +210,7 @@ const AnnualResetPage = () => (
             <p className="font-heading text-body-s tracking-[0.22em] text-mute uppercase">
               {reset.dates}
             </p>
-            <p className="inline-flex items-center gap-2 rounded-pill border border-brand-soft/50 px-3.5 py-1.5 font-heading text-body-xs tracking-[0.2em] whitespace-nowrap text-brand-soft uppercase max-md:tracking-[0.12em]">
+            <p className="inline-flex items-center gap-2 rounded-pill border border-brand-soft/50 px-3.5 py-1.5 font-heading text-body-xs tracking-[0.2em] whitespace-nowrap text-brand-soft uppercase max-md:tracking-[0.12em] max-[359px]:gap-1.5 max-[359px]:px-2.5 max-[359px]:tracking-normal max-[359px]:[&>svg:last-child]:hidden">
               <StandardMark />
               <span>
                 {reset.theme.label}: {reset.theme.word}
@@ -324,7 +324,7 @@ const AnnualResetPage = () => (
               src="/images/reset/reset-distance.webp"
               alt="Graphite diagram of a sturdy house on the left, a small figure on the right, and the gap between them measured in gold"
             />
-            <div className="mt-4 flex items-center justify-between gap-4 font-heading text-body-s tracking-[0.16em] text-slate uppercase max-md:text-[11px]">
+            <div className="mt-4 flex items-center justify-between gap-4 font-heading text-body-s tracking-[0.16em] text-slate uppercase max-md:text-body-xs max-md:tracking-[0.08em]">
               {reset.whereYouAre.diagram.map((label) => (
                 <span key={label}>{label}</span>
               ))}

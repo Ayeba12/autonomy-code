@@ -309,7 +309,7 @@ export const ResetCheckout = ({ phase }: { phase: BookingPhase }) => {
             {price.stripeUrl ? (
               <button
                 type="submit"
-                className="group inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-pill bg-brand-soft px-5 py-3 text-body-m font-medium whitespace-nowrap text-ink transition-all duration-350 hover:rounded-2xl hover:bg-gold-light"
+                className="group inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-pill bg-brand-soft px-5 py-3 text-body-m font-medium whitespace-nowrap text-ink transition-all duration-350 hover:rounded-2xl hover:bg-gold-light max-[359px]:px-4 max-[359px]:text-body-s"
               >
                 {resetCheckout.continueLabel}
                 <Image src="/images/button-iconm-01.svg" alt="" width={16} height={16} className="size-4" />
