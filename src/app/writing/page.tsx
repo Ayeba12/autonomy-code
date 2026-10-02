@@ -15,7 +15,7 @@ export const metadata: Metadata = seo({
     "Essays by DK Jonah on autonomy, ownership, self-trust and the quiet structure under a working life, for coaches, consultants and knowledge workers.",
   path: "/writing",
   image: "/images/og/writing.jpg",
-  keywords: ["essays on autonomy", "ownership essays", "self-trust", "writing for coaches and consultants", "QuietFOCUS letter"],
+  keywords: ["essays on autonomy", "ownership essays", "self-trust", "writing for coaches and consultants", "QuietFOCUS letter", "sustainable productivity", "self-leadership", "personal autonomy"],
 });
 
 /** Small uppercase label used for eyebrows across the page. */

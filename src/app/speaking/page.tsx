@@ -14,7 +14,7 @@ export const metadata: Metadata = seo({
     "Invite DK Jonah to speak on autonomy, self-trust, and knowledge architecture. Keynotes, workshops, and panels. Rates by enquiry, in writing.",
   path: "/speaking",
   image: "/images/og/speaking.jpg",
-  keywords: ["DK Jonah speaker", "keynote speaker on autonomy", "self-trust talk", "knowledge architecture workshop", "women's leadership speaker"],
+  keywords: ["DK Jonah speaker", "keynote speaker on autonomy", "self-trust talk", "knowledge architecture workshop", "women's leadership speaker", "self-leadership", "sustainable productivity", "personal autonomy"],
 });
 
 /** A drawing for each theme, in the order the content lists them. */

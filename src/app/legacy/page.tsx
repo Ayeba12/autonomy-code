@@ -17,7 +17,7 @@ export const metadata: Metadata = seo({
     "Legacy Builder is the deepest room of The NO GraGra Practice: £10,000, done with you, one to two people at a time, by invitation.",
   path: "/legacy",
   image: "/images/og/legacy.jpg",
-  keywords: ["Legacy Builder", "done with you programme", "private advisory", "by invitation coaching"],
+  keywords: ["Legacy Builder", "done with you programme", "private advisory", "by invitation coaching", "practice development", "business strategy for coaches and consultants"],
 });
 
 /** The room in four plain facts, each taken from the copy below. */

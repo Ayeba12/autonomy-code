@@ -32,6 +32,8 @@ export interface Service {
   slug: string;
   /** The drawing shown in the hero and on cards that link here. */
   image: ImageRef;
+  /** Search terms this service should be found for. */
+  keywords: string[];
   name: string;
   group: ServiceGroup;
   /** Uppercase label on list rows and the service hero. */
@@ -62,6 +64,7 @@ export const services: Service[] = [
   /* ---------------------------------------------------------------- */
   {
     slug: "claim-intensive",
+    keywords: ["identity coaching", "clarity coaching", "one to one coaching session"],
     image: {
       src: "/images/scan/scan-ground.webp",
       alt: "Graphite sketch of a woman standing steady on a floor of mismatched planks, the one solid plank under her feet drawn in gold",
@@ -113,6 +116,7 @@ export const services: Service[] = [
   /* ---------------------------------------------------------------- */
   {
     slug: "wetin-you-sabi",
+    keywords: ["clarity coaching", "identity coaching", "naming your expertise"],
     image: {
       src: "/images/pillars/pillar-resources.webp",
       alt: "Graphite sketch of a woman at an open cabinet of well-ordered tools and ledgers, lifting out one key drawn in gold",
@@ -158,6 +162,7 @@ export const services: Service[] = [
   },
   {
     slug: "offer-clarity",
+    keywords: ["clarity coaching", "offer strategy", "business strategy for coaches and consultants", "messaging strategy for coaches and consultants"],
     image: {
       src: "/images/pillars/pillar-message.webp",
       alt: "Graphite sketch of a woman writing one clear line in gold across a large sheet, crumpled drafts pushed aside",
@@ -200,6 +205,7 @@ export const services: Service[] = [
   },
   {
     slug: "synccheck",
+    keywords: ["clarity coaching", "personal autonomy", "five pillar review"],
     image: {
       src: "/images/reset/reset-move-audit.webp",
       alt: "Graphite sketch of a woman with a magnifying glass tracing footprints across a ledger back to the first, in gold",
@@ -245,6 +251,7 @@ export const services: Service[] = [
   },
   {
     slug: "willingness-and-recovery",
+    keywords: ["creative recovery", "sustainable productivity", "accountability and commitment"],
     image: {
       src: "/images/about/about-window.webp",
       alt: "Graphite sketch of a woman seated by a tall window, looking out over a misty lake, the dawn line drawn in gold",
@@ -295,6 +302,7 @@ export const services: Service[] = [
   /* ---------------------------------------------------------------- */
   {
     slug: "knowledge-architecture",
+    keywords: ["knowledge architecture", "personal brand strategy", "practice development", "business strategy for coaches and consultants"],
     image: {
       src: "/images/reset/reset-move-align.webp",
       alt: "Graphite sketch of two hands drawing one straight line along a ruler, the new line in gold",
@@ -355,6 +363,7 @@ export const services: Service[] = [
   },
   {
     slug: "communication-clarity-audit",
+    keywords: ["messaging strategy for coaches and consultants", "communication audit", "personal brand strategy"],
     image: {
       src: "/images/reset/reset-included.webp",
       alt: "Graphite sketch of an open spiral sketchbook with a pencil resting across its blank pages, a drawing stencil beside it",
@@ -416,6 +425,7 @@ export const services: Service[] = [
   },
   {
     slug: "top-audit",
+    keywords: ["personal brand strategy", "online presence audit", "practice development"],
     image: {
       src: "/images/pillars/pillar-strategy.webp",
       alt: "Graphite sketch of a woman leaning over a map, one finger on the route she has chosen, drawn in gold",
@@ -461,6 +471,7 @@ export const services: Service[] = [
   /* ---------------------------------------------------------------- */
   {
     slug: "implementation",
+    keywords: ["practice development", "accountability and commitment", "sustainable productivity"],
     image: {
       src: "/images/reset/reset-move-anchor.webp",
       alt: "Graphite sketch of a woman driving a stake into the ground to hold a tent in the wind, the stake and rope in gold",

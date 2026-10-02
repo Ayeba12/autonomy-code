@@ -17,7 +17,7 @@ export const metadata: Metadata = seo({
     "Autonomy is not independence from people. It is independence from captivity. The five pillars and the operating flow of The Autonomy Code.",
   path: "/method",
   image: "/images/og/method.jpg",
-  keywords: ["five pillars of autonomy", "what is autonomy", "hidden captivity", "identity message strategy resources relationships", "independence vs autonomy", "self-governance framework"],
+  keywords: ["five pillars of autonomy", "what is autonomy", "hidden captivity", "identity message strategy resources relationships", "independence vs autonomy", "self-governance framework", "personal autonomy", "self-leadership", "identity coaching", "sustainable productivity"],
 });
 
 const MethodPage = async () => {

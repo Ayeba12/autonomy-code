@@ -24,7 +24,7 @@ export const metadata: Metadata = seo({
   description: DESCRIPTION,
   path: "/autonomy-compass",
   image: "/images/og/autonomy-compass.jpg",
-  keywords: ["Autonomy Compass", "ownership assessment", "assessment for coaches and consultants", "Claim Intensive", "Autonomy Blueprint", "borrowed identity", "coaching diagnostic"],
+  keywords: ["Autonomy Compass", "ownership assessment", "assessment for coaches and consultants", "Claim Intensive", "Autonomy Blueprint", "borrowed identity", "coaching diagnostic", "identity coaching", "clarity coaching", "personal autonomy", "self-leadership"],
 });
 
 /**

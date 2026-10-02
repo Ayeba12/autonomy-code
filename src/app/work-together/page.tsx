@@ -15,10 +15,10 @@ import { seo } from "@/lib/seo";
 export const metadata: Metadata = seo({
   title: "Work Together: Coaching and Strategy Services",
   description:
-    "The whole menu in one calm view: the ladder, single sessions, knowledge work, and ongoing implementation. Every engagement begins with the Autonomy Compass.",
+    "The whole menu in one calm view: clarity, identity, messaging and business strategy for coaches and consultants, from single sessions to a year of one-to-one work.",
   path: "/work-together",
   image: "/images/og/work-together.jpg",
-  keywords: ["coaching services", "strategy sessions", "one to one coaching", "knowledge architecture", "communication audit", "services for coaches and consultants"],
+  keywords: ["coaching services", "strategy sessions", "one to one coaching", "knowledge architecture", "communication audit", "services for coaches and consultants", "productivity coaching", "clarity coaching", "identity coaching", "personal brand strategy", "messaging strategy for coaches and consultants", "business strategy for coaches and consultants", "practice development", "creative recovery", "accountability and commitment"],
 });
 
 /** One card in the ladder row. */

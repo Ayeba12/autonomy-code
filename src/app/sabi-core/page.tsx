@@ -20,7 +20,7 @@ export const metadata: Metadata = seo({
     "The flagship year of The Autonomy Code. A year of strategy, one to one with DK, built on the SABI OS operating system. A structured system, not a course.",
   path: "/sabi-core",
   image: "/images/og/sabi-core.jpg",
-  keywords: ["SABI CORE", "SABI OS", "one to one strategy programme", "year-long coaching programme", "strategy coaching for consultants"],
+  keywords: ["SABI CORE", "SABI OS", "one to one strategy programme", "year-long coaching programme", "strategy coaching for consultants", "business strategy for coaches and consultants", "messaging strategy for coaches and consultants", "practice development", "accountability and commitment", "personal brand strategy"],
 });
 
 /** Adapted from the Compass lists, set for a year of one-to-one work. */

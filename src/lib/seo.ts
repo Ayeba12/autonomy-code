@@ -24,6 +24,9 @@ export const BRAND_KEYWORDS = [
   "NO GraGra",
   "Knowledge Architect",
   "autonomy coaching",
+  "personal autonomy",
+  "self-leadership",
+  "sustainable productivity",
   "ownership and self-governance",
   "coaching for coaches and consultants",
 ];

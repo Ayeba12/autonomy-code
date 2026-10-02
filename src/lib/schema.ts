@@ -15,6 +15,7 @@ const CONTEXT = "https://schema.org";
 /** What the practice and DK are known for, in searchers' words. */
 const TOPICS = [
   "Autonomy",
+  "Personal autonomy",
   "Ownership",
   "Self-governance",
   "Self-trust",
@@ -26,6 +27,19 @@ const TOPICS = [
   "Coaching for coaches and consultants",
   "Strategy for knowledge workers",
   "NO GraGra",
+  "Self-leadership",
+  "Sustainable productivity",
+  "Productivity coaching",
+  "Clarity coaching",
+  "Identity coaching",
+  "Goal setting and action planning",
+  "Life planning workshops",
+  "Personal brand strategy",
+  "Messaging strategy for coaches and consultants",
+  "Business strategy for coaches and consultants",
+  "Practice development",
+  "Creative recovery",
+  "Accountability and commitment",
 ];
 
 /** Sitewide: who runs this, who she is, and what the site is. */
@@ -135,6 +149,7 @@ export const serviceSchema = (service: Service) => {
     url,
     serviceType: service.category,
     audience: { "@type": "Audience", audienceType: "Coaches, consultants and knowledge workers" },
+    keywords: service.keywords.join(", "),
     image: absoluteUrl(service.image.src),
     provider: { "@id": ORG_ID },
     areaServed: "Worldwide",
@@ -188,8 +203,8 @@ export const resetEventSchema = (description: string) => {
     "@type": "Event",
     name: "The Annual Reset 4.0",
     description,
-    about: ["Goal setting", "Personal standards", "Ownership"],
-    keywords: "annual reset, goal-setting workshop, standards, year-end review, online workshop",
+    about: ["Goal setting and action planning", "Life planning", "Personal standards", "Ownership"],
+    keywords: "annual reset workshop, goal setting and action planning, life planning workshop, standards, year-end review, online workshop",
     url,
     image: [absoluteUrl("/images/og/annual-reset.jpg")],
     startDate: "2026-11-27T19:00:00+00:00",

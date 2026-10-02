@@ -21,7 +21,7 @@ export const metadata: Metadata = seo({
   description: DESCRIPTION,
   path: "/annual-reset",
   image: "/images/og/annual-reset.jpg",
-  keywords: ["annual reset", "goal-setting workshop", "online goal setting workshop 2026", "year-end review workshop", "personal standards", "new year planning workshop", "Audit Align Anchor"],
+  keywords: ["annual reset", "goal-setting workshop", "online goal setting workshop 2026", "year-end review workshop", "personal standards", "new year planning workshop", "Audit Align Anchor", "annual reset workshop", "goal setting and action planning", "life planning workshops", "quarterly planning workshop", "sustainable productivity"],
 });
 
 /** Gold spark bullet, matching the Tag icon. */
