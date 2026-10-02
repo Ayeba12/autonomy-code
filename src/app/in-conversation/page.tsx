@@ -15,6 +15,7 @@ export const metadata: Metadata = seo({
   description:
     "Interviews, podcasts, talks, and more. Where the work has been spoken aloud, watchable in place.",
   path: "/in-conversation",
+  image: "/images/og/in-conversation.jpg",
 });
 
 /**

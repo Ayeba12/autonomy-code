@@ -14,6 +14,7 @@ export const metadata: Metadata = seo({
   description:
     "Essays on autonomy, ownership, and the quiet structure under a working life.",
   path: "/writing",
+  image: "/images/og/writing.jpg",
 });
 
 /** Small uppercase label used for eyebrows across the page. */

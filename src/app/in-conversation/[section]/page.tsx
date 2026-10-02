@@ -27,6 +27,7 @@ export const generateMetadata = async ({
     title: `${def.name} · In Conversation`,
     description: def.blurb,
     path: `/in-conversation/${def.slug}`,
+    image: "/images/og/in-conversation.jpg",
   });
 };
 

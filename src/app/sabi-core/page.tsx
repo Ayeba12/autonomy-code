@@ -19,6 +19,7 @@ export const metadata: Metadata = seo({
   description:
     "The flagship year of The Autonomy Code. A year of strategy, one to one with DK, built on the SABI OS operating system. A structured system, not a course.",
   path: "/sabi-core",
+  image: "/images/og/sabi-core.jpg",
 });
 
 /** Adapted from the Compass lists, set for a year of one-to-one work. */

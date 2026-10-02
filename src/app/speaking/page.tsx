@@ -13,6 +13,7 @@ export const metadata: Metadata = seo({
   description:
     "Invite DK Jonah to speak on autonomy, self-trust, and knowledge architecture. Keynotes, workshops, and panels. Rates by enquiry, in writing.",
   path: "/speaking",
+  image: "/images/og/speaking.jpg",
 });
 
 /** A drawing for each theme, in the order the content lists them. */

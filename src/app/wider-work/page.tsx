@@ -13,6 +13,7 @@ export const metadata: Metadata = seo({
   description:
     "The Autonomy Code is the storefront of a wider practice. These are the other rooms of the house.",
   path: "/wider-work",
+  image: "/images/og/wider-work.jpg",
 });
 
 /** Link-out card with its drawing; rooms without an address render quietly, marked "Coming soon". */

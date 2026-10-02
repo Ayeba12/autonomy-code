@@ -17,6 +17,7 @@ export const metadata: Metadata = seo({
   description:
     "The story behind The Autonomy Code. DK Jonah on hidden captivity, ownership, and building from owned ground.",
   path: "/about",
+  image: "/images/og/about.jpg",
 });
 
 /* DK's final wording (content.md §4.7). Verbatim; do not edit. */

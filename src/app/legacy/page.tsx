@@ -16,6 +16,7 @@ export const metadata: Metadata = seo({
   description:
     "The deepest room of the practice. One to two people at a time, rare and private, by invitation.",
   path: "/legacy",
+  image: "/images/og/legacy.jpg",
 });
 
 /** The room in four plain facts, each taken from the copy below. */

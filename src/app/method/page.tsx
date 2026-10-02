@@ -16,6 +16,7 @@ export const metadata: Metadata = seo({
   description:
     "Autonomy is not independence from people. It is independence from captivity. The five pillars and the operating flow of The Autonomy Code.",
   path: "/method",
+  image: "/images/og/method.jpg",
 });
 
 const MethodPage = async () => {

@@ -17,6 +17,7 @@ export const metadata: Metadata = seo({
   description:
     "The whole menu in one calm view: the ladder, single sessions, knowledge work, and ongoing implementation. Every engagement begins with the Autonomy Compass.",
   path: "/work-together",
+  image: "/images/og/work-together.jpg",
 });
 
 /** One card in the ladder row. */

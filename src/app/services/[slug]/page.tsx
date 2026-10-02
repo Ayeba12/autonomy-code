@@ -30,6 +30,7 @@ export const generateMetadata = async ({
     title: service.name,
     description: service.intro,
     path: `/services/${service.slug}`,
+    image: `/images/og/service-${service.slug}.jpg`,
   });
 };
 
