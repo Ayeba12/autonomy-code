@@ -54,8 +54,8 @@ const h = (type, style, children) => ({ type, props: { style, children } });
 
 const titleSize = (title) => (title.includes("\n") ? 72 : title.length > 44 ? 44 : title.length > 30 ? 50 : title.length > 22 ? 58 : title.length > 16 ? 66 : 78);
 
-const card = (c, art) =>
-  h("div", { width: 1200, height: 630, display: "flex", flexDirection: "column", backgroundColor: color.paper, fontFamily: "Inter" }, [
+const card = (c, art, W = 1200, H = 630) =>
+  h("div", { width: W, height: H, display: "flex", flexDirection: "column", backgroundColor: color.paper, fontFamily: "Inter" }, [
     h("div", { display: "flex", flex: 1, padding: "44px 44px 38px 64px" }, [
       // Words
       h("div", { display: "flex", flexDirection: "column", justifyContent: "space-between", width: 560, paddingRight: 40 }, [
@@ -79,11 +79,11 @@ const card = (c, art) =>
       ]),
       // The drawing
       h("div", { display: "flex", flex: 1, borderRadius: 30, overflow: "hidden" }, [
-        { type: "img", props: { src: art, width: 532, height: 548, style: { width: 532, height: 548, borderRadius: 30 } } },
+        { type: "img", props: { src: art, width: W - 668, height: H - 90, style: { width: W - 668, height: H - 90, borderRadius: 30 } } },
       ]),
     ]),
     // The gold thread
-    h("div", { display: "flex", height: 8, width: 1200, backgroundImage: THREAD }, ""),
+    h("div", { display: "flex", height: 8, width: W, backgroundImage: THREAD }, ""),
   ]);
 
 const outDir = path.join(root, "public/images/og");
@@ -102,4 +102,23 @@ for (const c of cards) {
   const png = Buffer.from(await new ImageResponse(card(c, art), { width: 1200, height: 630, fonts }).arrayBuffer());
   const info = await sharp(png).jpeg({ quality: 88, mozjpeg: true }).toFile(path.join(outDir, `${c.key}.jpg`));
   console.log(`${c.key}.jpg ${Math.round(info.size / 1024)}KB`);
+}
+
+/**
+ * One general-purpose social preview at 1280×640, the size GitHub and
+ * most link previews ask for when an image is uploaded by hand.
+ */
+{
+  const c = cards[0];
+  const art = dataUri(
+    await sharp(path.join(root, "public/images", c.img))
+      .resize(1408, 1265, { fit: "cover", position: c.at })
+      .extract({ left: 92, top: 82, width: 1224, height: 1100 })
+      .jpeg({ quality: 90 })
+      .toBuffer(),
+    "jpeg",
+  );
+  const png = Buffer.from(await new ImageResponse(card(c, art, 1280, 640), { width: 1280, height: 640, fonts }).arrayBuffer());
+  const info = await sharp(png).jpeg({ quality: 90, mozjpeg: true }).toFile(path.join(outDir, "social-preview.jpg"));
+  console.log(`social-preview.jpg ${Math.round(info.size / 1024)}KB`);
 }
