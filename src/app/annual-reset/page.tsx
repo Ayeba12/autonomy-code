@@ -14,13 +14,14 @@ import { JsonLd } from "@/components/site/JsonLd";
 import { faqSchema, resetEventSchema } from "@/lib/schema";
 
 const DESCRIPTION =
-  "This year's theme is Standards. Three live sessions to close this year honestly, find out whose standards you have been living by, and enter the next one holding only the ones you choose. 27 November, 4 and 5 December, 7 pm UK, online.";
+  "A guided online goal-setting workshop grounded in standards and ownership. Three live sessions to close this year honestly and enter the next holding only the standards you choose: 27 November, 4 and 5 December 2026, 7 pm UK.";
 
 export const metadata: Metadata = seo({
-  title: "The Annual Reset 4.0",
+  title: "The Annual Reset 4.0: Online Goal-Setting Workshop",
   description: DESCRIPTION,
   path: "/annual-reset",
   image: "/images/og/annual-reset.jpg",
+  keywords: ["annual reset", "goal-setting workshop", "online goal setting workshop 2026", "year-end review workshop", "personal standards", "new year planning workshop", "Audit Align Anchor"],
 });
 
 /** Gold spark bullet, matching the Tag icon. */

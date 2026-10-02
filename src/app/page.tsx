@@ -18,6 +18,7 @@ export const metadata: Metadata = seo({
   description:
     "A coaching and strategy practice for accomplished professionals whose expertise lives in scattered pieces. We organise your thinking so you can lean on it.",
   path: "",
+  keywords: ["autonomy", "ownership coaching", "self-trust", "five pillars of autonomy", "coaching and strategy practice", "coaching for consultants"],
 });
 
 const HomePage = async () => {

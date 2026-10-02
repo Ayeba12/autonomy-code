@@ -13,6 +13,21 @@ export const SAME_AS = [
   "https://www.tiktok.com/@dkjonah",
 ];
 
+/**
+ * The terms the practice should be found for, carried on every page.
+ * Page-specific terms are added in each page's own `seo()` call.
+ */
+export const BRAND_KEYWORDS = [
+  "The Autonomy Code",
+  "DK Jonah",
+  "The NO GraGra Practice",
+  "NO GraGra",
+  "Knowledge Architect",
+  "autonomy coaching",
+  "ownership and self-governance",
+  "coaching for coaches and consultants",
+];
+
 /** Share card used when a page has no image of its own (1200×630). */
 export const DEFAULT_OG_IMAGE = "/images/og/default.jpg";
 
@@ -29,6 +44,8 @@ interface SeoInput {
   publishedTime?: string;
   /** Keep the page out of search results. */
   noindex?: boolean;
+  /** Search terms specific to this page; the brand terms are added. */
+  keywords?: string[];
 }
 
 /** Absolute URL for a site path (full URLs pass through). */
@@ -48,15 +65,17 @@ export const seo = ({
   type = "website",
   publishedTime,
   noindex = false,
+  keywords = [],
 }: SeoInput): Metadata => {
   const shareTitle = title
     ? `${title} · ${SITE_NAME}`
-    : `${SITE_NAME} · The NO GraGra Practice`;
+    : `${SITE_NAME} · Coaching for Ownership and Self-Governance`;
   const url = absoluteUrl(path || "/");
   const images = [{ url: absoluteUrl(image) }];
   return {
     ...(title ? { title } : {}),
     description,
+    keywords: [...keywords, ...BRAND_KEYWORDS],
     alternates: { canonical: url },
     ...(noindex ? { robots: { index: false, follow: false } } : {}),
     openGraph: {

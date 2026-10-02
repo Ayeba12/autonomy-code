@@ -13,11 +13,12 @@ import type { ImageRef } from "@/content/types";
 import { seo } from "@/lib/seo";
 
 export const metadata: Metadata = seo({
-  title: "Work Together",
+  title: "Work Together: Coaching and Strategy Services",
   description:
     "The whole menu in one calm view: the ladder, single sessions, knowledge work, and ongoing implementation. Every engagement begins with the Autonomy Compass.",
   path: "/work-together",
   image: "/images/og/work-together.jpg",
+  keywords: ["coaching services", "strategy sessions", "one to one coaching", "knowledge architecture", "communication audit", "services for coaches and consultants"],
 });
 
 /** One card in the ladder row. */

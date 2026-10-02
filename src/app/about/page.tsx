@@ -13,11 +13,12 @@ import { JsonLd } from "@/components/site/JsonLd";
 import { profileSchema } from "@/lib/schema";
 
 export const metadata: Metadata = seo({
-  title: "About",
+  title: "About DK Jonah, Knowledge Architect",
   description:
-    "The story behind The Autonomy Code. DK Jonah on hidden captivity, ownership, and building from owned ground.",
+    "DK Jonah is a Knowledge Architect and the creator of The Autonomy Code. The story behind the practice: hidden captivity, ownership, and building from owned ground.",
   path: "/about",
   image: "/images/og/about.jpg",
+  keywords: ["DK Jonah", "who is DK Jonah", "Knowledge Architect", "author of NO GraGra", "DIY Branding author", "Decisions That Work"],
 });
 
 /* DK's final wording (content.md §4.7). Verbatim; do not edit. */

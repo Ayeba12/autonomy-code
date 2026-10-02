@@ -14,6 +14,7 @@ export const metadata: Metadata = seo({
     "The Autonomy Code is the storefront of a wider practice. These are the other rooms of the house.",
   path: "/wider-work",
   image: "/images/og/wider-work.jpg",
+  keywords: ["DK Jonah wider work", "NO GraGra", "Amplify the Gospel", "The Curious Creative"],
 });
 
 /** Link-out card with its drawing; rooms without an address render quietly, marked "Coming soon". */

@@ -12,11 +12,12 @@ import type { ImageRef } from "@/content/types";
 import { seo } from "@/lib/seo";
 
 export const metadata: Metadata = seo({
-  title: "Legacy Builder",
+  title: "Legacy Builder: Done With You, By Invitation",
   description:
-    "The deepest room of the practice. One to two people at a time, rare and private, by invitation.",
+    "Legacy Builder is the deepest room of The NO GraGra Practice: £10,000, done with you, one to two people at a time, by invitation.",
   path: "/legacy",
   image: "/images/og/legacy.jpg",
+  keywords: ["Legacy Builder", "done with you programme", "private advisory", "by invitation coaching"],
 });
 
 /** The room in four plain facts, each taken from the copy below. */

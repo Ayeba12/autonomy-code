@@ -10,11 +10,12 @@ import { content } from "@/content/source";
 import { seo } from "@/lib/seo";
 
 export const metadata: Metadata = seo({
-  title: "Writing",
+  title: "Writing: Essays on Autonomy and Ownership",
   description:
-    "Essays on autonomy, ownership, and the quiet structure under a working life.",
+    "Essays by DK Jonah on autonomy, ownership, self-trust and the quiet structure under a working life, for coaches, consultants and knowledge workers.",
   path: "/writing",
   image: "/images/og/writing.jpg",
+  keywords: ["essays on autonomy", "ownership essays", "self-trust", "writing for coaches and consultants", "QuietFOCUS letter"],
 });
 
 /** Small uppercase label used for eyebrows across the page. */

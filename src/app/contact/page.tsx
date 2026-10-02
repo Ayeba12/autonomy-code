@@ -7,11 +7,12 @@ import { Navbar } from "@/components/site/Navbar";
 import { seo } from "@/lib/seo";
 
 export const metadata: Metadata = seo({
-  title: "Contact",
+  title: "Contact The Autonomy Code",
   description:
     "Questions about the work? Write to info@theautonomycode.com or use the form. For stages, see Speaking. For everything else, the Compass is the door.",
   path: "/contact",
   image: "/images/og/contact.jpg",
+  keywords: ["contact DK Jonah", "contact The Autonomy Code"],
 });
 
 const textLinkClasses =

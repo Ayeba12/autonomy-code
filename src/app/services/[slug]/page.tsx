@@ -31,6 +31,7 @@ export const generateMetadata = async ({
     description: service.intro,
     path: `/services/${service.slug}`,
     image: `/images/og/service-${service.slug}.jpg`,
+    keywords: [service.name, service.category, "coaching and strategy services", "services for coaches and consultants"],
   });
 };
 

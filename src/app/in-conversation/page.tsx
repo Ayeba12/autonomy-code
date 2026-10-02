@@ -11,11 +11,12 @@ import { VIDEO_SECTIONS } from "@/content/video-sections";
 import { seo } from "@/lib/seo";
 
 export const metadata: Metadata = seo({
-  title: "In Conversation",
+  title: "In Conversation: Interviews, Podcasts and Talks",
   description:
     "Interviews, podcasts, talks, and more. Where the work has been spoken aloud, watchable in place.",
   path: "/in-conversation",
   image: "/images/og/in-conversation.jpg",
+  keywords: ["DK Jonah interviews", "DK Jonah podcast", "talks on autonomy", "panels"],
 });
 
 /**

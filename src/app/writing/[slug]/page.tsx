@@ -38,6 +38,7 @@ export const generateMetadata = async ({
     image: article.heroImage?.src,
     type: "article",
     publishedTime: article.date,
+    keywords: [article.pillar, "autonomy", "ownership", "self-trust", "essay by DK Jonah"],
   });
 };
 

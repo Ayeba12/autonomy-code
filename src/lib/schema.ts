@@ -12,6 +12,22 @@ const WEBSITE_ID = `${SITE_URL}/#website`;
 
 const CONTEXT = "https://schema.org";
 
+/** What the practice and DK are known for, in searchers' words. */
+const TOPICS = [
+  "Autonomy",
+  "Ownership",
+  "Self-governance",
+  "Self-trust",
+  "Hidden captivity",
+  "Personal standards",
+  "Goal setting",
+  "Decision making",
+  "Knowledge architecture",
+  "Coaching for coaches and consultants",
+  "Strategy for knowledge workers",
+  "NO GraGra",
+];
+
 /** Sitewide: who runs this, who she is, and what the site is. */
 export const siteSchema = () => ({
   "@context": CONTEXT,
@@ -25,6 +41,8 @@ export const siteSchema = () => ({
       logo: absoluteUrl("/images/email/logo.png"),
       description:
         "A coaching and strategy practice for accomplished professionals whose expertise lives in scattered pieces. Autonomy is peace, given structure.",
+      slogan: "Autonomy is peace, given structure.",
+      knowsAbout: TOPICS,
       founder: { "@id": PERSON_ID },
       email: "info@theautonomycode.com",
       sameAs: SAME_AS,
@@ -39,13 +57,7 @@ export const siteSchema = () => ({
       description:
         "Knowledge Architect. Founder of The Autonomy Code and The NO GraGra Practice, author of NO GraGra and DIY Branding, and creator of the Decisions That Work framework.",
       worksFor: { "@id": ORG_ID },
-      knowsAbout: [
-        "Autonomy",
-        "Ownership",
-        "Self-trust",
-        "Knowledge architecture",
-        "Coaching for coaches and consultants",
-      ],
+      knowsAbout: TOPICS,
       sameAs: SAME_AS,
     },
     {
@@ -96,6 +108,8 @@ export const articleSchema = (article: Article) => {
     dateModified: article.date,
     inLanguage: "en-GB",
     articleSection: article.pillar,
+    keywords: [article.pillar, "autonomy", "ownership", "self-trust"].join(", "),
+    about: { "@type": "Thing", name: `${article.pillar} (pillar of The Autonomy Code)` },
     ...(article.heroImage ? { image: [absoluteUrl(article.heroImage.src)] } : {}),
     author: { "@id": PERSON_ID, "@type": "Person", name: "DK Jonah" },
     publisher: { "@id": ORG_ID },
@@ -120,6 +134,7 @@ export const serviceSchema = (service: Service) => {
     description: service.intro,
     url,
     serviceType: service.category,
+    audience: { "@type": "Audience", audienceType: "Coaches, consultants and knowledge workers" },
     image: absoluteUrl(service.image.src),
     provider: { "@id": ORG_ID },
     areaServed: "Worldwide",
@@ -143,6 +158,8 @@ export const compassSchema = (description: string) => ({
   "@type": "Service",
   name: "The Autonomy Compass",
   description,
+  serviceType: "Ownership assessment with a one-to-one session and written Blueprint",
+  audience: { "@type": "Audience", audienceType: "Coaches and consultants" },
   url: `${SITE_URL}/autonomy-compass`,
   image: absoluteUrl("/images/compass/compass-cover.webp"),
   provider: { "@id": ORG_ID },
@@ -171,6 +188,8 @@ export const resetEventSchema = (description: string) => {
     "@type": "Event",
     name: "The Annual Reset 4.0",
     description,
+    about: ["Goal setting", "Personal standards", "Ownership"],
+    keywords: "annual reset, goal-setting workshop, standards, year-end review, online workshop",
     url,
     image: [absoluteUrl("/images/og/annual-reset.jpg")],
     startDate: "2026-11-27T19:00:00+00:00",

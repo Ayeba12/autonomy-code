@@ -20,10 +20,11 @@ const DESCRIPTION =
   "A £97 door for coaches and consultants who have built something real and privately sense it was built for the wrong reasons: twenty-five statements, a 90-minute Claim Intensive, and a written Autonomy Blueprint.";
 
 export const metadata: Metadata = seo({
-  title: "The Autonomy Compass",
+  title: "The Autonomy Compass: Ownership Assessment",
   description: DESCRIPTION,
   path: "/autonomy-compass",
   image: "/images/og/autonomy-compass.jpg",
+  keywords: ["Autonomy Compass", "ownership assessment", "assessment for coaches and consultants", "Claim Intensive", "Autonomy Blueprint", "borrowed identity", "coaching diagnostic"],
 });
 
 /**
