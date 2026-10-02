@@ -18,7 +18,7 @@ export const metadata: Metadata = seo({
   description:
     "A coaching and strategy practice for accomplished professionals whose expertise lives in scattered pieces. We organise your thinking so you can lean on it.",
   path: "",
-  keywords: ["autonomy", "ownership coaching", "self-trust", "five pillars of autonomy", "coaching and strategy practice", "coaching for consultants", "productivity coaching", "sustainable productivity", "personal autonomy", "clarity coaching", "self-leadership"],
+  keywords: ["autonomy", "ownership coaching", "self-trust", "five pillars of autonomy", "coaching and strategy practice", "coaching for consultants", "productivity coaching", "sustainable productivity", "personal autonomy", "clarity coaching", "self-leadership", "productivity coach London", "productivity coaching UK", "online coaching United Kingdom"],
 });
 
 const HomePage = async () => {

@@ -27,6 +27,9 @@ export const BRAND_KEYWORDS = [
   "personal autonomy",
   "self-leadership",
   "sustainable productivity",
+  "productivity coach in London",
+  "productivity coach in the United Kingdom",
+  "productivity coach UK",
   "ownership and self-governance",
   "coaching for coaches and consultants",
 ];

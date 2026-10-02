@@ -30,6 +30,7 @@ const TOPICS = [
   "Self-leadership",
   "Sustainable productivity",
   "Productivity coaching",
+  "Productivity coaching in London and the United Kingdom",
   "Clarity coaching",
   "Identity coaching",
   "Goal setting and action planning",
@@ -59,6 +60,8 @@ export const siteSchema = () => ({
       knowsAbout: TOPICS,
       founder: { "@id": PERSON_ID },
       email: "info@theautonomycode.com",
+      // Online practice run on UK time; no street address is published.
+      areaServed: ["United Kingdom", "London", "Worldwide"],
       sameAs: SAME_AS,
     },
     {

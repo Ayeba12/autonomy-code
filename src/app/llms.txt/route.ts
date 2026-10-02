@@ -33,6 +33,8 @@ export async function GET() {
     "",
     "The central distinction: independence is freedom from; autonomy is ownership of.",
     "",
+    "The practice works online, on UK time, with clients in London, across the United Kingdom and worldwide, including productivity coaching and sustainable productivity work.",
+    "",
     "## Who it is for",
     "",
     "Capable people whose lives or practices look credible from the outside but do not feel fully theirs. The Autonomy Compass speaks particularly to coaches and consultants. The Annual Reset has a wider audience and does not require running a business.",

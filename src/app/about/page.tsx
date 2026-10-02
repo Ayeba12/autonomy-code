@@ -18,7 +18,7 @@ export const metadata: Metadata = seo({
     "DK Jonah is a Knowledge Architect and the creator of The Autonomy Code. The story behind the practice: hidden captivity, ownership, and building from owned ground.",
   path: "/about",
   image: "/images/og/about.jpg",
-  keywords: ["DK Jonah", "who is DK Jonah", "Knowledge Architect", "author of NO GraGra", "DIY Branding author", "Decisions That Work", "productivity coaching", "self-leadership"],
+  keywords: ["DK Jonah", "who is DK Jonah", "Knowledge Architect", "author of NO GraGra", "DIY Branding author", "Decisions That Work", "productivity coaching", "self-leadership", "productivity coach London", "productivity coaching UK", "online coaching United Kingdom"],
 });
 
 /* DK's final wording (content.md §4.7). Verbatim; do not edit. */
