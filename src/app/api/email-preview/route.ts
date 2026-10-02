@@ -1,5 +1,6 @@
 import {
   paymentNotification,
+  resetWelcome,
   contactConfirmation,
   contactNotification,
   speakingConfirmation,
@@ -29,6 +30,7 @@ const templates = {
   "contact-received": () => contactConfirmation(contact),
   "speaking-new": () => speakingNotification(speaking),
   "speaking-received": () => speakingConfirmation(speaking),
+  "reset-welcome": () => resetWelcome({ telegramUrl: "https://t.me/", unsubscribeUrl: "#" }),
   "payment-new": () =>
     paymentNotification({
       product: "The Annual Reset 4.0 (early bird)",
