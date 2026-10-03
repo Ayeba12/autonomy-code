@@ -10,7 +10,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
-import { resetJoiningLink, resetMasterclassInvite, resetOneWeek, resetWelcome } from "../src/lib/email/templates";
+import { masterclassSecondInvite, resetEarlyBirdReminder, resetJoiningLink, resetMasterclassInvite, resetOneWeek, resetWelcome } from "../src/lib/email/templates";
 
 const TELEGRAM_LINK = process.env.TELEGRAM_LINK ?? "https://t.me/+f6_8zOiOoK1kY2U0";
 
@@ -42,3 +42,16 @@ const invite = resetMasterclassInvite({ lumaUrl: LUMA_LINK, unsubscribeUrl: "{$u
 fs.writeFileSync(path.join(out, "masterclass-invite-buyers.html"), invite.html);
 fs.writeFileSync(path.join(out, "masterclass-invite-buyers.txt"), `Subject: ${invite.subject}\n\n${invite.text}\n`);
 console.log("emails/masterclass-invite-buyers.html", invite.html.length, "bytes");
+
+/** The Luma page for the 21 November repeat run (not created yet). */
+const LUMA_LINK_NOV = process.env.LUMA_LINK_NOV ?? "https://REPLACE-WITH-THE-NOVEMBER-LUMA-LINK";
+
+const more = {
+  "reset-early-bird-reminder": resetEarlyBirdReminder({ unsubscribeUrl: "{$unsubscribe}" }),
+  "masterclass-invite-november": masterclassSecondInvite({ lumaUrl: LUMA_LINK_NOV, unsubscribeUrl: "{$unsubscribe}" }),
+};
+for (const [name, message] of Object.entries(more)) {
+  fs.writeFileSync(path.join(out, `${name}.html`), message.html);
+  fs.writeFileSync(path.join(out, `${name}.txt`), `Subject: ${message.subject}\n\n${message.text}\n`);
+  console.log(`emails/${name}.html`, message.html.length, "bytes");
+}

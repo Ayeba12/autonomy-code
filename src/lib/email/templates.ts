@@ -58,6 +58,8 @@ interface LayoutInput {
   signature?: string[];
   /** A quiet closing line under the button. */
   note?: string;
+  /** Why the reader is getting this; defaults to "because you booked a seat". */
+  footerReason?: string;
   /** Unsubscribe link for emails sent by a mailing tool (a merge tag is fine). */
   unsubscribeUrl?: string;
 }
@@ -177,8 +179,8 @@ ${
 }
 ${
   input.signature?.length
-    ? `<p style="margin:26px 0 0;font-family:${font};font-size:16px;line-height:26px;color:${color.ink};">${escapeHtml(input.signature[0])}</p>
-<p style="margin:14px 0 0;font-family:${font};font-size:16px;line-height:24px;color:${color.ink};"><strong>${escapeHtml(input.signature[1] ?? "")}</strong><br /><span style="font-size:14px;color:${color.slate};">${escapeHtml(input.signature[2] ?? "")}</span></p>`
+    ? `${input.signature[0] ? `<p style="margin:26px 0 0;font-family:${font};font-size:16px;line-height:26px;color:${color.ink};">${escapeHtml(input.signature[0])}</p>` : ""}
+<p style="margin:${input.signature[0] ? 14 : 26}px 0 0;font-family:${font};font-size:16px;line-height:24px;color:${color.ink};"><strong>${escapeHtml(input.signature[1] ?? "")}</strong><br /><span style="font-size:14px;color:${color.slate};">${escapeHtml(input.signature[2] ?? "")}</span></p>`
     : ""
 }
 ${
@@ -200,7 +202,7 @@ ${
 <p style="margin:16px 0 0;font-family:${font};font-size:13px;line-height:20px;"><a href="${SITE}" style="color:${color.brandSoft};text-decoration:none;">theautonomycode.com</a></p>
 ${
   input.unsubscribeUrl
-    ? `<p style="margin:14px 0 0;font-family:${font};font-size:12px;line-height:18px;color:${color.mute};">You are receiving this because you booked a seat. <a href="${input.unsubscribeUrl}" style="color:${color.mute};text-decoration:underline;">Unsubscribe</a></p>`
+    ? `<p style="margin:14px 0 0;font-family:${font};font-size:12px;line-height:18px;color:${color.mute};">You are receiving this ${escapeHtml(input.footerReason ?? "because you booked a seat")}. <a href="${input.unsubscribeUrl}" style="color:${color.mute};text-decoration:underline;">Unsubscribe</a></p>`
     : ""
 }
 </td></tr>
@@ -226,7 +228,7 @@ const plain = (input: LayoutInput) =>
     ...(input.steps ? ["", input.steps.label.toUpperCase(), ...input.steps.items.map((item, i) => `${i + 1}. ${item}`)] : []),
     ...(input.outro?.length ? ["", ...input.outro] : []),
     ...(input.linkLine ? ["", `${input.linkLine.lead} ${input.linkLine.href}`] : []),
-    ...(input.signature?.length ? ["", ...input.signature] : []),
+    ...(input.signature?.length ? ["", ...input.signature.filter(Boolean)] : []),
     ...(input.note ? ["", input.note] : []),
     "",
     "The Autonomy Code · The NO GraGra Practice · DK Jonah",
@@ -561,5 +563,73 @@ export const resetMasterclassInvite = ({
       "No cost, nothing to buy. You've already bought.",
     ],
     signature: ["See you Saturday.", "DK Jonah", "The NO GraGra Practice"],
+    unsubscribeUrl,
+  });
+
+/**
+ * Early-bird reminder — send 28 or 29 October to masterclass registrants
+ * who have not bought. Copy supplied by the team in DK's voice; kept verbatim.
+ */
+export const resetEarlyBirdReminder = ({ unsubscribeUrl }: { unsubscribeUrl?: string }): EmailMessage =>
+  build("Your early bird ends Sunday", {
+    preheader: "Early bird pricing for The Annual Reset 4.0 ends Sunday 1 November.",
+    image: {
+      file: "reset-early-bird.jpg",
+      alt: "Graphite sketch of a bare foot stepping onto a single gold line",
+    },
+    eyebrow: "The Annual Reset 4.0 · Early bird",
+    title: "Your early bird ends Sunday.",
+    intro: [
+      GREETING,
+      "A few days ago you traced a standard back to where it came from. You saw how far back it went. That was one standard.",
+      "The Annual Reset 4.0 takes all of them through the full work: Audit, Align and Anchor. Three live sessions, the REset Portfolio, the LifeSync Stencil, the PACE Planner and the GROWTH Goals framework.",
+      "Early bird pricing ends Sunday 1 November. After that, it's £199.",
+    ],
+    button: { label: "Take your seat", href: `${SITE}/annual-reset` },
+    linkLine: {
+      lead: "In Nigeria? Pay in naira through Selar:",
+      label: "selar.com/8256775544",
+      href: "https://selar.com/8256775544",
+    },
+    outro: ["This isn't a countdown. It's just the fact, so you can decide with all the information."],
+    signature: ["", "DK Jonah", "The NO GraGra Practice"],
+    footerReason: "because you registered for the masterclass",
+    unsubscribeUrl,
+  });
+
+/**
+ * Second masterclass invitation — send mid-November for the 21 November
+ * repeat run, to everyone. Copy supplied by the team in DK's voice; kept verbatim.
+ */
+export const masterclassSecondInvite = ({
+  lumaUrl,
+  unsubscribeUrl,
+}: {
+  lumaUrl: string;
+  unsubscribeUrl?: string;
+}): EmailMessage =>
+  build("One more chance to trace a standard", {
+    preheader: "The Standard You Never Chose runs again on Saturday 21 November. Live, free, 75 minutes.",
+    image: {
+      file: "reset-masterclass.jpg",
+      alt: "Graphite sketch of a woman holding ropes handed to her by other people, one of them in gold leading back to a crowd",
+    },
+    eyebrow: "Free masterclass · Saturday 21 November",
+    title: "One more chance to trace a standard.",
+    intro: [
+      GREETING,
+      "Last month I ran The Standard You Never Chose live, and people kept asking for one more date. Here it is.",
+    ],
+    rows: [
+      { label: "When", value: "Saturday 21 November · 9 am UK / 10 am Lagos" },
+      { label: "Length", value: "75 minutes, live, free" },
+    ],
+    button: { label: "Register here", href: lumaUrl },
+    afterButton: [
+      "Same work: one standard, traced back to its source, and the Standard Trace PDF to take with you.",
+      "If you're coming to the Reset, treat it as a warm-up before Audit the following Friday. If you're still deciding, come see the work for yourself.",
+    ],
+    signature: ["See you Saturday.", "DK Jonah", "The NO GraGra Practice"],
+    footerReason: "because you are on DK Jonah's mailing list",
     unsubscribeUrl,
   });

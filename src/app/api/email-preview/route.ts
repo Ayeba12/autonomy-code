@@ -2,6 +2,8 @@ import {
   paymentNotification,
   resetJoiningLink,
   resetMasterclassInvite,
+  resetEarlyBirdReminder,
+  masterclassSecondInvite,
   resetOneWeek,
   resetWelcome,
   contactConfirmation,
@@ -39,6 +41,9 @@ const templates = {
     resetJoiningLink({ joiningUrl: "https://example.com/", telegramUrl: "https://t.me/", unsubscribeUrl: "#" }),
   "masterclass-invite-buyers": () =>
     resetMasterclassInvite({ lumaUrl: "https://luma.com/rt1bwt3q", unsubscribeUrl: "#" }),
+  "reset-early-bird-reminder": () => resetEarlyBirdReminder({ unsubscribeUrl: "#" }),
+  "masterclass-invite-november": () =>
+    masterclassSecondInvite({ lumaUrl: "https://luma.com/", unsubscribeUrl: "#" }),
   "payment-new": () =>
     paymentNotification({
       product: "The Annual Reset 4.0 (early bird)",
