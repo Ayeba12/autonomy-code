@@ -10,7 +10,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
-import { masterclassSecondInvite, resetEarlyBirdReminder, resetJoiningLink, resetMasterclassInvite, resetOneWeek, resetWelcome } from "../src/lib/email/templates";
+import { masterclassPublicInvite, masterclassReplay, masterclassSecondInvite, resetEarlyBirdReminder, resetJoiningLink, resetMasterclassInvite, resetOneWeek, resetWelcome } from "../src/lib/email/templates";
 
 const TELEGRAM_LINK = process.env.TELEGRAM_LINK ?? "https://t.me/+f6_8zOiOoK1kY2U0";
 
@@ -53,5 +53,22 @@ const more = {
 for (const [name, message] of Object.entries(more)) {
   fs.writeFileSync(path.join(out, `${name}.html`), message.html);
   fs.writeFileSync(path.join(out, `${name}.txt`), `Subject: ${message.subject}\n\n${message.text}\n`);
+  console.log(`emails/${name}.html`, message.html.length, "bytes");
+}
+
+/** Replace before sending: the replay recording and the hosted Standard Trace PDF. */
+const REPLAY_LINK = process.env.REPLAY_LINK ?? "https://REPLACE-WITH-THE-REPLAY-LINK";
+const PDF_LINK = process.env.PDF_LINK ?? "https://REPLACE-WITH-THE-STANDARD-TRACE-PDF-LINK";
+
+const october = {
+  "masterclass-invite-public": masterclassPublicInvite({ lumaUrl: LUMA_LINK, unsubscribeUrl: "{$unsubscribe}" }),
+  "masterclass-replay": masterclassReplay({ replayUrl: REPLAY_LINK, pdfUrl: PDF_LINK, unsubscribeUrl: "{$unsubscribe}" }),
+};
+for (const [name, message] of Object.entries(october)) {
+  fs.writeFileSync(path.join(out, `${name}.html`), message.html);
+  fs.writeFileSync(path.join(out, `${name}.txt`), `Subject: ${message.subject}
+
+${message.text}
+`);
   console.log(`emails/${name}.html`, message.html.length, "bytes");
 }

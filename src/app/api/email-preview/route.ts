@@ -4,6 +4,8 @@ import {
   resetMasterclassInvite,
   resetEarlyBirdReminder,
   masterclassSecondInvite,
+  masterclassPublicInvite,
+  masterclassReplay,
   resetOneWeek,
   resetWelcome,
   contactConfirmation,
@@ -44,6 +46,9 @@ const templates = {
   "reset-early-bird-reminder": () => resetEarlyBirdReminder({ unsubscribeUrl: "#" }),
   "masterclass-invite-november": () =>
     masterclassSecondInvite({ lumaUrl: "https://luma.com/", unsubscribeUrl: "#" }),
+  "masterclass-invite-public": () => masterclassPublicInvite({ lumaUrl: "https://luma.com/", unsubscribeUrl: "#" }),
+  "masterclass-replay": () =>
+    masterclassReplay({ replayUrl: "https://example.com/", pdfUrl: "https://example.com/", unsubscribeUrl: "#" }),
   "payment-new": () =>
     paymentNotification({
       product: "The Annual Reset 4.0 (early bird)",

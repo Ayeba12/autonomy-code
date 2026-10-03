@@ -52,6 +52,8 @@ interface LayoutInput {
   steps?: { label: string; items: string[] };
   /** A second way in, one sentence ending in a text link, right under the button. */
   buttonLink?: { lead: string; label: string; href: string };
+  /** A small heading over the afterButton paragraphs, e.g. "What we'll do". */
+  afterButtonLabel?: string;
   /** Paragraphs after the button and steps. */
   outro?: string[];
   /** One sentence ending in a text link (e.g. the community). */
@@ -165,6 +167,7 @@ ${input.rows?.length ? renderRows(input.rows) : ""}
 ${input.quote ? renderQuote(input.quote) : ""}
 ${input.button ? renderButton(input.button) : ""}
 ${input.buttonLink ? renderLinkLine(input.buttonLink, 18) : ""}
+${input.afterButtonLabel ? `<p style="${eyebrowStyle}margin:34px 0 0;color:${color.slate};">${escapeHtml(input.afterButtonLabel)}</p>` : ""}
 ${(input.afterButton ?? [])
   .map(
     (paragraph) =>
@@ -227,6 +230,7 @@ const plain = (input: LayoutInput) =>
     ...(input.quote ? ["", `${input.quote.label}:`, input.quote.body] : []),
     ...(input.button ? ["", `${input.button.label}: ${input.button.href}`] : []),
     ...(input.buttonLink ? [`${input.buttonLink.lead} ${input.buttonLink.href}`] : []),
+    ...(input.afterButtonLabel ? ["", input.afterButtonLabel.toUpperCase()] : []),
     ...(input.afterButton?.length ? ["", ...input.afterButton] : []),
     ...(input.steps ? ["", input.steps.label.toUpperCase(), ...input.steps.items.map((item, i) => `${i + 1}. ${item}`)] : []),
     ...(input.outro?.length ? ["", ...input.outro] : []),
@@ -634,5 +638,82 @@ export const masterclassSecondInvite = ({
     ],
     signature: ["See you Saturday.", "DK Jonah", "The NO GraGra Practice"],
     footerReason: "because you are on DK Jonah's mailing list",
+    unsubscribeUrl,
+  });
+
+/**
+ * The public masterclass invitation — early October, to everyone who has
+ * not bought (exclude the Reset 2026 group). Copy supplied by the team in
+ * DK's voice; kept verbatim.
+ */
+export const masterclassPublicInvite = ({
+  lumaUrl,
+  unsubscribeUrl,
+}: {
+  lumaUrl: string;
+  unsubscribeUrl?: string;
+}): EmailMessage =>
+  build("You never chose your standards. Let's look at one.", {
+    preheader: "A free live masterclass on Saturday 17 October: The Standard You Never Chose.",
+    image: {
+      file: "reset-masterclass.jpg",
+      alt: "Graphite sketch of a woman holding ropes handed to her by other people, one of them in gold leading back to a crowd",
+    },
+    eyebrow: "Free masterclass · Saturday 17 October",
+    title: "The Standard You Never Chose.",
+    intro: [
+      GREETING,
+      "Most people never chose their standards. They inherited them before they were old enough to say no, absorbed them in rooms they wanted to belong to, agreed to them in a season that ended long ago.",
+      "And they've been living by them ever since.",
+      "Come trace one of yours with me. Free, live, 75 minutes.",
+    ],
+    rows: [
+      { label: "When", value: "Saturday 17 October · 9 am UK / 9 am Lagos" },
+      { label: "Where", value: "Live online, hosted on Luma" },
+    ],
+    button: { label: "Register here", href: lumaUrl },
+    afterButtonLabel: "What we'll do",
+    afterButton: [
+      "Together, we'll take one standard you live by and trace it back to where it actually came from. Not the version you tell. The real one. You'll leave with the Standard Trace, a one-page PDF you can use again on any standard, any time.",
+      "This is a taste of the Audit - the first session of The Annual Reset 4.0. If the work speaks to you, seats are on early bird until 1 November. If not, you'll still leave with something useful.",
+      "No hype. We go slow first, then precise.",
+    ],
+    signature: ["See you Saturday.", "DK Jonah", "The NO GraGra Practice"],
+    footerReason: "because you are on DK Jonah's mailing list",
+    unsubscribeUrl,
+  });
+
+/**
+ * Replay + Standard Trace PDF — within 24 hours after 17 October, to all
+ * registrants. MailerLite cannot attach files, so the PDF is linked.
+ * Copy supplied by the team in DK's voice; "attached" became "linked below".
+ */
+export const masterclassReplay = ({
+  replayUrl,
+  pdfUrl,
+  unsubscribeUrl,
+}: {
+  replayUrl: string;
+  pdfUrl: string;
+  unsubscribeUrl?: string;
+}): EmailMessage =>
+  build("Your Standard Trace replay", {
+    preheader: "The replay of The Standard You Never Chose, and the Standard Trace PDF to keep.",
+    image: {
+      file: "reset-joining.jpg",
+      alt: "Graphite sketch of a woman with a magnifying glass tracing footprints across a ledger back to the first, in gold",
+    },
+    eyebrow: "The Standard You Never Chose · Replay",
+    title: "Your Standard Trace replay.",
+    intro: [GREETING, "Thank you for coming to The Standard You Never Chose. Here is the replay:"],
+    button: { label: "Watch the replay", href: replayUrl },
+    buttonLink: { lead: "The Standard Trace PDF:", label: "download it here", href: pdfUrl },
+    afterButton: [
+      "You'll find the Standard Trace PDF linked above, so you can keep tracing on your own.",
+      "If you want to finish what you started, The Annual Reset 4.0 completes the work: Audit, Align and Anchor, three live sessions in late November and December. Early bird ends 1 November.",
+    ],
+    linkLine: { lead: "Take your seat:", label: "theautonomycode.com/annual-reset", href: `${SITE}/annual-reset` },
+    signature: ["", "DK Jonah", "The NO GraGra Practice"],
+    footerReason: "because you registered for the masterclass",
     unsubscribeUrl,
   });
