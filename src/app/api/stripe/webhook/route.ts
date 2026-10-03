@@ -69,18 +69,25 @@ export async function POST(request: Request) {
   // Only paid checkouts are of interest; everything else is acknowledged.
   if (event.type !== "checkout.session.completed") return Response.json({ received: true });
   const session = event.data.object;
-  if (session.payment_status !== "paid") return Response.json({ received: true });
+  // A fully discounted checkout (a 100% code, used for testing the flow)
+  // is "no_payment_required" rather than "paid", and still counts.
+  if (!["paid", "no_payment_required"].includes(String(session.payment_status))) {
+    return Response.json({ received: true });
+  }
 
+  // The product is recognised by its list price, before any discount.
   const amount = Number(session.amount_total ?? 0);
+  const listPrice = Number(session.amount_subtotal ?? amount);
   const currency = String(session.currency ?? "gbp");
+  const price = `${currency}:${listPrice}`;
   const customer = (session.customer_details ?? {}) as { name?: string; email?: string };
 
   // 1. The mailing list. A failure here is reported, not retried: the
   //    notification below tells the team to add the buyer by hand.
   let list: string | undefined;
   const group = mailerLiteGroupName();
-  if (!RESET_PRICES.has(`${currency}:${amount}`)) {
-    list = `Not added to ${group}: ${money(amount, currency)} is not an Annual Reset price (£99 or £199).`;
+  if (!RESET_PRICES.has(price)) {
+    list = `Not added to ${group}: ${money(listPrice, currency)} is not an Annual Reset price (£99 or £199).`;
   } else {
     if (!customer.email) {
       list = `Not added to ${group}: Stripe sent no email address. Add by hand.`;
@@ -96,7 +103,7 @@ export async function POST(request: Request) {
       }
     }
   }
-  console.log(`Stripe webhook: ${currency}:${amount} ${customer.email ?? "(no email)"} - ${list}`);
+  console.log(`Stripe webhook: ${price} paid ${amount} ${customer.email ?? "(no email)"} - ${list}`);
 
   // 2. The notification.
   const inbox = enquiryInbox();
@@ -110,8 +117,11 @@ export async function POST(request: Request) {
       to: inbox,
       replyTo: customer.email || undefined,
       message: paymentNotification({
-        product: PRODUCTS[`${currency}:${amount}`] ?? "A payment",
-        amount: money(amount, currency),
+        product: PRODUCTS[price] ?? "A payment",
+        amount:
+          amount === listPrice
+            ? money(amount, currency)
+            : `${money(amount, currency)} (list price ${money(listPrice, currency)}, discounted)`,
         name: customer.name ?? "",
         email: customer.email ?? "",
         paidAt: new Date(event.created * 1000).toLocaleString("en-GB", {
