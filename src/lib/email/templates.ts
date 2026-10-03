@@ -423,9 +423,12 @@ export const paymentNotification = (fields: PaymentFields): EmailMessage =>
  */
 export const resetWelcome = ({
   telegramUrl,
+  calendarUrl,
   unsubscribeUrl,
 }: {
   telegramUrl: string;
+  /** The .ics with all three sessions (public/downloads, unguessable name). */
+  calendarUrl: string;
   unsubscribeUrl?: string;
 }): EmailMessage =>
   build("Your seat is taken · The Annual Reset 4.0", {
@@ -451,6 +454,7 @@ export const resetWelcome = ({
       body: "The waiting room on Telegram is open now, for orientation and practical help. There is no teaching there before the sessions, and nothing is sold. Come in when you are ready.",
     },
     button: { label: "Join the waiting room", href: telegramUrl },
+    buttonLink: { lead: "Add all three sessions to your calendar:", label: "download the calendar file", href: calendarUrl },
     note: "Sessions are at 7 pm UK time, so please check the hour in your own time zone. Questions? Write to info@theautonomycode.com.",
     unsubscribeUrl,
   });
@@ -501,9 +505,10 @@ export const resetOneWeek = ({ telegramUrl, unsubscribeUrl }: ResetFollowUp): Em
  */
 export const resetJoiningLink = ({
   joiningUrl,
+  calendarUrl,
   telegramUrl,
   unsubscribeUrl,
-}: ResetFollowUp & { joiningUrl: string }): EmailMessage =>
+}: ResetFollowUp & { joiningUrl: string; calendarUrl: string }): EmailMessage =>
   build("Your joining link - The Annual Reset 4.0", {
     preheader: "Audit is almost here. Friday 27 November, 7 pm UK (8 pm Nigeria).",
     image: {
@@ -514,6 +519,7 @@ export const resetJoiningLink = ({
     title: "Your joining link.",
     intro: [GREETING, "Audit is almost here. Friday 27 November, 7 pm UK (8 pm Nigeria)."],
     button: { label: "Join the session", href: joiningUrl },
+    buttonLink: { lead: "Meeting ID 817 9355 0456, passcode \"standards\". Or", label: "add all three sessions to your calendar", href: calendarUrl },
     steps: {
       label: "Before we begin",
       items: [

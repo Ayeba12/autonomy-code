@@ -5,7 +5,7 @@ const robots = (): MetadataRoute.Robots => ({
   rules: {
     userAgent: "*",
     allow: "/",
-    disallow: ["/api/", "/annual-reset/checkout", "/annual-reset/thank-you", "/utility-pages/"],
+    disallow: ["/api/", "/annual-reset/checkout", "/annual-reset/thank-you", "/utility-pages/", "/downloads/"],
   },
   sitemap: "https://www.theautonomycode.com/sitemap.xml",
 });

@@ -17,17 +17,21 @@ const TELEGRAM_LINK = process.env.TELEGRAM_LINK ?? "https://t.me/+f6_8zOiOoK1kY2
 const out = path.resolve(import.meta.dirname, "../emails");
 fs.mkdirSync(out, { recursive: true });
 
-const welcome = resetWelcome({ telegramUrl: TELEGRAM_LINK, unsubscribeUrl: "{$unsubscribe}" });
+/** The calendar file with all three sessions; the name is unguessable because it holds the Zoom link. */
+const CALENDAR_LINK = "https://www.theautonomycode.com/downloads/annual-reset-4-238711e0e4c4.ics";
+
+const welcome = resetWelcome({ telegramUrl: TELEGRAM_LINK, calendarUrl: CALENDAR_LINK, unsubscribeUrl: "{$unsubscribe}" });
 fs.writeFileSync(path.join(out, "annual-reset-welcome.html"), welcome.html);
 fs.writeFileSync(path.join(out, "annual-reset-welcome.txt"), `Subject: ${welcome.subject}\n\n${welcome.text}\n`);
 console.log("emails/annual-reset-welcome.html", welcome.html.length, "bytes");
 
-/** Replace before sending: the live session link for Audit. */
-const JOINING_LINK = process.env.JOINING_LINK ?? "https://REPLACE-WITH-THE-JOINING-LINK";
+/** The Zoom room for all three sessions (from the team's .ics). */
+const JOINING_LINK =
+  process.env.JOINING_LINK ?? "https://us02web.zoom.us/j/81793550456?pwd=j49HMOWrHGXU43t52XKvZzV0ZVX1OQ.1";
 
 const followUps = {
   "annual-reset-one-week": resetOneWeek({ telegramUrl: TELEGRAM_LINK, unsubscribeUrl: "{$unsubscribe}" }),
-  "annual-reset-joining-link": resetJoiningLink({ joiningUrl: JOINING_LINK, telegramUrl: TELEGRAM_LINK, unsubscribeUrl: "{$unsubscribe}" }),
+  "annual-reset-joining-link": resetJoiningLink({ joiningUrl: JOINING_LINK, calendarUrl: CALENDAR_LINK, telegramUrl: TELEGRAM_LINK, unsubscribeUrl: "{$unsubscribe}" }),
 };
 for (const [name, message] of Object.entries(followUps)) {
   fs.writeFileSync(path.join(out, `${name}.html`), message.html);

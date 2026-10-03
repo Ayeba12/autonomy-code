@@ -5,7 +5,8 @@ Your joining link.
 Hi {$name|default('there')},
 Audit is almost here. Friday 27 November, 7 pm UK (8 pm Nigeria).
 
-Join the session: https://REPLACE-WITH-THE-JOINING-LINK
+Join the session: https://us02web.zoom.us/j/81793550456?pwd=j49HMOWrHGXU43t52XKvZzV0ZVX1OQ.1
+Meeting ID 817 9355 0456, passcode "standards". Or https://www.theautonomycode.com/downloads/annual-reset-4-238711e0e4c4.ics
 
 Add it to your calendar now, and set a reminder for ten minutes before. We start on time, and we start gently.
 

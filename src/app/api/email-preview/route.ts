@@ -37,10 +37,10 @@ const templates = {
   "contact-received": () => contactConfirmation(contact),
   "speaking-new": () => speakingNotification(speaking),
   "speaking-received": () => speakingConfirmation(speaking),
-  "reset-welcome": () => resetWelcome({ telegramUrl: "https://t.me/", unsubscribeUrl: "#" }),
+  "reset-welcome": () => resetWelcome({ telegramUrl: "https://t.me/", calendarUrl: "#", unsubscribeUrl: "#" }),
   "reset-one-week": () => resetOneWeek({ telegramUrl: "https://t.me/", unsubscribeUrl: "#" }),
   "reset-joining-link": () =>
-    resetJoiningLink({ joiningUrl: "https://example.com/", telegramUrl: "https://t.me/", unsubscribeUrl: "#" }),
+    resetJoiningLink({ joiningUrl: "https://example.com/", calendarUrl: "#", telegramUrl: "https://t.me/", unsubscribeUrl: "#" }),
   "masterclass-invite-buyers": () =>
     resetMasterclassInvite({ lumaUrl: "https://luma.com/rt1bwt3q", unsubscribeUrl: "#" }),
   "reset-early-bird-reminder": () => resetEarlyBirdReminder({ unsubscribeUrl: "#" }),
