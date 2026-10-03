@@ -50,6 +50,8 @@ interface LayoutInput {
   afterButton?: string[];
   /** A short numbered list under the button. */
   steps?: { label: string; items: string[] };
+  /** A second way in, one sentence ending in a text link, right under the button. */
+  buttonLink?: { lead: string; label: string; href: string };
   /** Paragraphs after the button and steps. */
   outro?: string[];
   /** One sentence ending in a text link (e.g. the community). */
@@ -118,6 +120,9 @@ ${steps.items
   .join("\n")}
 </table>`;
 
+const renderLinkLine = (line: { lead: string; label: string; href: string }, top: number) =>
+  `<p style="margin:${top}px 0 0;font-family:${font};font-size:16px;line-height:26px;color:${color.slate};">${escapeHtml(line.lead)} <a href="${escapeHtml(line.href)}" style="color:${color.brandHot};font-weight:600;text-decoration:underline;">${escapeHtml(line.label)}</a></p>`;
+
 const renderButton = (button: { label: string; href: string }) =>
   `<table role="presentation" cellpadding="0" cellspacing="0" style="margin-top:32px;">
 <tr><td style="border-radius:999px;background:${color.brand};">
@@ -159,6 +164,7 @@ ${input.intro
 ${input.rows?.length ? renderRows(input.rows) : ""}
 ${input.quote ? renderQuote(input.quote) : ""}
 ${input.button ? renderButton(input.button) : ""}
+${input.buttonLink ? renderLinkLine(input.buttonLink, 18) : ""}
 ${(input.afterButton ?? [])
   .map(
     (paragraph) =>
@@ -172,11 +178,7 @@ ${(input.outro ?? [])
       `<p style="margin:22px 0 0;font-family:${font};font-size:16px;line-height:26px;color:${color.slate};">${bodyText(paragraph)}</p>`,
   )
   .join("\n")}
-${
-  input.linkLine
-    ? `<p style="margin:22px 0 0;font-family:${font};font-size:16px;line-height:26px;color:${color.slate};">${escapeHtml(input.linkLine.lead)} <a href="${escapeHtml(input.linkLine.href)}" style="color:${color.brandHot};font-weight:600;text-decoration:underline;">${escapeHtml(input.linkLine.label)}</a></p>`
-    : ""
-}
+${input.linkLine ? renderLinkLine(input.linkLine, 22) : ""}
 ${
   input.signature?.length
     ? `${input.signature[0] ? `<p style="margin:26px 0 0;font-family:${font};font-size:16px;line-height:26px;color:${color.ink};">${escapeHtml(input.signature[0])}</p>` : ""}
@@ -224,6 +226,7 @@ const plain = (input: LayoutInput) =>
       : []),
     ...(input.quote ? ["", `${input.quote.label}:`, input.quote.body] : []),
     ...(input.button ? ["", `${input.button.label}: ${input.button.href}`] : []),
+    ...(input.buttonLink ? [`${input.buttonLink.lead} ${input.buttonLink.href}`] : []),
     ...(input.afterButton?.length ? ["", ...input.afterButton] : []),
     ...(input.steps ? ["", input.steps.label.toUpperCase(), ...input.steps.items.map((item, i) => `${i + 1}. ${item}`)] : []),
     ...(input.outro?.length ? ["", ...input.outro] : []),
@@ -586,7 +589,7 @@ export const resetEarlyBirdReminder = ({ unsubscribeUrl }: { unsubscribeUrl?: st
       "Early bird pricing ends Sunday 1 November. After that, it's £199.",
     ],
     button: { label: "Take your seat", href: `${SITE}/annual-reset` },
-    linkLine: {
+    buttonLink: {
       lead: "In Nigeria? Pay in naira through Selar:",
       label: "selar.com/8256775544",
       href: "https://selar.com/8256775544",
