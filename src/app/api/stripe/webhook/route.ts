@@ -78,8 +78,10 @@ export async function POST(request: Request) {
   // 1. The mailing list. A failure here is reported, not retried: the
   //    notification below tells the team to add the buyer by hand.
   let list: string | undefined;
-  if (RESET_PRICES.has(`${currency}:${amount}`)) {
-    const group = mailerLiteGroupName();
+  const group = mailerLiteGroupName();
+  if (!RESET_PRICES.has(`${currency}:${amount}`)) {
+    list = `Not added to ${group}: ${money(amount, currency)} is not an Annual Reset price (£99 or £199).`;
+  } else {
     if (!customer.email) {
       list = `Not added to ${group}: Stripe sent no email address. Add by hand.`;
     } else if (!mailerLiteConfigured()) {
@@ -90,10 +92,11 @@ export async function POST(request: Request) {
         list = `Added to ${group} in MailerLite.`;
       } catch (error) {
         console.error("Stripe webhook: MailerLite add failed", error);
-        list = `NOT added to ${group}: MailerLite refused. Add by hand.`;
+        list = `NOT added to ${group}: ${error instanceof Error ? error.message : "MailerLite refused"}. Add by hand.`;
       }
     }
   }
+  console.log(`Stripe webhook: ${currency}:${amount} ${customer.email ?? "(no email)"} - ${list}`);
 
   // 2. The notification.
   const inbox = enquiryInbox();
