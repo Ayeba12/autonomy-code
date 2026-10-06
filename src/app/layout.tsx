@@ -7,6 +7,7 @@ import "./globals.css";
 import { SITE_URL } from "@/lib/seo";
 import { JsonLd } from "@/components/site/JsonLd";
 import { siteSchema } from "@/lib/schema";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -42,6 +43,7 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
         <Footer />
         <CookieConsent />
       </SmoothScroll>
+      <Analytics />
     </body>
   </html>
 );
