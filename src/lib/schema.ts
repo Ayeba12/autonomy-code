@@ -221,21 +221,13 @@ export const resetEventSchema = (description: string) => {
     offers: [
       {
         "@type": "Offer",
-        name: "Early bird",
-        price: "99",
-        priceCurrency: "GBP",
-        url: `${SITE_URL}/annual-reset/checkout`,
-        availability: "https://schema.org/InStock",
-        validThrough: "2026-10-31T23:59:59+00:00",
-      },
-      {
-        "@type": "Offer",
         name: "Standard",
         price: "199",
         priceCurrency: "GBP",
         url: `${SITE_URL}/annual-reset/checkout`,
         availability: "https://schema.org/InStock",
         validFrom: "2026-11-01T00:00:00+00:00",
+        validThrough: "2026-11-24T23:59:59+00:00",
       },
     ],
     subEvent: [

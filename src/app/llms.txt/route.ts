@@ -112,7 +112,7 @@ export async function GET() {
     link(
       "The Annual Reset 4.0",
       "/annual-reset",
-      "Three live online sessions on 27 November, 4 December and 5 December 2026 at 7 pm UK time. This year's theme is Standards. Early bird £99 until 1 November 2026, then £199; booking closes 24 November 2026; seats in naira are available for Nigeria.",
+      "Three live online sessions on 27 November, 4 December and 5 December 2026 at 7 pm UK time. This year's theme is Standards. A seat is £199, or ₦150,000 for Nigeria; booking closes 24 November 2026.",
     ),
     "",
     "## Services",

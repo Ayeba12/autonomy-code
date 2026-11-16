@@ -178,8 +178,10 @@ export const reset = {
     line: "This year is about setting standards: not goals, not values, but the lines you choose to hold, and the year you build on them.",
     moves: "Audit · Align · Anchor",
   },
-  earlyBirdLabel: "Take your seat, £99 until 1 November",
+  /** The seat button, with the standard price in pounds and in naira. */
+  seatLabel: `Take your seat, ${seatOptions.map((seat) => seat.standard.price).join(" or ")}`,
   bookingCloses: "Booking closes 24 November.",
+  bookingClosed: "Booking closed on 24 November.",
   hero: {
     title: "You are not behind. You are living by standards you never agreed to.",
     sub: "Three sessions to close this year honestly, find out whose rules you have been following, and enter the next one holding only the ones you choose.",
@@ -346,26 +348,16 @@ export const reset = {
     },
   ],
   pricing: {
-    /* Two phases, each with a pounds price and a naira price for Nigeria. */
+    /* One seat, one price: pounds for the UK and abroad, naira for Nigeria.
+       Early bird ended on 1 November, so only the standard seat is shown. */
     tiers: [
       {
-        label: "Early bird",
-        note: "Until 1 November",
-        prices: [
-          { amount: "£99", region: "UK and international" },
-          { amount: "₦100,000", region: "Nigeria" },
-        ],
-      },
-      {
-        label: "Standard",
-        note: "From 1 November",
-        prices: [
-          { amount: "£199", region: "UK and international" },
-          { amount: "₦150,000", region: "Nigeria" },
-        ],
+        label: "The standard seat",
+        note: "All three sessions",
+        prices: seatOptions.map((seat) => ({ amount: seat.standard.price, region: seat.label })),
       },
     ],
-    body: "Everything is included at every level: all three sessions, the Portfolio, the Stencil, the PACE Planner and the recordings.",
+    body: "Everything is included: all three sessions, the Portfolio, the Stencil, the PACE Planner and the recordings.",
     payment: "Secure payment through Stripe, or Selar for seats in naira.",
   },
   close: {

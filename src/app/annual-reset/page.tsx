@@ -7,7 +7,7 @@ import { Accordion } from "@/components/ui/Accordion";
 import { Button } from "@/components/ui/Button";
 import { DiagonalLink } from "@/components/ui/DiagonalLink";
 import { Tag } from "@/components/ui/Tag";
-import { EarlyBirdCountdown } from "@/components/reset/EarlyBirdCountdown";
+import { BookingStatus } from "@/components/reset/BookingStatus";
 import { SEAT_CONTACT_EMAIL, SEAT_HREF, reset, resetFaqs } from "@/content/reset";
 import { seo } from "@/lib/seo";
 import { JsonLd } from "@/components/site/JsonLd";
@@ -178,7 +178,7 @@ const Sketch = ({
 );
 
 const SeatButton = ({
-  label = reset.earlyBirdLabel,
+  label = reset.seatLabel,
   className = "",
 }: {
   label?: string;
@@ -274,7 +274,7 @@ const AnnualResetPage = () => (
                   <SeatButton />
                   <p className="text-body-s text-mute">{reset.hero.note}</p>
                 </div>
-                <EarlyBirdCountdown tone="light" compact className="mt-4" />
+                <BookingStatus className="mt-5 font-heading text-body-l text-paper" />
               </Reveal>
             </div>
           </div>
@@ -647,12 +647,9 @@ const AnnualResetPage = () => (
             <Eyebrow>Taking your seat</Eyebrow>
             <h2 className="mt-5 text-h2">Three sessions. One seat.</h2>
           </Reveal>
-          <Reveal delay={0.05} className="mx-auto mt-10 max-w-[980px] max-md:mt-8">
-            <EarlyBirdCountdown className="bg-white/60" />
-          </Reveal>
-          {/* Two phases side by side; each card carries the pounds price and
-              the naira price, one above the other, with a hairline between. */}
-          <div className="mx-auto mt-6 grid max-w-[980px] grid-cols-2 gap-5 max-md:grid-cols-1">
+          {/* One card: the pounds price and the naira price, one above the
+              other, with a hairline between. */}
+          <div className="mx-auto mt-10 grid max-w-[640px] grid-cols-1 gap-5 max-md:mt-8">
             {reset.pricing.tiers.map((tier, i) => (
               <Reveal key={tier.label} delay={i * 0.08} className="h-full">
                 <article className="flex h-full flex-col rounded-card bg-ink p-8 text-paper max-md:p-6">
@@ -679,7 +676,7 @@ const AnnualResetPage = () => (
           </div>
           <Reveal className="mx-auto mt-12 flex max-w-[640px] flex-col items-center gap-6 text-center max-md:mt-8">
             <p className="text-body-l text-ink">{reset.pricing.body}</p>
-            <p className="font-heading text-h6">{reset.bookingCloses}</p>
+            <BookingStatus className="font-heading text-h6" />
             <SeatButton label="Take your seat" />
             <p className="text-body-s text-slate italic">{reset.pricing.payment}</p>
             <p className="text-body-s text-slate">
